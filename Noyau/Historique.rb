@@ -64,7 +64,7 @@ end
 
 class HistoriqueError < RuntimeError
 end
-class EmptysHistoriqueError < HistoriqueError
+class EmptyHistoriqueError < HistoriqueError
 end
 class RedoHistoriqueError < HistoriqueError
 end

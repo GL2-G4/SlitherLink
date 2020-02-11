@@ -104,24 +104,24 @@ class Case
         end
 
         case typeModif
-        when :CLIC_DROIT
-            case l.etat()
-            when :VIDE
-                l.setEtat(:BLOQUE)
-            when :PLEINE
-                l.setEtat(:BLOQUE)
-            when :BLOQUE
-                l.setEtat(:VIDE)
-            end
-        when :CLIC_GAUCHE
-            case l.etat
-            when :VIDE
-                l.setEtat(:PLEINE)
-            when :PLEINE
-                l.setEtat(:VIDE)
-            when :BLOQUE
-                l.setEtat(:PLEINE)
-            end
+            when :CLIC_DROIT
+                case l.etat()
+                    when :VIDE
+                        l.setEtat(:BLOQUE)
+                    when :PLEINE
+                        l.setEtat(:BLOQUE)
+                    when :BLOQUE
+                        l.setEtat(:VIDE)
+                end
+            when :CLIC_GAUCHE
+                case l.etat
+                    when :VIDE
+                        l.setEtat(:PLEINE)
+                    when :PLEINE
+                        l.setEtat(:VIDE)
+                    when :BLOQUE
+                        l.setEtat(:PLEINE)
+                end
         end
 
         return prec

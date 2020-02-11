@@ -25,17 +25,16 @@ class Jeu
                 h = Hash.new( nil)
 
                 if ( i != 0 ) then
-                    h[:HAUT] = @plateau[i-1][j].getLigne(:BAS)
+                    h[:GAUCHE] = @plateau[i-1][j].getLigne(:DROITE)
                 end
 
                 if ( j != 0 ) then
-                    h[:GAUCHE] = @plateau[i][j-1].getLigne(:DROITE)
+                    h[:HAUT] = @plateau[i][j-1].getLigne(:BAS)
                 end
 
                 @plateau[i][j] = Case.creer( 0, h)
             }
         }
-
     end
 
     def lancerPartie()

@@ -36,7 +36,7 @@ puts j
 
 require "../Noyau/Case.rb"
 
-j = Jeu.creer(4,3)
+j = Jeu.creer(11,7)
 puts j
 j.afficherPlateau()
 

@@ -19,21 +19,21 @@ class Action
     [apres] état de la ligne aprés sa modification
 =end
 
-    def initialize (x,y,direction,avant,apres)
-        if ( ! Direction.estValide?(direction))
-            raise DirectionError, "Direction Incorrecte : #{direction}"
+    def initialize (ligne,avant,apres)
+        if ( ligne.class() != Ligne)
+            raise LigneError, "Ligne Attendue : #{ligne}"
         end
         if ( ! TypeLigne.estValide?(avant) || ! TypeLigne.estValide?(apres))
             raise TypeLigneError, "Etat Ligne Incorrect : #{avant}, #{apres}"
         end
 
-        @x, @y, @direction, @avant, @apres = x,y,direction,avant,apres
+        @ligne, @avant, @apres = ligne,avant,apres
     end
 
-    attr_reader :x, :y, :direction, :avant, :apres
+    attr_reader :ligne, :avant, :apres
 
     def to_s
-        return "   [ case [#{@x}, #{@y}] Ligne : #{@direction}, etat avant/apres : #{@avant} / #{@apres} ]\n"
+        return "   [ Ligne : [#{@ligne.etat} : #{@ligne}], etat avant/apres : #{@avant} / #{@apres} ]\n"
     end
 end
 

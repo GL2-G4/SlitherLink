@@ -72,9 +72,10 @@ class Jeu
         end
 
         begin
-            prec = @plateau[x][y].modifierLigneClic( dirLigne, typeEvent)
+            etatPrec = @plateau[x][y].modifierLigneClic( dirLigne, typeEvent)
             puts "#{typeEvent} en #{dirLigne} sur [#{x},#{y}]"
-            @historiqueActions.ajouterAction(Action.new(x,y,dirLigne,prec,@plateau[x][y].getLigne(dirLigne).etat()))
+            ligne = @plateau[x][y].getLigne(dirLigne);
+            @historiqueActions.ajouterAction(Action.new(ligne,etatPrec,ligne.etat))
         rescue DirectionError => e
             e.message()
         rescue ActionError => e
@@ -136,7 +137,7 @@ class Jeu
             return self
         end
 
-        @plateau[action.x][action.y].modifierLigneEtat( action.direction(), action.avant())
+        action.ligne.setEtat(action.avant)
     end
 
     def redo
@@ -148,6 +149,6 @@ class Jeu
             return self
         end
 
-        @plateau[action.x][action.y].modifierLigneEtat( action.direction(), action.apres())
+        action.ligne.setEtat(action.apres)
     end
 end

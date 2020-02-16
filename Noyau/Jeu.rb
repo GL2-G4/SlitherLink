@@ -1,7 +1,9 @@
-require "./Case.rb"
-require "./Historique"
-require "./Action"
-require "./Quicksave"
+path = File.expand_path(File.dirname(__FILE__))
+
+require path + "/Case"
+require path + "/Historique"
+require path + "/Action"
+require path + "/GestionTechniques/GestionTechniques"
 
 class Jeu
 
@@ -33,7 +35,7 @@ class Jeu
                     h[:HAUT] = @plateau[i][j-1].getLigne(:BAS)
                 end
 
-                @plateau[i][j] = Case.creer( 0, h)
+                @plateau[i][j] = Case.creer( 3, h)
             }
         }
     end
@@ -106,7 +108,7 @@ class Jeu
             0.upto( tailleX - 1 ) { |i|
                 print @plateau[i][j].getLigne(:GAUCHE), " ", @plateau[i][j].nbLigneDevantEtrePleine, " "
             }
-
+            print @plateau[tailleX - 1][j].getLigne(:DROITE)
             print "  ", j, "\n"
         }
 
@@ -161,5 +163,18 @@ class Jeu
     def quicksaveCharger( quicksave)
         quicksave.charger( @plateau, @historiqueActions)
         return self
+    #
+    # Aides et Techniques
+    #
+    def chercher(technique)
+        GT.chercher(technique,@plateau)
+    end
+    
+    def getZone(technique)
+        GT.getZone(technique)
+    end
+
+    def getLignes(technique)
+        GT.getLignes(technique)
     end
 end

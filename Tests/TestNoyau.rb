@@ -1,4 +1,6 @@
-require "../Noyau/Jeu"
+path = File.expand_path(File.dirname(__FILE__))
+
+require path + "/../Noyau/Jeu"
 
 =begin
 

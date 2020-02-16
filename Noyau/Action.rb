@@ -1,5 +1,7 @@
-require "./Case"
-require "./Ligne"
+path = File.expand_path(File.dirname(__FILE__))
+
+require path + "/Case"
+require path + "/Ligne"
 =begin
     Auteurs :: Galbrun T. Vaudeleau M.
     Version :: 0.1

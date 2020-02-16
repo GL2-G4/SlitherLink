@@ -1,5 +1,7 @@
-require "./Ligne.rb"
-require "./Constante.rb"
+path = File.expand_path(File.dirname(__FILE__))
+
+require path + "/Ligne.rb"
+require path + "/Constante.rb"
 =begin
     Auteurs :: Galbrun T. Vaudeleau M.
     Version :: 0.1
@@ -104,6 +106,17 @@ class Case
         return n
     end
 
+    def nbLigneBloque()
+
+        n = 0
+        for l in @lignes
+            if l.etat == :BLOQUE
+                n += 1
+            end
+        end
+        return n
+    end
+
     def modifierLigneClic( dirLigne, typeModif )
         l = self.getLigne(dirLigne)
         prec = l.etat()
@@ -149,6 +162,19 @@ class Case
         s += @lignes[Direction::DROITE].to_s() + "\n"
         s += "." + @lignes[Direction::BAS].to_s() + "."
         return s
+    end
+
+    # Renvoie la liste des lignes qui ont l'état demandé
+    def getLigneEtat (etat)
+        tls = []
+        if (TypeLigne.estValide?(etat))
+            for l in @lignes
+                if l.etat == etat
+                    tls << l
+                end
+            end
+        end
+        return tls
     end
 end
 

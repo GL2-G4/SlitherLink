@@ -39,10 +39,10 @@ class Case
 
     def initialize( n, t)
 
-        if(n >= -1 && n <= 3)
+        if(n >= 0 && n <= 4)
             @nbLigneDevantEtrePleine = n
         else
-            @nbLigneDevantEtrePleine = -1
+            @nbLigneDevantEtrePleine = 4
         end
 
         @lignes = Array.new(4, nil)
@@ -59,8 +59,17 @@ class Case
             @lignes[Direction::GAUCHE] = Ligne.creer(:VIDE)
         end
 
-        @lignes[Direction::DROITE] = Ligne.creer(:VIDE)
-        @lignes[Direction::BAS] = Ligne.creer(:VIDE)
+        if ( t[:DROITE] != nil && t[:DROITE].class == Ligne) then
+            @lignes[Direction::DROITE] = t[:DROITE]
+        else
+            @lignes[Direction::DROITE] = Ligne.creer(:VIDE)
+        end
+        
+        if ( t[:BAS] != nil && t[:BAS].class == Ligne) then
+            @lignes[Direction::BAS] = t[:BAS]
+        else
+            @lignes[Direction::BAS] = Ligne.creer(:VIDE)
+        end
     end
 
     # Retourne la ligne à une direction donnée

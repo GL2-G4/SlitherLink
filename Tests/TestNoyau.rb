@@ -49,6 +49,10 @@ while ( c.ord() != 'e'.ord() ) do
             j.undo()
         when 'r'.ord()
             j.redo()
+        when 'q'.ord()
+            qck = j.quicksaveEnregistrer()
+        when 'g'.ord()
+            j.quicksaveCharger( qck)
         else
 
             puts "donner les coordonnées de la case que vous voulez jouer"
@@ -85,6 +89,6 @@ while ( c.ord() != 'e'.ord() ) do
     puts "=================="
     j.afficherPlateau()
 
-    puts "suite ? ( e : escape, c : continue, u : undo, r : redo )"
+    puts "suite ? ( e : escape, c : continue, u : undo, r : redo, quicksave enre. : q, quicksave charger : g ) Attention : pour l'instant une seule quicksave"
     c = gets
 end

@@ -1,6 +1,7 @@
 require "./Case.rb"
 require "./Historique"
 require "./Action"
+require "./Quicksave"
 
 class Jeu
 
@@ -150,5 +151,15 @@ class Jeu
         end
 
         action.ligne.setEtat(action.apres)
+    end
+
+    def quicksaveEnregistrer()
+
+        return Quicksave.nouveau( @plateau, @historiqueActions)
+    end
+
+    def quicksaveCharger( quicksave)
+        quicksave.charger( @plateau, @historiqueActions)
+        return self
     end
 end

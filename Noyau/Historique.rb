@@ -50,6 +50,28 @@ class Historique
         return @historiqueActions[@position]
     end
 
+    def getAction()
+
+        return @historiqueActions
+    end
+
+    def getPos()
+
+        return @position
+    end
+
+    def setPos( pos)
+
+        @position = pos
+        return self
+    end
+
+    def reset( ha, pos)
+
+        @historiqueActions = ha
+        @position = pos
+    end
+
     def to_s
 
         chaine = "\n\t\t\t===== Historique =====\n"

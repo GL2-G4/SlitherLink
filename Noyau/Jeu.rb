@@ -5,19 +5,55 @@ require path + "/Historique"
 require path + "/Action"
 require path + "/GestionTechniques/GestionTechniques"
 require path + "/Quicksave"
+require path + "/Constante"
+
+require "yaml"
+
+module TypeCreation
+    TAILLE      = 0
+    CHARGER     = 1
+    CHARGER_REP = 2
+
+    extend OpConstante
+end
 
 class Jeu
 
     private_class_method :new
 
-    def Jeu.creer( n, m)
-
-        new( n, m)
+    def Jeu.creer( n, m )
+        new( :TAILLE, n, m )
     end
 
-    def initialize( n, m)
+    def Jeu.charger( grille )
+        new( :CHARGER, grille )
+    end
 
+    def Jeu.charger_rep ( grille )
+        new( :CHARGER_REP, grille )
+    end
+
+    def initialize( type, *args )
         @historiqueActions = Historique.new()
+        @plateau = []
+
+        if(TypeCreation.estValide?(type))
+            case type
+            when :TAILLE
+                initTaille(args[0],args[1])
+            when :CHARGER
+                initTaille(args[0].nombreColonnes,args[0].nombreLignes)
+                initGrille(args[0])
+            when :CHARGER_REP
+                initGrilleRep(args[0])
+            end
+        end
+    end
+
+    # Crée un plateau vide de taile n*m
+    # n : nombre de colonnes
+    # m : nombre de lignes
+    def initTaille ( n, m )
         @plateau = Array.new(n, nil)
 
         0.upto(n-1) { |i|
@@ -36,10 +72,30 @@ class Jeu
                     h[:HAUT] = @plateau[i][j-1].getLigne(:BAS)
                 end
 
-                @plateau[i][j] = Case.creer( 3, h)
+                @plateau[i][j] = Case.creer( 4, h)
             }
         }
     end
+
+    # Charge un plateau à partir d'une grille
+    def initGrille ( grille )
+        plateauRep = grille.plateau
+        nbCol = grille.nombreColonnes
+        nbLi = grille.nombreLignes
+
+        0.upto(nbCol - 1) { |i|
+            0.upto(nbLi - 1) { |j|
+                @plateau[i][j].nbLigneDevantEtrePleine = plateauRep[i][j].nbLigneDevantEtrePleine
+            }
+        }
+    end
+
+    # Charge le plateau d'une grille réponse
+    def initGrilleRep ( grille )
+        @plateau = YAML.load(YAML.dump(grille.plateau))
+    end
+
+    private :initTaille, :initGrille
 
     def lancerPartie()
         return self
@@ -107,7 +163,8 @@ class Jeu
             print ".\n"
 
             0.upto( tailleX - 1 ) { |i|
-                print @plateau[i][j].getLigne(:GAUCHE), " ", @plateau[i][j].nbLigneDevantEtrePleine, " "
+                valC = @plateau[i][j].nbLigneDevantEtrePleine
+                print @plateau[i][j].getLigne(:GAUCHE), " ", ((valC == 4) ? " " : valC ), " "
             }
             print @plateau[tailleX - 1][j].getLigne(:DROITE)
             print "  ", j, "\n"
@@ -165,6 +222,7 @@ class Jeu
         quicksave.charger( @plateau, @historiqueActions)
         return self
     end
+
     #
     # Aides et Techniques
     #

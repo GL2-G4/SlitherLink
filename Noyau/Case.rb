@@ -29,8 +29,8 @@ end
 
 class Case
 
-    # Accès L
-    attr_reader :nbLigneDevantEtrePleine
+    # Accès L/E
+    attr_accessor :nbLigneDevantEtrePleine
 
     private_class_method :new
 

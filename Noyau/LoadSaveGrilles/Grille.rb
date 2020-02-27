@@ -176,7 +176,8 @@ class Grille
             print ".\n"
 
             0.upto( tailleX - 1 ) { |i|
-                print @plateau[i][j].getLigne(:GAUCHE), " ", @plateau[i][j].nbLigneDevantEtrePleine, " "
+				valC = @plateau[i][j].nbLigneDevantEtrePleine
+                print @plateau[i][j].getLigne(:GAUCHE), " ", ((valC == 4) ? " " : valC ), " "
             }
 			print @plateau[tailleX - 1][j].getLigne(:DROITE)
             print "  ", j, "\n"

@@ -4,6 +4,7 @@ require path + "/Case"
 require path + "/Historique"
 require path + "/Action"
 require path + "/GestionTechniques/GestionTechniques"
+require path + "/Quicksave"
 
 class Jeu
 
@@ -163,6 +164,7 @@ class Jeu
     def quicksaveCharger( quicksave)
         quicksave.charger( @plateau, @historiqueActions)
         return self
+    end
     #
     # Aides et Techniques
     #

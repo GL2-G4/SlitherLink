@@ -156,6 +156,7 @@ class Jeu
         action.ligne.setEtat(action.apres)
     end
 
+<<<<<<< HEAD
     def quicksaveEnregistrer()
 
         return Quicksave.nouveau( @plateau, @historiqueActions)
@@ -165,6 +166,8 @@ class Jeu
         quicksave.charger( @plateau, @historiqueActions)
         return self
     end
+=======
+>>>>>>> 61963f717f832640218fe36006f83dc060438e36
     #
     # Aides et Techniques
     #

@@ -1,5 +1,7 @@
-require "./Case.rb"
-require "./Historique.rb"
+path = File.expand_path(File.dirname(__FILE__))
+
+require path + "/Case"
+require path + "/Historique"
 
 class Quicksave
 

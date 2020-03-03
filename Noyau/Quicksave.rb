@@ -3,12 +3,16 @@ require "./Historique.rb"
 
 class Quicksave
 
+    private_class_method:new
+
     def Quicksave.nouveau( plateau, ha )
 
         new( plateau, ha )
     end
 
     def initialize ( plateau, ha )
+
+        @plateau = plateau
 
         # premiere étape : sauvegarde du plateau
         
@@ -107,6 +111,6 @@ class Quicksave
             raise RuntimeError, "la quicksave au chargement a soit trop d'element a sauvegardé ou a un tableau prevu trop grand"
         end
 
-        ha.reset( @saveHistorique.getAction(), @saveHistorique.getPos())
+        ha.reset( @saveHistorique )
     end
 end

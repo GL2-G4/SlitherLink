@@ -1,7 +1,7 @@
 require "./Case.rb"
 require "./Historique"
 require "./Action"
-require "./Quicksave"
+require "./GestionnaireQuicksave.rb"
 
 class Jeu
 
@@ -16,6 +16,7 @@ class Jeu
 
         @historiqueActions = Historique.new()
         @plateau = Array.new(n, nil)
+        @quickSave = GestionnaireQuicksave.nouveau( @plateau, @historiqueActions)
 
         0.upto(n-1) { |i|
             @plateau[i] = Array.new(m, nil)
@@ -155,11 +156,13 @@ class Jeu
 
     def quicksaveEnregistrer()
 
-        return Quicksave.nouveau( @plateau, @historiqueActions)
+        @quickSave.nouvelleQuicksave()
+        return self
     end
 
-    def quicksaveCharger( quicksave)
-        quicksave.charger( @plateau, @historiqueActions)
+    def quicksaveCharger()
+
+        @quickSave.charger()
         return self
     end
 end

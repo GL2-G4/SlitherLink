@@ -66,10 +66,32 @@ class Historique
         return self
     end
 
-    def reset( ha, pos)
+    def reset( ha)
 
-        @historiqueActions = ha
-        @position = pos
+        #@historiqueActions = ha
+        #@position = pos
+
+        savePos = ha.getPos()
+        @historiqueActions = Array.new()
+        @position = 0
+
+        begin
+            while ( true ) do
+                ha.undo()
+            end
+        rescue EmptyHistoriqueError => e
+            # on boucle jusqu'a ce que l'historique soit vide, l'erreur est normale
+        end
+
+        begin
+            while ( true ) do
+                self.ajouterAction( ha.redo());
+            end
+        rescue RedoHistoriqueError => e
+            # on boucle jusqu'a ce que l'historique ait été parcouru en entier, l'erreur est normale
+        end
+
+        self.setPos( savePos)
     end
 
     def to_s

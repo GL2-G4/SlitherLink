@@ -160,9 +160,15 @@ class Jeu
         return self
     end
 
-    def quicksaveCharger()
+    def quicksaveCharger( numQS )
 
-        @quickSave.charger()
+        @quickSave.charger( numQS )
+        return self
+    end
+
+    def quicksaveChargerSafe()
+
+        @quickSave.chargerSafe()
         return self
     end
 end

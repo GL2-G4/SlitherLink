@@ -52,7 +52,10 @@ while ( c.ord() != 'e'.ord() ) do
         when 'q'.ord()
             j.quicksaveEnregistrer()
         when 'g'.ord()
-            j.quicksaveCharger()
+            puts "quelle Quicksave voulez-vous charger ?"
+            qc = gets
+
+            j.quicksaveCharger( qc)
         else
 
             puts "donner les coordonnées de la case que vous voulez jouer"

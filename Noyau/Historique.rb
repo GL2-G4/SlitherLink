@@ -73,7 +73,7 @@ class Historique
 
         savePos = ha.getPos()
         @historiqueActions = Array.new()
-        @position = 0
+        @position = -1
 
         begin
             while ( true ) do

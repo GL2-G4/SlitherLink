@@ -1,3 +1,14 @@
+=begin
+    Auteurs :: Vaudeleau M.
+    Version :: 0.1
+    ---
+    * ===Descriptif
+    Les objets Quicksave peuvent enregistré une grille a un moment donné.
+    Ces Quicksave connaissent l'état de la grille et l'historique des actions a un moment donné.
+
+    Il faut passé par l'intermédiaire du module GestionnaireQuicksave qui fournit des méthodes pour gérer les Quicksave    
+=end
+
 require "./Case.rb"
 require "./Historique.rb"
 
@@ -5,6 +16,7 @@ class Quicksave
 
     private_class_method:new
 
+    # Creation d'une nouvelle Quicksave. Cette Quicksave enregistre l'etat de la grille et l'historique des actions qui sont passé en parametre
     def Quicksave.nouveau( plateau, ha )
 
         new( plateau, ha )
@@ -48,11 +60,6 @@ class Quicksave
             }
         }
 
-        # Exception test, elle est a enlevé.
-        if ( iArray != @savePlateau.size()) then
-            raise RuntimeError, "la quicksave a soit trop d'element a sauvegardé ou a un tableau prevu trop grand"
-        end
-
         # deuxieme étape : sauvegarde de l'historique des actions
 
         @saveHistorique = Historique.new()
@@ -78,6 +85,7 @@ class Quicksave
         ha.setPos( savePos)
     end
 
+    # Charge la Quicksave dans le plateau de jeu et l'historique des actions passé en parametre
     def charger ( plateau, ha )
 
         tailleX = plateau.size()
@@ -105,11 +113,6 @@ class Quicksave
                 iArray += 1
             }
         }
-
-        # Exception test, elle est a enlevé.
-        if ( iArray != @savePlateau.size()) then
-            raise RuntimeError, "la quicksave au chargement a soit trop d'element a sauvegardé ou a un tableau prevu trop grand"
-        end
 
         ha.reset( @saveHistorique )
     end

@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:30:28 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Monday, 9th March 2020 11:46:45 am
+# Last Modified: Tuesday, 10th March 2020 3:58:44 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -26,7 +26,6 @@
 class Technique
     # Reader
     attr_reader :zone, :lignesAModif
-    # Getter
     # Accessor
     attr_accessor :description
 

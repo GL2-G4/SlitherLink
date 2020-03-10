@@ -175,6 +175,39 @@ class Jeu
         }
 
         print ".\n"
+        self
+    end
+
+    # Récupère le voisin de la case pour une direction donnée
+    def getCase(x,y,direction)
+        if(Direction.estValide?(direction))
+            if(y < 0 || x < 0 || x >= getTailleColonne() || y >= getTailleLigne())
+                return nil
+            end
+            case direction
+            when :HAUT
+                if (y-1 < 0)
+                    return nil
+                end
+                return @plateau[x][y-1]
+            when :DROITE
+                if (x+1 >= getTailleColonne())
+                    return nil
+                end
+                return @plateau[x+1][y]
+            when :BAS
+                if (y+1 >= getTailleLigne())
+                    return nil
+                end
+                return @plateau[x][y+1]
+            when :GAUCHE
+                if (x-1 < 0)
+                    return nil
+                end
+                return @plateau[x-1][y]
+            end
+        end
+        return nil
     end
 
     def to_s

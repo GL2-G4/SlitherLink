@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:40:31 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 10th March 2020 2:00:44 pm
+# Last Modified: Tuesday, 10th March 2020 3:59:11 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 path = File.expand_path(File.dirname(__FILE__))
@@ -37,6 +37,7 @@ require path + "/Technique"
 #
 class GestionTechniques
     attr_reader :listeTechniques
+
     # Liste Techniques
     @@listeTechniques = {
         :T1A3LB => UnAvecTroisLB.new("T1A3LB"),

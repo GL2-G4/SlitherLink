@@ -44,7 +44,9 @@ class GestionTechniques
         :T2A2LB => DeuxAvecDeuxLB.new("T2A2LB"),
         :T3A1LB => TroisAvecUneLB.new("T3A1LB"),
         :T0 => Zero.new("T0"),
-        :TNBCOIN => NbCoin.new("TNBCOIN")
+        :TNBCOIN => NbCoin.new("TNBCOIN"),
+        :TCOINLB => CoinLB.new(),
+        :TCOINLP => CoinLP.new()
     }
 
     # Renvoie la liste des techniques

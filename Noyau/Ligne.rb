@@ -1,4 +1,6 @@
-require "./Constante.rb"
+path = File.expand_path(File.dirname(__FILE__))
+
+require path + "/Constante.rb"
 
 =begin
     Auteurs :: Galbrun T. Vaudeleau M.

@@ -14,10 +14,13 @@ class Grille
 	@pointsAideDepart : le nombre de points d'aide avec lequel commence le joueur au début de la partie
 	@nombreLignes : le nombre de lignes du plateau
 	@nombreColonnes : le nombre de colonnes du plateau
+	@debloque : vrai si la grille est débloquée, faux sinon
+	@prixPieces : le prix en pièces d'or pour débloquer la grille
+	@prixEtoiles : le nombre d'étoiles pour débloquer la grille
 =end
 
-	attr_reader :plateau, :nombreLignes, :nombreColonnes
-	attr_accessor :temps, :meilleurTemps, :nombreEtoiles, :pointsAide, :pointsAideDepart
+	attr_reader :plateau, :nombreLignes, :nombreColonnes, :pointsAideDepart, :prixPieces, :prixEtoiles
+	attr_accessor :temps, :meilleurTemps, :nombreEtoiles, :pointsAide, :debloque
 	
 	# Méthode faisant appel au constructeur.
 	def Grille.charger(contenuFichier)
@@ -51,12 +54,16 @@ class Grille
 		# Construction du plateau à partir de la matrice ainsi constituée
 		self.construirePlateau(casesPlateau) 
 		
-		# Chargement du temps actuel, du meilleur temps, du nombre d'étoiles déjà obtenues, du nombre de points d'aides restants
+		# Chargement du temps actuel, du meilleur temps, du nombre d'étoiles déjà obtenues, du nombre de points d'aides restants, du prix en pièces et en étoiles, du booléen déterminant si la grille est débloquée ou non
 		@temps = contenu[1].to_i
 		@meilleurTemps = contenu[2].to_i
 		@nombreEtoiles = contenu[3].to_i
 		@pointsAide = contenu[4].to_i
 		@pointsAideDepart = contenu[5].to_i
+		@prixEtoiles = contenu[6].to_i
+		@prixPieces = contenu[7].to_i
+		@debloque = self.toBooleen(contenu[8].chomp)
+		
 	end
 	
 	# Méthode construisant le plateau à partir de la matrice contenant les cases chargées du fichier
@@ -151,10 +158,18 @@ class Grille
 		contenuFichier += ";" + @nombreEtoiles.to_s
 		contenuFichier += ";" + @pointsAide.to_s
 		contenuFichier += ";" + @pointsAideDepart.to_s
+		contenuFichier += ";" + @prixEtoiles.to_s
+		contenuFichier += ";" + @prixPieces.to_s
+		contenuFichier += ";" + self.toCaractereBooleen(@debloque)
 		contenuFichier += "\n"
 		
 		# Retour de la ligne de fichier
 		return contenuFichier			
+	end
+	
+	# Méthode qui débloque une grille
+	def debloquer()
+			@debloque = true
 	end
 	
 	# Méthode d'affichage du plateau (si besoin pour débuger)
@@ -191,6 +206,9 @@ class Grille
         puts "Meilleur temps = #{@meilleurTemps}"
         puts "Nombre d'étoiles déjà gagnées = #{@nombreEtoiles}"
         puts "Points d'aide restants = #{@pointsAide} / #{@pointsAideDepart}"
+        puts "Nombre d'étoiles requises = #{@prixEtoiles}*"
+        puts "Prix de déblocage = #{@prixPieces}$"
+        puts "Grille débloquée = " + @debloque.to_s
     end
 	
 	# Méthode transformant le caractère reçu du fichier en état de ligne
@@ -219,26 +237,37 @@ class Grille
 					return "p"
 				when :BLOQUE
 					return "b"
+				else
+					raise ArgumentError, caractere + " n'est pas un caractère valide (v ou p ou b)"
 				end
+		else
+			raise ArgumentError, etatLigne + " n'est pas une ligne"
 		end
 	end
 	
-	def my_transpose(matrix)
-
-		new_matrix = []
-		i = 0
-		while i < matrix.size
-			new_matrix[i] = []
-			j = 0  # move this here
-			while j < matrix.size
-				new_matrix[i] << matrix[j][i]
-				j += 1
+	# Méthode transformant le caractère reçu du fichier en booléen
+	def toBooleen(caractere)
+	
+		case caractere
+			when "V"
+				return true
+			when "F"
+				return false
+			else
+				raise ArgumentError, caractere + " n'est pas un caractère valide (V ou F)"
 			end
-			i += 1
-		end
-		return new_matrix
 	end
 	
+	# Méthode transformant le booléen en caractère pour être inséré dans le fichier
+	def toCaractereBooleen(booleen)
+	
+		case booleen
+			when true
+				return "V"
+			when false
+				return "F"
+			end
+	end	
 end
 
 

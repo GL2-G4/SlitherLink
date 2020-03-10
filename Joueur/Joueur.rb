@@ -4,8 +4,6 @@ class Joueur
 	#@argent : l'argent dont dispose le joueur
 	#@etoiles : le nombre d'étoiles dont dispose le joueur
 	#@parametres : table de hachage qui contient des paires cle => valeur correspondant à "nom paramètre" => ID
-	#@listeGrillesDebloquees : la liste des ID des grilles débloquées
-	#@listeObjetsDebloques : la liste des ID des objets débloqués par le joueur
 
 	# Création du joueur
 	def Joueur.creer()
@@ -25,8 +23,6 @@ class Joueur
 		@etoiles = 0
 		@parametres = Hash.new()
 		self.parametresDefaut()
-		@listeGrillesDebloquees = Array.new()
-		@listeObjetsDebloques = Array.new()
 	end
 	
 	# Affecte les paramètres par défaut au joueur
@@ -54,11 +50,14 @@ class Joueur
 	
 		if somme <= @argent and somme >= 0
 			@argent -= somme
+			return true
 		elsif somme < 0
 			raise ArgumentError, "Erreur : somme négative"
 		else 
-			puts "Pas assez d'argent"
+			puts "Pas assez d'argent."
 		end
+		
+		return false
 	end
 	
 	# Méthode permettant d'ajouter un certain nombre d'étoiles au joueur
@@ -73,14 +72,32 @@ class Joueur
 		end		
 	end
 	
+	# Méthode vérifiant que le joueur peut jouer à la grille
+	def grilleDebloquee?(grille)
+		return grille.debloque
+	end
+	
+	# Méthode vérifiant que le joueur a assez d'étoiles pour débloquer la grille
+	def aAssezDEtoiles(grille)
+		return @etoiles >= grille.prixEtoiles
+	end
+	
+	# Méthode gérant l'achat d'une grille par le joueur
+	def acheterGrille(grille)
+		
+		if !self.aAssezDEtoiles(grille)
+			puts "Pour acheter cette grille, vous devez avoir au moins #{grille.prixEtoiles} étoiles, vous n'en avez que #{@etoiles}."
+		elsif self.retirerArgent(grille.prixPieces)
+			puts "Grille achetée avec succès !"
+			grille.debloquer()
+		else
+			puts "La grille n'a pas pu être débloquée."
+		end
+	end
+	
 	# Méthode d'affichage d'un joueur
 	def to_s
-	
-		puts "Argent = #{@argent}$"
-		puts "Etoiles = #{@etoiles}*"
-		puts @parametres
-		puts @listeGrillesDebloquees
-		puts @listeObjetsDebloques
+		return "Argent = #{@argent}$\n" + "Etoiles = #{@etoiles}*\n" 
 	end
 
 end

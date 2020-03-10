@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:40:31 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Saturday, 15th February 2020 4:11:55 pm
+# Last Modified: Tuesday, 10th March 2020 2:00:44 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 path = File.expand_path(File.dirname(__FILE__))
@@ -36,15 +36,18 @@ require path + "/Technique"
 # une instance d'une technique.
 #
 class GestionTechniques
+    attr_reader :listeTechniques
     # Liste Techniques
     @@listeTechniques = {
         :T1A3LB => UnAvecTroisLB.new("T1A3LB"),
         :T2A2LB => DeuxAvecDeuxLB.new("T2A2LB"),
-        :T3A1LB => TroisAvecUneLB.new("T3A1LB")
+        :T3A1LB => TroisAvecUneLB.new("T3A1LB"),
+        :T0 => Zero.new("T0"),
+        :TNBCOIN => NbCoin.new("TNBCOIN")
     }
 
     # Renvoie la liste des techniques
-    def self.listeTechniques
+    def self.listeDesTechniques
         return @@listeTechniques.keys()
     end
 

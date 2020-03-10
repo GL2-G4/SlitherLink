@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:30:28 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Saturday, 15th February 2020 4:08:22 pm
+# Last Modified: Monday, 9th March 2020 11:46:45 am
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -36,10 +36,6 @@ class Technique
         @lignesAModif = []
     end
 
-    def to_s
-        return @description
-    end
-
     def chercher
         @zone = nil
         @lignesAModif = []
@@ -62,6 +58,26 @@ class Technique
     # Renvoie la taille du plateau
     def getTailleColonne (plateau)
         return plateau.size()
+    end
+
+    # Renvoie la liste des voisins pour une case donnée
+    def getVoisins ( x , y , plateau )
+        voisins = Array.new(3){ |c| c = Array.new(3,nil) }
+        -1.upto(1){ |i|
+            -1.upto(1){ |j|
+                begin
+                    voisins[i+1][j+1] = plateau[x+i][y+j]
+                rescue => e
+                    voisins[i+1][j+1] = nil
+                end
+            }
+        }
+        return voisins
+    end
+
+    # Regarde le contexte d'une technique
+    def contexte (plateau, x, y)
+        return self
     end
 
 end

@@ -95,28 +95,6 @@ class Case
         raise ArgumentError, "Direction Incorrecte : "+direction.to_s
     end
 
-    def nbLignePleine()
-
-        n = 0
-        for l in @lignes
-            if l.etat == :PLEINE
-                n += 1
-            end
-        end
-        return n
-    end
-
-    def nbLigneBloque()
-
-        n = 0
-        for l in @lignes
-            if l.etat == :BLOQUE
-                n += 1
-            end
-        end
-        return n
-    end
-
     def modifierLigneClic( dirLigne, typeModif )
         l = self.getLigne(dirLigne)
         prec = l.etat()
@@ -157,10 +135,16 @@ class Case
     end
 
     def to_s
-        s = "." + @lignes[Direction::HAUT].to_s() + ".\n"
-        s += @lignes[Direction::GAUCHE].to_s() + @nbLigneDevantEtrePleine.to_s()
-        s += @lignes[Direction::DROITE].to_s() + "\n"
-        s += "." + @lignes[Direction::BAS].to_s() + "."
+        #s = "." + @lignes[Direction::HAUT].to_s() + ".\n"
+        #s += @lignes[Direction::GAUCHE].to_s() + @nbLigneDevantEtrePleine.to_s()
+        #s += @lignes[Direction::DROITE].to_s() + "\n"
+        #s += "." + @lignes[Direction::BAS].to_s() + "."
+        s = "|" + @nbLigneDevantEtrePleine.to_s()
+        s += ":H=" + @lignes[Direction::HAUT].to_s()
+        s += ",G=" + @lignes[Direction::GAUCHE].to_s()
+        s += ",B=" + @lignes[Direction::BAS].to_s()
+        s += ",D=" + @lignes[Direction::DROITE].to_s()
+        s += "|"
         return s
     end
 
@@ -175,6 +159,19 @@ class Case
             end
         end
         return tls
+    end
+
+    # Renvoie le nombre de ligne ayant un état donné
+    def nbLigneEtat(etat)
+        nb = 0
+        if (TypeLigne.estValide?(etat))
+            for l in @lignes
+                if l.etat == etat
+                    nb += 1
+                end
+            end
+        end
+        return nb
     end
 end
 

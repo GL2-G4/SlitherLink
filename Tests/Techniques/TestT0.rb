@@ -1,10 +1,10 @@
 ##
-# File: TestT3A1LB.rb
+# File: TestT0.rb
 # Project: Techniques
-# File Created: Sunday, 16th February 2020 10:07:22 am
+# File Created: Tuesday, 3rd March 2020 4:18:24 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 3rd March 2020 4:02:45 pm
+# Last Modified: Monday, 9th March 2020 10:50:10 am
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -18,20 +18,20 @@ require path + "/../../Noyau/LoadSaveGrilles/ChargeurGrille"
 
 def remplirLignes (lignes)
     for l in lignes
-        l.setEtat(:PLEINE)
+        l.setEtat(:BLOQUE)
     end
 end
 
 chargeurGrille = ChargeurGrille.charger(path + "/../../Grilles/grillesTestsTechniques")
 
-grille = chargeurGrille.getGrilleIndex(2)
+grille = chargeurGrille.getGrilleIndex(3)
 
 
 j = Jeu.charger_rep(grille)
 j.afficherPlateau()
 
 
-tech = :T3A1LB
+tech = :T0
 puts "Recherche : " + j.chercher(tech).to_s()
 puts "Zone : " + j.getZone(tech).to_s()
 puts "Lignes : " + j.getLignes(tech).to_s()

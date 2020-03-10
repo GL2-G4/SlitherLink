@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 6:02:07 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Saturday, 15th February 2020 4:08:39 pm
+# Last Modified: Tuesday, 3rd March 2020 4:13:28 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -28,7 +28,7 @@ class UnAvecTroisLB < Technique
             0.upto(tc-1) do |i|
                 c = plateau[i][j]
                 if (c.nbLigneDevantEtrePleine == 1)
-                    if(c.nbLignePleine() == 0 && c.nbLigneBloque() == 3)
+                    if(c.nbLigneEtat(:PLEINE) == 0 && c.nbLigneEtat(:BLOQUE) == 3)
                         @zone = Zone.new(i,j,i,j)
                         @lignesAModif += c.getLigneEtat(:VIDE)
                         return true

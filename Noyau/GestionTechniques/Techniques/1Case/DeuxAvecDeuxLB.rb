@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 6:01:41 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Saturday, 15th February 2020 4:35:59 pm
+# Last Modified: Tuesday, 3rd March 2020 4:14:39 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -26,7 +26,7 @@ class DeuxAvecDeuxLB < Technique
             0.upto(tc-1) do |i|
                 c = plateau[i][j]
                 if (c.nbLigneDevantEtrePleine == 2)
-                    if(c.nbLignePleine() <= 1 && c.nbLigneBloque() == 2)
+                    if(c.nbLigneEtat(:PLEINE) <= 1 && c.nbLigneEtat(:BLOQUE) == 2)
                         @zone = Zone.new(i,j,i,j)
                         @lignesAModif += c.getLigneEtat(:VIDE)
                         return true

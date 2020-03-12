@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 6:01:41 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 3rd March 2020 4:14:39 pm
+# Last Modified: Thursday, 12th March 2020 2:13:58 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -28,7 +28,7 @@ class DeuxAvecDeuxLB < Technique
                 if (c.nbLigneDevantEtrePleine == 2)
                     if(c.nbLigneEtat(:PLEINE) <= 1 && c.nbLigneEtat(:BLOQUE) == 2)
                         @zone = Zone.new(i,j,i,j)
-                        @lignesAModif += c.getLigneEtat(:VIDE)
+                        lignesAvecEtat(c.getLigneEtat(:VIDE), :PLEINE)
                         return true
                     end
                 end

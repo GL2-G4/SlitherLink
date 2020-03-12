@@ -4,7 +4,7 @@
 # File Created: Saturday, 15th February 2020 4:31:54 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Thursday, 27th February 2020 10:01:42 pm
+# Last Modified: Thursday, 12th March 2020 2:13:15 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -18,7 +18,7 @@ require path + "/../../Noyau/LoadSaveGrilles/ChargeurGrille"
 
 def remplirLignes (lignes)
     for l in lignes
-        l.setEtat(:PLEINE)
+        l[0].setEtat(l[1])
     end
 end
 

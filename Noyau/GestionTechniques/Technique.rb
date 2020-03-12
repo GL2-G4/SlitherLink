@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:30:28 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 10th March 2020 3:58:44 pm
+# Last Modified: Thursday, 12th March 2020 2:56:19 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -77,6 +77,53 @@ class Technique
     # Regarde le contexte d'une technique
     def contexte (plateau, x, y)
         return self
+    end
+
+    # Met dans @lignesAModif une ligne avec son etat
+    def ligneAvecEtat (ligne, etat)
+        if(TypeLigne.estValide?(etat) && ligne.class() == Ligne)
+            @lignesAModif << [ligne,etat]
+        end
+    end
+
+    # Met dans @lignesAModif les lignes à modif avec leur etat.
+    # ex : @lignesAModif -> [[ligne1,etat],[ligne2,etat],[ligne3,etat]]
+    def lignesAvecEtat (lignes, etat)
+        for l in lignes do
+            ligneAvecEtat(l,etat)
+        end
+    end
+
+    # Récupère le voisin de la case pour une direction donnée
+    def getCase(plateau,x,y,direction)
+        if(Direction.estValide?(direction))
+            if(y < 0 || x < 0 || x >= getTailleColonne(plateau) || y >= getTailleLigne(plateau))
+                return nil
+            end
+            case direction
+            when :HAUT
+                if (y-1 < 0)
+                    return nil
+                end
+                return plateau[x][y-1]
+            when :DROITE
+                if (x+1 >= getTailleColonne(plateau))
+                    return nil
+                end
+                return plateau[x+1][y]
+            when :BAS
+                if (y+1 >= getTailleLigne(plateau))
+                    return nil
+                end
+                return plateau[x][y+1]
+            when :GAUCHE
+                if (x-1 < 0)
+                    return nil
+                end
+                return plateau[x-1][y]
+            end
+        end
+        return nil
     end
 
 end

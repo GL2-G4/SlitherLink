@@ -36,13 +36,13 @@ class CoinLB < Technique
         l2 = plateau[0][0].getLigne(:GAUCHE)
 
         if ( l1.etat == :BLOQUE && l2.etat != :BLOQUE )
-            @lignesAModif << l2
+            ligneAvecEtat(l2, :BLOQUE)
             @zone = Zone.new(0,0,0,0)
             return true
         end
 
         if ( l2.etat == :BLOQUE && l1.etat != :BLOQUE )
-            @lignesAModif << l1
+            ligneAvecEtat(l1, :BLOQUE)
             @zone = Zone.new(0,0,0,0)
             return true
         end
@@ -52,13 +52,13 @@ class CoinLB < Technique
         l4 = plateau[0][tl-1].getLigne(:GAUCHE)
 
         if ( l3.etat == :BLOQUE && l4.etat != :BLOQUE )
-            @lignesAModif << l4
+            ligneAvecEtat(l4, :BLOQUE)
             @zone = Zone.new(0,tl-1,0,tl-1)
             return true
         end
 
         if ( l4.etat == :BLOQUE && l3.etat != :BLOQUE )
-            @lignesAModif << l3
+            ligneAvecEtat(l3, :BLOQUE)
             @zone = Zone.new(0,tl-1,0,tl-1)
             return true
         end
@@ -68,13 +68,13 @@ class CoinLB < Technique
         l6 = plateau[tc-1][0].getLigne(:DROITE)
 
         if ( l5.etat == :BLOQUE && l6.etat != :BLOQUE )
-            @lignesAModif << l6
+            ligneAvecEtat(l6, :BLOQUE)
             @zone = Zone.new(tc-1,0,tc-1,0)
             return true
         end
 
         if ( l6.etat == :BLOQUE && l5.etat != :BLOQUE )
-            @lignesAModif << l5
+            ligneAvecEtat(l5, :BLOQUE)
             @zone = Zone.new(tc-1,0,tc-1,0)
             return true
         end
@@ -84,13 +84,13 @@ class CoinLB < Technique
         l8 = plateau[tc-1][tl-1].getLigne(:DROITE)
 
         if ( l7.etat == :BLOQUE && l8.etat != :BLOQUE )
-            @lignesAModif << l8
+            ligneAvecEtat(l8, :BLOQUE)
             @zone = Zone.new(tc-1,tl-1,tc-1,tl-1)
             return true
         end
 
         if ( l8.etat == :BLOQUE && l7.etat != :BLOQUE )
-            @lignesAModif << l7
+            ligneAvecEtat(l7, :BLOQUE)
             @zone = Zone.new(tc-1,tl-1,tc-1,tl-1)
             return true
         end

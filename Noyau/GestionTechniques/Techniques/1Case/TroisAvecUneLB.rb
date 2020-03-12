@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 6:01:16 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 3rd March 2020 4:15:01 pm
+# Last Modified: Thursday, 12th March 2020 2:16:06 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -28,7 +28,7 @@ class TroisAvecUneLB < Technique
                 if (c.nbLigneDevantEtrePleine == 3)
                     if(c.nbLigneEtat(:PLEINE) <= 2 && c.nbLigneEtat(:BLOQUE) == 1)
                         @zone = Zone.new(i,j,i,j)
-                        @lignesAModif += c.getLigneEtat(:VIDE)
+                        lignesAvecEtat(c.getLigneEtat(:VIDE), :PLEINE)
                         return true
                     end
                 end

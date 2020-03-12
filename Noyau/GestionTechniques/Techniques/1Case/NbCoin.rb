@@ -4,7 +4,7 @@
 # File Created: Friday, 6th March 2020 3:43:47 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 10th March 2020 3:05:48 pm
+# Last Modified: Thursday, 12th March 2020 2:25:22 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -139,11 +139,11 @@ class NbCoin < Technique
     def verifCase(ligne1, ligne2, etat)
         modif = false
         if (ligne1.etat != etat)
-            @lignesAModif << ligne1
+            ligneAvecEtat(ligne1,etat)
             modif = true
         end
         if (ligne2.etat != etat)
-            @lignesAModif << ligne2
+            ligneAvecEtat(ligne2,etat)
             modif = true
         end
         return modif

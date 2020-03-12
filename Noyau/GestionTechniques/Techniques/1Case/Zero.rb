@@ -4,7 +4,7 @@
 # File Created: Tuesday, 3rd March 2020 3:53:25 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Friday, 6th March 2020 4:13:35 pm
+# Last Modified: Thursday, 12th March 2020 2:20:21 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -30,8 +30,8 @@ class Zero < Technique
                 if (c.nbLigneDevantEtrePleine == 0)
                     if(c.nbLigneEtat(:BLOQUE) < 4)
                         @zone = Zone.new(i,j,i,j)
-                        @lignesAModif += c.getLigneEtat(:VIDE)
-                        @lignesAModif += c.getLigneEtat(:PLEINE)
+                        lignesAvecEtat(c.getLigneEtat(:VIDE), :BLOQUE)
+                        lignesAvecEtat(c.getLigneEtat(:PLEINE), :BLOQUE)
                         contexte(plateau,i,j)
                         return true
                     end
@@ -51,13 +51,13 @@ class Zero < Technique
                     if (i == 0 && j != 1)
                         # Coins haut et bas gauche
                         if (j == 0 && voisins[i][j+1] != nil)
-                            @lignesAModif << voisins[i][j+1].getLigne(:HAUT)
+                            ligneAvecEtat(voisins[i][j+1].getLigne(:HAUT), :BLOQUE)
                             @zone.setCoordUn(x-1,y)
                         elsif (j == 2 && voisins[i][j-1] != nil)
-                            @lignesAModif << voisins[i][j-1].getLigne(:BAS)
+                            ligneAvecEtat(voisins[i][j-1].getLigne(:BAS), :BLOQUE)
                             @zone.setCoordUn(x-1,y)
                         elsif (voisins[i+1][j] != nil)
-                            @lignesAModif << voisins[i+1][j].getLigne(:GAUCHE)
+                            ligneAvecEtat(voisins[i+1][j].getLigne(:GAUCHE), :BLOQUE)
                             if(j == 0)
                                 @zone.setCoordUn(x,y-1)
                             elsif(j == 2)
@@ -67,13 +67,13 @@ class Zero < Technique
                     elsif (i == 2)
                         # Coins haut et bas droite
                         if (j == 0 && voisins[i][j+1] != nil)
-                            @lignesAModif << voisins[i][j+1].getLigne(:HAUT)
+                            ligneAvecEtat(voisins[i][j+1].getLigne(:HAUT), :BLOQUE)
                             @zone.setCoordDeux(x+1,y)
                         elsif (j == 2 && voisins[i][j-1] != nil)
-                            @lignesAModif << voisins[i][j-1].getLigne(:BAS)
+                            ligneAvecEtat(voisins[i][j-1].getLigne(:BAS), :BLOQUE)
                             @zone.setCoordDeux(x+1,y)
                         elsif (voisins[i-1][j] != nil)
-                            @lignesAModif << voisins[i-1][j].getLigne(:DROITE)
+                            ligneAvecEtat(voisins[i-1][j].getLigne(:DROITE), :BLOQUE)
                             if(j == 0)
                                 @zone.setCoordUn(x,y-1)
                             elsif(j == 2)

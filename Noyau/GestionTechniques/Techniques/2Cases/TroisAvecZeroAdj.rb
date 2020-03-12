@@ -4,7 +4,7 @@
 # File Created: Tuesday, 10th March 2020 3:11:34 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 10th March 2020 3:35:16 pm
+# Last Modified: Thursday, 12th March 2020 2:57:29 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -30,8 +30,8 @@ require path + "/../../Zone"
 
 class TroisAvecZeroAdj < Technique
     
-    def initialize (description)
-        super(description)
+    def initialize ()
+        super("T3A0A")
     end
 
     def chercher(plateau)

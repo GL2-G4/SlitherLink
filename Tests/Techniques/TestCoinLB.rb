@@ -13,7 +13,7 @@ require path + "/../../Noyau/LoadSaveGrilles/ChargeurGrille"
 
 def remplirLignes (lignes)
     for l in lignes
-        l.setEtat(:BLOQUE)
+        l[0].setEtat(l[1])
     end
 end
 

@@ -17,6 +17,11 @@ module Direction
     BAS    = 2
     GAUCHE = 3
 
+    HAUTGAUCHE = 4
+    HAUTDROITE = 5
+    BASGAUCHE  = 6
+    BASDROITE  = 7
+
     extend OpConstante
 end
 

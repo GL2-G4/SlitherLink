@@ -4,7 +4,7 @@
 # File Created: Thursday, 12th March 2020 2:50:14 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Thursday, 12th March 2020 3:06:43 pm
+# Last Modified: Thursday, 12th March 2020 10:29:46 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -31,6 +31,24 @@ j.afficherPlateau()
 
 
 tech = :T3A0A
+puts "Recherche : " + j.chercher(tech).to_s()
+puts "Zone : " + j.getZone(tech).to_s()
+puts "Lignes : " + j.getLignes(tech).to_s()
+
+
+remplirLignes(j.getLignes(tech))
+j.afficherPlateau()
+
+
+puts "Recherche : " + j.chercher(tech).to_s()
+puts "Zone : " + j.getZone(tech).to_s()
+puts "Lignes : " + j.getLignes(tech).to_s()
+
+
+remplirLignes(j.getLignes(tech))
+j.afficherPlateau()
+
+
 puts "Recherche : " + j.chercher(tech).to_s()
 puts "Zone : " + j.getZone(tech).to_s()
 puts "Lignes : " + j.getLignes(tech).to_s()

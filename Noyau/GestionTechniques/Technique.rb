@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:30:28 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Thursday, 12th March 2020 2:56:19 pm
+# Last Modified: Thursday, 12th March 2020 8:15:37 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -124,6 +124,13 @@ class Technique
             end
         end
         return nil
+    end
+
+    # Ajoute une ligne à @lignesAModif si elle n'est pas à etatVerif.
+    def verifAddLigne (ligne, etatVerif)
+        if (TypeLigne.estValide?(etatVerif) && ligne.class() == Ligne && ligne.etat != etatVerif)
+            ligneAvecEtat(ligne,etatVerif)
+        end
     end
 
 end

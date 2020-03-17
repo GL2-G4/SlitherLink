@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:40:31 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Monday, 16th March 2020 5:24:11 pm
+# Last Modified: Tuesday, 17th March 2020 11:21:17 am
 # Modified By: <CPietJa>Galbrun T.
 #
 path = File.expand_path(File.dirname(__FILE__))
@@ -49,6 +49,7 @@ class GestionTechniques
         :TCOINLP => CoinLP.new(),
         :T3A0A => TroisAvecZeroAdj.new(),
         :T3A0D => TroisAvecZeroDiag.new(),
+        :T3A3A => TroisAvecTroisAdj.new(),
     }
 
     # Renvoie la liste des techniques

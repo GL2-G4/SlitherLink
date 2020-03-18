@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:30:28 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Thursday, 12th March 2020 8:15:37 pm
+# Last Modified: Wednesday, 18th March 2020 4:20:23 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -121,6 +121,26 @@ class Technique
                     return nil
                 end
                 return plateau[x-1][y]
+            when :HAUTGAUCHE
+                if (x-1 < 0 || y-1 < 0)
+                    return nil
+                end
+                return plateau[x-1][y-1]
+            when :HAUTDROITE
+                if (x+1 >= getTailleColonne(plateau) || y-1 < 0)
+                    return nil
+                end
+                return plateau[x+1][y-1]
+            when :BASDROITE
+                if (x+1 >= getTailleColonne(plateau) || y+1 >= getTailleLigne(plateau))
+                    return nil
+                end
+                return plateau[x+1][y+1]
+            when :BASGAUCHE
+                if (x-1 < 0 || y+1 >= getTailleLigne(plateau))
+                    return nil
+                end
+                return plateau[x-1][y+1]
             end
         end
         return nil

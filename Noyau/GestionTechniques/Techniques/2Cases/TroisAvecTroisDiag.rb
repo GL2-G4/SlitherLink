@@ -4,7 +4,7 @@
 # File Created: Wednesday, 18th March 2020 1:48:16 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Wednesday, 18th March 2020 3:00:38 pm
+# Last Modified: Wednesday, 18th March 2020 4:27:00 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 path = File.expand_path(File.dirname(__FILE__))
@@ -66,19 +66,19 @@ class TroisAvecTroisDiag < Technique
     end
 
     def checkTrois(plateau,x,y)
-        c = getCase(plateau,x-1,y,:HAUT)
+        c = getCase(plateau,x,y,:HAUTGAUCHE)
         if(c != nil && c.nbLigneDevantEtrePleine == 3)
             return :HAUTGAUCHE
         end
-        c = getCase(plateau,x-1,y,:BAS)
+        c = getCase(plateau,x,y,:BASGAUCHE)
         if(c != nil && c.nbLigneDevantEtrePleine == 3)
             return :BASGAUCHE
         end
-        c = getCase(plateau,x+1,y,:HAUT)
+        c = getCase(plateau,x,y,:HAUTDROITE)
         if(c != nil && c.nbLigneDevantEtrePleine == 3)
             return :HAUTDROITE
         end
-        c = getCase(plateau,x+1,y,:BAS)
+        c = getCase(plateau,x,y,:BASDROITE)
         if(c != nil && c.nbLigneDevantEtrePleine == 3)
             return :BASDROITE
         end
@@ -92,12 +92,12 @@ class TroisAvecTroisDiag < Technique
         when :HAUTGAUCHE
             verifAddLigne(c.getLigne(:DROITE),:PLEINE)
             verifAddLigne(c.getLigne(:BAS),:PLEINE)
-            cV = getCase(plateau,x-1,y,:HAUT)
+            cV = getCase(plateau,x,y,:HAUTGAUCHE)
             if(cV != nil)
                 verifAddLigne(cV.getLigne(:HAUT),:PLEINE)
                 verifAddLigne(cV.getLigne(:GAUCHE),:PLEINE)
             end
-            cV = getCase(plateau,x,y+1,:DROITE)
+            cV = getCase(plateau,x,y,:BASDROITE)
             if(cV != nil)
                 verifAddLigne(cV.getLigne(:HAUT),:BLOQUE)
                 verifAddLigne(cV.getLigne(:GAUCHE),:BLOQUE)
@@ -111,12 +111,12 @@ class TroisAvecTroisDiag < Technique
         when :HAUTDROITE
             verifAddLigne(c.getLigne(:GAUCHE),:PLEINE)
             verifAddLigne(c.getLigne(:BAS),:PLEINE)
-            cV = getCase(plateau,x+1,y,:HAUT)
+            cV = getCase(plateau,x,y,:HAUTDROITE)
             if(cV != nil)
                 verifAddLigne(cV.getLigne(:HAUT),:PLEINE)
                 verifAddLigne(cV.getLigne(:DROITE),:PLEINE)
             end
-            cV = getCase(plateau,x,y+1,:GAUCHE)
+            cV = getCase(plateau,x,y,:BASGAUCHE)
             if(cV != nil)
                 verifAddLigne(cV.getLigne(:HAUT),:BLOQUE)
                 verifAddLigne(cV.getLigne(:DROITE),:BLOQUE)

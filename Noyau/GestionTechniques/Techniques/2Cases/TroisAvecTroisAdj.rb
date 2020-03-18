@@ -4,7 +4,7 @@
 # File Created: Tuesday, 17th March 2020 10:57:22 am
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 17th March 2020 11:29:16 am
+# Last Modified: Wednesday, 18th March 2020 2:55:57 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -55,9 +55,9 @@ class TroisAvecTroisAdj < Technique
                         check = checkCase(plateau,i-1,j,:DROITE)
                     end
                     if(dir != nil && check)
-                        #@zone = Zone.new(i-1,j-1,i+1,j+1)
                         return true
                     end
+                    @zone = nil
                 end
             end
         end
@@ -104,6 +104,7 @@ class TroisAvecTroisAdj < Technique
             if(cV != nil)
                 verifAddLigne(cV.getLigne(:HAUT),:BLOQUE)
             end
+            @zone = Zone.new(x-1,y-1,x+1,y)
         # 0 à droite du 3
         when :DROITE
             verifAddLigne(c.getLigne(:DROITE),:PLEINE)
@@ -120,6 +121,7 @@ class TroisAvecTroisAdj < Technique
             if(cV != nil)
                 verifAddLigne(cV.getLigne(:DROITE),:BLOQUE)
             end
+            @zone = Zone.new(x,y-1,x+1,y+1)
         end
         return !@lignesAModif.empty?()
     end

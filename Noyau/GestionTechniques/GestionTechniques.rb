@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:40:31 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 17th March 2020 11:21:17 am
+# Last Modified: Wednesday, 18th March 2020 2:36:18 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 path = File.expand_path(File.dirname(__FILE__))
@@ -50,6 +50,7 @@ class GestionTechniques
         :T3A0A => TroisAvecZeroAdj.new(),
         :T3A0D => TroisAvecZeroDiag.new(),
         :T3A3A => TroisAvecTroisAdj.new(),
+        :T3A3D => TroisAvecTroisDiag.new(),
     }
 
     # Renvoie la liste des techniques

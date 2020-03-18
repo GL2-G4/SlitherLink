@@ -95,6 +95,17 @@ class Joueur
 		end
 	end
 	
+	# Méthode gérant l'achat d'un thème par le joueur
+	def acheterTheme(theme)
+		
+		if self.retirerArgent(theme.prix)
+			puts "Thème acheté avec succès !"
+			theme.debloquer()
+		else
+			puts "Le thème n'a pas pu être débloqué."
+		end
+	end
+	
 	# Méthode d'affichage d'un joueur
 	def to_s
 		return "Argent = #{@argent}$\n" + "Etoiles = #{@etoiles}*\n" 

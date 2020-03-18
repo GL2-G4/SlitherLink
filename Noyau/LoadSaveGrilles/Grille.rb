@@ -116,7 +116,7 @@ class Grille
 	
 	# Méthode transformant une grille en une ligne de fichier.
 	# Retourne la ligne de fichier ainsi créée.
-	def toLigneFichier
+	def toLigneFichier()
 	
 		# La ligne de fichier correspondant à la grille
 		contenuFichier = ""
@@ -173,7 +173,7 @@ class Grille
 	end
 	
 	# Méthode d'affichage du plateau (si besoin pour débuger)
-	def afficher
+	def afficher()
         
         tailleX = @nombreColonnes
         tailleY = @nombreLignes

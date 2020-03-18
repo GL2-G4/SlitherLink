@@ -3,15 +3,14 @@ class Joueur
 
 	#@argent : l'argent dont dispose le joueur
 	#@etoiles : le nombre d'étoiles dont dispose le joueur
-	#@parametres : table de hachage qui contient des paires cle => valeur correspondant à "nom paramètre" => ID
 
 	# Création du joueur
 	def Joueur.creer()
 		new()
 	end
 	
-	# Accès en lecture aux variables argent, etoiles, parametres
-	attr_reader :argent, :etoiles, :parametres
+	# Accès en lecture aux variables argent, etoiles
+	attr_reader :argent, :etoiles
 	
 	# Accès en écriture aux paramètres
 	attr_writer :parametres
@@ -21,18 +20,7 @@ class Joueur
 	
 		@argent = 0
 		@etoiles = 0
-		@parametres = Hash.new()
 		self.parametresDefaut()
-	end
-	
-	# Affecte les paramètres par défaut au joueur
-	def parametresDefaut()
-	
-		@parametres = {
-			"theme" => 1,
-			"taille" => 4,
-			"autocompletion" => false
-		}
 	end
 	
 	# Méthode ajoutant une somme d'argent au joueur

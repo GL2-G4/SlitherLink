@@ -4,7 +4,7 @@
 # File Created: Tuesday, 3rd March 2020 3:53:25 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Thursday, 12th March 2020 2:20:21 pm
+# Last Modified: Thursday, 26th March 2020 3:58:29 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -14,6 +14,19 @@ require path + "/../../Technique"
 require path + "/../../../Case"
 require path + "/../../Zone"
 
+=begin
+    Technique qu'il y a un 0 en tire des conséquences.
+    Voir à https://www.conceptispuzzles.com/index.aspx?uri=puzzle/slitherlink/techniques :
+    -> Starting Techniques - 1. No lines around a 0
+    Ex:
+    .   .   .    . x . x .
+      0          x 0 x   x
+    .   .   .    . x . x .
+          0   => x   x 0 x
+    .   .   .    .   . x .
+                         x
+    .   .   .    .   .   .
+=end
 class Zero < Technique
     
     def initialize (description)
@@ -27,6 +40,8 @@ class Zero < Technique
         0.upto(tl-1) do |j|
             0.upto(tc-1) do |i|
                 c = plateau[i][j]
+                # On cherche la case contenant un 0 et répondant aux conditions
+                # de la technique, puis on récupère les lignes.
                 if (c.nbLigneDevantEtrePleine == 0)
                     if(c.nbLigneEtat(:BLOQUE) < 4)
                         @zone = Zone.new(i,j,i,j)

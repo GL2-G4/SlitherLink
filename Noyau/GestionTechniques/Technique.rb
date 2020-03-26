@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:30:28 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Wednesday, 18th March 2020 4:20:23 pm
+# Last Modified: Thursday, 26th March 2020 4:12:06 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -21,7 +21,8 @@
 # * ===Variables d'instance
 # [description] Description de la technique.
 # [zone] Zone où a réussi la technique.
-# [lignesAModif] Tableau de Ligne qui peuvent être modifiées.
+# [lignesAModif] Tableau de Ligne qui peuvent être modifiées
+# avec l'état de la modification (ex: [[L1,:PLEINE],[L2,:BLOQUE]]).
 #
 class Technique
     # Reader

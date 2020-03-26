@@ -4,7 +4,7 @@
 # File Created: Monday, 16th March 2020 4:36:11 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Monday, 16th March 2020 5:29:27 pm
+# Last Modified: Thursday, 26th March 2020 4:07:45 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 path = File.expand_path(File.dirname(__FILE__))
@@ -49,6 +49,8 @@ class TroisAvecZeroDiag < Technique
         return false
     end
 
+    # Renvoie la 1ère case voisine(HAUTGAUCHE | BASGAUCHE | HAUTDROITE
+    # | BASDROITE) contenant un 0.
     def checkZero(plateau,x,y)
         c = getCase(plateau,x-1,y,:HAUT)
         if(c != nil && c.nbLigneDevantEtrePleine == 0)
@@ -69,6 +71,8 @@ class TroisAvecZeroDiag < Technique
         return nil
     end
 
+    # Récupère les lignes s'il y en a à prendre, et renvoie
+    # vrai si on en a récupèré.
     def checkCase(plateau,x,y,direction)
         #print x, ",", y, " : ", direction, "\n"
         c = plateau[x][y]

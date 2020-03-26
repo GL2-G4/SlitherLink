@@ -4,7 +4,7 @@
 # File Created: Tuesday, 10th March 2020 3:11:34 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Monday, 16th March 2020 4:19:59 pm
+# Last Modified: Thursday, 26th March 2020 4:05:48 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -53,6 +53,8 @@ class TroisAvecZeroAdj < Technique
         return false
     end
 
+    # Renvoie la 1ère case voisine(HAUT | BAS | DROITE | GAUCHE)
+    # contenant un 0.
     def checkZero(plateau,x,y)
         c = getCase(plateau,x,y,:HAUT)
         if(c != nil && c.nbLigneDevantEtrePleine == 0)
@@ -73,6 +75,8 @@ class TroisAvecZeroAdj < Technique
         return nil
     end
 
+    # Récupère les lignes s'il y en a à prendre, et renvoie
+    # vrai si on en a récupèré.
     def checkCase(plateau,x,y,direction)
         #print x, ",", y, " : ", direction, "\n"
         c = plateau[x][y]

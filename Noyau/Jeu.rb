@@ -9,6 +9,39 @@ require path + "/Constante"
 
 require "yaml"
 
+=begin
+    Auteurs :: Galbrun T.
+    Version :: 0.5
+    ---
+    * ===Descriptif
+    Un Jeu est caractérisé par un plateau(grille) de Case et un historique
+    d'actions faites par le joueur.
+
+    * ===Variables d'instance
+    [historiqueActions] Historique d'actions faites par le joueur.
+    [plateau] Le plateau de jeu.
+
+    * ===Méthodes de classe
+    [creer(n,m)] Crée un nouveau jeu vide avec une grille de n colonnes
+    et m lignes.
+    [charger(grille)] Crée un jeu à partir d'une grille.
+    [charger_rep(grille)] Crée un jeu en chargant la grille réponse.
+
+    * ===Méthodes d'instance
+    [lancerPartie] Lance une partie.
+    [gagne?] Renvoie vrai si la grille est complété et sans erreur.
+    [nbErreur] Renvoie le nombre d'erreur su la grille.
+    [afficherErreur] Affiche les erreurs.
+    [jouer(x,y,dirLigne,typeEvent)] Effectue une action sur la grille sur
+    une ligne avec le clic effectué.
+    [afficherPlateau] Affiche la grille dans la stdout.
+    [getCase(x,y,direction)] Récupère le voisin de la case pour une direction donnée.
+    [getTailleLigne] Renvoie le nombre de colonnes.
+    [getTailleColonne] Renvoie le nombre de lignes.
+    [undo] Revient à l'action précédente s'il y en a une.
+    [redo] Revient à l'action suivante s'il y en a une.
+=end
+
 module TypeCreation
     TAILLE      = 0
     CHARGER     = 1
@@ -21,14 +54,18 @@ class Jeu
 
     private_class_method :new
 
+    # Crée un nouveau jeu vide avec une grille de n colonnes
+    # et m lignes.
     def Jeu.creer( n, m )
         new( :TAILLE, n, m )
     end
 
+    # Crée un jeu à partir d'une grille.
     def Jeu.charger( grille )
         new( :CHARGER, grille )
     end
 
+    # Crée un jeu en chargant la grille réponse.
     def Jeu.charger_rep ( grille )
         new( :CHARGER_REP, grille )
     end
@@ -97,25 +134,30 @@ class Jeu
 
     private :initTaille, :initGrille
 
+    # Lance une partie.
     def lancerPartie()
         return self
     end
 
+    # Renvoie vrai si la grille est complété et sans erreur.
     def gagne?()
 
         return false
     end
 
+    # Renvoie le nombre d'erreur su la grille.
     def nbErreur()
 
         return 0
     end
 
+    # Affiche les erreurs.
     def afficherErreur()
 
         return self
     end
 
+    # Effectue une action sur la grille sur une ligne avec le clic effectué.
     def jouer( x, y, dirLigne, typeEvent )
 
         if ( x < 0)
@@ -145,6 +187,7 @@ class Jeu
         return self
     end
 
+    # Affiche la grille dans la stdout.
     def afficherPlateau
         
         tailleX = @plateau.size()
@@ -214,14 +257,17 @@ class Jeu
         return "Plateau[Taille:#{@plateau.size}x#{@plateau[0].size}]#{@historiqueActions}"
     end
 
+    # Renvoie le nombre de colonnes.
     def getTailleLigne
         return @plateau[0].size()
     end
 
+    # Renvoie le nombre de lignes.
     def getTailleColonne
         return @plateau.size()
     end
 
+    # Revient à l'action précédente s'il y en a une.
     def undo
 
         begin
@@ -234,6 +280,7 @@ class Jeu
         action.ligne.setEtat(action.avant)
     end
 
+    # Revient à l'action suivante s'il y en a une.
     def redo
 
         begin

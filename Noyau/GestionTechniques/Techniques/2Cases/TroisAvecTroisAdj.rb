@@ -4,7 +4,7 @@
 # File Created: Tuesday, 17th March 2020 10:57:22 am
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Wednesday, 18th March 2020 2:55:57 pm
+# Last Modified: Thursday, 26th March 2020 4:02:55 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -64,6 +64,8 @@ class TroisAvecTroisAdj < Technique
         return false
     end
 
+    # Renvoie la 1ère case voisine(HAUT | BAS | DROITE | GAUCHE)
+    # contenant un 3.
     def checkTrois(plateau,x,y)
         c = getCase(plateau,x,y,:HAUT)
         if(c != nil && c.nbLigneDevantEtrePleine == 3)
@@ -84,6 +86,8 @@ class TroisAvecTroisAdj < Technique
         return nil
     end
 
+    # Récupère les lignes s'il y en a à prendre, et renvoie
+    # vrai si on en a récupèré.
     def checkCase(plateau,x,y,direction)
         #print x, ",", y, " : ", direction, "\n"
         c = plateau[x][y]

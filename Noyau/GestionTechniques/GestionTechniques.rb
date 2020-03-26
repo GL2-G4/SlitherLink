@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:40:31 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Wednesday, 18th March 2020 2:36:18 pm
+# Last Modified: Thursday, 26th March 2020 4:08:43 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 path = File.expand_path(File.dirname(__FILE__))
@@ -21,7 +21,7 @@ require path + "/Technique"
 # un ensemble d'opérations.
 #
 # * ===Méthodes de classe
-# [listeTechniques] Renvoie la liste des techniques.
+# [listeDesTechniques] Renvoie la liste des techniques.
 # [description(technique)] Renvoie la description d'une
 # technique donnée.
 # [setDescription(technique,description)] Change la description

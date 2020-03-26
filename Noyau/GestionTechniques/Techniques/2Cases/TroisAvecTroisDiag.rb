@@ -4,7 +4,7 @@
 # File Created: Wednesday, 18th March 2020 1:48:16 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Wednesday, 18th March 2020 4:27:00 pm
+# Last Modified: Thursday, 26th March 2020 4:05:01 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 path = File.expand_path(File.dirname(__FILE__))
@@ -65,6 +65,8 @@ class TroisAvecTroisDiag < Technique
         return false
     end
 
+    # Renvoie la 1ère case voisine(HAUTGAUCHE | BASGAUCHE | HAUTDROITE
+    # | BASDROITE) contenant un 3.
     def checkTrois(plateau,x,y)
         c = getCase(plateau,x,y,:HAUTGAUCHE)
         if(c != nil && c.nbLigneDevantEtrePleine == 3)
@@ -85,6 +87,8 @@ class TroisAvecTroisDiag < Technique
         return nil
     end
 
+    # Récupère les lignes s'il y en a à prendre, et renvoie
+    # vrai si on en a récupèré.
     def checkCase(plateau,x,y,direction)
         #print x, ",", y, " : ", direction, "\n"
         c = plateau[x][y]

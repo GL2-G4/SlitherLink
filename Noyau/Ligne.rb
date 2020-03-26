@@ -8,6 +8,9 @@ require path + "/Constante"
     ---
     * ===Variables d'instance
     [etat] Etat de la ligne [VIDE|PLEINE|BLOQUE]
+
+    * ===Méthodes d'instance
+    [setEtat(etat)] Met la ligne dans le nouvel état.
 =end
 
 module TypeLigne

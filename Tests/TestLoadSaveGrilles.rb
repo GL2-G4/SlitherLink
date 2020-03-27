@@ -1,6 +1,6 @@
 path = File.expand_path(File.dirname(__FILE__))
 
-require path + "/../Noyau/LoadSaveGrilles/ChargeurGrille"
+require path + "/../Noyau/LoadSaveGrilles/ChargeurGrille.rb"
 
 chargeurGrille = ChargeurGrille.charger(path + "/../Grilles/grille")
 #chargeurGrille.getGrilleIndex(0).afficher

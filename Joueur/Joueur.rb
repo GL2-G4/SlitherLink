@@ -12,15 +12,11 @@ class Joueur
 	# Accès en lecture aux variables argent, etoiles
 	attr_reader :argent, :etoiles
 	
-	# Accès en écriture aux paramètres
-	attr_writer :parametres
-	
 	# Constructeur d'un joueur
 	def initialize()
 	
 		@argent = 0
 		@etoiles = 0
-		self.parametresDefaut()
 	end
 	
 	# Méthode ajoutant une somme d'argent au joueur
@@ -96,7 +92,7 @@ class Joueur
 	
 	# Méthode d'affichage d'un joueur
 	def to_s
-		return "Argent = #{@argent}$\n" + "Etoiles = #{@etoiles}*\n" 
+		return "Joueur : \nArgent = #{@argent}$\n" + "Etoiles = #{@etoiles}*\n" 
 	end
 
 end

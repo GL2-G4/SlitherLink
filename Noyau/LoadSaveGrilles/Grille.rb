@@ -34,7 +34,7 @@ class Grille
 		#self.afficher
 	end
 	
-	# Méthode gérant le chargement des différentes informatioons concernant la grille (plateau, temps ...)
+	# Méthode gérant le chargement des différentes informations concernant la grille (plateau, temps ...)
 	def charger(contenuFichier)
 		
 		# Séparation des différentes informations du fichier (séparateur ";")
@@ -269,15 +269,3 @@ class Grille
 			end
 	end	
 end
-
-
-
-
-
-
-
-
-
-
-
-

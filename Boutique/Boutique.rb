@@ -44,7 +44,7 @@ class Boutique
 	
 		if numeroTheme < 0 
 			raise ArgumentError, "Numéro de thème négatif."
-		elsif numeroTheme >= @listeTheme.size
+		elsif numeroTheme >= @listeThemes.size
 			raise ArgumentError, "Numéro de thème trop grand."	
 		else
 			@joueur.acheterTheme(@listeThemes[numeroTheme])
@@ -59,15 +59,22 @@ class Boutique
 		puts "\nBoutique : "
 		
 		# Affichage des informations utiles pour les grilles
+		puts "\n--------------------\nGrilles\n--------------------\n"
 		@listeGrilles.each do |grille|
 			puts "Grille n°#{numero}"
 			puts "Prix = #{grille.prixPieces}$"
 			puts "Débloqué = #{grille.debloque}"
+			numero += 1
 		end
 		
+		numero = 0
+		
 		# Affichage des thèmes
+		puts "\n--------------------\nThèmes\n--------------------\n"
 		@listeThemes.each do |theme|
+			puts "Thème n°#{numero}"
 			theme.afficher()
+			numero += 1
 		end
 	end
 end

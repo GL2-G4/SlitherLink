@@ -27,7 +27,7 @@ class ChargeurGrille
 		# Création des grilles en fonction des lignes lues
 		@listeGrilles = Array.new()
 		lignes.each do |l|
-			if(l.size >= 33)
+			if (l.size >= 33)
 				@listeGrilles.push(Grille.charger(l))
 			end
 		end

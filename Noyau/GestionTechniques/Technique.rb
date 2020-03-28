@@ -151,7 +151,10 @@ class Technique
     def verifAddLigne (ligne, etatVerif)
         if (TypeLigne.estValide?(etatVerif) && ligne.class() == Ligne && ligne.etat != etatVerif)
             ligneAvecEtat(ligne,etatVerif)
+            return true
         end
+
+        return false
     end
 
 end

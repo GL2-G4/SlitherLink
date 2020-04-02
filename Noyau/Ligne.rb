@@ -1,4 +1,6 @@
-require "./Constante.rb"
+path = File.expand_path(File.dirname(__FILE__))
+
+require path + "/Constante"
 
 =begin
     Auteurs :: Galbrun T. Vaudeleau M.
@@ -6,6 +8,9 @@ require "./Constante.rb"
     ---
     * ===Variables d'instance
     [etat] Etat de la ligne [VIDE|PLEINE|BLOQUE]
+
+    * ===Méthodes d'instance
+    [setEtat(etat)] Met la ligne dans le nouvel état.
 =end
 
 module TypeLigne

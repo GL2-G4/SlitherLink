@@ -1,12 +1,28 @@
-require "./Ligne.rb"
-require "./Constante.rb"
+path = File.expand_path(File.dirname(__FILE__))
+
+require path + "/Ligne.rb"
+require path + "/Constante.rb"
+
 =begin
     Auteurs :: Galbrun T. Vaudeleau M.
     Version :: 0.1
     ---
+    * ===Descriptif
+    Une Case est caractérisée par un nombre entre 1 et 4, et possède
+    4 lignes (HAUT,BAS,DROITE,GAUCHE).
+
     * ===Variables d'instance
-    [lignes] Tableau stockant les 4 lignes voisines de la Case
-    [nbLigneDevantEtrePleine] Nombre de lignes pleines sur la Case
+    [lignes] Tableau stockant les 4 lignes voisines de la Case.
+    [nbLigneDevantEtrePleine] Nombre de lignes pleines sur la Case.
+
+    * ===Méthodes d'instance
+    [getLigne(direction)] Retourne la ligne à une direction donnée.
+    [modifierLigneClic(dirLigne,typeModif)] Modifie une ligne à la
+    direction 'dirLigne' en fonction du clic et de l'état de celle-ci.
+    [modifierLigneEtat(dirLigne,etatModif)] Modifie une ligne à la
+    direction 'dirLigne' avec son nouvel état 'etatMofif'.
+    [getLigneEtat(etat)] Renvoie la liste des lignes qui ont l'état demandé.
+    [nbLigneEtat(etat)] Renvoie le nombre de ligne ayant un état donné.
 =end
 
 module Direction
@@ -14,6 +30,11 @@ module Direction
     DROITE = 1
     BAS    = 2
     GAUCHE = 3
+
+    HAUTGAUCHE = 4
+    HAUTDROITE = 5
+    BASGAUCHE  = 6
+    BASDROITE  = 7
 
     extend OpConstante
 end
@@ -27,8 +48,8 @@ end
 
 class Case
 
-    # Accès L
-    attr_reader :nbLigneDevantEtrePleine
+    # Accès L/E
+    attr_accessor :nbLigneDevantEtrePleine
 
     private_class_method :new
 
@@ -93,17 +114,8 @@ class Case
         raise ArgumentError, "Direction Incorrecte : "+direction.to_s
     end
 
-    def nbLignePleine()
-
-        n = 0
-        for l in @lignes
-            if l.etat == :PLEINE
-                n += 1
-            end
-        end
-        return n
-    end
-
+    # Modifie une ligne à la direction 'dirLigne' en
+    # fonction du clic et de l'état de celle-ci.
     def modifierLigneClic( dirLigne, typeModif )
         l = self.getLigne(dirLigne)
         prec = l.etat()
@@ -136,6 +148,8 @@ class Case
         return prec
     end
 
+    # Modifie une ligne à la direction 'dirLigne' avec son
+    # nouvel état 'etatMofif'.
     def modifierLigneEtat( dirLigne, etatModif )
 
         self.getLigne(dirLigne).setEtat(etatModif)
@@ -144,11 +158,43 @@ class Case
     end
 
     def to_s
-        s = "." + @lignes[Direction::HAUT].to_s() + ".\n"
-        s += @lignes[Direction::GAUCHE].to_s() + @nbLigneDevantEtrePleine.to_s()
-        s += @lignes[Direction::DROITE].to_s() + "\n"
-        s += "." + @lignes[Direction::BAS].to_s() + "."
+        #s = "." + @lignes[Direction::HAUT].to_s() + ".\n"
+        #s += @lignes[Direction::GAUCHE].to_s() + @nbLigneDevantEtrePleine.to_s()
+        #s += @lignes[Direction::DROITE].to_s() + "\n"
+        #s += "." + @lignes[Direction::BAS].to_s() + "."
+        s = "|" + @nbLigneDevantEtrePleine.to_s()
+        s += ":H=" + @lignes[Direction::HAUT].to_s()
+        s += ",G=" + @lignes[Direction::GAUCHE].to_s()
+        s += ",B=" + @lignes[Direction::BAS].to_s()
+        s += ",D=" + @lignes[Direction::DROITE].to_s()
+        s += "|"
         return s
+    end
+
+    # Renvoie la liste des lignes qui ont l'état demandé
+    def getLigneEtat (etat)
+        tls = []
+        if (TypeLigne.estValide?(etat))
+            for l in @lignes
+                if l.etat == etat
+                    tls << l
+                end
+            end
+        end
+        return tls
+    end
+
+    # Renvoie le nombre de ligne ayant un état donné
+    def nbLigneEtat(etat)
+        nb = 0
+        if (TypeLigne.estValide?(etat))
+            for l in @lignes
+                if l.etat == etat
+                    nb += 1
+                end
+            end
+        end
+        return nb
     end
 end
 

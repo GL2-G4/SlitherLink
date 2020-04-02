@@ -9,8 +9,10 @@
     Il faut passé par l'intermédiaire du module GestionnaireQuicksave qui fournit des méthodes pour gérer les Quicksave    
 =end
 
-require "./Case.rb"
-require "./Historique.rb"
+path = File.expand_path(File.dirname(__FILE__))
+
+require path + "/Case"
+require path + "/Historique"
 
 class Quicksave
 

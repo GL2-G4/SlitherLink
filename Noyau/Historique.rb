@@ -1,4 +1,6 @@
-require "./Action"
+path = File.expand_path(File.dirname(__FILE__))
+
+require path + "/Action"
 =begin
     Auteurs :: Galbrun T. Vaudeleau M.
     Version :: 0.1

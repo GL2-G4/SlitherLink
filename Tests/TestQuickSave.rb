@@ -1,4 +1,4 @@
-require "../Noyau/Jeu"
+require_relative "../Noyau/Jeu.rb"
 
 =begin
 

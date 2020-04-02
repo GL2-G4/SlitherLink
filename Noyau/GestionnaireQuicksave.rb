@@ -7,7 +7,7 @@
     On peut avec ces objets demander a sauvegardé l'état de la grille a un certain moment ou charger une grille a un moment donné. 
 =end
 
-require "./Quicksave.rb"
+require_relative "./Quicksave.rb"
 
 class GestionnaireQuicksave
 

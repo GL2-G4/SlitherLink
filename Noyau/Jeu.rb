@@ -4,8 +4,8 @@ require path + "/Case"
 require path + "/Historique"
 require path + "/Action"
 require path + "/GestionTechniques/GestionTechniques"
-require path + "/Quicksave"
 require path + "/Constante"
+require path + "/GestionnaireQuicksave"
 
 require "yaml"
 
@@ -85,6 +85,8 @@ class Jeu
                 initGrilleRep(args[0])
             end
         end
+
+        @quickSave = GestionnaireQuicksave.nouveau( @plateau, @historiqueActions)
     end
 
     # Crée un plateau vide de taile n*m
@@ -92,7 +94,6 @@ class Jeu
     # m : nombre de lignes
     def initTaille ( n, m )
         @plateau = Array.new(n, nil)
-        @quickSave = GestionnaireQuicksave.nouveau( @plateau, @historiqueActions)
 
         0.upto(n-1) { |i|
             @plateau[i] = Array.new(m, nil)

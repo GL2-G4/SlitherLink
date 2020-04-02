@@ -1,9 +1,14 @@
 require "gtk3"
 require "optparse"
 require "fileutils"
-Gtk.init
+
 class PartieUI
-	def initialize()
+	private_class_method :new
+	def PartieUI.creer(jeu)
+		new(jeu)
+	end
+
+	def initialize(jeu)
 		@window = Gtk::Window.new
 		@grille = Gtk::Grid.new
 		@grille.set_border_width(10)
@@ -108,8 +113,7 @@ class PartieUI
 		@window.signal_connect("delete-event") { |_widget| Gtk.main_quit }
 	end
 
+	def majGrille
+		;
+	end
 end
-
-j=PartieUI.new()
-j.run
-Gtk.main

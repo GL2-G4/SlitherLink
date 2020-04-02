@@ -35,7 +35,8 @@ require "yaml"
     [jouer(x,y,dirLigne,typeEvent)] Effectue une action sur la grille sur
     une ligne avec le clic effectué.
     [afficherPlateau] Affiche la grille dans la stdout.
-    [getCase(x,y,direction)] Récupère le voisin de la case pour une direction donnée.
+    [getCase(x,y)] Récupère la case se trouvant aux coordonnées x,y.
+    [getCaseDirection(x,y,direction)] Récupère le voisin de la case pour une direction donnée.
     [getTailleLigne] Renvoie le nombre de colonnes.
     [getTailleColonne] Renvoie le nombre de lignes.
     [undo] Revient à l'action précédente s'il y en a une.
@@ -223,8 +224,16 @@ class Jeu
         self
     end
 
+    # Récupère la case se trouvant aux coordonnées x,y.
+    def getCase(x,y)
+        if(y < 0 || x < 0 || x >= getTailleColonne() || y >= getTailleLigne())
+            return nil
+        end
+        return @plateau[x][y]
+    end
+
     # Récupère le voisin de la case pour une direction donnée
-    def getCase(x,y,direction)
+    def getCaseDirection(x,y,direction)
         if(Direction.estValide?(direction))
             if(y < 0 || x < 0 || x >= getTailleColonne() || y >= getTailleLigne())
                 return nil
@@ -259,12 +268,12 @@ class Jeu
         return "Plateau[Taille:#{@plateau.size}x#{@plateau[0].size}]#{@historiqueActions}"
     end
 
-    # Renvoie le nombre de colonnes.
+    # Renvoie le nombre de lignes.
     def getTailleLigne
         return @plateau[0].size()
     end
 
-    # Renvoie le nombre de lignes.
+    # Renvoie le nombre de colonnes.
     def getTailleColonne
         return @plateau.size()
     end

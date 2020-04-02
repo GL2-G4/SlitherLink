@@ -1,6 +1,7 @@
 require "gtk3"
 require "optparse"
 require "fileutils"
+require_relative "../Noyau/Jeu.rb"
 
 class PartieUI
 	private_class_method :new
@@ -9,11 +10,12 @@ class PartieUI
 	end
 
 	def initialize(jeu)
+		@jeu = jeu
 		@window = Gtk::Window.new
 		@grille = Gtk::Grid.new
 		@grille.set_border_width(10)
-		h = 3
-		l = 5
+		h = @jeu.getTailleLigne()
+		l = @jeu.getTailleColonne()
 		@window.add(@grille)
 		@traith = Array.new(l*(h+1))
 		@traitv = Array.new(h*(l+1))
@@ -72,7 +74,13 @@ class PartieUI
 						@grille.attach(@traith[indiceh],i,j,1,1)
 						indiceh += 1
 					else
-						@grille.attach(Gtk::Label.new("case "+i.to_s() +" "+ j.to_s(), {:use_underline => true}),i,j,1,1)
+						# "case [#{j/2};#{i/2}]" #{c.nbLigneDevantEtrePleine}
+						c = @jeu.getCase(i/2,j/2);
+						if(c.nbLigneDevantEtrePleine != 4)
+							@grille.attach(Gtk::Label.new("#{c.nbLigneDevantEtrePleine}", {:use_underline => true}),i,j,1,1)
+						else
+							@grille.attach(Gtk::Label.new("", {:use_underline => true}),i,j,1,1)
+						end
 					end
 				end
 			end
@@ -82,30 +90,33 @@ class PartieUI
 
 	def traiterLigneHorizontale(index, h, clique)
 		if(index%(h+1)==0)
-			#jouer( (index/(h+1)).to_i, 0, :HAUT , clique)
+			@jeu.jouer( (index/(h+1)).to_i, 0, :HAUT , clique)
 			puts "jouer(#{(index/(h+1)).to_i}, 0, :HAUT, #{clique})"
 			#puts"case bas,"+(index/(h+1)).to_i.to_s+", 0"
 		else
-			#jouer( (index/(h+1)).to_i, index%(h+1)-1, :BAS , clique)
+			@jeu.jouer( (index/(h+1)).to_i, index%(h+1)-1, :BAS , clique)
 			puts "jouer(#{(index/(h+1)).to_i}, #{index%(h+1)-1}, :BAS, #{clique})"
 			#puts"case haut, "+ (index/(h+1)).to_i.to_s + ", " + (index%(h+1)-1).to_s 
 		end
+		@jeu.afficherPlateau
 	end
 
 	def traiterLigneVerticale(index, h, clique)
 		if(index < h)
 			#puts"case droite, 0 ,"+index.to_s
 			puts "jouer(0, #{index}, :GAUCHE, #{clique})"
-			#jouer(0, index, :GAUCHE, clique)
+			@jeu.jouer(0, index, :GAUCHE, clique)
 		else
 			#puts"case gauche,"+((index-h)/h.to_i).to_s + ", " + (index%h).to_s
 			puts "jouer(#{(index-h)/h.to_i}, #{index%h}, :DROITE, #{clique})"
-			#jouer((index-h)/h.to_i, index%h, :DROITE, clique)
+			@jeu.jouer((index-h)/h.to_i, index%h, :DROITE, clique)
 		end
+		@jeu.afficherPlateau
 	end
 
 	def run
 		@window.show_all
+		@jeu.afficherPlateau
 	end
 
 	def signaux

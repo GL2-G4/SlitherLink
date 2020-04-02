@@ -34,7 +34,7 @@ puts j
 
 =end
 
-require "../Noyau/Case.rb"
+require_relative "../Noyau/Case.rb"
 
 j = Jeu.creer(11,7)
 puts j

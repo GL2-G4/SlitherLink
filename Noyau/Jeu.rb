@@ -20,6 +20,8 @@ require "yaml"
     * ===Variables d'instance
     [historiqueActions] Historique d'actions faites par le joueur.
     [plateau] Le plateau de jeu.
+    [grille_rep] Grille réponse.
+    [erreurs] Tabnleau stockant les erreurs sur le plateau.
 
     * ===Méthodes de classe
     [creer(n,m)] Crée un nouveau jeu vide avec une grille de n colonnes
@@ -74,6 +76,8 @@ class Jeu
     def initialize( type, *args )
         @historiqueActions = Historique.new()
         @plateau = []
+        @grille_rep = nil
+        @erreurs = []
 
         if(TypeCreation.estValide?(type))
             case type
@@ -119,6 +123,7 @@ class Jeu
 
     # Charge un plateau à partir d'une grille
     def initGrille ( grille )
+        @grille_rep = grille.plateau
         plateauRep = grille.plateau
         nbCol = grille.nombreColonnes
         nbLi = grille.nombreLignes
@@ -132,6 +137,7 @@ class Jeu
 
     # Charge le plateau d'une grille réponse
     def initGrilleRep ( grille )
+        @grille_rep = grille.plateau
         @plateau = YAML.load(YAML.dump(grille.plateau))
     end
 
@@ -144,19 +150,76 @@ class Jeu
 
     # Renvoie vrai si la grille est complété et sans erreur.
     def gagne?()
-
-        return false
+        @erreurs = []
+        nbCol = getTailleColonne()
+        nbLi = getTailleLigne()
+        0.upto(nbCol - 1) { |i|
+            0.upto(nbLi - 1) { |j|
+                c1 = @grille_rep[i][j]
+                c2 = @plateau[i][j]
+                if( !checkCase(c2) )
+                    if( j == 0 && checkLignes(c1.getLigne(:HAUT),c2.getLigne(:HAUT)) )
+                        @erreurs << [i,j,"Ligne Incorrecte"]
+                    end
+                    if( checkLignes(c1.getLigne(:BAS),c2.getLigne(:BAS)) )
+                        @erreurs << [i,j,"Ligne Incorrecte"]
+                    end
+                    if ( i == 0 && checkLignes(c1.getLigne(:GAUCHE),c2.getLigne(:GAUCHE)) )
+                        @erreurs << [i,j,"Ligne Incorrecte"]
+                    end
+                    if( checkLignes(c1.getLigne(:DROITE),c2.getLigne(:DROITE)) )
+                        @erreurs << [i,j,"Ligne Incorrecte"]
+                    end
+                else
+                    @erreurs << [i,j,"Nombre de ligne(s) pleine(s) incorrect"]
+                end
+            }
+        }
+        return @erreurs.size() == 0
     end
 
     # Renvoie le nombre d'erreur su la grille.
     def nbErreur()
-
-        return 0
+        return @erreurs.size()
     end
 
-    # Affiche les erreurs.
-    def afficherErreur()
+    def checkCase(c)
+        if(c.nbLigneEtat(:PLEINE) == 4)
+            return true
+        end
 
+        if( c.nbLigneDevantEtrePleine != 4 &&  c.nbLigneEtat(:PLEINE) != c.nbLigneDevantEtrePleine )
+            return true
+        end
+        return false
+    end
+
+    def checkLignes(l1, l2)
+        case l1.etat
+        when :PLEINE
+            if(l2.etat != :PLEINE)
+                return true
+            end
+        else
+            if(l2.etat != :VIDE && l2.etat != :BLOQUE)
+               return true
+            end
+        end
+        return false
+    end
+
+    # Affiche les erreurs, si index == -1 : affichage de toutes les erreurs, sinon affichage d'une erreur.
+    def afficherErreur(index = -1)
+        if(index < -1 || index >= @erreurs.size)
+            raise ArgumentError, "Index d'erreur incorrect"
+        end
+        if (index == -1)
+            @erreurs.each_index do |i|
+                print "Erreur n°#{i+1}\n", " - Sur : [#{@erreurs[i][0]};#{@erreurs[i][1]}]\n - ", @erreurs[i][2], "\n"
+            end
+        else
+            print "Erreur n°#{index+1}\n", " - Sur : [#{@erreurs[index][0]};#{@erreurs[index][1]}]\n - ", @erreurs[index][2], "\n"
+        end
         return self
     end
 

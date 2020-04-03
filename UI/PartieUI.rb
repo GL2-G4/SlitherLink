@@ -22,39 +22,100 @@ class PartieUI
 		signaux()
 
 		@traith.each_index { |index|
+			etat = "blanc"
 			box = Gtk::EventBox.new()
-			box.set_size_request(32,8)
+			box.override_background_color(:normal,Gdk::RGBA.new(1,1,1,1));
+			box.set_size_request(50,20)
 			box.signal_connect('button_release_event'){|widget,event|
 				if(event.state.button1_mask?)
 					#puts "CLICK GAUCHE !"
 					traiterLigneHorizontale(index,h,:CLIC_GAUCHE)
+					if(etat != "noir")
+						box.override_background_color(:normal,Gdk::RGBA.new(0,0,0,1));
+						etat = "noir"
+					else
+						box.override_background_color(:normal,Gdk::RGBA.new(1,1,1,1));
+						etat = "blanc"
+					end
 				elsif(event.state.button2_mask?)
 					#puts "CLICK MOLETTE !"
 				elsif(event.state.button3_mask?)
 					#puts "CLICK DROIT !"
 					traiterLigneHorizontale(index,h,:CLIC_DROIT)
+					if(etat != "rouge")
+						box.override_background_color(:normal,Gdk::RGBA.new(1,0,0,1));
+						etat = "rouge"
+					else
+						box.override_background_color(:normal,Gdk::RGBA.new(1,1,1,1));
+						etat = "blanc"
+					end
 				end
 				#puts"clicked h "+index.to_s
 			}
+=begin			box.signal_connect('focus_in_event'){
+				puts("olaaaaaaa")
+				box.override_background_color(:normal,Gdk::RGBA.new(0.5,0.5,0.5,1));
+			}
+
+			box.signal_connect('focus_out_event'){
+				if(etat == "noir")
+					box.override_background_color(:normal,Gdk::RGBA.new(0,0,0,1));
+				elsif(etat == "rouge")
+					box.override_background_color(:normal,Gdk::RGBA.new(1,0,0,1));
+				else
+					box.override_background_color(:normal,Gdk::RGBA.new(1,1,1,1));
+				end
+			}
+=end
 			@traith[index] = box
 		} 
 
 		@traitv.each_index { |index|
+			etat = "blanc"
 			box = Gtk::EventBox.new()
-			box.set_size_request(8,32)
+			box.override_background_color(:normal,Gdk::RGBA.new(1,1,1,1));
+			box.set_size_request(20,50)
 			box.signal_connect('button_release_event'){|widget,event|
 				if(event.state.button1_mask?)
 					#puts "CLICK GAUCHE !"
 					traiterLigneVerticale(index,h,:CLIC_GAUCHE)
+					if(etat != "noir")
+						box.override_background_color(:normal,Gdk::RGBA.new(0,0,0,1));
+						etat = "noir"
+					else
+						box.override_background_color(:normal,Gdk::RGBA.new(1,1,1,1));
+						etat = "blanc"
+					end
 				elsif(event.state.button2_mask?)
 					#puts "CLICK MOLETTE !"
 				elsif(event.state.button3_mask?)
 					#puts "CLICK DROIT !"
 					traiterLigneVerticale(index,h,:CLIC_DROIT)
+					if(etat != "rouge")
+						box.override_background_color(:normal,Gdk::RGBA.new(1,0,0,1));
+						etat = "rouge"
+					else
+						box.override_background_color(:normal,Gdk::RGBA.new(1,1,1,1));
+						etat = "blanc"
+					end
 				end
 				#puts"clicked v "+index.to_s
 			}
-			@traitv[index] = box
+=begin			box.signal_connect('focus_in_event'){
+				puts("olaaaaaaa")
+				box.override_background_color(:normal,Gdk::RGBA.new(0.5,0.5,0.5,1));
+			}
+
+			box.signal_connect('focus_out_event'){
+				if(etat == "noir")
+					box.override_background_color(:normal,Gdk::RGBA.new(0,0,0,1));
+				elsif(etat == "rouge")
+					box.override_background_color(:normal,Gdk::RGBA.new(1,0,0,1));
+				else
+					box.override_background_color(:normal,Gdk::RGBA.new(1,1,1,1));
+				end
+			}
+=end		@traitv[index] = box
 		} 
 
 		indiceh=0

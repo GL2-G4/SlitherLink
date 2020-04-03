@@ -2,7 +2,6 @@ path = File.expand_path(File.dirname(__FILE__))
 
 require path + "/Ligne.rb"
 require path + "/Constante.rb"
-
 =begin
     Auteurs :: Galbrun T. Vaudeleau M.
     Version :: 0.1

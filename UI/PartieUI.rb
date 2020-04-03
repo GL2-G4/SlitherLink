@@ -52,7 +52,7 @@ class PartieUI
 				end
 				#puts"clicked h "+index.to_s
 			}
-=begin			box.signal_connect('focus_in_event'){
+			box.signal_connect('focus_in_event'){
 				puts("olaaaaaaa")
 				box.override_background_color(:normal,Gdk::RGBA.new(0.5,0.5,0.5,1));
 			}
@@ -66,7 +66,6 @@ class PartieUI
 					box.override_background_color(:normal,Gdk::RGBA.new(1,1,1,1));
 				end
 			}
-=end
 			@traith[index] = box
 		} 
 
@@ -101,7 +100,7 @@ class PartieUI
 				end
 				#puts"clicked v "+index.to_s
 			}
-=begin			box.signal_connect('focus_in_event'){
+			box.signal_connect('focus_in_event'){
 				puts("olaaaaaaa")
 				box.override_background_color(:normal,Gdk::RGBA.new(0.5,0.5,0.5,1));
 			}
@@ -115,7 +114,7 @@ class PartieUI
 					box.override_background_color(:normal,Gdk::RGBA.new(1,1,1,1));
 				end
 			}
-=end		@traitv[index] = box
+			@traitv[index] = box
 		} 
 
 		indiceh=0

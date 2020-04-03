@@ -40,11 +40,11 @@ class LigneContinuer < Technique
         0.upto( tailleY - 1 ) { |j|
             0.upto( tailleX - 1 ) { |i|
 
-                if ( ( i != 0 || ( j != 0 && j != tailleY - 1 ) ) && ( i != tailleX - 1 || ( j != 0 && j != tailleY - 1 ) ) ) then
+                if ( i == tailleX - 1 ) then
 
-                    if ( i == tailleX - 1 ) then
+                    if ( plateau[i][j].getLigne(:DROITE).etat() == :PLEINE ) then
 
-                        if ( plateau[i][j].getLigne(:DROITE).etat() == :PLEINE ) then
+                        if ( j != 0 ) then
 
                             # ici on regarde en haut de la ligne
                             if ( plateau[i][j - 1].getLigne(:DROITE).etat() == :BLOQUE && plateau[i][j].getLigne(:HAUT).etat() == :BLOQUE ) then
@@ -64,6 +64,10 @@ class LigneContinuer < Technique
                                     return true
                                 end
                             end
+                        end
+                    
+
+                        if ( j != tailleY - 1 ) then
 
                             # ici on regarde en bas de la ligne
                             if ( plateau[i][j + 1].getLigne(:DROITE).etat() == :BLOQUE && plateau[i][j].getLigne(:BAS).etat() == :BLOQUE ) then
@@ -84,9 +88,14 @@ class LigneContinuer < Technique
                                 end
                             end
                         end
-                    elsif ( j == tailleY - 1 ) then
+                    end
+                end
+                
+                if ( j == tailleY - 1 ) then
 
-                        if ( plateau[i][j].getLigne(:BAS).etat() == :PLEINE ) then
+                    if ( plateau[i][j].getLigne(:BAS).etat() == :PLEINE ) then
+
+                        if ( i != 0 ) then
 
                             # ici on regarde a gauche de la ligne
                             if ( plateau[i - 1][j].getLigne(:BAS).etat() == :BLOQUE && plateau[i][j].getLigne(:GAUCHE).etat() == :BLOQUE ) then
@@ -106,6 +115,9 @@ class LigneContinuer < Technique
                                     return true
                                 end
                             end
+                        end
+
+                        if ( i != tailleX ) then
 
                             # ici on regarde a droite de la ligne
                             if ( plateau[i + 1][j].getLigne(:BAS).etat() == :BLOQUE && plateau[i][j].getLigne(:DROITE).etat() == :BLOQUE ) then
@@ -127,550 +139,45 @@ class LigneContinuer < Technique
                             end
                         end
                     end
-
-                    if ( plateau[i][j].getLigne(:HAUT).etat() == :PLEINE ) then
-
-                        # ici on regarde a gauche de la ligne
-                        lb = 0
-                        lp = 0
-                        lv = 0
-                        nbtests = 1
-
-                        if ( j > 0 ) then
-
-                            nbtests += 1
-
-                            case plateau[i][j - 1].getLigne(:GAUCHE).etat()
-
-                                when :PLEINE
-                                    lp += 1
-                                when :BLOQUE
-                                    lb += 1
-                                when :VIDE
-                                    lv += 1
-                                end
-                        end
-
-                        if ( i > 0 ) then
-
-                            nbtests += 1
-
-                            case plateau[i - 1][j].getLigne(:HAUT).etat()
-
-                                when :PLEINE
-                                    lp += 1
-                                when :BLOQUE
-                                    lb += 1
-                                when :VIDE
-                                    lv += 1
-                            end
-                        end
-
-                        case plateau[i][j].getLigne(:GAUCHE).etat()
-
-                            when :PLEINE
-                                lp += 1
-                            when :BLOQUE
-                                lb += 1
-                            when :VIDE
-                                lv += 1
-                        end
-
-                        if ( lp >= 2 || lb == nbtests ) then
-
-                            # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
-                        elsif ( lp == 0 && lb == nbtests - 1 ) then
-
-                            @zone = Zone.new( i - 1, j - 1, i, j)
-
-                            if ( plateau[i][j].getLigne(:GAUCHE).etat() == :VIDE ) then
-
-                                ligneAvecEtat( plateau[i][j].getLigne(:GAUCHE), :PLEINE)
-                            elsif ( i > 0 && plateau[i - 1][j].getLigne(:HAUT).etat() == :VIDE )
-                                
-                                ligneAvecEtat( plateau[i - 1][j].getLigne(:HAUT), :PLEINE)
-                            else
-                                
-                                ligneAvecEtat( plateau[i][j - 1].getLigne(:GAUCHE), :PLEINE)
-                            end
-
-                            return true
-                        end
-
-                        # ici on regarde a droite de la ligne
-                        lb = 0
-                        lp = 0
-                        lv = 0
-                        nbtests = 1
-
-                        if ( j < tailleY - 1 ) then
-
-                            nbtests += 1
-
-                            case plateau[i][j + 1].getLigne(:GAUCHE).etat()
-
-                                when :PLEINE
-                                    lp += 1
-                                when :BLOQUE
-                                    lb += 1
-                                when :VIDE
-                                    lv += 1
-                                end
-                        end
-
-                        if ( i < tailleX - 1 ) then
-
-                            nbtests += 1
-
-                            case plateau[i + 1][j].getLigne(:HAUT).etat()
-
-                                when :PLEINE
-                                    lp += 1
-                                when :BLOQUE
-                                    lb += 1
-                                when :VIDE
-                                    lv += 1
-                            end
-                        end
-
-                        case plateau[i][j].getLigne(:DROITE).etat()
-
-                            when :PLEINE
-                                lp += 1
-                            when :BLOQUE
-                                lb += 1
-                            when :VIDE
-                                lv += 1
-                        end
-
-                        if ( lp >= 2 || lb == nbtests ) then
-
-                            # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
-                        elsif ( lp == 0 && lb == nbtests - 1 ) then
-
-                            @zone = Zone.new( i - 1, j, i, j + 1)
-
-                            if ( plateau[i][j].getLigne(:DROITE).etat() == :VIDE ) then
-
-                                ligneAvecEtat( plateau[i][j].getLigne(:DROITE), :PLEINE)
-                            elsif ( i < tailleX - 1 && plateau[i + 1][j].getLigne(:HAUT).etat() == :VIDE )
-                                
-                                ligneAvecEtat( plateau[i + 1][j].getLigne(:HAUT), :PLEINE)
-                            else
-                                
-                                ligneAvecEtat( plateau[i][j + 1].getLigne(:GAUCHE), :PLEINE)
-                            end
-
-                            return true
-                        end
-                    end
-
-                    if ( plateau[i][j].getLigne(:GAUCHE).etat() == :PLEINE ) then
-
-                        # ici on regarde en haut de la ligne
-                        lb = 0
-                        lp = 0
-                        lv = 0
-                        nbtests = 1
-
-                        if ( j > 0 ) then
-
-                            nbtests += 1
-
-                            case plateau[i][j - 1].getLigne(:GAUCHE).etat()
-
-                                when :PLEINE
-                                    lp += 1
-                                when :BLOQUE
-                                    lb += 1
-                                when :VIDE
-                                    lv += 1
-                                end
-                        end
-
-                        if ( i > 0 ) then
-
-                            nbtests += 1
-
-                            case plateau[i - 1][j].getLigne(:HAUT).etat()
-
-                                when :PLEINE
-                                    lp += 1
-                                when :BLOQUE
-                                    lb += 1
-                                when :VIDE
-                                    lv += 1
-                            end
-                        end
-
-                        case plateau[i][j].getLigne(:HAUT).etat()
-
-                            when :PLEINE
-                                lp += 1
-                            when :BLOQUE
-                                lb += 1
-                            when :VIDE
-                                lv += 1
-                        end
-
-                        if ( lp >= 2 || lb == nbtests ) then
-
-                            # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
-                        elsif ( lp == 0 && lb == nbtests - 1 ) then
-
-                            @zone = Zone.new( i - 1, j - 1, i, j)
-
-                            if ( plateau[i][j].getLigne(:HAUT).etat() == :VIDE ) then
-
-                                ligneAvecEtat( plateau[i][j].getLigne(:HAUT), :PLEINE)
-                            elsif ( i > 0 && plateau[i - 1][j].getLigne(:HAUT).etat() == :VIDE )
-                                
-                                ligneAvecEtat( plateau[i - 1][j].getLigne(:HAUT), :PLEINE)
-                            else
-                                
-                                ligneAvecEtat( plateau[i][j - 1].getLigne(:GAUCHE), :PLEINE)
-                            end
-
-                            return true
-                        end
-
-                        # ici on regarde en bas de la ligne
-                        lb = 0
-                        lp = 0
-                        lv = 0
-                        nbtests = 1
-
-                        if ( j < tailleY - 1 ) then
-
-                            nbtests += 1
-
-                            case plateau[i][j + 1].getLigne(:GAUCHE).etat()
-
-                                when :PLEINE
-                                    lp += 1
-                                when :BLOQUE
-                                    lb += 1
-                                when :VIDE
-                                    lv += 1
-                            end
-                        end
-
-                        if ( i > 0 ) then
-
-                            nbtests += 1
-
-                            case plateau[i - 1][j].getLigne(:BAS).etat()
-
-                                when :PLEINE
-                                    lp += 1
-                                when :BLOQUE
-                                    lb += 1
-                                when :VIDE
-                                    lv += 1
-                            end
-                        end
-
-                        case plateau[i][j].getLigne(:BAS).etat()
-
-                            when :PLEINE
-                                lp += 1
-                            when :BLOQUE
-                                lb += 1
-                            when :VIDE
-                                lv += 1
-                        end
-
-                        if ( lp >= 2 || lb == nbtests ) then
-
-                            # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
-                        elsif ( lp == 0 && lb == nbtests - 1 ) then
-
-                            @zone = Zone.new( i - 1, j, i, j + 1)
-
-                            if ( plateau[i][j].getLigne(:BAS).etat() == :VIDE ) then
-
-                                ligneAvecEtat( plateau[i][j].getLigne(:BAS), :PLEINE)
-                            elsif ( i > 0 && plateau[i - 1][j].getLigne(:BAS).etat() == :VIDE )
-                                
-                                ligneAvecEtat( plateau[i - 1][j].getLigne(:BAS), :PLEINE)
-                            else
-                                
-                                ligneAvecEtat( plateau[i][j + 1].getLigne(:GAUCHE), :PLEINE)
-                            end
-
-                            return true
-                        end
-                    end
-                end
-
-
-            }
-        }
-                # cas speciaux
-
-                # case en haut a droite
-
-                i = tailleX - 1
-                j = 0
-
-                if ( plateau[i][j].getLigne(:GAUCHE).etat() == :PLEINE ) then
-
-                    lb = 0
-                    lp = 0
-                    lv = 0
-                    nbtests = 2
-
-                    case plateau[i - 1][j].getLigne(:HAUT).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    case plateau[i][j].getLigne(:HAUT).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    if ( lp >= 2 || lb == nbtests ) then
-
-                        # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
-                    elsif ( lp == 0 && lb == nbtests - 1 ) then
-
-                        @zone = Zone.new( i - 1, j, i, j)
-
-                        if ( plateau[i][j].getLigne(:HAUT).etat() == :VIDE ) then
-
-                            ligneAvecEtat( plateau[i][j].getLigne(:HAUT), :PLEINE)
-                        else
-                            
-                            ligneAvecEtat( plateau[i - 1][j].getLigne(:HAUT), :PLEINE)
-                        end
-
-                        return true
-                    end
-
-                    lb = 0
-                    lp = 0
-                    lv = 0
-                    nbtests = 3
-
-                    case plateau[i - 1][j].getLigne(:BAS).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    case plateau[i][j].getLigne(:BAS).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    case plateau[i][j - 1].getLigne(:GAUCHE).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    if ( lp >= 2 || lb == nbtests ) then
-
-                        # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
-                    elsif ( lp == 0 && lb == nbtests - 1 ) then
-
-                        @zone = Zone.new( i - 1, j, i, j + 1)
-
-                        if ( plateau[i - 1][j].getLigne(:BAS).etat() == :VIDE ) then
-
-                            ligneAvecEtat( plateau[i - 1][j].getLigne(:BAS), :PLEINE)
-                        elsif ( plateau[i][j].getLigne(:BAS).etat() == :VIDE )
-                            
-                            ligneAvecEtat( plateau[i][j].getLigne(:BAS), :PLEINE)
-                        else
-                            
-                            ligneAvecEtat( plateau[i][j - 1].getLigne(:GAUCHE), :PLEINE)
-                        end
-
-                        return true
-                    end
-                end
-
-                # case en bas a droite
-
-                i = tailleX - 1
-                j = tailleY - 1
-
-                if ( plateau[i][j].getLigne(:GAUCHE).etat() == :PLEINE ) then
-
-                    lb = 0
-                    lp = 0
-                    lv = 0
-                    nbtests = 3
-
-                    case plateau[i - 1][j].getLigne(:HAUT).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    case plateau[i][j].getLigne(:HAUT).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    case plateau[i][j - 1].getLigne(:GAUCHE).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    if ( lp >= 2 || lb == nbtests ) then
-
-                        # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
-                    elsif ( lp == 0 && lb == nbtests - 1 ) then
-
-                        @zone = Zone.new( i - 1, j, i, j)
-
-                        if ( plateau[i - 1][j].getLigne(:HAUT).etat() == :VIDE ) then
-
-                            ligneAvecEtat( plateau[i - 1][j].getLigne(:HAUT), :PLEINE)
-                        elsif ( plateau[i][j].getLigne(:HAUT).etat() == :VIDE )
-                            
-                            ligneAvecEtat( plateau[i][j].getLigne(:HAUT), :PLEINE)
-                        else
-                            
-                            ligneAvecEtat( plateau[i][j - 1].getLigne(:GAUCHE), :PLEINE)
-                        end
-
-                        return true
-                    end
-
-                    lb = 0
-                    lp = 0
-                    lv = 0
-                    nbtests = 2
-
-                    case plateau[i - 1][j].getLigne(:BAS).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    case plateau[i][j].getLigne(:BAS).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    if ( lp >= 2 || lb == nbtests ) then
-
-                        # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
-                    elsif ( lp == 0 && lb == nbtests - 1 ) then
-
-                        @zone = Zone.new( i - 1, j, i, j + 1)
-
-                        if ( plateau[i - 1][j].getLigne(:BAS).etat() == :VIDE ) then
-
-                            ligneAvecEtat( plateau[i - 1][j].getLigne(:BAS), :PLEINE)
-                        else
-                            
-                            ligneAvecEtat( plateau[i][j].getLigne(:BAS), :PLEINE)
-                        end
-
-                        return true
-                    end
                 end
 
                 if ( plateau[i][j].getLigne(:HAUT).etat() == :PLEINE ) then
 
+                    # ici on regarde a gauche de la ligne
                     lb = 0
                     lp = 0
                     lv = 0
-                    nbtests = 2
+                    nbtests = 1
 
-                    case plateau[i][j - 1].getLigne(:DROITE).etat()
+                    if ( j > 0 ) then
 
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
+                        nbtests += 1
+
+                        case plateau[i][j - 1].getLigne(:GAUCHE).etat()
+
+                            when :PLEINE
+                                lp += 1
+                            when :BLOQUE
+                                lb += 1
+                            when :VIDE
+                                lv += 1
+                            end
                     end
 
-                    case plateau[i][j].getLigne(:DROITE).etat()
+                    if ( i > 0 ) then
 
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
+                        nbtests += 1
 
-                    if ( lp >= 2 || lb == nbtests ) then
+                        case plateau[i - 1][j].getLigne(:HAUT).etat()
 
-                        # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
-                    elsif ( lp == 0 && lb == nbtests - 1 ) then
-
-                        @zone = Zone.new( i - 1, j, i, j)
-
-                        if ( plateau[i][j - 1].getLigne(:DROITE).etat() == :VIDE ) then
-
-                            ligneAvecEtat( plateau[i][j - 1].getLigne(:DROITE), :PLEINE)
-                        else
-                            
-                            ligneAvecEtat( plateau[i][j].getLigne(:DROITE), :PLEINE)
+                            when :PLEINE
+                                lp += 1
+                            when :BLOQUE
+                                lb += 1
+                            when :VIDE
+                                lv += 1
                         end
-
-                        return true
                     end
-
-                    lb = 0
-                    lp = 0
-                    lv = 0
-                    nbtests = 3
 
                     case plateau[i][j].getLigne(:GAUCHE).etat()
 
@@ -682,124 +189,64 @@ class LigneContinuer < Technique
                             lv += 1
                     end
 
-                    case plateau[i][j - 1].getLigne(:GAUCHE).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    case plateau[i - 1][j].getLigne(:HAUT).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
                     if ( lp >= 2 || lb == nbtests ) then
 
                         # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
                     elsif ( lp == 0 && lb == nbtests - 1 ) then
 
-                        @zone = Zone.new( i - 1, j, i, j + 1)
+                        @zone = Zone.new( i - 1, j - 1, i, j)
 
                         if ( plateau[i][j].getLigne(:GAUCHE).etat() == :VIDE ) then
 
                             ligneAvecEtat( plateau[i][j].getLigne(:GAUCHE), :PLEINE)
-                        elsif ( plateau[i][j - 1].getLigne(:GAUCHE).etat() == :VIDE )
-                            
-                            ligneAvecEtat( plateau[i][j - 1].getLigne(:GAUCHE), :PLEINE)
-                        else
+                        elsif ( i > 0 && plateau[i - 1][j].getLigne(:HAUT).etat() == :VIDE )
                             
                             ligneAvecEtat( plateau[i - 1][j].getLigne(:HAUT), :PLEINE)
-                        end
-
-                        return true
-                    end
-                end
-
-                # case en bah a gauche
-
-                i = 0
-                j = tailleY - 1
-
-                if ( plateau[i - 1][j].getLigne(:HAUT) == :PLEINE ) then
-
-                    lb = 0
-                    lp = 0
-                    lv = 0
-                    nbtests = 2
-
-                    case plateau[i][j - 1].getLigne(:GAUCHE).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    case plateau[i][j].getLigne(:GAUCHE).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    if ( lp >= 2 || lb == nbtests ) then
-
-                        # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
-                    elsif ( lp == 0 && lb == nbtests - 1 ) then
-
-                        @zone = Zone.new( i - 1, j, i, j)
-
-                        if ( plateau[i][j - 1].getLigne(:GAUCHE).etat() == :VIDE ) then
-
-                            ligneAvecEtat( plateau[i][j - 1].getLigne(:GAUCHE), :PLEINE)
                         else
                             
-                            ligneAvecEtat( plateau[i][j].getLigne(:GAUCHE), :PLEINE)
+                            ligneAvecEtat( plateau[i][j - 1].getLigne(:GAUCHE), :PLEINE)
                         end
 
                         return true
                     end
 
+                    # ici on regarde a droite de la ligne
                     lb = 0
                     lp = 0
                     lv = 0
-                    nbtests = 3
+                    nbtests = 1
+
+                    if ( j < tailleY - 1 ) then
+
+                        nbtests += 1
+
+                        case plateau[i][j + 1].getLigne(:GAUCHE).etat()
+
+                            when :PLEINE
+                                lp += 1
+                            when :BLOQUE
+                                lb += 1
+                            when :VIDE
+                                lv += 1
+                            end
+                    end
+
+                    if ( i < tailleX - 1 ) then
+
+                        nbtests += 1
+
+                        case plateau[i + 1][j].getLigne(:HAUT).etat()
+
+                            when :PLEINE
+                                lp += 1
+                            when :BLOQUE
+                                lb += 1
+                            when :VIDE
+                                lv += 1
+                        end
+                    end
 
                     case plateau[i][j].getLigne(:DROITE).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    case plateau[i + 1][j].getLigne(:HAUT).etat()
-
-                        when :PLEINE
-                            lp += 1
-                        when :BLOQUE
-                            lb += 1
-                        when :VIDE
-                            lv += 1
-                    end
-
-                    case plateau[i][j - 1].getLigne(:DROITE).etat()
 
                         when :PLEINE
                             lp += 1
@@ -819,17 +266,156 @@ class LigneContinuer < Technique
                         if ( plateau[i][j].getLigne(:DROITE).etat() == :VIDE ) then
 
                             ligneAvecEtat( plateau[i][j].getLigne(:DROITE), :PLEINE)
-                        elsif ( plateau[i + 1][j].getLigne(:HAUT).etat() == :VIDE )
+                        elsif ( i < tailleX - 1 && plateau[i + 1][j].getLigne(:HAUT).etat() == :VIDE )
                             
                             ligneAvecEtat( plateau[i + 1][j].getLigne(:HAUT), :PLEINE)
                         else
                             
-                            ligneAvecEtat( plateau[i][j - 1].getLigne(:DROITE), :PLEINE)
+                            ligneAvecEtat( plateau[i][j + 1].getLigne(:GAUCHE), :PLEINE)
                         end
 
                         return true
                     end
                 end
+
+                if ( plateau[i][j].getLigne(:GAUCHE).etat() == :PLEINE ) then
+
+                    # ici on regarde en haut de la ligne
+                    lb = 0
+                    lp = 0
+                    lv = 0
+                    nbtests = 1
+
+                    if ( j > 0 ) then
+
+                        nbtests += 1
+
+                        case plateau[i][j - 1].getLigne(:GAUCHE).etat()
+
+                            when :PLEINE
+                                lp += 1
+                            when :BLOQUE
+                                lb += 1
+                            when :VIDE
+                                lv += 1
+                            end
+                    end
+
+                    if ( i > 0 ) then
+
+                        nbtests += 1
+
+                        case plateau[i - 1][j].getLigne(:HAUT).etat()
+
+                            when :PLEINE
+                                lp += 1
+                            when :BLOQUE
+                                lb += 1
+                            when :VIDE
+                                lv += 1
+                        end
+                    end
+
+                    case plateau[i][j].getLigne(:HAUT).etat()
+
+                        when :PLEINE
+                            lp += 1
+                        when :BLOQUE
+                            lb += 1
+                        when :VIDE
+                            lv += 1
+                    end
+
+                    if ( lp >= 2 || lb == nbtests ) then
+
+                        # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
+                    elsif ( lp == 0 && lb == nbtests - 1 ) then
+
+                        @zone = Zone.new( i - 1, j - 1, i, j)
+
+                        if ( plateau[i][j].getLigne(:HAUT).etat() == :VIDE ) then
+
+                            ligneAvecEtat( plateau[i][j].getLigne(:HAUT), :PLEINE)
+                        elsif ( i > 0 && plateau[i - 1][j].getLigne(:HAUT).etat() == :VIDE )
+                            
+                            ligneAvecEtat( plateau[i - 1][j].getLigne(:HAUT), :PLEINE)
+                        else
+                            
+                            ligneAvecEtat( plateau[i][j - 1].getLigne(:GAUCHE), :PLEINE)
+                        end
+
+                        return true
+                    end
+
+                    # ici on regarde en bas de la ligne
+                    lb = 0
+                    lp = 0
+                    lv = 0
+                    nbtests = 1
+
+                    if ( j < tailleY - 1 ) then
+
+                        nbtests += 1
+
+                        case plateau[i][j + 1].getLigne(:GAUCHE).etat()
+
+                            when :PLEINE
+                                lp += 1
+                            when :BLOQUE
+                                lb += 1
+                            when :VIDE
+                                lv += 1
+                        end
+                    end
+
+                    if ( i > 0 ) then
+
+                        nbtests += 1
+
+                        case plateau[i - 1][j].getLigne(:BAS).etat()
+
+                            when :PLEINE
+                                lp += 1
+                            when :BLOQUE
+                                lb += 1
+                            when :VIDE
+                                lv += 1
+                        end
+                    end
+
+                    case plateau[i][j].getLigne(:BAS).etat()
+
+                        when :PLEINE
+                            lp += 1
+                        when :BLOQUEZ
+                            lb += 1
+                        when :VIDE
+                            lv += 1
+                    end
+
+                    if ( lp >= 2 || lb == nbtests ) then
+
+                        # ICI ERREUR DE JEU A TRAITE ( Vaudeleau Mathieu )
+                    elsif ( lp == 0 && lb == nbtests - 1 ) then
+
+                        @zone = Zone.new( i - 1, j, i, j + 1)
+
+                        if ( plateau[i][j].getLigne(:BAS).etat() == :VIDE ) then
+
+                            ligneAvecEtat( plateau[i][j].getLigne(:BAS), :PLEINE)
+                        elsif ( i > 0 && plateau[i - 1][j].getLigne(:BAS).etat() == :VIDE )
+                            
+                            ligneAvecEtat( plateau[i - 1][j].getLigne(:BAS), :PLEINE)
+                        else
+                            
+                            ligneAvecEtat( plateau[i][j + 1].getLigne(:GAUCHE), :PLEINE)
+                        end
+
+                        return true
+                    end
+                end
+            }
+        }
 
         return false
     end

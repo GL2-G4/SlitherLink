@@ -53,6 +53,15 @@ module TypeCreation
     extend OpConstante
 end
 
+module TypeErreur
+    PAS_D_ERREUR              = 0
+    NB_LIGNES_INCORRECT       = 1
+    LIGNE_PLEINE_NON_VALIDE   = 2
+    LIGNE_PLEINE_NON_PRESENTE = 3
+
+    extend OpConstante
+end
+
 class Jeu
 
     private_class_method :new
@@ -158,20 +167,16 @@ class Jeu
                 c1 = @grille_rep[i][j]
                 c2 = @plateau[i][j]
                 if( !checkCase(c2) )
-                    if( j == 0 && checkLignes(c1.getLigne(:HAUT),c2.getLigne(:HAUT)) )
-                        @erreurs << [i,j,"Ligne Incorrecte"]
+                    if( j == 0 )
+                        addErreur(checkLignes(c1.getLigne(:HAUT),c2.getLigne(:HAUT)),:x => i, :y => j, :direction => :HAUT)
                     end
-                    if( checkLignes(c1.getLigne(:BAS),c2.getLigne(:BAS)) )
-                        @erreurs << [i,j,"Ligne Incorrecte"]
+                    addErreur(checkLignes(c1.getLigne(:BAS),c2.getLigne(:BAS)),:x => i, :y => j, :direction => :BAS)
+                    if ( i == 0 )
+                        addErreur(checkLignes(c1.getLigne(:GAUCHE),c2.getLigne(:GAUCHE)),:x => i, :y => j, :direction => :GAUCHE)
                     end
-                    if ( i == 0 && checkLignes(c1.getLigne(:GAUCHE),c2.getLigne(:GAUCHE)) )
-                        @erreurs << [i,j,"Ligne Incorrecte"]
-                    end
-                    if( checkLignes(c1.getLigne(:DROITE),c2.getLigne(:DROITE)) )
-                        @erreurs << [i,j,"Ligne Incorrecte"]
-                    end
+                    addErreur(checkLignes(c1.getLigne(:DROITE),c2.getLigne(:DROITE)),:x => i, :y => j, :direction => :DROITE)
                 else
-                    @erreurs << [i,j,"Nombre de ligne(s) pleine(s) incorrect"]
+                    addErreur(:NB_LIGNES_INCORRECT,:x => i, :y => j)
                 end
             }
         }
@@ -198,29 +203,93 @@ class Jeu
         case l1.etat
         when :PLEINE
             if(l2.etat != :PLEINE)
-                return true
+                return :LIGNE_PLEINE_NON_PRESENTE
             end
         else
-            if(l2.etat != :VIDE && l2.etat != :BLOQUE)
-               return true
+            if(l2.etat == :PLEINE)
+               return :LIGNE_PLEINE_NON_VALIDE
             end
         end
-        return false
+        return :PAS_D_ERREUR
     end
 
-    # Affiche les erreurs, si index == -1 : affichage de toutes les erreurs, sinon affichage d'une erreur.
-    def afficherErreur(index = -1)
-        if(index < -1 || index >= @erreurs.size)
+    def addErreur(typeErreur,hash={})
+        if(TypeErreur.estValide?(typeErreur))
+            case typeErreur
+            when :NB_LIGNES_INCORRECT
+                @erreurs << [typeErreur,hash[:x],hash[:y],"Nombre de ligne(s) pleine(s) Incorrect"]
+            when :LIGNE_PLEINE_NON_VALIDE
+                @erreurs << [typeErreur,hash[:x],hash[:y],hash[:direction],"Ligne pleine non Valide"]
+            when :LIGNE_PLEINE_NON_PRESENTE
+                @erreurs << [typeErreur,hash[:x],hash[:y],hash[:direction],"Ligne pleine non Presente"]
+            end
+        end
+    end
+
+    # Affiche les erreurs, si :index => -1 : affichage de toutes les erreurs, sinon affichage d'une erreur.
+    # Si :filtre => true, affiche seulement les erreurs du joueur.
+    def afficherErreur(tabErr: @erreurs, filtre: true, index: -1)
+        if(tabErr == nil)
+            tabErr = @erreurs
+        end
+
+        if(index < -1 || index >= tabErr.size)
             raise ArgumentError, "Index d'erreur incorrect"
         end
         if (index == -1)
-            @erreurs.each_index do |i|
-                print "Erreur n°#{i+1}\n", " - Sur : [#{@erreurs[i][0]};#{@erreurs[i][1]}]\n - ", @erreurs[i][2], "\n"
+            if(filtre)
+                for e in tabErr
+                    if(e[0] != :LIGNE_PLEINE_NON_PRESENTE)
+                        printErreur(e)
+                    end
+                end
+            else
+                for e in tabErr
+                    printErreur(e)
+                end
             end
         else
-            print "Erreur n°#{index+1}\n", " - Sur : [#{@erreurs[index][0]};#{@erreurs[index][1]}]\n - ", @erreurs[index][2], "\n"
+            printErreur(@erreurs[i])
         end
         return self
+    end
+
+    # Affiche une erreur en fonction de son type.
+    def printErreur(e)
+        case e[0]
+        when :NB_LIGNES_INCORRECT
+            print "Erreur\n", " - Sur : [#{e[1]};#{e[2]}]\n - ", e[3], "\n"
+        when :LIGNE_PLEINE_NON_VALIDE
+            print "Erreur\n", " - Sur : [#{e[1]};#{e[2]}] -> #{e[3]}\n - ", e[4], "\n"
+        when :LIGNE_PLEINE_NON_PRESENTE
+            print "Erreur\n", " - Sur : [#{e[1]};#{e[2]}] -> #{e[3]}\n - ", e[4], "\n"
+        else
+            print "Erreur\n", " - Sur : [#{e[1]};#{e[2]}]\n - ", e[3], "\n"
+        end
+    end
+
+    # Renvoie un tableau contenant toutes les erreurs d'un même type.
+    def getErreursType(typeErreur)
+        err = []
+        if(TypeErreur.estValide?(typeErreur))
+            for e in @erreurs
+                if(e[0] == typeErreur)
+                    err << e
+                end
+            end
+        end
+        return err
+    end
+
+    # Renvoie un tableau contenant toutes les erreurs du joueur.
+    def getErreursJoueur()
+        err = []
+        for e in @erreurs
+            if(e[0] != :LIGNE_PLEINE_NON_PRESENTE)
+                err << e
+            end
+        end
+        return err
     end
 
     # Effectue une action sur la grille sur une ligne avec le clic effectué.

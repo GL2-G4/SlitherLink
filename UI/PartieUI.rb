@@ -6,7 +6,7 @@ require_relative "../Noyau/Jeu.rb"
 class PartieUI
 	NOIR = Gdk::RGBA.new(0,0,0,1)
 	BLANC = Gdk::RGBA.new(1,1,1,1)
-	ROUGE = Gdk::RGBA.new(1,0,0,1)
+	ROUGE = Gdk::RGBA.new(1,0,0,0.5)
 	GRIS_BASE = Gdk::RGBA.new(0.94,0.94,0.94,1)
 
 	private_class_method :new
@@ -32,13 +32,15 @@ class PartieUI
 		save = Gtk::Box.new(:vertical, nil)
 		saveh = Gtk::Box.new(:horizontal,20)
 		#saveb = Gtk::Box.new(:vertical,nil)
-		saveb = Gtk::Label.new("Quiksave")
+		saveb = Gtk::Label.new("Quicksave")
 		savet = Gtk::Label.new("QuickSave")
 		savep = Gtk::Button.new
 		boutons = Gtk::Box.new(:vertical,5)
 		@timer = Gtk::Label.new("--:--")
 		gritim = Gtk::Box.new(:vertical,20)
 
+		scrolled = Gtk::ScrolledWindow.new
+		scrolled.set_policy(:never, :automatic)
 
 		home.set_label("menu")
 		ar.set_label("ar")
@@ -93,12 +95,21 @@ class PartieUI
 			@jeu.afficherPlateau
 			majGrille()
 		}
+		check.signal_connect('button_release_event'){
+			#puts "CHECK"
+			@jeu.gagne?()
+			@erreurs = @jeu.getErreursJoueur()
+			@jeu.afficherErreur(tabErr: @erreurs)
+			#info.set_label("Vous avez #{@erreurs.size()} erreur(s)")
+			info.set_markup("<span font_desc=\"15.0\"><b>Vous avez #{@erreurs.size()} erreur(s)</b></span>");
+		}
 
 		@traith.each_index { |index|
-			etat = "blanc"
 			box = Gtk::EventBox.new()
 			box.override_background_color(:normal,BLANC);
 			box.set_size_request(50,20)
+
+			# Quand on click sur la ligne
 			box.signal_connect('button_release_event'){|widget,event|
 				if(event.state.button1_mask?)
 					#puts "CLICK GAUCHE !"
@@ -113,27 +124,33 @@ class PartieUI
 				end
 				#puts"clicked h "+index.to_s
 			}
-			box.signal_connect('focus_in_event'){
-				box.override_background_color(:normal,Gdk::RGBA.new(0.5,0.5,0.5,1));
+			c = getXYIntersection(index,false)
+			i1,i2 = c[0],c[1]
+			# Quand on est sur la ligne
+			box.signal_connect('enter_notify_event'){
+				#puts "On rentre sur la ligne"
+				box.set_opacity(0.3)
+				@grille.get_child_at(i1[0],i1[1]).set_opacity(0.3)
+				@grille.get_child_at(i2[0],i2[1]).set_opacity(0.3)
 			}
 
-			box.signal_connect('focus_out_event'){
-				if(etat == "noir")
-					box.override_background_color(:normal,NOIR);
-				elsif(etat == "rouge")
-					box.override_background_color(:normal,ROUGE);
-				else
-					box.override_background_color(:normal,BLANC);
-				end
+			# Quand on sort de la ligne
+			box.signal_connect('leave_notify_event'){
+				#puts "On sort de la ligne"
+				box.set_opacity(1)
+				@grille.get_child_at(i1[0],i1[1]).set_opacity(1)
+				@grille.get_child_at(i2[0],i2[1]).set_opacity(1)
 			}
+
 			@traith[index] = box
 		}
 
 		@traitv.each_index { |index|
-			etat = "blanc"
 			box = Gtk::EventBox.new()
 			box.override_background_color(:normal,Gdk::RGBA.new(1,1,1,1));
 			box.set_size_request(20,50)
+
+			# Quand on click sur la ligne
 			box.signal_connect('button_release_event'){|widget,event|
 				if(event.state.button1_mask?)
 					#puts "CLICK GAUCHE !"
@@ -148,19 +165,22 @@ class PartieUI
 				end
 				#puts"clicked v "+index.to_s
 			}
-			box.signal_connect('focus_in_event'){
-				puts("olaaaaaaa")
-				box.override_background_color(:normal,Gdk::RGBA.new(0.5,0.5,0.5,1));
+			c = getXYIntersection(index,true)
+			i1,i2 = c[0],c[1]
+			# Quand on est sur la ligne
+			box.signal_connect('enter_notify_event'){
+				#puts "On rentre sur la ligne"
+				box.set_opacity(0.3)
+				@grille.get_child_at(i1[0],i1[1]).set_opacity(0.3)
+				@grille.get_child_at(i2[0],i2[1]).set_opacity(0.3)
 			}
 
-			box.signal_connect('focus_out_event'){
-				if(etat == "noir")
-					box.override_background_color(:normal,NOIR);
-				elsif(etat == "rouge")
-					box.override_background_color(:normal,ROUGE);
-				else
-					box.override_background_color(:normal,BLANC);
-				end
+			# Quand on sort de la ligne
+			box.signal_connect('leave_notify_event'){
+				#puts "On sort de la ligne"
+				box.set_opacity(1)
+				@grille.get_child_at(i1[0],i1[1]).set_opacity(1)
+				@grille.get_child_at(i2[0],i2[1]).set_opacity(1)
 			}
 			@traitv[index] = box
 		}
@@ -176,19 +196,21 @@ class PartieUI
 						#@grille.get_child_at(i,j).override_background_color(:normal,GRIS_BASE);
 					else
 						@grille.attach(@traitv[indicev],i,j,1,1)
-						traiterCouleurLigneVerticale(indicev)
+						#traiterCouleurLigneVerticale(indicev)
 						indicev +=1
 					end
 				else
 					if j % 2 == 0
 						@grille.attach(@traith[indiceh],i,j,1,1)
-						traiterCouleurLigneHorizontale(indiceh)
+						#traiterCouleurLigneHorizontale(indiceh)
 						indiceh += 1
 					else
 						# "case [#{j/2};#{i/2}]" #{c.nbLigneDevantEtrePleine}
 						c = @jeu.getCase(i/2,j/2);
 						if(c.nbLigneDevantEtrePleine != 4)
-							@grille.attach(Gtk::Label.new("#{c.nbLigneDevantEtrePleine}", {:use_underline => true}),i,j,1,1)
+							l = Gtk::Label.new("", {:use_underline => true})
+							l.set_markup("<span font_desc=\"20.0\"><b>#{c.nbLigneDevantEtrePleine}</b></span>");
+							@grille.attach(l,i,j,1,1)
 						else
 							@grille.attach(Gtk::Label.new("", {:use_underline => true}),i,j,1,1)
 						end
@@ -196,6 +218,7 @@ class PartieUI
 				end
 			end
 		end
+		majGrille()
 =begin
 		sec = 0
 		min = 0
@@ -211,36 +234,69 @@ class PartieUI
 =end
 	end
 
-	def traiterCouleurLigneVerticale(index)
-		if (index < @h)
-			l = @jeu.getCase(0,index).getLigne(:GAUCHE)
-			traiterCouleurLigne(@traitv[index],l.etat)
-			#puts "I [#{0};#{index*2}] [#{0};#{index*2+2}]"
-			traiterCouleurIntersection(0,index*2)
-			traiterCouleurIntersection(0,index*2+2)
+	def getXYIntersection(index,vertical)
+		c = getXY(index,vertical)
+		if(vertical)
+			if (index < @h)
+				return [[c[0],c[1]*2],[c[0],c[1]*2+2]]
+			else
+				return [[c[0]*2+2,c[1]*2],[c[0]*2+2,c[1]*2+2]]
+			end
 		else
-			l = @jeu.getCase((index-@h)/@h,index% @h).getLigne(:DROITE)
-			traiterCouleurLigne(@traitv[index],l.etat)
-			#puts "I [#{(index-@h)/@h*2+2};#{(index% @h)*2}] [#{(index-@h)/@h*2+2};#{(index% @h)*2+2}]"
-			traiterCouleurIntersection((index-@h)/@h*2+2,(index% @h)*2)
-			traiterCouleurIntersection((index-@h)/@h*2+2,(index% @h)*2+2)
+			if (index%(@h+1)==0)
+				return [[c[0]*2,c[1]],[c[0]*2+2,c[1]]]
+			else
+				return [[c[0]*2,c[1]*2+2],[c[0]*2+2,c[1]*2+2]]
+			end
 		end
 	end
 
-	def traiterCouleurLigneHorizontale(index)
-		if (index%(@h+1)==0)
-			l = @jeu.getCase(index/(@h+1),0).getLigne(:HAUT)
-			traiterCouleurLigne(@traith[index],l.etat)
-			#puts "I [#{index/(@h+1)*2};#{0}] [#{index/(@h+1)*2+2};#{0}]"
-			traiterCouleurIntersection(index/(@h+1)*2,0)
-			traiterCouleurIntersection(index/(@h+1)*2+2,0)
-		else
-			l = @jeu.getCase(index/(@h+1),index%(@h+1)-1).getLigne(:BAS)
-			traiterCouleurLigne(@traith[index],l.etat)
-			#puts "I [#{index/(@h+1)*2};#{(index%(@h+1)-1)*2+2}] [#{index/(@h+1)*2+2};#{(index%(@h+1)-1)*2+2}]"
-			traiterCouleurIntersection(index/(@h+1)*2,(index%(@h+1)-1)*2+2)
-			traiterCouleurIntersection(index/(@h+1)*2+2,(index%(@h+1)-1)*2+2)
+	def getXY(index,vertical)
+		if(vertical) # Vertical
+			if (index < @h) # Gauche
+				return [0,index]
+			else # Droite
+				return [(index-@h)/@h,index% @h]
+			end
+		else # Horizontal
+			if (index%(@h+1)==0) # Haut
+				return [index/(@h+1),0]
+			else # Bas
+				return [index/(@h+1),index%(@h+1)-1]
+			end
 		end
+	end
+
+	def traiterCouleurLigneVerticale(index)
+		c1 = getXY(index,true)
+		c2 = @jeu.getCase(c1[0],c1[1])
+		c = getXYIntersection(index,true)
+		i1,i2 = c[0],c[1]
+		if (index < @h)
+			l = c2.getLigne(:GAUCHE)
+			traiterCouleurLigne(@traitv[index],l.etat)
+		else
+			l = c2.getLigne(:DROITE)
+			traiterCouleurLigne(@traitv[index],l.etat)
+		end
+		traiterCouleurIntersection(i1[0],i1[1])
+		traiterCouleurIntersection(i2[0],i2[1])
+	end
+
+	def traiterCouleurLigneHorizontale(index)
+		c1 = getXY(index,false)
+		c2 = @jeu.getCase(c1[0],c1[1])
+		c = getXYIntersection(index,false)
+		i1,i2 = c[0],c[1]
+		if (index%(@h+1)==0)
+			l = c2.getLigne(:HAUT)
+			traiterCouleurLigne(@traith[index],l.etat)
+		else
+			l = c2.getLigne(:BAS)
+			traiterCouleurLigne(@traith[index],l.etat)
+		end
+		traiterCouleurIntersection(i1[0],i1[1])
+		traiterCouleurIntersection(i2[0],i2[1])
 	end
 
 	def traiterCouleurLigne(ligne,etat)

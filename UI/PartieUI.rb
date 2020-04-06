@@ -31,10 +31,11 @@ class PartieUI
 		info = Gtk::Label.new("infos")
 		save = Gtk::Box.new(:vertical, nil)
 		saveh = Gtk::Box.new(:horizontal,20)
-		#saveb = Gtk::Box.new(:vertical,nil)
-		saveb = Gtk::Label.new("Quicksave")
+		@saveb = Gtk::Box.new(:vertical)
+		#@saveb = Gtk::Label.new("Quicksave")
 		savet = Gtk::Label.new("QuickSave")
 		savep = Gtk::Button.new
+		qsChargerSafe = Gtk::Button.new
 		boutons = Gtk::Box.new(:vertical,5)
 		@timer = Gtk::Label.new("--:--")
 		gritim = Gtk::Box.new(:vertical,20)
@@ -48,8 +49,10 @@ class PartieUI
 		check.set_label("check")
 		hint.set_label("hint")
 		savep.set_label("+")
+		qsChargerSafe.set_label(">")
+		savet.set_markup("<span font_desc=\"13.0\"><b>QuickSave</b></span>");
 
-		saveb.set_size_request(200,200)
+		@saveb.set_size_request(200,200)
 		info.set_size_request(200,200)
 		
 		
@@ -59,8 +62,10 @@ class PartieUI
 		
 		saveh.add(savet)
 		saveh.add(savep)
+		saveh.add(qsChargerSafe)
 		save.add(saveh)
-		save.add(saveb)
+		scrolled.add(@saveb)
+		save.add(scrolled)
 		menuh.add(ar)
 		menuh.add(av)
 		menuh.add(home)
@@ -102,6 +107,19 @@ class PartieUI
 			@jeu.afficherErreur(tabErr: @erreurs)
 			#info.set_label("Vous avez #{@erreurs.size()} erreur(s)")
 			info.set_markup("<span font_desc=\"15.0\"><b>Vous avez #{@erreurs.size()} erreur(s)</b></span>");
+		}
+		savep.signal_connect('button_release_event'){
+			#puts "NEW QUICKSAVE"
+			@jeu.quicksaveEnregistrer()
+			majQS()
+		}
+		scrolled.set_height_request(200)
+		#scrolled.override_background_color(:normal,ROUGE)
+		majQS()
+		qsChargerSafe.signal_connect('button_release_event'){
+			#puts "RETOUR A LA GRILLE COURANTE"
+			@jeu.quicksaveChargerSafe()
+			majGrille()
 		}
 
 		@traith.each_index { |index|
@@ -232,6 +250,42 @@ class PartieUI
 		}
 		t.join
 =end
+	end
+
+	def remove_all_child(widget)
+		widget.each { |child|
+			widget.remove(child)
+		}
+	end
+
+	def majQS()
+		remove_all_child(@saveb)
+		puts "\t---- #{@jeu.quickSave.nbQS()}"
+		@tQS = Array.new(@jeu.quickSave.nbQS())
+		@tQS.each_index{ |i|
+			ajouterQS(i)
+		}
+		@saveb.show_all
+	end
+
+	def ajouterQS(i = @jeu.quickSave.nbQS()-1)
+		q = Gtk::ButtonBox.new(:horizontal)
+		#q.set_width_request(30)
+		border = Gtk::Frame.new()
+		#q.set_border_width(10)
+		textBox = Gtk::Label.new("QuickSave n°#{i+1}")
+		bouton = Gtk::Button.new()
+		bouton.set_label("Charger")
+		bouton.signal_connect 'button_release_event' do |_widget|
+			#puts "Chargement quickSave n°#{i+1}"
+			@jeu.quicksaveCharger(i)
+			majGrille()
+		end
+		@tQS[i] = bouton
+		q.add(textBox)
+		q.add(bouton)
+		border.add(q)
+		@saveb.add(border)
 	end
 
 	def getXYIntersection(index,vertical)

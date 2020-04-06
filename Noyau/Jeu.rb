@@ -63,7 +63,7 @@ module TypeErreur
 end
 
 class Jeu
-
+    attr_reader :quickSave
     private_class_method :new
 
     # Crée un nouveau jeu vide avec une grille de n colonnes

@@ -34,12 +34,13 @@ class GestionnaireQuicksave
     # Si la sauvegarde est effectué aprés le chargement d'une quicksave, toutes les quicksave réalisé aprés la quicksave qui a été chargé sont supprimé. Il n'y a aucun moyen de les récupérer
     def nouvelleQuicksave()
 
-        if ( @dernierChargement > @listeQs.size() ) then
+        if ( @dernierChargement < @listeQs.size() ) then
 
-            @listeQs.drop( @listeQs.size() - @dernierChargement - 1)
+            @listeQs.slice!( @dernierChargement + 1, @listeQs.size()-@dernierChargement-1)
         end
 
         @listeQs << Quicksave.nouveau( @plateau, @ha)
+        @dernierChargement = @listeQs.size()
         @chargementSafe = false
     end
 
@@ -79,6 +80,10 @@ class GestionnaireQuicksave
         end
 
         return self
+    end
+
+    def nbQS
+        return @listeQs.size()
     end
 end
 

@@ -44,12 +44,12 @@ class Quicksave
         0.upto( tailleY - 1 ) { |j|
             0.upto( tailleX - 1 ) { |i|
 
-                if ( i == 0 ) then
+                if ( j == 0 ) then
                     @savePlateau[iArray] = plateau[i][j].getLigne(:HAUT).etat()
                     iArray += 1
                 end
 
-                if ( j == 0 ) then
+                if ( i == 0 ) then
                     @savePlateau[iArray] = plateau[i][j].getLigne(:GAUCHE).etat()
                     iArray += 1
                 end
@@ -98,12 +98,12 @@ class Quicksave
         0.upto( tailleY - 1 ) { |j|
             0.upto( tailleX - 1 ) { |i|
 
-                if ( i == 0 ) then
+                if ( j == 0 ) then
                     plateau[i][j].getLigne(:HAUT).setEtat( @savePlateau[iArray])
                     iArray += 1
                 end
 
-                if ( j == 0 ) then
+                if ( i == 0 ) then
                     plateau[i][j].getLigne(:GAUCHE).setEtat(  @savePlateau[iArray])
                     iArray += 1
                 end

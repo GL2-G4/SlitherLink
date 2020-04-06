@@ -22,6 +22,8 @@ require path + "/Constante.rb"
     direction 'dirLigne' avec son nouvel état 'etatMofif'.
     [getLigneEtat(etat)] Renvoie la liste des lignes qui ont l'état demandé.
     [nbLigneEtat(etat)] Renvoie le nombre de ligne ayant un état donné.
+    [setAllLignes(etat)] Met toutes les lignes à un état donné.
+    [execAllLignes] Exécute un block sur l'ensemble des lignes.
 =end
 
 module Direction
@@ -194,6 +196,22 @@ class Case
             end
         end
         return nb
+    end
+
+    # Met toutes les lignes à un état donné.
+    def setAllLignes(etat)
+        if (TypeLigne.estValide?(etat))
+            execAllLignes{ |l|
+                l.setEtat(etat)
+            }
+        end
+    end
+
+    # Exécute un block sur l'ensemble des lignes.
+    def execAllLignes()
+        for l in @lignes
+            yield(l)
+        end
     end
 end
 

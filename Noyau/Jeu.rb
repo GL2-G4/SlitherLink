@@ -43,6 +43,8 @@ require "yaml"
     [getTailleColonne] Renvoie le nombre de lignes.
     [undo] Revient à l'action précédente s'il y en a une.
     [redo] Revient à l'action suivante s'il y en a une.
+    [execAllCases] Exécute un block sur l'ensemble des cases.
+    [effacerGrille] Réinitialise la grille.
 =end
 
 module TypeCreation
@@ -467,5 +469,21 @@ class Jeu
 
     def getLignes(technique)
         GT.getLignes(technique)
+    end
+
+    # Réinitialise la grille
+    def effacerGrille
+        execAllCases{ |caseJeu|
+            caseJeu.setAllLignes(:VIDE)
+        }
+    end
+
+    # Exécute un block sur l'ensemble des cases.
+    def execAllCases()
+        for colonne in @plateau
+            for caseJeu in colonne
+                yield(caseJeu)
+            end
+        end
     end
 end

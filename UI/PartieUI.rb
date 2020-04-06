@@ -7,74 +7,98 @@ class PartieUI
 	NOIR = Gdk::RGBA.new(0,0,0,1)
 	BLANC = Gdk::RGBA.new(1,1,1,1)
 	ROUGE = Gdk::RGBA.new(1,0,0,0.5)
+	VERT = Gdk::RGBA.new(0,1,0,0.5)
 	GRIS_BASE = Gdk::RGBA.new(0.94,0.94,0.94,1)
 
+	path = File.expand_path(File.dirname(__FILE__))
+
+	ICON_HOME = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-accueil-50.png')
+	ICON_UNDO = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-annuler-50-2.png')
+	ICON_REDO = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-refaire-50.png')
+	ICON_CHECK = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-coche-50.png')
+	ICON_AIDE = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-idée-50.png')
+	ICON_ADD = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-plus-50.png')
+	ICON_PLAY = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-jouer-50.png')
+	ICON_DEL = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-effacer-50-2.png')
+
 	private_class_method :new
-	def PartieUI.creer(jeu)
-		new(jeu)
+	def PartieUI.creer(jeu,w:600, h:500, fs:false)
+		new(jeu,w,h,fs)
 	end
 
-	def initialize(jeu)
+	def initialize(jeu,w,h,fs)
 		@jeu = jeu
+		@h = @jeu.getTailleLigne()
+		@l = @jeu.getTailleColonne()
 		@window = Gtk::Window.new
+		if(fs)
+			@window.fullscreen().set_resizable(false)
+			#@window.maximize().set_resizable(false)
+			@width, @height = @window.screen.width, @window.screen.height
+		else
+			@width, @height = w,h
+			@window.set_default_size(@width,@height).set_resizable(false)
+		end
 		@grille = Gtk::Grid.new
-		fenetre = Gtk::Box.new(:horizontal, 100)
-		menu = Gtk::Box.new(:vertical, 20)
-		menuh = Gtk::Box.new(:horizontal, 5)
-		menub = Gtk::Box.new(:horizontal, 5)
-		home = Gtk::Button.new
-		ar = Gtk::Button.new
-		av = Gtk::Button.new
-		check = Gtk::Button.new
-		hint = Gtk::Button.new
+		grilleW, grilleH = @width*0.5,@height*0.6
+		lignesDim = grilleWH(grilleW,grilleH)
+
+		fenetre = Gtk::Box.new(:horizontal)
+		menu = Gtk::Box.new(:vertical).set_size_request(@width*0.5,@height)
+		menuh = Gtk::Box.new(:horizontal).set_homogeneous(true)
+		menub = Gtk::Box.new(:horizontal).set_homogeneous(true)
+		home = Gtk::Button.new.set_image(ICON_HOME).set_border_width(10)
+		ar = Gtk::Button.new.set_image(ICON_UNDO).set_border_width(10)
+		av = Gtk::Button.new.set_image(ICON_REDO).set_border_width(10)
+		check = Gtk::Button.new.set_image(ICON_CHECK).set_border_width(10)
+		hint = Gtk::Button.new.set_image(ICON_AIDE).set_border_width(10)
+		effacer = Gtk::Button.new.set_image(ICON_DEL).set_border_width(10)
 		#info = Gtk::Box.new(:vertical, nil)
-		info = Gtk::Label.new("infos")
-		save = Gtk::Box.new(:vertical, nil)
-		saveh = Gtk::Box.new(:horizontal,20)
+		info = Gtk::Label.new("")#.set_height_request(@height*0.3)#.override_background_color(:normal,VERT)
+		save = Gtk::Box.new(:vertical)
+		saveBtn = Gtk::Grid.new.set_row_homogeneous(true)
+		saveh = Gtk::Box.new(:horizontal).set_homogeneous(true)
 		@saveb = Gtk::Box.new(:vertical)
-		#@saveb = Gtk::Label.new("Quicksave")
-		savet = Gtk::Label.new("QuickSave")
-		savep = Gtk::Button.new
-		qsChargerSafe = Gtk::Button.new
-		boutons = Gtk::Box.new(:vertical,5)
+		savet = Gtk::Label.new.set_markup("<span font_desc=\"#{lignesDim[1]*0.9}\"><b> QuickSave </b></span>")
+		savep = Gtk::Button.new.set_image(ICON_ADD).set_border_width(10)
+		qsChargerSafe = Gtk::Button.new.set_image(ICON_PLAY).set_border_width(10)
+		boutons = Gtk::Box.new(:vertical)
 		@timer = Gtk::Label.new("--:--")
-		gritim = Gtk::Box.new(:vertical,20)
+		gritim = Gtk::Box.new(:vertical)
 
 		scrolled = Gtk::ScrolledWindow.new
 		scrolled.set_policy(:never, :automatic)
+		scrolledInfo = Gtk::ScrolledWindow.new
+		scrolledInfo.set_policy(:never, :automatic)
 
-		home.set_label("menu")
-		ar.set_label("ar")
-		av.set_label("av")
-		check.set_label("check")
-		hint.set_label("hint")
-		savep.set_label("+")
-		qsChargerSafe.set_label(">")
-		savet.set_markup("<span font_desc=\"13.0\"><b>QuickSave</b></span>");
-
-		@saveb.set_size_request(200,200)
-		info.set_size_request(200,200)
+		@grille.set_border_width(20)
+		@grille.set_size_request(grilleW,grilleH)
+		menu.set_border_width(20)
+		scrolledInfo.set_height_request(@height*0.3)
+		scrolled.set_height_request(@height*0.4)
 		
-		
-		@grille.set_border_width(10)
-		@h = @jeu.getTailleLigne()
-		@l = @jeu.getTailleColonne()
-		
-		saveh.add(savet)
+		# Ajout Zone QuickSave
 		saveh.add(savep)
 		saveh.add(qsChargerSafe)
-		save.add(saveh)
+		saveBtn.attach(savet,0,0,2,1)
+		saveBtn.attach(saveh,2,0,1,1)
+		save.add(saveBtn)
 		scrolled.add(@saveb)
-		save.add(scrolled)
+		save.add(scrolled)#.override_background_color(:normal,ROUGE)
+		# Ajout Btn UNDO, REDO, MENU
 		menuh.add(ar)
 		menuh.add(av)
 		menuh.add(home)
+		# Ajout Btn CHECK, AIDE, EFFACER
 		menub.add(check)
 		menub.add(hint)
+		menub.add(effacer)
+		# Ajout Listes Btn
 		boutons.add(menuh)
-		boutons.add(menub)
+		boutons.add(menub)#.override_background_color(:normal,ROUGE)
+		scrolledInfo.add(info)
 		menu.add(boutons)
-		menu.add(info)
+		menu.add(scrolledInfo)
 		menu.add(save)
 		gritim.add(@grille)
 		gritim.add(@timer)
@@ -105,27 +129,43 @@ class PartieUI
 			@jeu.gagne?()
 			@erreurs = @jeu.getErreursJoueur()
 			@jeu.afficherErreur(tabErr: @erreurs)
-			#info.set_label("Vous avez #{@erreurs.size()} erreur(s)")
-			info.set_markup("<span font_desc=\"15.0\"><b>Vous avez #{@erreurs.size()} erreur(s)</b></span>");
+			s = ""
+			for e in @erreurs
+				case e[0]
+				when :NB_LIGNES_INCORRECT
+					s += e[3] + "\n"
+				when :LIGNE_PLEINE_NON_VALIDE
+					s += e[4] + "\n"
+				when :LIGNE_PLEINE_NON_PRESENTE
+					s += e[4] + "\n"
+				end
+			end
+			info.set_markup("<span font_desc=\"15.0\"><b>Vous avez #{@erreurs.size()} erreur(s)</b>#{"\n" + s}</span>")
+			# TODO
+			# Faire le bouton qui demande qi on veut oui ou non voir les erreurs
+			# Faire pour cela une classe popup
 		}
 		savep.signal_connect('button_release_event'){
 			#puts "NEW QUICKSAVE"
 			@jeu.quicksaveEnregistrer()
 			majQS()
 		}
-		scrolled.set_height_request(200)
-		#scrolled.override_background_color(:normal,ROUGE)
 		majQS()
 		qsChargerSafe.signal_connect('button_release_event'){
 			#puts "RETOUR A LA GRILLE COURANTE"
 			@jeu.quicksaveChargerSafe()
 			majGrille()
 		}
+		effacer.signal_connect('button_release_event'){
+			#puts "EFFACER"
+			@jeu.effacerGrille()
+			majGrille()
+		}
 
 		@traith.each_index { |index|
 			box = Gtk::EventBox.new()
 			box.override_background_color(:normal,BLANC);
-			box.set_size_request(50,20)
+			box.set_size_request(lignesDim[0],lignesDim[1])
 
 			# Quand on click sur la ligne
 			box.signal_connect('button_release_event'){|widget,event|
@@ -166,7 +206,7 @@ class PartieUI
 		@traitv.each_index { |index|
 			box = Gtk::EventBox.new()
 			box.override_background_color(:normal,Gdk::RGBA.new(1,1,1,1));
-			box.set_size_request(20,50)
+			box.set_size_request(lignesDim[1],lignesDim[0])
 
 			# Quand on click sur la ligne
 			box.signal_connect('button_release_event'){|widget,event|
@@ -227,10 +267,12 @@ class PartieUI
 						c = @jeu.getCase(i/2,j/2);
 						if(c.nbLigneDevantEtrePleine != 4)
 							l = Gtk::Label.new("", {:use_underline => true})
-							l.set_markup("<span font_desc=\"20.0\"><b>#{c.nbLigneDevantEtrePleine}</b></span>");
+							l.set_markup("<span font_desc=\"#{lignesDim[1]*0.9}\"><b>#{c.nbLigneDevantEtrePleine}</b></span>")
 							@grille.attach(l,i,j,1,1)
 						else
-							@grille.attach(Gtk::Label.new("", {:use_underline => true}),i,j,1,1)
+							l = Gtk::Label.new("", {:use_underline => true})
+							l.set_markup("<span font_desc=\"#{lignesDim[1]*0.9}\"> </span>")
+							@grille.attach(l,i,j,1,1)
 						end
 					end
 				end
@@ -252,6 +294,20 @@ class PartieUI
 =end
 	end
 
+	def grilleWH(w,h)
+		hL = h/(@h*2+1)
+		wL = w/(@l*2+1)
+		coef = 0.8
+		#puts "wL/hL : [#{wL},#{hL}]"
+		if(hL < wL)
+			#puts "hL : [#{w},#{h}] -> [#{hL+hL*coef},#{hL-hL*coef}] -> #{(hL+hL*coef)*@h + (hL-hL*coef)*(@h+1)}"
+			return [hL+hL*coef,hL*coef]
+		else
+			#puts "wL : [#{w},#{h}] -> [#{wL+wL*coef},#{wL-wL*coef}] -> #{(wL+wL*coef)*@l + (wL-wL*coef)*(@l+1)}"
+			return [wL+wL*coef,wL*coef]
+		end
+	end
+
 	def remove_all_child(widget)
 		widget.each { |child|
 			widget.remove(child)
@@ -260,7 +316,7 @@ class PartieUI
 
 	def majQS()
 		remove_all_child(@saveb)
-		puts "\t---- #{@jeu.quickSave.nbQS()}"
+		#puts "\t---- #{@jeu.quickSave.nbQS()}"
 		@tQS = Array.new(@jeu.quickSave.nbQS())
 		@tQS.each_index{ |i|
 			ajouterQS(i)
@@ -273,7 +329,8 @@ class PartieUI
 		#q.set_width_request(30)
 		border = Gtk::Frame.new()
 		#q.set_border_width(10)
-		textBox = Gtk::Label.new("QuickSave n°#{i+1}")
+		textBox = Gtk::Label.new()
+		textBox.set_markup("<span font_desc=\"12.0\"><b>QuickSave n°#{i+1}</b></span>");
 		bouton = Gtk::Button.new()
 		bouton.set_label("Charger")
 		bouton.signal_connect 'button_release_event' do |_widget|

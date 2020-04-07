@@ -2,6 +2,8 @@ require "gtk3"
 require "optparse"
 require "fileutils"
 require_relative "../Noyau/Jeu.rb"
+require_relative "./Popup.rb"
+require_relative "./ImageManager.rb"
 
 class PartieUI
 	NOIR = Gdk::RGBA.new(0,0,0,1)
@@ -9,17 +11,6 @@ class PartieUI
 	ROUGE = Gdk::RGBA.new(1,0,0,0.5)
 	VERT = Gdk::RGBA.new(0,1,0,0.5)
 	GRIS_BASE = Gdk::RGBA.new(0.94,0.94,0.94,1)
-
-	path = File.expand_path(File.dirname(__FILE__))
-
-	ICON_HOME = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-accueil-50.png')
-	ICON_UNDO = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-annuler-50-2.png')
-	ICON_REDO = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-refaire-50.png')
-	ICON_CHECK = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-coche-50.png')
-	ICON_AIDE = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-idée-50.png')
-	ICON_ADD = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-plus-50.png')
-	ICON_PLAY = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-jouer-50.png')
-	ICON_DEL = Gtk::Image.new(:file => path + '/../Assets/Icons/IconesNoir/icons8-effacer-50-2.png')
 
 	private_class_method :new
 	def PartieUI.creer(jeu,w:600, h:500, fs:false)
@@ -38,6 +29,7 @@ class PartieUI
 		else
 			@width, @height = w,h
 			@window.set_default_size(@width,@height).set_resizable(false)
+			@window.set_position('center_always')
 		end
 		@grille = Gtk::Grid.new
 		grilleW, grilleH = @width*0.5,@height*0.6
@@ -47,29 +39,32 @@ class PartieUI
 		menu = Gtk::Box.new(:vertical).set_size_request(@width*0.5,@height)
 		menuh = Gtk::Box.new(:horizontal).set_homogeneous(true)
 		menub = Gtk::Box.new(:horizontal).set_homogeneous(true)
-		home = Gtk::Button.new.set_image(ICON_HOME).set_border_width(10)
-		ar = Gtk::Button.new.set_image(ICON_UNDO).set_border_width(10)
-		av = Gtk::Button.new.set_image(ICON_REDO).set_border_width(10)
-		check = Gtk::Button.new.set_image(ICON_CHECK).set_border_width(10)
-		hint = Gtk::Button.new.set_image(ICON_AIDE).set_border_width(10)
-		effacer = Gtk::Button.new.set_image(ICON_DEL).set_border_width(10)
-		#info = Gtk::Box.new(:vertical, nil)
-		info = Gtk::Label.new("")#.set_height_request(@height*0.3)#.override_background_color(:normal,VERT)
+		home = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_HOME,50,50)).set_border_width(10)
+		ar = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_UNDO,50,50)).set_border_width(10)
+		av = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_REDO,50,50)).set_border_width(10)
+		check = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_CHECK,50,50)).set_border_width(10)
+		hint = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_AIDE,50,50)).set_border_width(10)
+		effacer = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_DEL,50,50)).set_border_width(10)
+		@info = Gtk::Box.new(:vertical)
+		#@info = Gtk::Label.new("")#.set_height_request(@height*0.3)#.override_background_color(:normal,VERT)
 		save = Gtk::Box.new(:vertical)
 		saveBtn = Gtk::Grid.new.set_row_homogeneous(true)
 		saveh = Gtk::Box.new(:horizontal).set_homogeneous(true)
 		@saveb = Gtk::Box.new(:vertical)
 		savet = Gtk::Label.new.set_markup("<span font_desc=\"#{lignesDim[1]*0.9}\"><b> QuickSave </b></span>")
-		savep = Gtk::Button.new.set_image(ICON_ADD).set_border_width(10)
-		qsChargerSafe = Gtk::Button.new.set_image(ICON_PLAY).set_border_width(10)
+		savep = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_ADD,25,25)).set_border_width(10)
+		qsChargerSafe = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_PLAY,25,25)).set_border_width(10)
 		boutons = Gtk::Box.new(:vertical)
-		@timer = Gtk::Label.new("--:--")
+		@timer = Gtk::Label.new("")
 		gritim = Gtk::Box.new(:vertical)
+
+		popupErreur = Popup.new()
+		popupNoErreur = Popup.new()
 
 		scrolled = Gtk::ScrolledWindow.new
 		scrolled.set_policy(:never, :automatic)
 		scrolledInfo = Gtk::ScrolledWindow.new
-		scrolledInfo.set_policy(:never, :automatic)
+		scrolledInfo.set_policy(:automatic, :automatic)
 
 		@grille.set_border_width(20)
 		@grille.set_size_request(grilleW,grilleH)
@@ -96,7 +91,7 @@ class PartieUI
 		# Ajout Listes Btn
 		boutons.add(menuh)
 		boutons.add(menub)#.override_background_color(:normal,ROUGE)
-		scrolledInfo.add(info)
+		scrolledInfo.add(@info)
 		menu.add(boutons)
 		menu.add(scrolledInfo)
 		menu.add(save)
@@ -124,26 +119,29 @@ class PartieUI
 			@jeu.afficherPlateau
 			majGrille()
 		}
+		popupErreur.addBouton(titre:"Voir erreur(s)"){
+			#puts "Voir Erreur"
+			popupErreur.stop()
+			affichageErreurs()
+		}
+		popupErreur.addBouton(titre:"Fermer"){
+			popupErreur.stop()
+		}
+		popupNoErreur.addBouton(titre:"Fermer"){
+			popupNoErreur.stop()
+		}
 		check.signal_connect('button_release_event'){
 			#puts "CHECK"
+			remove_all_child(@info)
 			@jeu.gagne?()
 			@erreurs = @jeu.getErreursJoueur()
-			@jeu.afficherErreur(tabErr: @erreurs)
-			s = ""
-			for e in @erreurs
-				case e[0]
-				when :NB_LIGNES_INCORRECT
-					s += e[3] + "\n"
-				when :LIGNE_PLEINE_NON_VALIDE
-					s += e[4] + "\n"
-				when :LIGNE_PLEINE_NON_PRESENTE
-					s += e[4] + "\n"
-				end
+			if(@erreurs.size() == 0)
+				popupNoErreur.set_titre(titre:"Vous avez #{@erreurs.size()} erreur")
+				popupNoErreur.run()
+			else
+				popupErreur.set_titre(titre:"Vous avez #{@erreurs.size()} erreur(s)")
+				popupErreur.run()
 			end
-			info.set_markup("<span font_desc=\"15.0\"><b>Vous avez #{@erreurs.size()} erreur(s)</b>#{"\n" + s}</span>")
-			# TODO
-			# Faire le bouton qui demande qi on veut oui ou non voir les erreurs
-			# Faire pour cela une classe popup
 		}
 		savep.signal_connect('button_release_event'){
 			#puts "NEW QUICKSAVE"
@@ -292,6 +290,76 @@ class PartieUI
 		}
 		t.join
 =end
+	end
+
+	def addMessage(msg)
+		boxM = Gtk::Box.new(:horizontal)
+		boxM.set_margin_top(5)
+		boxM.set_margin_bottom(5)
+		labelM = Gtk::Label.new().set_xalign(0).set_yalign(0.5)
+		labelM.set_markup("<span font_desc=\"10.0\"><b>#{msg}</b></span>")
+		boxM.add(labelM)
+		@info.add(boxM)
+	end
+
+	def addMessageErreur(e)
+		boxE = Gtk::Box.new(:horizontal)
+		boxE.set_margin_top(5)
+		boxE.set_margin_bottom(5)
+		boxI = Gtk::Box.new(:vertical)
+		boxI.set_homogeneous(false)
+		boxI.set_margin_right(20)
+		labelC = Gtk::Label.new().set_xalign(0)
+		labelD = Gtk::Label.new().set_xalign(0)
+		btn = Gtk::Button.new(:label => "Voir")
+		btn.signal_connect('button_release_event') {
+			x,y = e[1]*2+1,e[2]*2+1
+			#puts "[#{x},#{y}]"
+			c = @grille.get_child_at(x,y)
+			Thread.new(){
+				t = 0.5
+				for i in 0..2
+					c.override_background_color(:normal,VERT)
+					sleep(t)
+					c.override_background_color(:normal,GRIS_BASE)
+					sleep(t)
+				end
+			}
+		}
+		iconDel = ImageManager.getImageFromStock(:ICON_DEL,20,20)
+		boxBtnE = Gtk::Box.new(:horizontal)
+		boxBtnE.set_margin_left(10)
+		boxBtnE.set_margin_right(25)
+		btnE = Gtk::Button.new.set_image(iconDel)
+		btnE.signal_connect('button_release_event') {
+			@info.remove(boxE)
+		}
+
+		case e[0]
+		when :NB_LIGNES_INCORRECT
+			labelC.set_markup("<span font_desc=\"10.0\"><b>Case [#{e[1]},#{e[2]}]</b></span>")
+			labelD.set_markup("<span font_desc=\"10.0\">#{e[3]}</span>")
+		when :LIGNE_PLEINE_NON_VALIDE || :LIGNE_PLEINE_NON_PRESENTE
+			labelC.set_markup("<span font_desc=\"10.0\"><b>Case [#{e[1]},#{e[2]}] Ligne #{e[3]}</b></span>")
+			labelD.set_markup("<span font_desc=\"10.0\">#{e[4]}</span>")
+		end
+		boxI.add(labelC)
+		boxI.add(labelD)
+		boxBtnE.add(btnE)
+		boxE.add(boxI)
+		boxE.add(btn)
+		boxE.add(boxBtnE)
+		@info.add(boxE)
+	end
+
+	def affichageErreurs
+		puts "Affichage Erreurs"
+		remove_all_child(@info)
+		@jeu.afficherErreur(tabErr: @erreurs)
+		for e in @erreurs
+			addMessageErreur(e)
+		end
+		@info.show_all
 	end
 
 	def grilleWH(w,h)

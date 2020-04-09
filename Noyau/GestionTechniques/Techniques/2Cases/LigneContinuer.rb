@@ -216,11 +216,11 @@ class LigneContinuer < Technique
                     lv = 0
                     nbtests = 1
 
-                    if ( j < tailleY - 1 ) then
+                    if ( j > 0 ) then
 
                         nbtests += 1
 
-                        case plateau[i][j + 1].getLigne(:GAUCHE).etat()
+                        case plateau[i][j - 1].getLigne(:DROITE).etat()
 
                             when :PLEINE
                                 lp += 1

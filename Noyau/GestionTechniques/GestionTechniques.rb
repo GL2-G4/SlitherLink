@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:40:31 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Thursday, 26th March 2020 4:08:43 pm
+# Last Modified: Thursday, 9th April 2020 2:54:44 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 path = File.expand_path(File.dirname(__FILE__))
@@ -30,6 +30,8 @@ require path + "/Technique"
 # technique est applicable
 # [getZone] Voir Technique#zone
 # [getLignes] Voir Technique#lignesAModif
+# [chercherAll(plateau)] Renvoie la première technique qui trouve un
+# résultat, sinon renvoie nil.
 #
 # * ===Variables de classe
 # [listeTechniques] Table de Hashage contenant pour chaque clé
@@ -99,6 +101,16 @@ class GestionTechniques
             return @@listeTechniques[technique].lignesAModif()
         end
         raise TechniqueError, "Technique Incorrecte"
+    end
+
+    # Renvoie la première technique qui trouve un résultat, sinon renvoie nil.
+    def self.chercherAll(plateau)
+        @@listeTechniques.each{ |key,value|
+            if(value.chercher(plateau))
+                return key
+            end
+        }
+        return nil
     end
 
     private

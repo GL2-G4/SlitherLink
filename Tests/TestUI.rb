@@ -4,7 +4,7 @@
 # File Created: Thursday, 2nd April 2020 3:29:53 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 7th April 2020 7:07:44 pm
+# Last Modified: Thursday, 9th April 2020 3:52:12 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 require "gtk3"
@@ -14,7 +14,7 @@ require_relative "../UI/PartieUI.rb"
 require_relative "../Noyau/LoadSaveGrilles/ChargeurGrille.rb"
 
 chargeurGrille = ChargeurGrille.charger(File.dirname(__FILE__) + "/../Grilles/grille")
-grille = chargeurGrille.getGrilleIndex(2)
+grille = chargeurGrille.getGrilleIndex(3)
 
 jeu = Jeu.charger_rep(grille)
 jUI = PartieUI.creer(jeu)

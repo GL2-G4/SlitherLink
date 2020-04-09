@@ -4,6 +4,7 @@ require "fileutils"
 require_relative "../Noyau/Jeu.rb"
 require_relative "./Popup.rb"
 require_relative "./ImageManager.rb"
+require_relative "./ScreenPause.rb"
 
 class PartieUI
 	NOIR = Gdk::RGBA.new(0,0,0,1)
@@ -71,6 +72,9 @@ class PartieUI
 		menu.set_border_width(20)
 		scrolledInfo.set_height_request(@height*0.3)
 		scrolled.set_height_request(@height*0.4)
+		@info.set_margin_bottom(15)
+		@info.set_margin_right(20)
+		@info.set_margin_top(5)
 		
 		# Ajout Zone QuickSave
 		saveh.add(savep)
@@ -158,6 +162,22 @@ class PartieUI
 			#puts "EFFACER"
 			@jeu.effacerGrille()
 			majGrille()
+			majQS()
+		}
+		hint.signal_connect('button_release_event'){
+			t = @jeu.chercherAll()
+			if(t != nil)
+				d = @jeu.getDescription(t)
+				z = @jeu.getZone(t)
+				l = @jeu.getLignes(t)
+				puts "Technique : " + d.to_s()
+				puts "Zone : " + z.to_s()
+				puts "Lignes : " + l.to_s()
+				for ll in l
+					ll[0].setEtat(ll[1])
+				end
+				majGrille()
+			end
 		}
 
 		@traith.each_index { |index|
@@ -312,29 +332,16 @@ class PartieUI
 		labelC = Gtk::Label.new().set_xalign(0)
 		labelD = Gtk::Label.new().set_xalign(0)
 		btn = Gtk::Button.new(:label => "Voir")
-		btn.signal_connect('button_release_event') {
-			x,y = e[1]*2+1,e[2]*2+1
-			#puts "[#{x},#{y}]"
-			c = @grille.get_child_at(x,y)
-			Thread.new(){
-				t = 0.5
-				for i in 0..2
-					c.override_background_color(:normal,VERT)
-					sleep(t)
-					c.override_background_color(:normal,GRIS_BASE)
-					sleep(t)
-				end
-			}
-		}
 		iconDel = ImageManager.getImageFromStock(:ICON_DEL,20,20)
 		boxBtnE = Gtk::Box.new(:horizontal)
 		boxBtnE.set_margin_left(10)
-		boxBtnE.set_margin_right(25)
+		#boxBtnE.set_margin_right(20)
 		btnE = Gtk::Button.new.set_image(iconDel)
 		btnE.signal_connect('button_release_event') {
 			@info.remove(boxE)
 		}
 
+		x,y = e[1]*2+1,e[2]*2+1
 		case e[0]
 		when :NB_LIGNES_INCORRECT
 			labelC.set_markup("<span font_desc=\"10.0\"><b>Case [#{e[1]},#{e[2]}]</b></span>")
@@ -342,7 +349,22 @@ class PartieUI
 		when :LIGNE_PLEINE_NON_VALIDE || :LIGNE_PLEINE_NON_PRESENTE
 			labelC.set_markup("<span font_desc=\"10.0\"><b>Case [#{e[1]},#{e[2]}] Ligne #{e[3]}</b></span>")
 			labelD.set_markup("<span font_desc=\"10.0\">#{e[4]}</span>")
+			case e[3]
+			when :DROITE
+				x += 1
+			when :GAUCHE
+				x -= 1
+			when :HAUT
+				y -= 1
+			when :BAS
+				y += 1
+			end
 		end
+		#puts "[#{x},#{y}]"
+		c = @grille.get_child_at(x,y)
+		btn.signal_connect('button_release_event') {
+			clignoterElement(c)
+		}
 		boxI.add(labelC)
 		boxI.add(labelD)
 		boxBtnE.add(btnE)
@@ -350,6 +372,19 @@ class PartieUI
 		boxE.add(btn)
 		boxE.add(boxBtnE)
 		@info.add(boxE)
+	end
+
+	def clignoterElement(element)
+		color = element.style_context.get_background_color(:normal)
+		Thread.new(){
+			t = 0.5
+			for i in 0..2
+				element.override_background_color(:normal,VERT)
+				sleep(t)
+				element.override_background_color(:normal,color)
+				sleep(t)
+			end
+		}
 	end
 
 	def affichageErreurs

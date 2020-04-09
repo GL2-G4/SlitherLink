@@ -459,8 +459,16 @@ class Jeu
     #
     # Aides et Techniques
     #
+    def chercherAll()
+        GT.chercherAll(@plateau)
+    end
+
     def chercher(technique)
         GT.chercher(technique,@plateau)
+    end
+
+    def getDescription(technique)
+        GT.description(technique)
     end
     
     def getZone(technique)
@@ -473,6 +481,7 @@ class Jeu
 
     # Réinitialise la grille
     def effacerGrille
+        quicksaveEnregistrer()
         execAllCases{ |caseJeu|
             caseJeu.setAllLignes(:VIDE)
         }

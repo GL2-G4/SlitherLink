@@ -387,7 +387,7 @@ class LigneContinuer < Technique
 
                         when :PLEINE
                             lp += 1
-                        when :BLOQUEZ
+                        when :BLOQUE
                             lb += 1
                         when :VIDE
                             lv += 1

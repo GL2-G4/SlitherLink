@@ -651,7 +651,7 @@ class PartieUI
 	def affichageChrono
 		while @jeu.gagne? == true
 			sleep(1)
-			@timer.set_label(@chrono.getTime.to_s)
+			@timer.set_label(@chrono.getTime.strftime("%M:%S"))
 		end
 	end
 

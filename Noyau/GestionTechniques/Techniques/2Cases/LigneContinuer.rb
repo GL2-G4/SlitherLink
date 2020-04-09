@@ -117,7 +117,7 @@ class LigneContinuer < Technique
                             end
                         end
 
-                        if ( i != tailleX ) then
+                        if ( i != tailleX - 1 ) then
 
                             # ici on regarde a droite de la ligne
                             if ( plateau[i + 1][j].getLigne(:BAS).etat() == :BLOQUE && plateau[i][j].getLigne(:DROITE).etat() == :BLOQUE ) then
@@ -216,11 +216,11 @@ class LigneContinuer < Technique
                     lv = 0
                     nbtests = 1
 
-                    if ( j < tailleY - 1 ) then
+                    if ( j > 0 ) then
 
                         nbtests += 1
 
-                        case plateau[i][j + 1].getLigne(:GAUCHE).etat()
+                        case plateau[i][j - 1].getLigne(:DROITE).etat()
 
                             when :PLEINE
                                 lp += 1
@@ -387,7 +387,7 @@ class LigneContinuer < Technique
 
                         when :PLEINE
                             lp += 1
-                        when :BLOQUEZ
+                        when :BLOQUE
                             lb += 1
                         when :VIDE
                             lv += 1

@@ -65,7 +65,7 @@ module TypeErreur
 end
 
 class Jeu
-    attr_reader :quickSave
+    attr_reader :quickSave, :historiqueActions
     private_class_method :new
 
     # Crée un nouveau jeu vide avec une grille de n colonnes
@@ -482,6 +482,7 @@ class Jeu
     # Réinitialise la grille
     def effacerGrille
         quicksaveEnregistrer()
+        @historiqueActions.vider()
         execAllCases{ |caseJeu|
             caseJeu.setAllLignes(:VIDE)
         }

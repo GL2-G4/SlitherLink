@@ -59,7 +59,7 @@ class PartieUI
 		savep = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_ADD,25,25)).set_border_width(10)
 		qsChargerSafe = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_PLAY,25,25)).set_border_width(10)
 		boutons = Gtk::Box.new(:vertical)
-		@timer = Gtk::Label.new("coucou")
+		@timer = Gtk::Label.new("")
 		gritim = Gtk::Box.new(:vertical)
 
 		popupErreur = Popup.new()
@@ -175,8 +175,9 @@ class PartieUI
 				l = @jeu.getLignes(t)
 				puts "Technique : " + d.to_s()
 				puts "Zone : " + z.to_s()
-				puts "Lignes : " + l.to_s()
+				#puts "Lignes : " + l.to_s()
 				for ll in l
+					@jeu.historiqueActions.ajouterAction(Action.new(ll[0],ll[0].etat,ll[1]))
 					ll[0].setEtat(ll[1])
 				end
 				majGrille()
@@ -301,7 +302,7 @@ class PartieUI
 		end
 		majGrille()
 		@chrono.start
-		t = Thread.new{affichageChrono}
+		affichageChrono()
 	end
 
 	def addMessage(msg)
@@ -649,10 +650,12 @@ class PartieUI
 	end
 
 	def affichageChrono
-		while @jeu.gagne? == true
-			sleep(1)
-			@timer.set_label(@chrono.getTime.strftime("%M:%S"))
-		end
+		Thread.new{
+			while @jeu.gagne? == false
+				sleep(1)
+				@timer.set_label(@chrono.getTime.strftime("%M:%S"))
+			end
+		}
 	end
 
 	def pauseChrono

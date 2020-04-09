@@ -68,6 +68,11 @@ class Historique
         return self
     end
 
+    def vider()
+        @historiqueActions = []
+        @position = -1
+    end
+
     def reset( ha)
 
         #@historiqueActions = ha

@@ -1,10 +1,12 @@
 require "gtk3"
 require "optparse"
 require "fileutils"
+require "thread"
 require_relative "../Noyau/Jeu.rb"
 require_relative "./Popup.rb"
 require_relative "./ImageManager.rb"
-require_relative "./ScreenPause.rb"
+require_relative "./Chrono.rb"
+
 
 class PartieUI
 	NOIR = Gdk::RGBA.new(0,0,0,1)
@@ -23,6 +25,7 @@ class PartieUI
 		@h = @jeu.getTailleLigne()
 		@l = @jeu.getTailleColonne()
 		@window = Gtk::Window.new
+		@chrono = Chrono.new
 		if(fs)
 			@window.fullscreen().set_resizable(false)
 			#@window.maximize().set_resizable(false)
@@ -56,7 +59,7 @@ class PartieUI
 		savep = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_ADD,25,25)).set_border_width(10)
 		qsChargerSafe = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_PLAY,25,25)).set_border_width(10)
 		boutons = Gtk::Box.new(:vertical)
-		@timer = Gtk::Label.new("")
+		@timer = Gtk::Label.new("coucou")
 		gritim = Gtk::Box.new(:vertical)
 
 		popupErreur = Popup.new()
@@ -297,19 +300,8 @@ class PartieUI
 			end
 		end
 		majGrille()
-=begin
-		sec = 0
-		min = 0
-		t = Thread.new {
-			if(sec >= 60)
-				sec = 0
-				min += 1
-			end
-			@timer.set_label(min.to_s+":"+sec.to_s)
-			sleep(1000)
-		}
-		t.join
-=end
+		@chrono.start
+		t = Thread.new{affichageChrono}
 	end
 
 	def addMessage(msg)
@@ -654,5 +646,24 @@ class PartieUI
 		@traitv.each_index { |index|
 			traiterCouleurLigneVerticale(index)
 		}
+	end
+
+	def affichageChrono
+		while @jeu.gagne? == true
+			sleep(1)
+			@timer.set_label(@chrono.getTime.to_s)
+		end
+	end
+
+	def pauseChrono
+		@chrono.stop
+	end
+
+	def playChrono
+		@chrono.play
+	end
+
+	def razChrono
+		@chrono.reset
 	end
 end

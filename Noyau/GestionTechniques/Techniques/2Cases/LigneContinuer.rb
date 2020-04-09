@@ -117,7 +117,7 @@ class LigneContinuer < Technique
                             end
                         end
 
-                        if ( i != tailleX ) then
+                        if ( i != tailleX - 1 ) then
 
                             # ici on regarde a droite de la ligne
                             if ( plateau[i + 1][j].getLigne(:BAS).etat() == :BLOQUE && plateau[i][j].getLigne(:DROITE).etat() == :BLOQUE ) then

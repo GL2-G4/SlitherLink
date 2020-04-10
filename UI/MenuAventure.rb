@@ -1,4 +1,6 @@
 require "gtk3"
+require_relative './PartieUI.rb'
+require_relative '../Noyau/LoadSaveGrilles/ChargeurGrille.rb'
 
 class MenuAventure < Gtk::Box
 
@@ -14,7 +16,7 @@ class MenuAventure < Gtk::Box
         @pere = menuPere
         @vBox = Gtk::Box.new(:vertical)
         @vBox2 = Gtk::ButtonBox.new(:vertical)
-        @listeBoutons = Array.new($nbPuzzles);
+        #@listeBoutons = Array.new($nbPuzzles);
 
         @scrolled = Gtk::ScrolledWindow.new
         @scrolled.set_policy(:never, :automatic)
@@ -46,18 +48,23 @@ class MenuAventure < Gtk::Box
         @boxJoueur = Gtk::Box.new(:vertical)
         @borderJoueur = Gtk::Frame.new()
 
-        @listeBoutons.each_index { |index|
+        chargeurGrille = ChargeurGrille.charger(File.dirname(__FILE__) + "/../Grilles/grille")
+        #@listeBoutons.each_index { |index|
+        chargeurGrille.listeGrilles.each_index { |index|
             boxBouton = Gtk::ButtonBox.new(:horizontal)
             boxBouton.set_width_request($longListe)
             border = Gtk::Frame.new()
             boxBouton.set_border_width(10)
-            textBox = Gtk::Label.new("coucou")
-            bouton = Gtk::Button.new()
-            bouton.set_label("Puzzle n°" + index.to_s)
+            textBox = Gtk::Label.new("Puzzle n°" + (index+1).to_s)
+            bouton = Gtk::Button.new(:label => "Jouer")
             bouton.signal_connect "clicked" do |_widget|
-                puts "Jouer au puzzle n°" + index.to_s
+                puts "Jouer au puzzle n°" + (index+1).to_s
+                jeu = Jeu.charger(chargeurGrille.getGrilleIndex(index))
+                taille = @gMenu.window.size
+                uiP = PartieUI.creer(@gMenu,jeu,taille[0],taille[1])
+                @gMenu.changerMenu(uiP)
             end
-            @listeBoutons[index] = bouton
+            #@listeBoutons[index] = bouton
             boxBouton.add(textBox)
             boxBouton.add(bouton)
             border.add(boxBouton)

@@ -5,6 +5,7 @@ require_relative "../Parametres/Parametre.rb"
 require_relative "Popup.rb"
 
 class ParametresUI < Gtk::Box
+    attr_reader :param
 
     def ParametresUI.creer(gMenu, menuPere, param)
         new(gMenu, menuPere, param)

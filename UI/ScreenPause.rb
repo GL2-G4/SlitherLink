@@ -4,7 +4,7 @@
 # File Created: Wednesday, 8th April 2020 3:56:39 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Wednesday, 8th April 2020 4:42:34 pm
+# Last Modified: Friday, 10th April 2020 6:43:52 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 require 'gtk3'
@@ -17,8 +17,10 @@ require_relative './ImageManager.rb'
 class ScreenPause < Gtk::Box
     ROUGE = Gdk::RGBA.new(1,0,0,0.5)
 
-    def initialize()
+    def initialize(gMenu,partie)
         super(:vertical)
+        @gMenu = gMenu
+        @partie = partie
         @fenetre = Gtk::Box.new(:horizontal)
         @fenetre.set_homogeneous(true)
         #set_homogeneous(true)
@@ -30,13 +32,20 @@ class ScreenPause < Gtk::Box
         titre = Gtk::Label.new.set_markup("<span font_desc=\"30.0\"><b>Pause</b></span>")
         titre.set_margin_bottom(30)
         # Btn Continuer
-        creerBtn(:image => :ICON_PLAY){puts 'Continuer'}
+        creerBtn(:image => :ICON_PLAY){
+            #puts 'Continuer'
+            @gMenu.changerMenu(@partie)
+            @partie.playChrono()
+        }
         # Btn Recommencer
         creerBtn(:image => :ICON_RESTART){puts 'Restart'}
         # Btn Règles
         creerBtn(:image => :ICON_DOC){puts 'Règles'}
         # Btn Quitter
-        creerBtn(:image => :ICON_HOME){puts 'Menu'}
+        creerBtn(:image => :ICON_HOME){
+            #puts 'Menu'
+            @gMenu.changerMenu(@gMenu.menu)
+        }
 
         add(titre)
         add(@fenetre)

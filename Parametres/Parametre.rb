@@ -11,7 +11,7 @@ class Parametre
 	#@tailleCourante : la taille choisie par le joueur
 	#@autocompletion : booléen qui vaut vrai si l’autocomplétion est activée
 	
-	attr_reader :listeThemes, :listeTailles
+	attr_reader :listeThemes, :listeTailles, :tailleCourante
 	attr_accessor :autocompletion
 	
 	# Méthode de création des paramètres

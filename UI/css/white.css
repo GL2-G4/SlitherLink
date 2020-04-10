@@ -1,51 +1,54 @@
 /***********BOUTONS***********/
 
 button {
-    color: black;
-    background-image: none;
-    background-color: #EDEDED;
-    border: none;
+  color: black;
+  background-image: none;
+  background-color: #ededed;
+  border: none;
 }
 
 button:hover {
-    background-image: none;
-    background-color: rgb(223, 223, 223);
+  background-image: none;
+  background-color: rgb(223, 223, 223);
 }
 
 button:hover label {
-    color: #00609B;
+  color: #00609b;
 }
 
 button:active {
-    background-image: none;
-    background-color: silver;
+  background-image: none;
+  background-color: silver;
 }
 
 button:active label {
-    color: white;
+  color: white;
 }
 
 /***********LABELS***********/
 
 label {
-    color: #00609B;
-    font-weight: normal;
+  color: #00609b;
+  font-weight: normal;
 }
 
 .titre {
-    color: #009BDB;
-    font-weight: bolder;
-    background-color: white;
+  color: #009bdb;
+  font-weight: bolder;
+  background-color: white;
 }
 
 /***********COMBOS***********/
 
-.combo{
-    color: black;
+.combo {
+  color: black;
 }
-  
+
 window {
-    background-image:none ;
-    background-color: #FEFEFE;
+  background-image: none;
+  background-color: #fefefe;
 }
-  
+
+grid {
+  padding: 3px;
+}

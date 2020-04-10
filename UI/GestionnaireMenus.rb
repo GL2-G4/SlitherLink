@@ -4,6 +4,7 @@ require "optparse"
 require "fileutils"
 require_relative "../Parametres/Parametre.rb"
 require_relative "../Joueur/Joueur.rb"
+require_relative "./ScreenPause.rb"
 
 
 require "gtk3"
@@ -23,6 +24,7 @@ class GestionnaireMenus
     attr :window, true
     attr :app, true
     attr :joueur, true
+    attr :menu, false
 
     def GestionnaireMenus.creer(window, application)
         new(window, application)
@@ -119,6 +121,7 @@ application.signal_connect(:activate) do
     Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, provider, Gtk::StyleProvider::PRIORITY_USER)
    
     window.set_default_size(720, 480)
+    window.set_size_request(720, 480) # Ne pas enlever
     window.resizable=(false)
     window.set_border_width(10)
     window.window_position=Gtk::WindowPosition::CENTER

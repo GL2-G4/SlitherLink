@@ -7,7 +7,7 @@ require_relative "../UI/ScreenPause.rb"
 window = Gtk::Window.new.set_default_size(400,200)
 window.signal_connect("delete-event") { Gtk.main_quit }
 
-sP = ScreenPause.new
+sP = ScreenPause.new(nil,nil)
 window.add(sP)
 
 window.show_all

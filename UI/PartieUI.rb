@@ -8,7 +8,7 @@ require_relative "./ImageManager.rb"
 require_relative "./Chrono.rb"
 
 
-class PartieUI
+class PartieUI < Gtk::Box
 	NOIR = Gdk::RGBA.new(0,0,0,1)
 	BLANC = Gdk::RGBA.new(1,1,1,1)
 	ROUGE = Gdk::RGBA.new(1,0,0,0.5)
@@ -16,16 +16,20 @@ class PartieUI
 	GRIS_BASE = Gdk::RGBA.new(0.94,0.94,0.94,1)
 
 	private_class_method :new
-	def PartieUI.creer(jeu,w:600, h:500, fs:false)
-		new(jeu,w,h,fs)
+	def PartieUI.creer(gMenu,jeu,w=600,h=500)
+		new(gMenu,jeu,w,h)
 	end
 
-	def initialize(jeu,w,h,fs)
+	def initialize(gMenu,jeu,w,h)
+		super(:horizontal)
 		@jeu = jeu
+		@gMenu = gMenu
+		@pause = ScreenPause.new(@gMenu,self)
 		@h = @jeu.getTailleLigne()
 		@l = @jeu.getTailleColonne()
-		@window = Gtk::Window.new
+		#@window = Gtk::Window.new
 		@chrono = Chrono.new
+=begin
 		if(fs)
 			@window.fullscreen().set_resizable(false)
 			#@window.maximize().set_resizable(false)
@@ -35,27 +39,30 @@ class PartieUI
 			@window.set_default_size(@width,@height).set_resizable(false)
 			@window.set_position('center_always')
 		end
+=end
+		@width, @height = w,h
+		#puts "#{w}, #{h}"
 		@grille = Gtk::Grid.new
 		grilleW, grilleH = @width*0.5,@height*0.6
 		lignesDim = grilleWH(grilleW,grilleH)
 
-		fenetre = Gtk::Box.new(:horizontal)
-		menu = Gtk::Box.new(:vertical).set_size_request(@width*0.5,@height)
+		#fenetre = Gtk::Box.new(:horizontal)
+		menu = Gtk::Box.new(:vertical)#.set_width_request(@width*0.4)
 		menuh = Gtk::Box.new(:horizontal).set_homogeneous(true)
 		menub = Gtk::Box.new(:horizontal).set_homogeneous(true)
-		home = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_HOME,50,50)).set_border_width(10)
-		ar = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_UNDO,50,50)).set_border_width(10)
-		av = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_REDO,50,50)).set_border_width(10)
-		check = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_CHECK,50,50)).set_border_width(10)
-		hint = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_AIDE,50,50)).set_border_width(10)
-		effacer = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_DEL,50,50)).set_border_width(10)
+		home = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_HOME,35,35))#.set_border_width(10)
+		ar = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_UNDO,35,35))#.set_border_width(10)
+		av = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_REDO,35,35))#.set_border_width(10)
+		check = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_CHECK,35,35))#.set_border_width(10)
+		hint = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_AIDE,35,35))#.set_border_width(10)
+		effacer = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_DEL,35,35))#.set_border_width(10)
 		@info = Gtk::Box.new(:vertical)
 		#@info = Gtk::Label.new("")#.set_height_request(@height*0.3)#.override_background_color(:normal,VERT)
 		save = Gtk::Box.new(:vertical)
 		saveBtn = Gtk::Grid.new.set_row_homogeneous(true)
 		saveh = Gtk::Box.new(:horizontal).set_homogeneous(true)
 		@saveb = Gtk::Box.new(:vertical)
-		savet = Gtk::Label.new.set_markup("<span font_desc=\"#{lignesDim[1]*0.9}\"><b> QuickSave </b></span>")
+		savet = Gtk::Label.new.set_markup("<span font_desc=\"#{lignesDim[1]*0.9}\"><b>QuickSave </b></span>")
 		savep = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_ADD,25,25)).set_border_width(10)
 		qsChargerSafe = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_PLAY,25,25)).set_border_width(10)
 		boutons = Gtk::Box.new(:vertical)
@@ -70,14 +77,24 @@ class PartieUI
 		scrolledInfo = Gtk::ScrolledWindow.new
 		scrolledInfo.set_policy(:automatic, :automatic)
 
-		@grille.set_border_width(20)
-		@grille.set_size_request(grilleW,grilleH)
-		menu.set_border_width(20)
-		scrolledInfo.set_height_request(@height*0.3)
-		scrolled.set_height_request(@height*0.4)
+		@grille.set_border_width(10)
+		#@grille.set_size_request(grilleW,grilleH)
+		#@grille.set_height_request()
+		@grille.override_background_color(:normal,GRIS_BASE)
+		@grille.set_halign(Gtk::Align::CENTER)
+		menu.set_margin_top(10).set_hexpand(true).set_margin_left(10)
+		scrolledInfo.set_height_request(@height*0.35)
+		#scrolled.set_height_request(@height*0.3)
+		scrolled.set_vexpand(true)
 		@info.set_margin_bottom(15)
 		@info.set_margin_right(20)
 		@info.set_margin_top(5)
+		menuh.set_spacing(10)
+		menub.set_spacing(10)
+		boutons.set_spacing(10)
+		boutons.set_margin_bottom(10)
+		#boutons.set_halign(Gtk::Align::CENTER)
+		boutons.set_valign(Gtk::Align::CENTER)
 		
 		# Ajout Zone QuickSave
 		saveh.add(savep)
@@ -104,10 +121,11 @@ class PartieUI
 		menu.add(save)
 		gritim.add(@grille)
 		gritim.add(@timer)
-		fenetre.add(gritim)
-		fenetre.add(menu)
-		@window.add(fenetre)
-
+		#fenetre.add(gritim)
+		#fenetre.add(menu)
+		add(gritim)
+		add(menu)
+		#@window.add(fenetre)
 
 		@traith = Array.new(@l*(@h+1))
 		@traitv = Array.new(@h*(@l+1))
@@ -182,6 +200,11 @@ class PartieUI
 				end
 				majGrille()
 			end
+		}
+		home.signal_connect('button_release_event'){
+			pauseChrono()
+			#puts @gMenu.window.size.join(", ")
+			@gMenu.changerMenu(@pause)
 		}
 
 		@traith.each_index { |index|
@@ -290,10 +313,12 @@ class PartieUI
 						if(c.nbLigneDevantEtrePleine != 4)
 							l = Gtk::Label.new("", {:use_underline => true})
 							l.set_markup("<span font_desc=\"#{lignesDim[1]*0.9}\"><b>#{c.nbLigneDevantEtrePleine}</b></span>")
+							l.override_background_color(:normal,GRIS_BASE)
 							@grille.attach(l,i,j,1,1)
 						else
 							l = Gtk::Label.new("", {:use_underline => true})
 							l.set_markup("<span font_desc=\"#{lignesDim[1]*0.9}\"> </span>")
+							l.override_background_color(:normal,GRIS_BASE)
 							@grille.attach(l,i,j,1,1)
 						end
 					end
@@ -301,7 +326,7 @@ class PartieUI
 			end
 		end
 		majGrille()
-		@chrono.start
+		playChrono()
 		affichageChrono()
 	end
 
@@ -631,13 +656,13 @@ class PartieUI
 	end
 
 	def run
-		@window.show_all
+		#@window.show_all
 		@jeu.afficherPlateau
 	end
 
 	def signaux
 		# Fermeture fenêtre
-		@window.signal_connect("delete-event") { |_widget| Gtk.main_quit }
+		#@window.signal_connect("delete-event") { |_widget| Gtk.main_quit }
 	end
 
 	def majGrille()
@@ -653,7 +678,8 @@ class PartieUI
 		Thread.new{
 			while @jeu.gagne? == false
 				sleep(1)
-				@timer.set_label(@chrono.getTime.strftime("%M:%S"))
+				#@timer.set_label(@chrono.getTime.strftime("%M:%S"))
+				@timer.set_markup("<span font_desc=\"15.0\"><b> #{@chrono.getTime.strftime("%M:%S")} </b></span>")
 			end
 		}
 	end
@@ -663,7 +689,7 @@ class PartieUI
 	end
 
 	def playChrono
-		@chrono.play
+		@chrono.start
 	end
 
 	def razChrono

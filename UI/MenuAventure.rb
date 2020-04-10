@@ -28,6 +28,21 @@ class MenuAventure
         @titre.style_context.add_class("titre")
         @vBox2.add(@titre)
 
+        p1 = GdkPixbuf::Pixbuf.new(:file => "./image/etoile.png")
+        p2 = GdkPixbuf::Pixbuf.new(:file => "./image/argent.png")
+        @iEtoile = Gtk::Image.new(:pixbuf => p1.scale_simple($icone, $icone, GdkPixbuf::InterpType::BILINEAR))
+        @etoile = Gtk::Label.new(@gMenu.joueur.etoiles.to_s())
+        @boxEtoile = Gtk::Box.new(:horizontal)
+        @boxEtoile.pack_start(@iEtoile, :expand => true)
+        @boxEtoile.pack_end(@etoile, :expand => true)
+        @iArgent = Gtk::Image.new(:pixbuf => p2.scale_simple($icone, $icone, GdkPixbuf::InterpType::BILINEAR))
+        @argent = Gtk::Label.new(@gMenu.joueur.argent.to_s())
+        @boxArgent = Gtk::Box.new(:horizontal)
+        @boxArgent.pack_start(@iArgent, :expand => true)
+        @boxArgent.pack_end(@argent, :expand => true)
+        @boxJoueur = Gtk::Box.new(:vertical)
+        @borderJoueur = Gtk::Frame.new()
+
         @listeBoutons.each_index { |index|
             boxBouton = Gtk::ButtonBox.new(:horizontal)
             boxBouton.set_width_request($longListe)
@@ -49,6 +64,10 @@ class MenuAventure
 
     def afficheToi()
         @vBox.add(@button1) 
+        @boxJoueur.add(@boxEtoile)
+        @boxJoueur.add(@boxArgent)
+        @borderJoueur.add(@boxJoueur)
+        @vBox.pack_end(@borderJoueur)
         @box.add(@vBox)
         @scrolled.add(@vBox2)
         @box.add(@scrolled)

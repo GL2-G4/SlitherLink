@@ -20,6 +20,8 @@ class MenuBoutique < Gtk::Box
 
         @scrolled = Gtk::ScrolledWindow.new
         @scrolled.set_policy(:never, :automatic)
+
+        path = File.expand_path(File.dirname(__FILE__))
        
 
         @button1 = Gtk::Button.new(:label => "- Retour -")
@@ -31,8 +33,8 @@ class MenuBoutique < Gtk::Box
         @titre.style_context.add_class("titre")
         @vBox2.add(@titre)
 
-        p1 = GdkPixbuf::Pixbuf.new(:file => "./image/etoile.png")
-        p2 = GdkPixbuf::Pixbuf.new(:file => "./image/argent.png")
+        p1 = GdkPixbuf::Pixbuf.new(:file => path + "/image/etoile.png")
+        p2 = GdkPixbuf::Pixbuf.new(:file => path + "/image/argent.png")
         @iEtoile = Gtk::Image.new(:pixbuf => p1.scale_simple($icone, $icone, GdkPixbuf::InterpType::BILINEAR))
         @etoile = Gtk::Label.new(@gMenu.joueur.etoiles.to_s())
         @boxEtoile = Gtk::Box.new(:horizontal)

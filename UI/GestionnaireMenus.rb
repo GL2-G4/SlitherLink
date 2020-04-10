@@ -42,8 +42,8 @@ class GestionnaireMenus
         @menu.menuRegles = MenuRegles.creer(self,@menu)
         @menu.menuModeDeJeu = MenuModeDeJeu.creer(self, @menu)
         @menu.boutique = MenuBoutique.creer(self, @menu)
-        path = File.expand_path(File.dirname(__FILE__))
-        @menu.parametres = ParametresUI.creer(self, @menu, Parametre.charger(path + "/../Parametres/themes", path + "/../Parametres/tailles"))
+        @path = File.expand_path(File.dirname(__FILE__))
+        @menu.parametres = ParametresUI.creer(self, @menu, Parametre.charger(@path + "/../Parametres/themes", @path + "/../Parametres/tailles"))
         @menu.tuto = Tutoriel.creer(self, @menu)
         changerMenu(@menu)
     end
@@ -79,41 +79,39 @@ class GestionnaireMenus
             $paddingBox = 30
             $paddingBouton = 40
         end
-        @window.window_position=Gtk::WindowPosition::CENTER
         @window.show_all
     end
 
     def changerTheme(t)
         if(t == "Default Theme")
             provider = Gtk::CssProvider.new
-            provider.load(path: "./css/white.css")
+            provider.load(path: @path + "/css/white.css")
         elsif(t == "Dark Theme")
             provider = Gtk::CssProvider.new
-            provider.load(path: "./css/dark.css")
+            provider.load(path: @path + "/css/dark.css")
         elsif (t == "Red Theme")
             provider = Gtk::CssProvider.new
-            provider.load(path: "./css/red.css")
+            provider.load(path: @path + "/css/red.css")
         elsif (t == "Space Theme")
             provider = Gtk::CssProvider.new
-            provider.load(path: "./css/space.css")
+            provider.load(path: @path + "/css/space.css")
         elsif (t == "Happy Theme")
             provider = Gtk::CssProvider.new
-            provider.load(path: "./css/happy.css")
+            provider.load(path: @path + "/css/happy.css")
         elsif (t == "Shrek Theme")
             provider = Gtk::CssProvider.new
-            provider.load(path: "./css/shrek.css")
+            provider.load(path: @path + "/css/shrek.css")
         end
         Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, provider, Gtk::StyleProvider::PRIORITY_USER)
     end
 
 end
 
-       
+path = File.expand_path(File.dirname(__FILE__))
 application = Gtk::Application.new
 application.signal_connect(:activate) do
-
     provider = Gtk::CssProvider.new
-    provider.load(path: "./css/white.css")   
+    provider.load(path: path + "/css/white.css")
 
     window = Gtk::ApplicationWindow.new(application)
     gMenu = GestionnaireMenus.new(window, application)
@@ -125,7 +123,10 @@ application.signal_connect(:activate) do
     window.set_border_width(10)
     window.window_position=Gtk::WindowPosition::CENTER
     
-    window.signal_connect("delete-event") { |_widget| Gtk.main_quit }
+    window.signal_connect("delete-event") { |_widget|
+        application.quit
+    }
+    window.set_position('center_always')
     window.show_all
 end
 application.run

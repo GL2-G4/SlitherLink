@@ -1,0 +1,61 @@
+/***********BOUTONS***********/
+
+button {
+    color: black;
+    background-image: url("./image/SpaceButton.png");
+    background-color: transparent;
+    border: none;
+}
+
+button:hover {
+    background-image: none;
+    background-color: rgb(223, 223, 223);
+}
+
+button:hover label {
+    color: #00609B;
+}
+
+button:active {
+    background-image: none;
+    background-color: silver;
+}
+
+button:active label {
+    color: white;
+}
+
+/***********LABELS***********/
+
+label {
+    color: #00609B;
+    font-weight: normal;
+}
+
+.titre {
+    color: #009BDB;
+    font-weight: bolder;
+    background-color: indigo;
+}
+
+/***********COMBOS***********/
+
+.combo{
+    color: gray;
+}
+
+/* je sais pas ce que tu voulais faire là
+ * si tu veux le faire marcher tu dois mettre sur l'objet désiré
+ * (objet désiré).style_context.add_class("boxbouton")
+ * ça rajoute l'objet à la class boxbouton que tu utilises en dessous
+ */
+.boxbouton label{
+    color: #00609B;
+    background-color: indigo;
+}
+  
+window {
+    
+    background-image: url("./image/SpaceBackground.jpg");
+    background-color: transparent;
+}

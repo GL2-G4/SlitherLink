@@ -1,0 +1,49 @@
+/***********BOUTONS***********/
+
+button {
+    color: brown;
+    background-image: url("./image/ShrekButton.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #B5E61D;
+    border: none;
+}
+
+button:hover label {
+    color: darkgreen;
+}
+
+button:active {
+    background-image: none;
+    background-color: green;
+}
+
+button:active label {
+    color: black;
+}
+
+/***********LABELS***********/
+
+label {
+    color: brown;
+    font-weight: normal;
+}
+
+.titre {
+    color: brown;
+    font-weight: bolder;
+    background-color: greenyellow;
+}
+
+/***********COMBOS***********/
+
+.combo{
+    color: brown;
+    background-image: none;
+}
+  
+window {
+    
+    background-image: none;
+    background-color: lawngreen;
+}

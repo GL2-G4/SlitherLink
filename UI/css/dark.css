@@ -1,0 +1,49 @@
+/***********BOUTONS***********/
+
+button {
+    color: #22222D;
+    background-image:none ;
+    background-color: #22222D;
+    border: none;
+}
+
+button:hover {
+    background-image: none;
+    background-color: #111117;
+}
+
+button:hover label {
+    color: gray;
+}
+
+button:active {
+    background-image: none;
+    background-color: gray;
+}
+
+button:active label {
+    color: white;
+}
+
+/***********LABELS***********/
+
+label {
+    color: gray;
+    font-weight: normal;
+}
+.titre {
+    color: gray;
+    font-weight: bolder;
+    background-color: black;
+}
+
+/***********COMBOS***********/
+
+.combo {
+    color: gray;
+}
+
+window {
+    background-image:none ;
+    background-color: #333344;
+}

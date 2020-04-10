@@ -1,18 +1,20 @@
-load "Menu.rb"
-load "SousMenu.rb"
+require_relative "Menu.rb"
+require_relative "SousMenu.rb"
 require "optparse"
 require "fileutils"
 require_relative "../Parametres/Parametre.rb"
+require_relative "../Joueur/Joueur.rb"
 
 
 require "gtk3"
 require "gdk3"
 
 $nbPuzzles = 30
+$nbPuzzlesPayants = 5
 $paddingBouton = 40
 $paddingBox = 30
 $longListe = 550
-
+$icone = 15
 
 
 class GestionnaireMenus
@@ -20,6 +22,7 @@ class GestionnaireMenus
     attr :box, true
     attr :window, true
     attr :app, true
+    attr :joueur, true
 
     def GestionnaireMenus.creer(window, application)
         new(window, application)
@@ -32,25 +35,24 @@ class GestionnaireMenus
         @box =  Gtk::Box.new(:horizontal)
         @box.set_spacing($paddingBox)
         @window.add(@box)
+        @joueur = Joueur.new()
 
         @menu = Menu.creer(self)
-        @sousMenu = SousMenu.creer(self, @menu)
-        @menuRegles = MenuRegles.creer(self,@menu)
-        @menuModeDeJeu = MenuModeDeJeu.creer(self, @menu)
-        path = File.expand_path(File.dirname(__FILE__))
-        @parametres = ParametresUI.creer(self, @menu, Parametre.charger(path + "/../Parametres/themes", path + "/../Parametres/tailles"))
-        @tuto = Tutoriel.creer(self, @menu)
-        @menu.sousMenu = @sousMenu
-        @menu.menuRegles = @menuRegles
-        @menu.menuModeDeJeu = @menuModeDeJeu
-        @menu.tuto = @tuto
-        @menu.parametres = @parametres
-        @menu.afficheToi()
+        @menu.sousMenu = SousMenu.creer(self, @menu)
+        @menu.menuRegles = MenuRegles.creer(self,@menu)
+        @menu.menuModeDeJeu = MenuModeDeJeu.creer(self, @menu)
+        @menu.boutique = MenuBoutique.creer(self, @menu)
+        @path = File.expand_path(File.dirname(__FILE__))
+        @menu.parametres = ParametresUI.creer(self, @menu, Parametre.charger(@path + "/../Parametres/themes", @path + "/../Parametres/tailles"))
+        @menu.tuto = Tutoriel.creer(self, @menu)
+        changerMenu(@menu)
     end
 
-    def changerMenu(menuAff, menuEnl)
-        menuEnl.enleveToi()
-        menuAff.afficheToi()
+    def changerMenu(menuAff)
+        @window.each { |child|
+			@window.remove(child)
+        }
+        @window.add(menuAff)
         @window.show_all
     end
 
@@ -77,41 +79,39 @@ class GestionnaireMenus
             $paddingBox = 30
             $paddingBouton = 40
         end
-        @window.window_position=Gtk::WindowPosition::CENTER
         @window.show_all
     end
 
     def changerTheme(t)
         if(t == "Default Theme")
             provider = Gtk::CssProvider.new
-            provider.load(path: "./css/white.css")
+            provider.load(path: @path + "/css/white.css")
         elsif(t == "Dark Theme")
             provider = Gtk::CssProvider.new
-            provider.load(path: "./css/dark.css")
+            provider.load(path: @path + "/css/dark.css")
         elsif (t == "Red Theme")
             provider = Gtk::CssProvider.new
-            provider.load(path: "./css/red.css")
+            provider.load(path: @path + "/css/red.css")
         elsif (t == "Space Theme")
             provider = Gtk::CssProvider.new
-            provider.load(path: "./css/space.css")
+            provider.load(path: @path + "/css/space.css")
         elsif (t == "Happy Theme")
             provider = Gtk::CssProvider.new
-            provider.load(path: "./css/happy.css")
+            provider.load(path: @path + "/css/happy.css")
         elsif (t == "Shrek Theme")
             provider = Gtk::CssProvider.new
-            provider.load(path: "./css/shrek.css")
+            provider.load(path: @path + "/css/shrek.css")
         end
         Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, provider, Gtk::StyleProvider::PRIORITY_USER)
     end
 
 end
 
-       
+path = File.expand_path(File.dirname(__FILE__))
 application = Gtk::Application.new
 application.signal_connect(:activate) do
-
     provider = Gtk::CssProvider.new
-    provider.load(path: "./css/white.css")   
+    provider.load(path: path + "/css/white.css")
 
     window = Gtk::ApplicationWindow.new(application)
     gMenu = GestionnaireMenus.new(window, application)
@@ -123,7 +123,10 @@ application.signal_connect(:activate) do
     window.set_border_width(10)
     window.window_position=Gtk::WindowPosition::CENTER
     
-    window.signal_connect("delete-event") { |_widget| Gtk.main_quit }
+    window.signal_connect("delete-event") { |_widget|
+        application.quit
+    }
+    window.set_position('center_always')
     window.show_all
 end
 application.run

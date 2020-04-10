@@ -1,31 +1,28 @@
 require "gtk3"
-class Tutoriel
+
+class Tutoriel < Gtk::Box
 
   def Tutoriel.creer(gMenu, menuPere)
     new(gMenu, menuPere)
   end
 
   def initialize(gMenu, menuPere)
+    super(:horizontal)
     @gMenu = gMenu
-    @hBox = gMenu.box
     @pere = menuPere
     @vBox1 = Gtk::Box.new(:vertical)
     @vBox2 = Gtk::Box.new(:vertical)
     @button = Gtk::Button.new(:label => "- Retour -")
     @button.signal_connect "clicked" do |_widget|
-      gMenu.changerMenu(@pere, self)
+      gMenu.changerMenu(@pere)
     end
+    ajouter()
   end
 
-  def afficheToi()
+  def ajouter()
     @vBox1.add(@button)
-    @hBox.add(@vBox1)
-    @hBox.add(@vBox2)
-  end
-
-  def enleveToi()
-    @hBox.remove(@vBox1)
-    @hBox.remove(@vBox2)
+    add(@vBox1)
+    add(@vBox2)
   end
 
   def to_s()

@@ -2,23 +2,24 @@ require "gtk3"
 require "optparse"
 require "fileutils"
 require_relative "../Parametres/Parametre.rb"
-load "Popup.rb"
-class ParametresUI
+require_relative "Popup.rb"
+
+class ParametresUI < Gtk::Box
 
     def ParametresUI.creer(gMenu, menuPere, param)
         new(gMenu, menuPere, param)
     end
 
     def initialize(gMenu, menuPere, param)
+        super(:horizontal)
         @gMenu = gMenu
-        @hBox = gMenu.box
         @pere = menuPere
         @param = param
         @vBox1 = Gtk::Box.new(:vertical)
         @vBox2 = Gtk::Box.new(:vertical)
         @button = Gtk::Button.new(:label => "- Retour -")
         @button.signal_connect "clicked" do |_widget|
-            gMenu.changerMenu(@pere, self)
+            gMenu.changerMenu(@pere)
         end
         @titre = Gtk::Label.new("PARAMETRES")
         @titre.style_context.add_class("titre")
@@ -117,6 +118,8 @@ class ParametresUI
                 @param.afficheToi(false)
             end
 
+            ajouter()
+
     end
 
     def on_clicked sender
@@ -128,7 +131,7 @@ class ParametresUI
         end
     end
 
-    def afficheToi()
+    def ajouter()
         @vBox1.add(@button)
         @vBox2.set_width_request($longListe)
         @vBox2.add(@titre)
@@ -136,19 +139,8 @@ class ParametresUI
         @vBox2.pack_start(@border2, :expand => true, :fill => true, :padding => 0)
         @vBox2.pack_start(@border3, :expand => true, :fill => true, :padding => 0)
         @vBox2.pack_end(@bouton4, :expand => true, :fill => true, :padding => $paddingBouton)
-        @hBox.add(@vBox1)
-        @hBox.pack_end(@vBox2, :expand => true, :fill => true, :padding => 0)
-    end
-
-    def enleveToi()
-        @vBox1.remove(@button)
-        @vBox2.remove(@titre)
-        @vBox2.remove(@border)
-        @vBox2.remove(@border2)
-        @vBox2.remove(@border3)
-        @vBox2.remove(@bouton4)
-        @hBox.remove(@vBox1)
-        @hBox.remove(@vBox2)
+        add(@vBox1)
+        pack_end(@vBox2, :expand => true, :fill => true, :padding => 0)
     end
     
     def to_s()

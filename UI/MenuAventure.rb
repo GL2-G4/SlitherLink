@@ -1,5 +1,6 @@
 require "gtk3"
-class MenuAventure
+
+class MenuAventure < Gtk::Box
 
     private_class_method :new
 
@@ -8,8 +9,8 @@ class MenuAventure
     end
 
     def initialize(gMenu, menuPere)
+        super(:horizontal)
         @gMenu = gMenu
-        @box = gMenu.box
         @pere = menuPere
         @vBox = Gtk::Box.new(:vertical)
         @vBox2 = Gtk::ButtonBox.new(:vertical)
@@ -17,19 +18,21 @@ class MenuAventure
 
         @scrolled = Gtk::ScrolledWindow.new
         @scrolled.set_policy(:never, :automatic)
+
+        path = File.expand_path(File.dirname(__FILE__))
        
 
         @button1 = Gtk::Button.new(:label => "- Retour -")
         @button1.signal_connect "clicked" do |_widget|
-            @gMenu.changerMenu(@pere, self)
+            @gMenu.changerMenu(@pere)
         end
 
         @titre = Gtk::Label.new("Aventure")
         @titre.style_context.add_class("titre")
         @vBox2.add(@titre)
 
-        p1 = GdkPixbuf::Pixbuf.new(:file => "./image/etoile.png")
-        p2 = GdkPixbuf::Pixbuf.new(:file => "./image/argent.png")
+        p1 = GdkPixbuf::Pixbuf.new(:file => path + "/image/etoile.png")
+        p2 = GdkPixbuf::Pixbuf.new(:file => path + "/image/argent.png")
         @iEtoile = Gtk::Image.new(:pixbuf => p1.scale_simple($icone, $icone, GdkPixbuf::InterpType::BILINEAR))
         @etoile = Gtk::Label.new(@gMenu.joueur.etoiles.to_s())
         @boxEtoile = Gtk::Box.new(:horizontal)
@@ -59,22 +62,18 @@ class MenuAventure
             boxBouton.add(bouton)
             border.add(boxBouton)
             @vBox2.add(border)
-        } 
+        }
+        ajouter()
     end
 
-    def afficheToi()
+    def ajouter()
         @vBox.add(@button1) 
         @boxJoueur.add(@boxEtoile)
         @boxJoueur.add(@boxArgent)
         @borderJoueur.add(@boxJoueur)
         @vBox.pack_end(@borderJoueur)
-        @box.add(@vBox)
+        add(@vBox)
         @scrolled.add(@vBox2)
-        @box.add(@scrolled)
-    end
-
-    def enleveToi()
-        @box.remove(@vBox)
-        @box.remove(@scrolled)
+        add(@scrolled)
     end
 end

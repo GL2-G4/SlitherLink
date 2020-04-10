@@ -1,5 +1,6 @@
 require "gtk3"
-class MenuApprentissage
+
+class MenuApprentissage < Gtk::Box
 
     private_class_method :new
 
@@ -8,8 +9,8 @@ class MenuApprentissage
     end
 
     def initialize(gMenu, menuPere)
+        super(:horizontal)
         @gMenu = gMenu
-        @box = gMenu.box
         @pere = menuPere
         @vBox = Gtk::Box.new(:vertical)
         @vBox2 = Gtk::ButtonBox.new(:vertical)
@@ -21,7 +22,7 @@ class MenuApprentissage
 
         @button1 = Gtk::Button.new(:label => "- Retour -")
         @button1.signal_connect "clicked" do |_widget|
-            @gMenu.changerMenu(@pere, self)
+            @gMenu.changerMenu(@pere)
         end
 
         @titre = Gtk::Label.new("Apprentissage")
@@ -44,19 +45,15 @@ class MenuApprentissage
             boxBouton.add(bouton)
             border.add(boxBouton)
             @vBox2.add(border)
-        } 
+        }
+        ajouter()
     end
 
-    def afficheToi()
+    def ajouter()
         @vBox.add(@button1) 
-        @box.add(@vBox)
+        add(@vBox)
         @scrolled.add(@vBox2)
-        @box.add(@scrolled)
-    end
-
-    def enleveToi()
-        @box.remove(@vBox)
-        @box.remove(@scrolled)
+        add(@scrolled)
     end
     
 end

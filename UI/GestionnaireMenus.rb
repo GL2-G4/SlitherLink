@@ -1,9 +1,9 @@
-load "Menu.rb"
-load "SousMenu.rb"
+require_relative "Menu.rb"
+require_relative "SousMenu.rb"
 require "optparse"
 require "fileutils"
 require_relative "../Parametres/Parametre.rb"
-load "../SlitherLink/Joueur/Joueur.rb"
+require_relative "../Joueur/Joueur.rb"
 
 
 require "gtk3"
@@ -38,25 +38,21 @@ class GestionnaireMenus
         @joueur = Joueur.new()
 
         @menu = Menu.creer(self)
-        @sousMenu = SousMenu.creer(self, @menu)
-        @menuRegles = MenuRegles.creer(self,@menu)
-        @menuModeDeJeu = MenuModeDeJeu.creer(self, @menu)
-        @boutique = MenuBoutique.creer(self, @menu)
+        @menu.sousMenu = SousMenu.creer(self, @menu)
+        @menu.menuRegles = MenuRegles.creer(self,@menu)
+        @menu.menuModeDeJeu = MenuModeDeJeu.creer(self, @menu)
+        @menu.boutique = MenuBoutique.creer(self, @menu)
         path = File.expand_path(File.dirname(__FILE__))
-        @parametres = ParametresUI.creer(self, @menu, Parametre.charger(path + "/../Parametres/themes", path + "/../Parametres/tailles"))
-        @tuto = Tutoriel.creer(self, @menu)
-        @menu.sousMenu = @sousMenu
-        @menu.menuRegles = @menuRegles
-        @menu.menuModeDeJeu = @menuModeDeJeu
-        @menu.tuto = @tuto
-        @menu.parametres = @parametres
-        @menu.boutique = @boutique
-        @menu.afficheToi()
+        @menu.parametres = ParametresUI.creer(self, @menu, Parametre.charger(path + "/../Parametres/themes", path + "/../Parametres/tailles"))
+        @menu.tuto = Tutoriel.creer(self, @menu)
+        changerMenu(@menu)
     end
 
-    def changerMenu(menuAff, menuEnl)
-        menuEnl.enleveToi()
-        menuAff.afficheToi()
+    def changerMenu(menuAff)
+        @window.each { |child|
+			@window.remove(child)
+        }
+        @window.add(menuAff)
         @window.show_all
     end
 

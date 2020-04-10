@@ -1,15 +1,16 @@
-load "Regles.rb"
-load "Techniques.rb"
+require_relative "Regles.rb"
+require_relative "Techniques.rb"
 require "gtk3"
-class MenuRegles
+
+class MenuRegles < Gtk::Box
 
   def MenuRegles.creer(gMenu, menuPere)
     new(gMenu, menuPere)
   end
 
   def initialize(gMenu, menuPere)
+    super(:horizontal)
     @gMenu = gMenu
-    @hBox = gMenu.box
     @pere = menuPere
     @vBox1 = Gtk::Box.new(:vertical)
     @vBox2 = Gtk::Box.new(:vertical)
@@ -20,32 +21,25 @@ class MenuRegles
 
     @button = Gtk::Button.new(:label => "- Retour -")
     @button.signal_connect "clicked" do |_widget|
-      gMenu.changerMenu(@pere, self)
+      gMenu.changerMenu(@pere)
     end
     @button2 = Gtk::Button.new(:label => 'Règles')
     @button2.signal_connect('clicked') {
-        gMenu.changerMenu(Regles.creer(@gMenu,self), self)
+        gMenu.changerMenu(Regles.creer(@gMenu,self))
     }
     @button3 = Gtk::Button.new(:label => 'Techniques')
     @button3.signal_connect('clicked') {
-        gMenu.changerMenu(Techniques.creer(@gMenu,self), self)
+        gMenu.changerMenu(Techniques.creer(@gMenu,self))
     }
+    ajouter()
 end
 
-  def afficheToi()
+  def ajouter()
     @vBox1.add(@button)
     @vBox2.pack_start(@button2, :expand => true, :fill => true, :padding => $paddingBouton)
     @vBox2.pack_start(@button3, :expand => true, :fill => true, :padding => $paddingBouton)
-    @hBox.add(@vBox1)
-    @hBox.pack_end(@vBox2, :expand => true, :fill => true, :padding => $paddingBox)
-  end
-
-  def enleveToi()
-    @vBox1.remove(@button)
-    @vBox2.remove(@button2)
-    @vBox2.remove(@button3)
-    @hBox.remove(@vBox1)
-    @hBox.remove(@vBox2)
+    add(@vBox1)
+    pack_end(@vBox2, :expand => true, :fill => true, :padding => $paddingBox)
   end
 
   def to_s()

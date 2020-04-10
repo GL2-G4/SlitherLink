@@ -1,26 +1,24 @@
 require "gtk3"
-class SousMenu
+
+class SousMenu < Gtk::Box
 
   def SousMenu.creer(gMenu, menuPere)
     new(gMenu, menuPere)
   end
 
   def initialize(gMenu, menuPere)
+    super(:horizontal)
     @gMenu = gMenu
-    @box = gMenu.box
     @pere = menuPere
     @button = Gtk::Button.new(:label => "- Retour -")
     @button.signal_connect "clicked" do |_widget|
-      gMenu.changerMenu(@pere, self)
+      gMenu.changerMenu(@pere)
     end
+    ajouter()
   end
 
-  def afficheToi()
-    @box.add(@button)
-  end
-
-  def enleveToi()
-    @box.remove(@button)
+  def ajouter()
+    add(@button)
   end
 
   def to_s()

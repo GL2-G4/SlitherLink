@@ -1,6 +1,7 @@
-load "../SlitherLink/Boutique/Boutique.rb"
+require_relative "../Boutique/Boutique.rb"
 require "gtk3"
-class MenuBoutique
+
+class MenuBoutique < Gtk::Box
 
     private_class_method :new
 
@@ -9,8 +10,8 @@ class MenuBoutique
     end
 
     def initialize(gMenu, menuPere)
+        super(:horizontal)
         @gMenu = gMenu
-        @box = gMenu.box
         @pere = menuPere
         @vBox = Gtk::Box.new(:vertical)
         @vBox2 = Gtk::Box.new(:vertical)
@@ -23,7 +24,7 @@ class MenuBoutique
 
         @button1 = Gtk::Button.new(:label => "- Retour -")
         @button1.signal_connect "clicked" do |_widget|
-            @gMenu.changerMenu(@pere, self)
+            @gMenu.changerMenu(@pere)
         end
 
         @titre = Gtk::Label.new("Boutique")
@@ -81,27 +82,18 @@ class MenuBoutique
             @vBox2.add(border)
         }
 
+        ajouter()
+
     end
 
-    def afficheToi()
+    def ajouter()
         @vBox.add(@button1) 
         @boxJoueur.add(@boxEtoile)
         @boxJoueur.add(@boxArgent)
         @borderJoueur.add(@boxJoueur)
         @vBox.pack_end(@borderJoueur)
-        @box.add(@vBox)
+        add(@vBox)
         @scrolled.add(@vBox2)
-        @box.add(@scrolled)
-    end
-
-    def enleveToi()
-        @vBox.remove(@button1)
-        @boxJoueur.remove(@boxEtoile)
-        @boxJoueur.remove(@boxArgent)
-        @borderJoueur.remove(@boxJoueur)
-        @vBox.remove(@borderJoueur)
-        @scrolled.remove(@vBox2)
-        @box.remove(@vBox)
-        @box.remove(@scrolled)
+        add(@scrolled)
     end
 end

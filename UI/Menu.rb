@@ -36,7 +36,7 @@ class Menu
         }
         @button3 = Gtk::Button.new(:label => 'Boutique')
         @button3.signal_connect('clicked') {
-            print "Bonjour tout le monde\n"
+            gMenu.changerMenu(@boutique, self)
         }
         @button4 = Gtk::Button.new(:label => 'Paramètres')
         @button4.signal_connect('clicked') {

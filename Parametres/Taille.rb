@@ -4,6 +4,8 @@ class Taille
 	#@longueur : la longueur de l'écran de jeu
 	#@largeur : la largeur de l'écran de jeu
 	
+	attr_reader :nom
+
 	# Création de la taille
 	def Taille.charger(contenuFichier)
 		new(contenuFichier)
@@ -24,6 +26,7 @@ class Taille
 		# Chargement de la longueur et de la largeur
 		@longueur = contenu[0].to_i
 		@largeur = contenu[1].to_i
+		@nom = contenu[0] + " x " + contenu[1].to_i.to_s
 	end
 	
 	# Méthode transformant une taille en une ligne de fichier.

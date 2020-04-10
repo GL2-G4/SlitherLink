@@ -53,7 +53,10 @@ class GestionTechniques
         :T3A0D => TroisAvecZeroDiag.new(),
         :T3A3A => TroisAvecTroisAdj.new(),
         :T3A3D => TroisAvecTroisDiag.new(),
-        :TLC => LigneContinuer.new()
+        :TLC => LigneContinuer.new(),
+        :TLBC => LigneBloqueContinuer.new(),
+        :TDLNB => DeuxLigneNoirBloque.new(),
+        :TBCP => BloqueCasePleine.new()
     }
 
     # Renvoie la liste des techniques

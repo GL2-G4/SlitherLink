@@ -13,18 +13,18 @@ require path + "/../../Zone"
 =begin
     ATTENTION : CETTE TECHNIQUE DOIT IMPERATIVEMENT ETRE APELLEE APRES CoinLB ET CoinLP
 
-    Lorsque une ligne vide a l'une de ses extremité ne debouche que sur des lignes bloque, alors la ligne vide doit etre bloque
+    Lorsque deux ligne noir se suivent, des lignes bloque peuvent etre placé
 
     .   .   .    .   .   .
-        x   x        x   x   
-    . x . x .    . x . x .
-               =>    x   x
+                     x   x 
+    . = . = .    . = . = .
+            =  =>    x   =
     .   .   .    .   .   .
                           
     .   .   .    .   .   .
 =end
 
-class LigneBloqueContinuer < Technique
+class DeuxLigneNoirBloque < Technique
     
     def initialize ()
         super("LBC")
@@ -41,12 +41,12 @@ class LigneBloqueContinuer < Technique
 
                 if ( i == tailleX - 1 ) then
 
-                    if ( plateau[i][j].getLigne(:DROITE).etat() == :BLOQUE ) then
+                    if ( plateau[i][j].getLigne(:DROITE).etat() == :PLEINE ) then
 
                         if ( j != 0 ) then
 
                             # ici on regarde en haut de la ligne
-                            if ( ( plateau[i][j - 1].getLigne(:DROITE).etat() == :BLOQUE && plateau[i][j].getLigne(:HAUT).etat() == :VIDE ) || ( plateau[i][j - 1].getLigne(:DROITE).etat() == :VIDE && plateau[i][j].getLigne(:HAUT).etat() == :BLOQUE ) ) then
+                            if ( ( plateau[i][j - 1].getLigne(:DROITE).etat() == :PLEINE && plateau[i][j].getLigne(:HAUT).etat() == :VIDE ) || ( plateau[i][j - 1].getLigne(:DROITE).etat() == :VIDE && plateau[i][j].getLigne(:HAUT).etat() == :PLEINE ) ) then
 
                                 if ( plateau[i][j].getLigne(:HAUT).etat() == :VIDE ) then
 
@@ -66,7 +66,7 @@ class LigneBloqueContinuer < Technique
                         if ( j != tailleY - 1 ) then
 
                             # ici on regarde en bas de la ligne
-                            if ( ( plateau[i][j + 1].getLigne(:DROITE).etat() == :BLOQUE && plateau[i][j].getLigne(:BAS).etat() == :VIDE ) || ( plateau[i][j + 1].getLigne(:DROITE).etat() == :VIDE && plateau[i][j].getLigne(:BAS).etat() == :BLOQUE ) ) then
+                            if ( ( plateau[i][j + 1].getLigne(:DROITE).etat() == :PLEINE && plateau[i][j].getLigne(:BAS).etat() == :VIDE ) || ( plateau[i][j + 1].getLigne(:DROITE).etat() == :VIDE && plateau[i][j].getLigne(:BAS).etat() == :PLEINE ) ) then
 
                                 if ( plateau[i][j].getLigne(:BAS) == :VIDE ) then
 
@@ -86,12 +86,12 @@ class LigneBloqueContinuer < Technique
                 
                 if ( j == tailleY - 1 ) then
 
-                    if ( plateau[i][j].getLigne(:BAS).etat() == :BLOQUE ) then
+                    if ( plateau[i][j].getLigne(:BAS).etat() == :PLEINE ) then
 
                         if ( i != 0 ) then
 
                             # ici on regarde a gauche de la ligne
-                            if ( ( plateau[i - 1][j].getLigne(:BAS).etat() == :BLOQUE && plateau[i][j].getLigne(:GAUCHE).etat() == :VIDE ) || ( plateau[i - 1][j].getLigne(:BAS).etat() == :VIDE && plateau[i][j].getLigne(:GAUCHE).etat() == :BLOQUE ) ) then
+                            if ( ( plateau[i - 1][j].getLigne(:BAS).etat() == :PLEINE && plateau[i][j].getLigne(:GAUCHE).etat() == :VIDE ) || ( plateau[i - 1][j].getLigne(:BAS).etat() == :VIDE && plateau[i][j].getLigne(:GAUCHE).etat() == :PLEINE ) ) then
 
                                 if ( plateau[i][j].getLigne(:BAS).etat() == :VIDE ) then
 
@@ -110,7 +110,7 @@ class LigneBloqueContinuer < Technique
                         if ( i != tailleX - 1 ) then
 
                             # ici on regarde a droite de la ligne
-                            if ( ( plateau[i + 1][j].getLigne(:BAS).etat() == :BLOQUE && plateau[i][j].getLigne(:DROITE).etat() == :VIDE ) || ( plateau[i + 1][j].getLigne(:BAS).etat() == :VIDE && plateau[i][j].getLigne(:DROITE).etat() == :BLOQUE ) ) then
+                            if ( ( plateau[i + 1][j].getLigne(:BAS).etat() == :PLEINE && plateau[i][j].getLigne(:DROITE).etat() == :VIDE ) || ( plateau[i + 1][j].getLigne(:BAS).etat() == :VIDE && plateau[i][j].getLigne(:DROITE).etat() == :PLEINE ) ) then
 
                                 if ( plateau[i][j].getLigne(:DROITE) == :VIDE ) then
 
@@ -128,7 +128,7 @@ class LigneBloqueContinuer < Technique
                     end
                 end
 
-                if ( plateau[i][j].getLigne(:HAUT).etat() == :BLOQUE ) then
+                if ( plateau[i][j].getLigne(:HAUT).etat() == :PLEINE ) then
 
                     # ici on regarde a gauche de la ligne
                     lb = 0
@@ -176,17 +176,19 @@ class LigneBloqueContinuer < Technique
                             lv += 1
                     end
 
-                    if ( lv == 1 && lb == nbtests - 1 ) then
+                    if ( lp == 1 && lb != nbtests - 1 ) then
 
                         @zone = Zone.new( i - 1, j - 1, i, j)
 
                         if ( plateau[i][j].getLigne(:GAUCHE).etat() == :VIDE ) then
 
                             ligneAvecEtat( plateau[i][j].getLigne(:GAUCHE), :BLOQUE)
-                        elsif ( i > 0 && plateau[i - 1][j].getLigne(:HAUT).etat() == :VIDE )
+                        end
+                        if ( i > 0 && plateau[i - 1][j].getLigne(:HAUT).etat() == :VIDE ) then
                             
                             ligneAvecEtat( plateau[i - 1][j].getLigne(:HAUT), :BLOQUE)
-                        else
+                        end
+                        if ( j > 0 && plateau[i][j - 1].getLigne(:GAUCHE).etat() == :VIDE ) then
                             
                             ligneAvecEtat( plateau[i][j - 1].getLigne(:GAUCHE), :BLOQUE)
                         end
@@ -240,26 +242,28 @@ class LigneBloqueContinuer < Technique
                             lv += 1
                     end
 
-                    if ( lv == 1 && lb == nbtests - 1 ) then
+                    if ( lp == 1 && lb != nbtests - 1 ) then
 
                         @zone = Zone.new( i - 1, j, i, j + 1)
 
                         if ( plateau[i][j].getLigne(:DROITE).etat() == :VIDE ) then
 
                             ligneAvecEtat( plateau[i][j].getLigne(:DROITE), :BLOQUE)
-                        elsif ( i < tailleX - 1 && plateau[i + 1][j].getLigne(:HAUT).etat() == :VIDE )
+                        end
+                        if ( i < tailleX - 1 && plateau[i + 1][j].getLigne(:HAUT).etat() == :VIDE ) then
                             
                             ligneAvecEtat( plateau[i + 1][j].getLigne(:HAUT), :BLOQUE)
-                        else
+                        end
+                        if ( j > 0 && plateau[i][j - 1].getLigne(:DROITE).etat() == :VIDE ) then
                             
-                            ligneAvecEtat( plateau[i][j + 1].getLigne(:GAUCHE), :BLOQUE)
+                            ligneAvecEtat( plateau[i][j - 1].getLigne(:DROITE), :BLOQUE)
                         end
 
                         return true
                     end
                 end
 
-                if ( plateau[i][j].getLigne(:GAUCHE).etat() == :BLOQUE ) then
+                if ( plateau[i][j].getLigne(:GAUCHE).etat() == :PLEINE ) then
 
                     # ici on regarde en haut de la ligne
                     lb = 0
@@ -307,17 +311,19 @@ class LigneBloqueContinuer < Technique
                             lv += 1
                     end
 
-                    if ( lv == 1 && lb == nbtests - 1 ) then
+                    if ( lp == 1 && lb != nbtests - 1 ) then
 
                         @zone = Zone.new( i - 1, j - 1, i, j)
 
                         if ( plateau[i][j].getLigne(:HAUT).etat() == :VIDE ) then
 
                             ligneAvecEtat( plateau[i][j].getLigne(:HAUT), :BLOQUE)
-                        elsif ( i > 0 && plateau[i - 1][j].getLigne(:HAUT).etat() == :VIDE )
+                        end
+                        if ( i > 0 && plateau[i - 1][j].getLigne(:HAUT).etat() == :VIDE ) then
                             
                             ligneAvecEtat( plateau[i - 1][j].getLigne(:HAUT), :BLOQUE)
-                        else
+                        end
+                        if ( j > 0 && plateau[i][j - 1].getLigne(:GAUCHE).etat() == :VIDE ) then
                             
                             ligneAvecEtat( plateau[i][j - 1].getLigne(:GAUCHE), :BLOQUE)
                         end
@@ -371,17 +377,19 @@ class LigneBloqueContinuer < Technique
                             lv += 1
                     end
 
-                    if ( lv == 1 && lb == nbtests - 1 ) then
+                    if ( lp == 1 && lb != nbtests - 1 ) then
 
                         @zone = Zone.new( i - 1, j, i, j + 1)
 
                         if ( plateau[i][j].getLigne(:BAS).etat() == :VIDE ) then
 
                             ligneAvecEtat( plateau[i][j].getLigne(:BAS), :BLOQUE)
-                        elsif ( i > 0 && plateau[i - 1][j].getLigne(:BAS).etat() == :VIDE )
+                        end
+                        if ( i > 0 && plateau[i - 1][j].getLigne(:BAS).etat() == :VIDE ) then
                             
                             ligneAvecEtat( plateau[i - 1][j].getLigne(:BAS), :BLOQUE)
-                        else
+                        end
+                        if ( j < tailleY - 1 && plateau[i][j + 1].getLigne(:GAUCHE).etat() == :VIDE ) then
                             
                             ligneAvecEtat( plateau[i][j + 1].getLigne(:GAUCHE), :BLOQUE)
                         end

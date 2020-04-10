@@ -1,5 +1,5 @@
 ##
-# File: LigneContinuer.rb
+# File: LigneBloqueContinuer.rb
 # Project: 2Cases
 # File Created: Tuesday, 18th March 2020 14:19 am
 # Author: <VoxoR7>Vaudeleau M.

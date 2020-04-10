@@ -1,5 +1,5 @@
 ##
-# File: LigneContinuer.rb
+# File: DeuxLigneNoirBloque.rb
 # Project: 2Cases
 # File Created: Tuesday, 18th March 2020 14:19 am
 # Author: <VoxoR7>Vaudeleau M.
@@ -27,7 +27,7 @@ require path + "/../../Zone"
 class DeuxLigneNoirBloque < Technique
     
     def initialize ()
-        super("LBC")
+        super("DLNB")
     end
 
     def chercher(plateau)

@@ -36,7 +36,7 @@ class Parametre
 		# Création des thèmes en fonction des lignes lues
 		@listeThemes = Array.new()
 		lignes.each do |l|
-			if (l.size >= 18)
+			if (l.size >= 5)
 				@listeThemes.push(Theme.charger(l))
 			end
 		end

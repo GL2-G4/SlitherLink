@@ -1,26 +1,27 @@
 ##
-# File: ScreenPause.rb
+# File: ScreenGagne.rb
 # Project: UI
-# File Created: Wednesday, 8th April 2020 3:56:39 pm
+# File Created: Saturday, 11th April 2020 4:19:13 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Saturday, 11th April 2020 4:18:16 pm
+# Last Modified: Saturday, 11th April 2020 7:22:01 pm
 # Modified By: <CPietJa>Galbrun T.
 #
+
 require 'gtk3'
 require_relative './ImageManager.rb'
 
 =begin
     *=== Descriptif
-    Ecran de pause d'une partie.
+    Ecran de win d'une partie.
 =end
-class ScreenPause < Gtk::Box
-    ROUGE = Gdk::RGBA.new(1,0,0,0.5)
+class ScreenGagne < Gtk::Box
 
-    def initialize(gMenu,partie)
+    def initialize(gMenu,menu,temps)
         super(:vertical)
         @gMenu = gMenu
-        @partie = partie
+        @pere = menu
+        @temps = temps
         @fenetre = Gtk::Box.new(:horizontal)
         @fenetre.set_homogeneous(true)
         #set_homogeneous(true)
@@ -29,20 +30,18 @@ class ScreenPause < Gtk::Box
         #override_background_color(:normal,ROUGE)
 
         # Titre
-        titre = Gtk::Label.new.set_markup("<span font_desc=\"30.0\"><b>Pause</b></span>")
-        titre.set_margin_bottom(30)
-        # Btn Continuer
-        creerBtn(:image => :ICON_PLAY){
-            #puts 'Continuer'
-            @gMenu.changerMenu(@partie)
-            @partie.playChrono()
-        }
-        # Btn Recommencer
-        creerBtn(:image => :ICON_RESTART){puts 'Restart'}
-        # Btn Règles
+        titre = Gtk::Label.new.set_markup("<span font_desc=\"30.0\"><b>Bravo !</b></span>")
+        #titre.set_margin_bottom(10)
+        # Sous Titre
+        stitre = Gtk::Label.new.set_markup("<span font_desc=\"30.0\"><b>Vous avez Gagné !</b></span>")
+        stitre.set_margin_bottom(10)
+        # Temps
+        l_temps = Gtk::Label.new.set_markup("<span font_desc=\"30.0\"><b>#{@temps}</b></span>")
+        l_temps.set_margin_bottom(30)
+        # Btn Liste des niveaux
         creerBtn(:image => :ICON_DOC){
-            #puts 'Règles'
-            @gMenu.changerMenu(@gMenu.menuRegles)
+            #puts 'Liste des Niveaux'
+            @gMenu.changerMenu(MenuAventure.creer(@gMenu, @gMenu.menu.menuModeDeJeu))
         }
         # Btn Quitter
         creerBtn(:image => :ICON_HOME){
@@ -51,17 +50,11 @@ class ScreenPause < Gtk::Box
         }
 
         add(titre)
+        add(stitre)
+        add(l_temps)
         add(@fenetre)
     end
 
-    def afficheToi()
-        @fenetre.show_all
-    end
-
-    def effaceToi()
-        @fenetre.hide
-    end
-    
     private
     def creerBtn(label:"",image:nil)
         box = Gtk::Box.new(:vertical)

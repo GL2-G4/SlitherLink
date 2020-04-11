@@ -150,7 +150,9 @@ class Grille
 			if i < @nombreColonnes - 1
 				contenuFichier += " "
 			end
-		end	
+		end
+
+		@pointsAide = 0 if(@pointsAide < 0)
 		
 		# Ajout des autres champs de la grille
 		contenuFichier += ";" + @temps.to_s

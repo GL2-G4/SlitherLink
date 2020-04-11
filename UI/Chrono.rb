@@ -109,4 +109,11 @@ class Chrono
         sec = self.getTime.sec.to_s
         return "%02d:%02d" % [min, sec]
     end
+
+    def getSec()
+        hour = self.getTime.hour
+        min = self.getTime.min
+        sec = self.getTime.sec
+        return hour*60*60 + min*60 + sec
+    end
 end

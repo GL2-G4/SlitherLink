@@ -6,6 +6,8 @@ require_relative "../Noyau/Jeu.rb"
 require_relative "./Popup.rb"
 require_relative "./ImageManager.rb"
 require_relative "./Chrono.rb"
+require_relative "./ScreenPause.rb"
+require_relative "./ScreenGagne.rb"
 
 
 class PartieUI < Gtk::Box
@@ -16,14 +18,17 @@ class PartieUI < Gtk::Box
 	GRIS_BASE = Gdk::RGBA.new(0.94,0.94,0.94,1)
 
 	private_class_method :new
-	def PartieUI.creer(gMenu,jeu,w=600,h=500)
-		new(gMenu,jeu,w,h)
+	def PartieUI.creer(gMenu,pere,jeu,grille)
+		new(gMenu,pere,jeu,grille)
 	end
 
-	def initialize(gMenu,jeu,w,h)
+	def initialize(gMenu,pere,jeu,grilleS)
 		super(:horizontal)
 		@jeu = jeu
 		@gMenu = gMenu
+		@pere = pere
+		@grilleS = grilleS
+		@grilleS.pointsAide = @grilleS.pointsAideDepart
 		@pause = ScreenPause.new(@gMenu,self)
 		@h = @jeu.getTailleLigne()
 		@l = @jeu.getTailleColonne()
@@ -40,8 +45,7 @@ class PartieUI < Gtk::Box
 			@window.set_position('center_always')
 		end
 =end
-		@width, @height = w,h
-		#puts "#{w}, #{h}"
+		@width, @height = @gMenu.window.size
 		@grille = Gtk::Grid.new
 		grilleW, grilleH = @width*0.5,@height*0.6
 		lignesDim = grilleWH(grilleW,grilleH)
@@ -147,6 +151,7 @@ class PartieUI < Gtk::Box
 		popupErreur.addBouton(titre:"Voir erreur(s)"){
 			#puts "Voir Erreur"
 			popupErreur.stop()
+			@grilleS.pointsAide -= 4
 			affichageErreurs()
 		}
 		popupErreur.addBouton(titre:"Fermer"){
@@ -160,6 +165,7 @@ class PartieUI < Gtk::Box
 			remove_all_child(@info)
 			@jeu.gagne?()
 			@erreurs = @jeu.getErreursJoueur()
+			@grilleS.pointsAide -= 2
 			if(@erreurs.size() == 0)
 				popupNoErreur.set_titre(titre:"Vous avez #{@erreurs.size()} erreur")
 				popupNoErreur.run()
@@ -194,6 +200,9 @@ class PartieUI < Gtk::Box
 				puts "Technique : " + d.to_s()
 				puts "Zone : " + z.to_s()
 				#puts "Lignes : " + l.to_s()
+				if(l.length > 0)
+					@grilleS.pointsAide -= 5
+				end
 				for ll in l
 					@jeu.historiqueActions.ajouterAction(Action.new(ll[0],ll[0].etat,ll[1]))
 					ll[0].setEtat(ll[1])
@@ -681,6 +690,27 @@ class PartieUI < Gtk::Box
 				#@timer.set_label(@chrono.getTime.strftime("%M:%S"))
 				@timer.set_markup("<span font_desc=\"15.0\"><b> #{@chrono.getTime.strftime("%M:%S")} </b></span>")
 			end
+			pauseChrono()
+			@gMenu.joueur.ajouterArgent(10)
+			@grilleS.temps = @chrono.getSec()
+			if(@grilleS.temps < @grilleS.meilleurTemps || @grilleS.meilleurTemps == 0)
+				@grilleS.meilleurTemps = @grilleS.temps
+			end
+			if(@grilleS.nombreEtoiles == 0)
+				@gMenu.joueur.ajouterEtoiles(1)
+				@grilleS.nombreEtoiles += 1
+			end
+			if(@grilleS.nombreEtoiles == 1 && @grilleS.pointsAide >= @grilleS.pointsAideDepart*0.9)
+				@gMenu.joueur.ajouterEtoiles(1)
+				@grilleS.nombreEtoiles += 1
+			end
+			if(@grilleS.nombreEtoiles == 2 && @chrono.getSec() < 20)
+				@gMenu.joueur.ajouterEtoiles(1)
+				@grilleS.nombreEtoiles += 1
+			end
+			@pere.chargeurGrille.debloquerGrilles(@gMenu.joueur.etoiles)
+			@pere.chargeurGrille.sauvegarder(File.dirname(__FILE__) + "/../Grilles/grilleAventure")
+			@gMenu.changerMenu(ScreenGagne.new(@gMenu,@pere,@chrono.getTime.strftime("%M:%S")))
 		}
 	end
 

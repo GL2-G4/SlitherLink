@@ -37,7 +37,7 @@ class GestionnaireMenus
         @box =  Gtk::Box.new(:horizontal)
         @box.set_spacing($paddingBox)
         @window.add(@box)
-        @joueur = Joueur.new()
+        @joueur = Joueur.creer()
 
         @menu = Menu.creer(self)
         @menu.sousMenu = SousMenu.creer(self, @menu)
@@ -117,6 +117,14 @@ application.signal_connect(:activate) do
 
     window = Gtk::ApplicationWindow.new(application)
     gMenu = GestionnaireMenus.new(window, application)
+=begin
+    f = File.open(path + "/../Joueur/joueurOfficiel", "w")
+    Marshal.dump(gMenu.joueur, f)
+    f.close()
+=end
+    f = File.open(path + "/../Joueur/joueurOfficiel", "r")
+    gMenu.joueur = Marshal.load(f)
+    f.close()
 
     Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, provider, Gtk::StyleProvider::PRIORITY_USER)
    
@@ -127,6 +135,10 @@ application.signal_connect(:activate) do
     window.window_position=Gtk::WindowPosition::CENTER
     
     window.signal_connect("delete-event") { |_widget|
+        f = File.open(path + "/../Joueur/joueurOfficiel", "w")
+        Marshal.dump(gMenu.joueur, f)
+        f.close()
+
         application.quit
     }
     window.set_position('center_always')

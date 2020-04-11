@@ -1,10 +1,13 @@
 require "gtk3"
 require_relative './PartieUI.rb'
 require_relative '../Noyau/LoadSaveGrilles/ChargeurGrille.rb'
+require_relative './ImageManager.rb'
 
 class MenuAventure < Gtk::Box
 
     private_class_method :new
+
+    attr_reader :chargeurGrille
 
     def MenuAventure.creer(gMenu, menuPere)
         new(gMenu, menuPere)
@@ -48,24 +51,49 @@ class MenuAventure < Gtk::Box
         @boxJoueur = Gtk::Box.new(:vertical)
         @borderJoueur = Gtk::Frame.new()
 
-        chargeurGrille = ChargeurGrille.charger(File.dirname(__FILE__) + "/../Grilles/grille")
+        @chargeurGrille = ChargeurGrille.charger(File.dirname(__FILE__) + "/../Grilles/grilleAventure")
+        @chargeurGrille.debloquerGrilles(@gMenu.joueur.etoiles)
+        @chargeurGrille.sauvegarder(File.dirname(__FILE__) + "/../Grilles/grilleAventure")
         #@listeBoutons.each_index { |index|
         chargeurGrille.listeGrilles.each_index { |index|
             boxBouton = Gtk::ButtonBox.new(:horizontal)
             boxBouton.set_width_request($longListe)
             border = Gtk::Frame.new()
             boxBouton.set_border_width(10)
-            textBox = Gtk::Label.new("Puzzle n°" + (index+1).to_s)
+            grille = @chargeurGrille.getGrilleIndex(index)
+            # Taille
+            textBox = Gtk::Label.new("Puzzle #{grille.plateau.length}x#{grille.plateau[0].length}")
+            # Temps
+            if(grille.meilleurTemps != 0)
+                hour = grille.meilleurTemps/60/60
+                min = (grille.meilleurTemps - (hour*60))/60
+                sec =  (grille.meilleurTemps - (hour*60) - (min*60))
+                #puts "#{hour}:#{min}:#{sec}"
+                temps = Gtk::Label.new(sprintf("%02d:%02d",min,sec))
+            else
+                temps = Gtk::Label.new("--:--")
+            end
+            # NB Etoiles
+            etoiles = Gtk::Box.new(:horizontal)
+            grille.nombreEtoiles.times(){
+                etoiles.add(ImageManager.getImageFromFile(path + "/image/etoile.png",20,20))
+            }
+            # Bouton Jouer
             bouton = Gtk::Button.new(:label => "Jouer")
             bouton.signal_connect "clicked" do |_widget|
                 puts "Jouer au puzzle n°" + (index+1).to_s
-                jeu = Jeu.charger(chargeurGrille.getGrilleIndex(index))
-                taille = @gMenu.window.size
-                uiP = PartieUI.creer(@gMenu,jeu,taille[0],taille[1])
+                jeu = Jeu.charger(grille)
+                uiP = PartieUI.creer(@gMenu,self,jeu,grille)
                 @gMenu.changerMenu(uiP)
+            end
+            if(@gMenu.joueur.grilleDebloquee?(chargeurGrille.getGrilleIndex(index)) == false)
+                bouton.set_label("Bloquée")
+                bouton.set_sensitive(false)
             end
             #@listeBoutons[index] = bouton
             boxBouton.add(textBox)
+            boxBouton.add(temps)
+            boxBouton.add(etoiles)
             boxBouton.add(bouton)
             border.add(boxBouton)
             @vBox2.add(border)

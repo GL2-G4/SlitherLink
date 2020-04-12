@@ -463,6 +463,10 @@ class Jeu
         GT.chercherAll(@plateau)
     end
 
+    def autocompletion()
+        GT.autocompletion(@plateau)
+    end
+
     def chercher(technique)
         GT.chercher(technique,@plateau)
     end

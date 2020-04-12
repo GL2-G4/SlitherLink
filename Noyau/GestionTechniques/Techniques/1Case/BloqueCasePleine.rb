@@ -104,11 +104,11 @@ class BloqueCasePleine < Technique
                             ligneAvecEtat( plateau[i][j].getLigne(:GAUCHE), :BLOQUE)
                         end
 
-                        return true
+                        return !@lignesAModif.empty?()
                     end
                 end
             }
         }
-
+        return false
     end
 end

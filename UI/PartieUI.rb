@@ -17,6 +17,8 @@ class PartieUI < Gtk::Box
 	VERT = Gdk::RGBA.new(0,1,0,0.5)
 	GRIS_BASE = Gdk::RGBA.new(0.94,0.94,0.94,1)
 
+	attr_reader :grilleS, :pere
+
 	private_class_method :new
 	def PartieUI.creer(gMenu,pere,jeu,grille)
 		new(gMenu,pere,jeu,grille)
@@ -71,6 +73,9 @@ class PartieUI < Gtk::Box
 		qsChargerSafe = Gtk::Button.new.set_image(ImageManager.getImageFromStock(:ICON_PLAY,25,25)).set_border_width(10)
 		boutons = Gtk::Box.new(:vertical)
 		@timer = Gtk::Label.new("")
+		ptA = Gtk::Box.new(:horizontal).add(ImageManager.getImageFromStock(:ICON_AIDE,20,20))
+		@pA = Gtk::Label.new().set_margin_left(5)
+		ptA.add(@pA).set_halign(Gtk::Align::CENTER)
 		gritim = Gtk::Box.new(:vertical)
 
 		popupErreur = Popup.new()
@@ -125,6 +130,7 @@ class PartieUI < Gtk::Box
 		menu.add(save)
 		gritim.add(@grille)
 		gritim.add(@timer)
+		gritim.add(ptA)
 		#fenetre.add(gritim)
 		#fenetre.add(menu)
 		add(gritim)
@@ -163,15 +169,22 @@ class PartieUI < Gtk::Box
 		check.signal_connect('button_release_event'){
 			#puts "CHECK"
 			remove_all_child(@info)
-			@jeu.gagne?()
-			@erreurs = @jeu.getErreursJoueur()
-			@grilleS.pointsAide -= 2
-			if(@erreurs.size() == 0)
-				popupNoErreur.set_titre(titre:"Vous avez #{@erreurs.size()} erreur")
-				popupNoErreur.run()
+			if(@grilleS.pointsAide > 0)
+				@jeu.gagne?()
+				@erreurs = @jeu.getErreursJoueur()
+				@grilleS.pointsAide -= 2
+				if(@erreurs.size() == 0)
+					popupNoErreur.set_titre(titre:"Vous avez #{@erreurs.size()} erreur")
+					popupNoErreur.run()
+				else
+					popupErreur.set_titre(titre:"Vous avez #{@erreurs.size()} erreur(s)")
+					popupErreur.run()
+				end
 			else
-				popupErreur.set_titre(titre:"Vous avez #{@erreurs.size()} erreur(s)")
-				popupErreur.run()
+				check.set_sensitive(false)
+				check.set_opacity(0.5)
+				addMessage("Vous n'avez plus de points d'aide")
+				@info.show_all
 			end
 		}
 		savep.signal_connect('button_release_event'){
@@ -192,22 +205,30 @@ class PartieUI < Gtk::Box
 			majQS()
 		}
 		hint.signal_connect('button_release_event'){
-			t = @jeu.chercherAll()
-			if(t != nil)
-				d = @jeu.getDescription(t)
-				z = @jeu.getZone(t)
-				l = @jeu.getLignes(t)
-				puts "Technique : " + d.to_s()
-				puts "Zone : " + z.to_s()
-				#puts "Lignes : " + l.to_s()
-				if(l.length > 0)
-					@grilleS.pointsAide -= 5
+			if (@grilleS.pointsAide > 0)
+				t = @jeu.chercherAll()
+				if(t != nil)
+					d = @jeu.getDescription(t)
+					z = @jeu.getZone(t)
+					l = @jeu.getLignes(t)
+					puts "Technique : " + d.to_s()
+					puts "Zone : " + z.to_s()
+					#puts "Lignes : " + l.to_s()
+					if(l.length > 0)
+						@grilleS.pointsAide -= 5
+						for ll in l
+							@jeu.historiqueActions.ajouterAction(Action.new(ll[0],ll[0].etat,ll[1]))
+							ll[0].setEtat(ll[1])
+						end
+						#majGrille()
+						autocompletion()
+					end
 				end
-				for ll in l
-					@jeu.historiqueActions.ajouterAction(Action.new(ll[0],ll[0].etat,ll[1]))
-					ll[0].setEtat(ll[1])
-				end
-				majGrille()
+			else
+				hint.set_sensitive(false)
+				hint.set_opacity(0.5)
+				addMessage("Vous n'avez plus de points d'aide")
+				@info.show_all
 			end
 		}
 		home.signal_connect('button_release_event'){
@@ -337,6 +358,8 @@ class PartieUI < Gtk::Box
 		majGrille()
 		playChrono()
 		affichageChrono()
+		affichagePtAide()
+		autocompletion()
 	end
 
 	def addMessage(msg)
@@ -585,24 +608,33 @@ class PartieUI < Gtk::Box
 		if((l = @grille.get_child_at(x,y)) == nil)
 			return
 		end
-		if(trier[0][1] == trier[1][1])
-			if(trier[0][0] == :PLEINE || trier[1][0] == :PLEINE)
-				traiterCouleur(l,:PLEINE)
-			elsif(trier[0][0] == :BLOQUE || trier[1][0] == :BLOQUE)
-				traiterCouleur(l,:BLOQUE)
-			end
-		elsif(trier[0][0] == :VIDE)
-			if(nb[:PLEINE] != 0)
-				traiterCouleur(l,:PLEINE)
-			elsif(nb[:BLOQUE] != 0)
-				traiterCouleur(l,:BLOQUE)
-			else
-				traiterCouleur(l,:VIDE)
-			end
+
+		# if(trier[0][1] == trier[1][1])
+		# 	if(trier[0][0] == :PLEINE || trier[1][0] == :PLEINE)
+		# 		traiterCouleur(l,:PLEINE)
+		# 	elsif(trier[0][0] == :BLOQUE || trier[1][0] == :BLOQUE)
+		# 		traiterCouleur(l,:BLOQUE)
+		# 	end
+		# elsif(trier[0][0] == :VIDE)
+		# 	if(nb[:PLEINE] != 0)
+		# 		traiterCouleur(l,:PLEINE)
+		# 	elsif(nb[:BLOQUE] != 0)
+		# 		traiterCouleur(l,:BLOQUE)
+		# 	else
+		# 		traiterCouleur(l,:VIDE)
+		# 	end
+		# else
+		# 	if((l = @grille.get_child_at(x,y)) != nil)
+		# 		traiterCouleur(l,trier[0][0])
+		# 	end
+		# end
+
+		if(nb[:PLEINE] != 0)
+			traiterCouleur(l,:PLEINE)
+		elsif(trier[0][0] == :BLOQUE && trier[1][1] == 0)
+			traiterCouleur(l,:BLOQUE)
 		else
-			if((l = @grille.get_child_at(x,y)) != nil)
-				traiterCouleur(l,trier[0][0])
-			end
+			traiterCouleur(l,:VIDE)
 		end
 	end
 
@@ -648,6 +680,7 @@ class PartieUI < Gtk::Box
 			puts "jouer(#{(index/(@h+1)).to_i}, #{index%(@h+1)-1}, :BAS, #{clique})"
 			#puts"case haut, "+ (index/(@h+1)).to_i.to_s + ", " + (index%(@h+1)-1).to_s 
 		end
+		autocompletion()
 		@jeu.afficherPlateau
 	end
 
@@ -661,6 +694,7 @@ class PartieUI < Gtk::Box
 			puts "jouer(#{(index-@h)/@h.to_i}, #{index% @h}, :DROITE, #{clique})"
 			@jeu.jouer((index-@h)/@h.to_i, index% @h, :DROITE, clique)
 		end
+		autocompletion()
 		@jeu.afficherPlateau
 	end
 
@@ -680,6 +714,16 @@ class PartieUI < Gtk::Box
 		}
 		@traitv.each_index { |index|
 			traiterCouleurLigneVerticale(index)
+		}
+	end
+
+	def affichagePtAide
+		Thread.new{
+			while @jeu.gagne? == false && @grilleS.pointsAide > 0
+				sleep(1)
+				#@timer.set_label(@chrono.getTime.strftime("%M:%S"))
+				@pA.set_markup("<span font_desc=\"15.0\"><b>#{@grilleS.pointsAide}</b></span>")
+			end
 		}
 	end
 
@@ -704,7 +748,7 @@ class PartieUI < Gtk::Box
 				@gMenu.joueur.ajouterEtoiles(1)
 				@grilleS.nombreEtoiles += 1
 			end
-			if(@grilleS.nombreEtoiles == 2 && @chrono.getSec() < 20)
+			if(@grilleS.nombreEtoiles == 2 && @chrono.getSec() <= 30)
 				@gMenu.joueur.ajouterEtoiles(1)
 				@grilleS.nombreEtoiles += 1
 			end
@@ -712,6 +756,29 @@ class PartieUI < Gtk::Box
 			@pere.chargeurGrille.sauvegarder(File.dirname(__FILE__) + "/../Grilles/grilleAventure")
 			@gMenu.changerMenu(ScreenGagne.new(@gMenu,@pere,@chrono.getTime.strftime("%M:%S")))
 		}
+	end
+
+	def autocompletion
+		if(@gMenu.menu.parametres.param.autocompletion)
+			#Thread.new{
+				#while @jeu.gagne? == false
+					#puts "Autocomplétion"
+					#sleep(0.5)
+					while((t = @jeu.autocompletion()) != nil)
+						l = @jeu.getLignes(t)
+						if(l.empty?())
+							return
+						end
+						#puts l.to_s
+						for ll in l
+							@jeu.historiqueActions.ajouterAction(Action.new(ll[0],ll[0].etat,ll[1]))
+							ll[0].setEtat(ll[1])
+						end
+					end
+					majGrille()
+				#end
+			#}
+		end
 	end
 
 	def pauseChrono

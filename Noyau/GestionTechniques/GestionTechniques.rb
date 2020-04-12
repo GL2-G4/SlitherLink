@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:40:31 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Thursday, 9th April 2020 2:54:44 pm
+# Last Modified: Sunday, 12th April 2020 1:03:41 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 path = File.expand_path(File.dirname(__FILE__))
@@ -32,6 +32,8 @@ require path + "/Technique"
 # [getLignes] Voir Technique#lignesAModif
 # [chercherAll(plateau)] Renvoie la première technique qui trouve un
 # résultat, sinon renvoie nil.
+# [autocompletion(plateau)] Renvoie la première technique d'autocomplétion
+# qui trouve un résultat, sinon renvoie nil.
 #
 # * ===Variables de classe
 # [listeTechniques] Table de Hashage contenant pour chaque clé
@@ -113,6 +115,23 @@ class GestionTechniques
                 return key
             end
         }
+        return nil
+    end
+
+    # Renvoie la première technique d'autocomplétion qui trouve un résultat, sinon renvoie nil.
+    def self.autocompletion(plateau)
+        if(@@listeTechniques[:T0].chercher(plateau))
+            return :T0
+        end
+        #if(@@listeTechniques[:TLBC].chercher(plateau))
+        #    return :TLBC
+        #end
+        if(@@listeTechniques[:TDLNB].chercher(plateau))
+            return :TDLNB
+        end
+        if(@@listeTechniques[:TCOINLB].chercher(plateau))
+            return :TCOINLB
+        end
         return nil
     end
 

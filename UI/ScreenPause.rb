@@ -4,7 +4,7 @@
 # File Created: Wednesday, 8th April 2020 3:56:39 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Saturday, 11th April 2020 4:18:16 pm
+# Last Modified: Sunday, 12th April 2020 11:58:11 am
 # Modified By: <CPietJa>Galbrun T.
 #
 require 'gtk3'
@@ -38,11 +38,16 @@ class ScreenPause < Gtk::Box
             @partie.playChrono()
         }
         # Btn Recommencer
-        creerBtn(:image => :ICON_RESTART){puts 'Restart'}
+        creerBtn(:image => :ICON_RESTART){
+            #puts 'Restart'
+            jeu = Jeu.charger(@partie.grilleS)
+            uiP = PartieUI.creer(@gMenu,@partie.pere,jeu,@partie.grilleS)
+            @gMenu.changerMenu(uiP)
+        }
         # Btn Règles
         creerBtn(:image => :ICON_DOC){
             #puts 'Règles'
-            @gMenu.changerMenu(@gMenu.menuRegles)
+            @gMenu.changerMenu(@gMenu.menu.menuRegles)
         }
         # Btn Quitter
         creerBtn(:image => :ICON_HOME){

@@ -91,6 +91,7 @@ class ParametresUI < Gtk::Box
             boxBouton3.add(textBox2)
             boxBouton3.add(bouton3)
             @border3.add(boxBouton3)
+            @param.autocompletion=(bouton3.active?)
         
         # Validation des parametres
             @bouton4 = Gtk::Button.new()

@@ -4,7 +4,7 @@
 # File Created: Saturday, 11th April 2020 4:19:13 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Sunday, 12th April 2020 5:38:45 pm
+# Last Modified: Sunday, 12th April 2020 6:10:03 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -77,6 +77,7 @@ class ScreenGagne < Gtk::Box
         btn.set_margin_right(20)
         if(image != nil)
             btn.set_image(ImageManager.getImageFromStock(image,50,50))
+            btn.set_always_show_image(true)
         end
         btn.signal_connect('button_release_event'){ |widget,event|
             yield(widget,event)

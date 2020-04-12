@@ -4,7 +4,7 @@
 # File Created: Wednesday, 8th April 2020 3:56:39 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Sunday, 12th April 2020 5:42:36 pm
+# Last Modified: Sunday, 12th April 2020 6:09:53 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 require 'gtk3'
@@ -75,6 +75,7 @@ class ScreenPause < Gtk::Box
         btn.set_margin_right(20)
         if(image != nil)
             btn.set_image(ImageManager.getImageFromStock(image,50,50))
+            btn.set_always_show_image(true)
         end
         btn.signal_connect('button_release_event'){ |widget,event|
             yield(widget,event)

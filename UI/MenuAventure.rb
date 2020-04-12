@@ -62,7 +62,7 @@ class MenuAventure < Gtk::Box
             boxBouton.set_border_width(10)
             grille = @chargeurGrille.getGrilleIndex(index)
             # Taille
-            textBox = Gtk::Label.new("Puzzle #{grille.plateau.length}x#{grille.plateau[0].length}")
+            textBox = Gtk::Label.new("Puzzle #{grille.plateau[0].length}x#{grille.plateau.length}")
             # Temps
             if(grille.meilleurTemps != 0)
                 hour = grille.meilleurTemps/60/60

@@ -68,7 +68,7 @@ class LigneBloqueContinuer < Technique
                             # ici on regarde en bas de la ligne
                             if ( ( plateau[i][j + 1].getLigne(:DROITE).etat() == :BLOQUE && plateau[i][j].getLigne(:BAS).etat() == :VIDE ) || ( plateau[i][j + 1].getLigne(:DROITE).etat() == :VIDE && plateau[i][j].getLigne(:BAS).etat() == :BLOQUE ) ) then
 
-                                if ( plateau[i][j].getLigne(:BAS) == :VIDE ) then
+                                if ( plateau[i][j].getLigne(:BAS).etat() == :VIDE ) then
 
                                     @zone = Zone.new( i, j, i, j + 1)
                                     ligneAvecEtat( plateau[i][j].getLigne(:BAS), :BLOQUE)
@@ -112,7 +112,7 @@ class LigneBloqueContinuer < Technique
                             # ici on regarde a droite de la ligne
                             if ( ( plateau[i + 1][j].getLigne(:BAS).etat() == :BLOQUE && plateau[i][j].getLigne(:DROITE).etat() == :VIDE ) || ( plateau[i + 1][j].getLigne(:BAS).etat() == :VIDE && plateau[i][j].getLigne(:DROITE).etat() == :BLOQUE ) ) then
 
-                                if ( plateau[i][j].getLigne(:DROITE) == :VIDE ) then
+                                if ( plateau[i][j].getLigne(:DROITE).etat() == :VIDE ) then
 
                                     @zone = Zone.new( i, j, i + 1, j)
                                     ligneAvecEtat( plateau[i][j].getLigne(:DROITE), :BLOQUE)

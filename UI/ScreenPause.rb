@@ -4,7 +4,7 @@
 # File Created: Wednesday, 8th April 2020 3:56:39 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Sunday, 12th April 2020 11:58:11 am
+# Last Modified: Sunday, 12th April 2020 5:42:36 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 require 'gtk3'
@@ -52,7 +52,7 @@ class ScreenPause < Gtk::Box
         # Btn Quitter
         creerBtn(:image => :ICON_HOME){
             #puts 'Menu'
-            @gMenu.changerMenu(@gMenu.menu)
+            @gMenu.changerMenu(@partie.pere)
         }
 
         add(titre)

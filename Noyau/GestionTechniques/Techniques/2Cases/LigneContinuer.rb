@@ -271,7 +271,7 @@ class LigneContinuer < Technique
                             ligneAvecEtat( plateau[i + 1][j].getLigne(:HAUT), :PLEINE)
                         else
                             
-                            ligneAvecEtat( plateau[i][j + 1].getLigne(:GAUCHE), :PLEINE)
+                            ligneAvecEtat( plateau[i][j - 1].getLigne(:DROITE), :PLEINE)
                         end
 
                         return true

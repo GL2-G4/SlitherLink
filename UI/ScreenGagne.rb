@@ -4,7 +4,7 @@
 # File Created: Saturday, 11th April 2020 4:19:13 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Saturday, 11th April 2020 7:22:01 pm
+# Last Modified: Sunday, 12th April 2020 5:38:45 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -17,7 +17,7 @@ require_relative './ImageManager.rb'
 =end
 class ScreenGagne < Gtk::Box
 
-    def initialize(gMenu,menu,temps)
+    def initialize(gMenu,menu,temps,etoiles)
         super(:vertical)
         @gMenu = gMenu
         @pere = menu
@@ -29,6 +29,8 @@ class ScreenGagne < Gtk::Box
         set_valign(Gtk::Align::CENTER)
         #override_background_color(:normal,ROUGE)
 
+        path = File.expand_path(File.dirname(__FILE__))
+
         # Titre
         titre = Gtk::Label.new.set_markup("<span font_desc=\"30.0\"><b>Bravo !</b></span>")
         #titre.set_margin_bottom(10)
@@ -37,7 +39,17 @@ class ScreenGagne < Gtk::Box
         stitre.set_margin_bottom(10)
         # Temps
         l_temps = Gtk::Label.new.set_markup("<span font_desc=\"30.0\"><b>#{@temps}</b></span>")
-        l_temps.set_margin_bottom(30)
+        l_temps.set_margin_bottom(10)
+        # Etoiles
+        bEtoiles = Gtk::Box.new(:horizontal).set_margin_bottom(10).set_halign(Gtk::Align::CENTER)
+        @pere.grilleS.nombreEtoiles.times(){
+            bEtoiles.add(ImageManager.getImageFromFile(path + "/image/etoile.png",60,60))
+        }
+        bRec = Gtk::Box.new(:horizontal).set_margin_bottom(30).set_halign(Gtk::Align::CENTER)
+        bRec.add(Gtk::Label.new.set_markup("<span font_desc=\"20.0\"><b>+#{etoiles}</b></span>"))
+        bRec.add(ImageManager.getImageFromFile(path + "/image/etoile.png",30,30).set_margin_right(10))
+        bRec.add(Gtk::Label.new.set_markup("<span font_desc=\"20.0\"><b>+10</b></span>"))
+        bRec.add(ImageManager.getImageFromFile(path + "/image/argent.png",30,30))
         # Btn Liste des niveaux
         creerBtn(:image => :ICON_DOC){
             #puts 'Liste des Niveaux'
@@ -52,6 +64,8 @@ class ScreenGagne < Gtk::Box
         add(titre)
         add(stitre)
         add(l_temps)
+        add(bEtoiles)
+        add(bRec)
         add(@fenetre)
     end
 

@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:40:31 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Sunday, 12th April 2020 1:03:41 pm
+# Last Modified: Sunday, 12th April 2020 5:17:19 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 path = File.expand_path(File.dirname(__FILE__))
@@ -123,14 +123,14 @@ class GestionTechniques
         if(@@listeTechniques[:T0].chercher(plateau))
             return :T0
         end
-        #if(@@listeTechniques[:TLBC].chercher(plateau))
-        #    return :TLBC
-        #end
-        if(@@listeTechniques[:TDLNB].chercher(plateau))
-            return :TDLNB
-        end
         if(@@listeTechniques[:TCOINLB].chercher(plateau))
             return :TCOINLB
+        end
+        if(@@listeTechniques[:TLBC].chercher(plateau))
+            return :TLBC
+        end
+        if(@@listeTechniques[:TDLNB].chercher(plateau))
+            return :TDLNB
         end
         return nil
     end

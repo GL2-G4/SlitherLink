@@ -735,6 +735,7 @@ class PartieUI < Gtk::Box
 				@timer.set_markup("<span font_desc=\"15.0\"><b> #{@chrono.getTime.strftime("%M:%S")} </b></span>")
 			end
 			pauseChrono()
+			etoile = @grilleS.nombreEtoiles
 			@gMenu.joueur.ajouterArgent(10)
 			@grilleS.temps = @chrono.getSec()
 			if(@grilleS.temps < @grilleS.meilleurTemps || @grilleS.meilleurTemps == 0)
@@ -754,7 +755,7 @@ class PartieUI < Gtk::Box
 			end
 			@pere.chargeurGrille.debloquerGrilles(@gMenu.joueur.etoiles)
 			@pere.chargeurGrille.sauvegarder(File.dirname(__FILE__) + "/../Grilles/grilleAventure")
-			@gMenu.changerMenu(ScreenGagne.new(@gMenu,@pere,@chrono.getTime.strftime("%M:%S")))
+			@gMenu.changerMenu(ScreenGagne.new(@gMenu,self,@chrono.getTime.strftime("%M:%S"),@grilleS.nombreEtoiles - etoile))
 		}
 	end
 
@@ -769,7 +770,7 @@ class PartieUI < Gtk::Box
 						if(l.empty?())
 							return
 						end
-						#puts l.to_s
+						#puts t.to_s
 						for ll in l
 							@jeu.historiqueActions.ajouterAction(Action.new(ll[0],ll[0].etat,ll[1]))
 							ll[0].setEtat(ll[1])

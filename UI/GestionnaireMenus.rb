@@ -16,6 +16,7 @@ $paddingBouton = 40
 $paddingBox = 30
 $longListe = 550
 $icone = 15
+$imageTuto = 250
 
 
 class GestionnaireMenus

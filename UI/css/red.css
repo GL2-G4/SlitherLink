@@ -34,6 +34,7 @@ label {
 
 .titre {
   color: white;
+  font-size: larger;
   font-weight: bolder;
   background-color: darkred;
 }
@@ -45,7 +46,7 @@ label {
 /***********COMBOS***********/
 
 .combo {
-  color: darkred;
+  color: white;
 }
 
 window {

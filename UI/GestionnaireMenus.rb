@@ -129,8 +129,8 @@ application.signal_connect(:activate) do
 
     Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, provider, Gtk::StyleProvider::PRIORITY_USER)
    
-    window.set_default_size(720, 480)
-    window.set_size_request(720, 480) # Ne pas enlever
+    window.set_default_size(1280, 720)
+    window.set_size_request(1280, 720) # Ne pas enlever
     window.resizable=(false)
     window.set_border_width(10)
     window.window_position=Gtk::WindowPosition::CENTER

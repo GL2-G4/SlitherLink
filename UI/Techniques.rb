@@ -13,8 +13,20 @@ class Techniques < Gtk::Box
     @pere = menupere
     @vBox1 = Gtk::Box.new(:vertical)
     @vBox2 = Gtk::Box.new(:vertical)
+    @vBox3 = Gtk::Box.new(:vertical)
     @scrolled = Gtk::ScrolledWindow.new
     @scrolled.set_policy(:never, :automatic)
+    @scrolled.set_hexpand(true)
+    @scrolled.set_vexpand(true)
+    @scrolled.set_margin_bottom(20)
+    @scrolled.set_margin_top(20)
+
+    @titre = Gtk::Label.new("Techniques")
+    @titre.style_context.add_class("titre")
+
+    @paragraphe = Gtk::Label.new("Voci une liste de quelques techniques.
+Cette liste est non exhaustive, cherchez par vous-même pour en trouver d'avantage !")
+
     @path = File.expand_path(File.dirname(__FILE__))
       
     p00 = ImageManager.getImageFromFile(@path+"/image/1254.gif",200,200)
@@ -36,12 +48,17 @@ class Techniques < Gtk::Box
 end
 
   def ajouter()
+    @vBox1.pack_start(Gtk::Alignment.new(0, 0, 1, 1), :expand => false)
     @vBox1.add(@button)
     add(@vBox1)
-    #add(@vBox2)
+    @vBox3.add(@titre)
+    @vBox3.add(@paragraphe)
+    @vBox3.set_halign(Gtk::Align::CENTER)
     @scrolled.add(@vBox2)
-    add(@scrolled)
-  end
+    @scrolled.set_halign(Gtk::Align::CENTER)
+    @vBox3.add(@scrolled)
+    pack_end(@vBox3, :expand => true, :fill => true, :padding => 100)
+ end
 
   def boxTechniques(i1, i2)
     box = Gtk::Box.new(:horizontal)

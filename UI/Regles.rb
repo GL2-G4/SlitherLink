@@ -21,7 +21,7 @@ class Regles < Gtk::Box
     * Les cases vides peuvent être entourées d'un certain nombre de liens (de 0 à 3).
     * Une fois terminée, la solution forme une seule boucle continue sans croisements ni branches.\n
     
-    Example : \n\n")
+    Exemple : \n\n")
 
     p1 = GdkPixbuf::Pixbuf.new(:file => path + "/image/regles1.png")
     @iTech1 = Gtk::Image.new(:pixbuf => p1.scale_simple($imageTuto, $imageTuto, GdkPixbuf::InterpType::BILINEAR))

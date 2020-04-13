@@ -54,7 +54,7 @@ class MenuApprentissage < Gtk::Box
 
         @chargeurGrille = ChargeurGrille.charger(File.dirname(__FILE__) + "/../Grilles/grilleApprentissage")
         @chargeurGrille.debloquerGrilles(@gMenu.joueur.etoiles)
-        @chargeurGrille.sauvegarder(File.dirname(__FILE__) + "/../Grilles/grilleAventure")
+        @chargeurGrille.sauvegarder(File.dirname(__FILE__) + "/../Grilles/grilleApprentissage")
         #@listeBoutons.each_index { |index|
         @chargeurGrille.listeGrilles.each_index { |index|
             # if(index == 0)

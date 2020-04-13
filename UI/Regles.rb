@@ -16,10 +16,10 @@ class Regles < Gtk::Box
     @hBox2 = Gtk::Box.new(:horizontal)
     @titre = Gtk::Label.new("Règles")
     @titre.style_context.add_class("titre")
-    @paragraphe = Gtk::Label.new("\n\n\nEach puzzle consists of a rectangular lattice of dots with some clues in various places.\nThe object is to link adjacent dots so:\n\n
-    * The value of each clue equals the number of links surrounding it.
-    * Empty squares may be surrounded by any number of links.
-    * When completed, the solution forms a single continuous loop with no crossings or branches.\n
+    @paragraphe = Gtk::Label.new("\n\n\nChaque puzzle se compose d'un réseau rectangulaire de points avec quelques indices à divers endroits.\n L'objectif est de relier les points adjacents de la manière suivante:\n\n
+    * La valeur de chaque case est égale au nombre de liens qui l'entourent.
+    * Les cases vides peuvent être entourées d'un certain nombre de liens (de 0 à 3).
+    * Une fois terminée, la solution forme une seule boucle continue sans croisements ni branches.\n
     
     Example : \n\n")
 

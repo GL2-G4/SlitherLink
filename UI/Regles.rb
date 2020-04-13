@@ -19,8 +19,8 @@ class Regles < Gtk::Box
       \t*Empty squares may be surrounded by any number of links.
       \t*When completed, the solution forms a single continuous loop with no crossings or branches.")
     #@image1 = Gtk::Image.new("regles1.jpg")
-    @image2 = Gtk::Image.new :file => "regles2.jpg", :size => :dialog
-    @image1 = Gtk::Image.new :file => "regles1.jpg"
+    @image2 = Gtk::Image.new :file => "./image/regles2.jpg", :size => :dialog
+    @image1 = Gtk::Image.new :file => "./image/regles1.jpg"
     @image1.set_padding(10, 10)
     @image2.set_padding(10, 10)
     @button = Gtk::Button.new(:label => "- Retour -")
@@ -50,5 +50,3 @@ end
     return "Regles"
   end
 end
-
-#http://pochopoch.blogspot.com/2013/04/layout-management-in-ruby-gtk.html

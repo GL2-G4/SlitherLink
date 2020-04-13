@@ -57,6 +57,21 @@ class MenuAventure < Gtk::Box
         @chargeurGrille.sauvegarder(File.dirname(__FILE__) + "/../Grilles/grilleAventure")
         #@listeBoutons.each_index { |index|
         chargeurGrille.listeGrilles.each_index { |index|
+            if(index == 0)
+                @facile = Gtk::Label.new("FACILE")
+                @facile.style_context.add_class("titre")
+                @vBox2.add(@facile)
+            end
+            if(index == 55)
+                @moyen = Gtk::Label.new("MOYEN")
+                @moyen.style_context.add_class("titre")
+                @vBox2.add(@moyen)
+            end
+            if(index == 100)
+                @difficile = Gtk::Label.new("DIFFICILE")
+                @difficile.style_context.add_class("titre")
+                @vBox2.add(@difficile)
+            end
             boxBouton = Gtk::ButtonBox.new(:horizontal)
             boxBouton.set_width_request($longListe)
             border = Gtk::Frame.new()

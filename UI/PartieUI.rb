@@ -17,21 +17,26 @@ class PartieUI < Gtk::Box
 	VERT = Gdk::RGBA.new(0,1,0,0.5)
 	GRIS_BASE = Gdk::RGBA.new(0.94,0.94,0.94,1)
 
-	attr_reader :grilleS, :pere
+	attr_reader :grilleS, :pere, :chrono, :etoile, :argent
 
 	private_class_method :new
-	def PartieUI.creer(gMenu,pere,jeu,grille)
-		new(gMenu,pere,jeu,grille)
+	def PartieUI.creer(gMenu,pere,jeu,grille,screenG:ScreenGagne,screenP:ScreenPause)
+		new(gMenu,pere,jeu,grille,screenG,screenP)
 	end
 
-	def initialize(gMenu,pere,jeu,grilleS)
+	def initialize(gMenu,pere,jeu,grilleS,screenG,screenP)
 		super(:horizontal)
 		@jeu = jeu
 		@gMenu = gMenu
 		@pere = pere
 		@grilleS = grilleS
 		@grilleS.pointsAide = @grilleS.pointsAideDepart
-		@pause = ScreenPause.new(@gMenu,self)
+		if(screenP.class == Class)
+			@pause = screenP.new(@gMenu,self)
+		else
+			@pause = ScreenPause.new(@gMenu,self)
+		end
+		@screenV = screenG
 		@h = @jeu.getTailleLigne()
 		@l = @jeu.getTailleColonne()
 		#@window = Gtk::Window.new
@@ -738,29 +743,32 @@ class PartieUI < Gtk::Box
 				@timer.set_markup("<span font_desc=\"15.0\"><b> #{@chrono.getTime.strftime("%M:%S")} </b></span>")
 			end
 			pauseChrono()
-			etoile = @grilleS.nombreEtoiles
+			@etoile = @grilleS.nombreEtoiles
+			@argent = @gMenu.joueur.argent
 			@grilleS.temps = @chrono.getSec()
-			if(@grilleS.temps < @grilleS.meilleurTemps || @grilleS.meilleurTemps == 0)
-				@grilleS.meilleurTemps = @grilleS.temps
+			if(@pere.class == MenuAventure)
+				if(@grilleS.temps < @grilleS.meilleurTemps || @grilleS.meilleurTemps == 0)
+					@grilleS.meilleurTemps = @grilleS.temps
+				end
+				if(@grilleS.nombreEtoiles == 0)
+					@gMenu.joueur.ajouterEtoiles(1)
+					@gMenu.joueur.ajouterArgent(@h*@l/3)
+					@grilleS.nombreEtoiles += 1
+				end
+				if(@grilleS.nombreEtoiles == 1 && @grilleS.pointsAide >= @grilleS.pointsAideDepart*0.9)
+					@gMenu.joueur.ajouterEtoiles(1)
+					@gMenu.joueur.ajouterArgent(@h*@l/3)
+					@grilleS.nombreEtoiles += 1
+				end
+				if(@grilleS.nombreEtoiles == 2 && @chrono.getSec() <= 30)
+					@gMenu.joueur.ajouterEtoiles(1)
+					@gMenu.joueur.ajouterArgent(@h*@l/3)
+					@grilleS.nombreEtoiles += 1
+				end
+				@pere.chargeurGrille.debloquerGrilles(@gMenu.joueur.etoiles)
 			end
-			if(@grilleS.nombreEtoiles == 0)
-				@gMenu.joueur.ajouterEtoiles(1)
-				@gMenu.joueur.ajouterArgent(@h*@l/3)
-				@grilleS.nombreEtoiles += 1
-			end
-			if(@grilleS.nombreEtoiles == 1 && @grilleS.pointsAide >= @grilleS.pointsAideDepart*0.9)
-				@gMenu.joueur.ajouterEtoiles(1)
-				@gMenu.joueur.ajouterArgent(@h*@l/3)
-				@grilleS.nombreEtoiles += 1
-			end
-			if(@grilleS.nombreEtoiles == 2 && @chrono.getSec() <= 30)
-				@gMenu.joueur.ajouterEtoiles(1)
-				@gMenu.joueur.ajouterArgent(@h*@l/3)
-				@grilleS.nombreEtoiles += 1
-			end
-			@pere.chargeurGrille.debloquerGrilles(@gMenu.joueur.etoiles)
 			@pere.chargeurGrille.sauvegarder(@pere.chargeurGrille.pwd_fichier)
-			@gMenu.changerMenu(ScreenGagne.new(@gMenu,self,@chrono.getTime.strftime("%M:%S"),@grilleS.nombreEtoiles - etoile))
+			@gMenu.changerMenu(@screenV.new(@gMenu,self))
 		}
 	end
 

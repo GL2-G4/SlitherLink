@@ -4,7 +4,7 @@
 # File Created: Saturday, 11th April 2020 4:19:13 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Sunday, 12th April 2020 6:10:03 pm
+# Last Modified: Monday, 13th April 2020 7:15:16 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -17,11 +17,13 @@ require_relative './ImageManager.rb'
 =end
 class ScreenGagne < Gtk::Box
 
-    def initialize(gMenu,menu,temps,etoiles)
+    def initialize(gMenu,partie)
         super(:vertical)
         @gMenu = gMenu
-        @pere = menu
-        @temps = temps
+        @pere = partie
+        @temps = partie.chrono.getTime.strftime("%M:%S")
+        etoiles = partie.grilleS.nombreEtoiles - partie.etoile
+        argent = @gMenu.joueur.argent - partie.argent
         @fenetre = Gtk::Box.new(:horizontal)
         @fenetre.set_homogeneous(true)
         #set_homogeneous(true)
@@ -48,7 +50,7 @@ class ScreenGagne < Gtk::Box
         bRec = Gtk::Box.new(:horizontal).set_margin_bottom(30).set_halign(Gtk::Align::CENTER)
         bRec.add(Gtk::Label.new.set_markup("<span font_desc=\"20.0\"><b>+#{etoiles}</b></span>"))
         bRec.add(ImageManager.getImageFromFile(path + "/image/etoile.png",30,30).set_margin_right(10))
-        bRec.add(Gtk::Label.new.set_markup("<span font_desc=\"20.0\"><b>+10</b></span>"))
+        bRec.add(Gtk::Label.new.set_markup("<span font_desc=\"20.0\"><b>+#{argent}</b></span>"))
         bRec.add(ImageManager.getImageFromFile(path + "/image/argent.png",30,30))
         # Btn Liste des niveaux
         creerBtn(:image => :ICON_DOC){

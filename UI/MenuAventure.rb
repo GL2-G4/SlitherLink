@@ -88,8 +88,15 @@ class MenuAventure < Gtk::Box
                 @gMenu.changerMenu(uiP)
             end
             if(@gMenu.joueur.grilleDebloquee?(chargeurGrille.getGrilleIndex(index)) == false)
-                bouton.set_label("Bloquée")
+                #bouton.set_label("Bloquée")
                 bouton.set_sensitive(false)
+                if(grille.prixEtoiles != 0)
+                    bouton.set_label(grille.prixEtoiles.to_s)
+                    bouton.set_image(ImageManager.getImageFromFile(path + "/image/etoile.png",15,15))
+                else
+                    bouton.set_label(grille.prixPieces.to_s)
+                    bouton.set_image(ImageManager.getImageFromFile(path + "/image/argent.png",15,15))
+                end
             end
             #@listeBoutons[index] = bouton
             boxBouton.add(textBox)

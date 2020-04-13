@@ -779,10 +779,10 @@ class PartieUI < Gtk::Box
 							ll[0].setEtat(ll[1])
 						end
 					end
-					majGrille()
 				#end
 			#}
 		end
+		majGrille()
 	end
 
 	def pauseChrono

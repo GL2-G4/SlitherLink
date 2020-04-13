@@ -24,6 +24,9 @@ class Tutoriel < Gtk::Box
     @hBox2 = Gtk::Box.new(:horizontal)
     @titre = Gtk::Label.new("Bienvenue dans le Tutoriel !")
     @titre.style_context.add_class("titre")
+    @titre2 = Gtk::Label.new("Entraine toi et découvre les différents boutons !")
+    @titre2.style_context.add_class("titre")
+
 
     @paragraphe = Gtk::Label.new("\n\n\nVoici une technique de base. Quand un 3 est dans un coin : \n\n\n")
     @paragraphe2 = Gtk::Label.new("\n\n\nVoici une technique de base. Quand deux 3 sont cotes à cotes : \n\n\n")
@@ -94,15 +97,19 @@ end
       }
       if(@i != 3)
         @vBox2.add(@titre)
+      else
+        @vBox2.add(@titre2)
       end
       @vBox2.add(maBox)
       if(@i != 3)
         @vBox2.add(@hBox2)
+      else
+        @i = 0
       end
       @vBox2.show_all
 end
 
   def to_s()
-    return "Regles"
+    return "Tuto"
   end
 end

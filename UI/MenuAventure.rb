@@ -23,6 +23,7 @@ class MenuAventure < Gtk::Box
 
         @scrolled = Gtk::ScrolledWindow.new
         @scrolled.set_policy(:never, :automatic)
+        @scrolled.set_hexpand(true)
 
         path = File.expand_path(File.dirname(__FILE__))
        

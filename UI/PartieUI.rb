@@ -746,10 +746,10 @@ class PartieUI < Gtk::Box
 			@etoile = @grilleS.nombreEtoiles
 			@argent = @gMenu.joueur.argent
 			@grilleS.temps = @chrono.getSec()
+			if(@grilleS.temps < @grilleS.meilleurTemps || @grilleS.meilleurTemps == 0)
+				@grilleS.meilleurTemps = @grilleS.temps
+			end
 			if(@pere.class == MenuAventure)
-				if(@grilleS.temps < @grilleS.meilleurTemps || @grilleS.meilleurTemps == 0)
-					@grilleS.meilleurTemps = @grilleS.temps
-				end
 				if(@grilleS.nombreEtoiles == 0)
 					@gMenu.joueur.ajouterEtoiles(1)
 					@gMenu.joueur.ajouterArgent(@h*@l/3)

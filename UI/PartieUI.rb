@@ -145,13 +145,13 @@ class PartieUI < Gtk::Box
 		ar.signal_connect('button_release_event'){
 			#puts "UNDO"
 			@jeu.undo()
-			@jeu.afficherPlateau
+			#@jeu.afficherPlateau
 			majGrille()
 		}
 		av.signal_connect('button_release_event'){
 			#puts "REDO"
 			@jeu.redo()
-			@jeu.afficherPlateau
+			#@jeu.afficherPlateau
 			majGrille()
 		}
 		popupErreur.addBouton(titre:"Voir erreur(s)"){
@@ -211,8 +211,8 @@ class PartieUI < Gtk::Box
 					d = @jeu.getDescription(t)
 					z = @jeu.getZone(t)
 					l = @jeu.getLignes(t)
-					puts "Technique : " + d.to_s()
-					puts "Zone : " + z.to_s()
+					#puts "Technique : " + d.to_s()
+					#puts "Zone : " + z.to_s()
 					#puts "Lignes : " + l.to_s()
 					if(l.length > 0)
 						@grilleS.pointsAide -= 5
@@ -344,11 +344,13 @@ class PartieUI < Gtk::Box
 							l = Gtk::Label.new("", {:use_underline => true})
 							l.set_markup("<span font_desc=\"#{lignesDim[1]*0.9}\"><b>#{c.nbLigneDevantEtrePleine}</b></span>")
 							l.override_background_color(:normal,GRIS_BASE)
+							l.style_context.add_class("grille")
 							@grille.attach(l,i,j,1,1)
 						else
 							l = Gtk::Label.new("", {:use_underline => true})
 							l.set_markup("<span font_desc=\"#{lignesDim[1]*0.9}\"> </span>")
 							l.override_background_color(:normal,GRIS_BASE)
+							l.style_context.add_class("grille")
 							@grille.attach(l,i,j,1,1)
 						end
 					end
@@ -673,34 +675,34 @@ class PartieUI < Gtk::Box
 	def traiterLigneHorizontale(index, clique)
 		if(index%(@h+1)==0)
 			@jeu.jouer( (index/(@h+1)).to_i, 0, :HAUT , clique)
-			puts "jouer(#{(index/(@h+1)).to_i}, 0, :HAUT, #{clique})"
+			#puts "jouer(#{(index/(@h+1)).to_i}, 0, :HAUT, #{clique})"
 			#puts"case bas,"+(index/(@h+1)).to_i.to_s+", 0"
 		else
 			@jeu.jouer( (index/(@h+1)).to_i, index%(@h+1)-1, :BAS , clique)
-			puts "jouer(#{(index/(@h+1)).to_i}, #{index%(@h+1)-1}, :BAS, #{clique})"
+			#puts "jouer(#{(index/(@h+1)).to_i}, #{index%(@h+1)-1}, :BAS, #{clique})"
 			#puts"case haut, "+ (index/(@h+1)).to_i.to_s + ", " + (index%(@h+1)-1).to_s 
 		end
 		autocompletion()
-		@jeu.afficherPlateau
+		#@jeu.afficherPlateau
 	end
 
 	def traiterLigneVerticale(index, clique)
 		if(index < @h)
 			#puts"case droite, 0 ,"+index.to_s
-			puts "jouer(0, #{index}, :GAUCHE, #{clique})"
+			#puts "jouer(0, #{index}, :GAUCHE, #{clique})"
 			@jeu.jouer(0, index, :GAUCHE, clique)
 		else
 			#puts"case gauche,"+((index-@h)/@h.to_i).to_s + ", " + (index% @h).to_s
-			puts "jouer(#{(index-@h)/@h.to_i}, #{index% @h}, :DROITE, #{clique})"
+			#puts "jouer(#{(index-@h)/@h.to_i}, #{index% @h}, :DROITE, #{clique})"
 			@jeu.jouer((index-@h)/@h.to_i, index% @h, :DROITE, clique)
 		end
 		autocompletion()
-		@jeu.afficherPlateau
+		#@jeu.afficherPlateau
 	end
 
 	def run
 		#@window.show_all
-		@jeu.afficherPlateau
+		#@jeu.afficherPlateau
 	end
 
 	def signaux
@@ -724,6 +726,7 @@ class PartieUI < Gtk::Box
 				#@timer.set_label(@chrono.getTime.strftime("%M:%S"))
 				@pA.set_markup("<span font_desc=\"15.0\"><b>#{@grilleS.pointsAide}</b></span>")
 			end
+			@pA.set_markup("<span font_desc=\"15.0\"><b>0</b></span>")
 		}
 	end
 
@@ -736,25 +739,27 @@ class PartieUI < Gtk::Box
 			end
 			pauseChrono()
 			etoile = @grilleS.nombreEtoiles
-			@gMenu.joueur.ajouterArgent(10)
 			@grilleS.temps = @chrono.getSec()
 			if(@grilleS.temps < @grilleS.meilleurTemps || @grilleS.meilleurTemps == 0)
 				@grilleS.meilleurTemps = @grilleS.temps
 			end
 			if(@grilleS.nombreEtoiles == 0)
 				@gMenu.joueur.ajouterEtoiles(1)
+				@gMenu.joueur.ajouterArgent(@h*@l/3)
 				@grilleS.nombreEtoiles += 1
 			end
 			if(@grilleS.nombreEtoiles == 1 && @grilleS.pointsAide >= @grilleS.pointsAideDepart*0.9)
 				@gMenu.joueur.ajouterEtoiles(1)
+				@gMenu.joueur.ajouterArgent(@h*@l/3)
 				@grilleS.nombreEtoiles += 1
 			end
 			if(@grilleS.nombreEtoiles == 2 && @chrono.getSec() <= 30)
 				@gMenu.joueur.ajouterEtoiles(1)
+				@gMenu.joueur.ajouterArgent(@h*@l/3)
 				@grilleS.nombreEtoiles += 1
 			end
 			@pere.chargeurGrille.debloquerGrilles(@gMenu.joueur.etoiles)
-			@pere.chargeurGrille.sauvegarder(File.dirname(__FILE__) + "/../Grilles/grilleAventure")
+			@pere.chargeurGrille.sauvegarder(@pere.chargeurGrille.pwd_fichier)
 			@gMenu.changerMenu(ScreenGagne.new(@gMenu,self,@chrono.getTime.strftime("%M:%S"),@grilleS.nombreEtoiles - etoile))
 		}
 	end
@@ -776,10 +781,10 @@ class PartieUI < Gtk::Box
 							ll[0].setEtat(ll[1])
 						end
 					end
-					majGrille()
 				#end
 			#}
 		end
+		majGrille()
 	end
 
 	def pauseChrono

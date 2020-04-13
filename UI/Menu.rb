@@ -31,7 +31,7 @@ class Menu < Gtk::Box
 
         @button1 = Gtk::Button.new(:label => 'Tutoriel')
         @button1.signal_connect('clicked') {
-            gMenu.changerMenu(@tuto)
+            gMenu.changerMenu(Tutoriel.creer(@gMenu, self))
         }
         @button2 = Gtk::Button.new(:label => 'Mode de jeu')
         @button2.signal_connect('clicked') {

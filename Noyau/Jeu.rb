@@ -312,7 +312,7 @@ class Jeu
 
         begin
             etatPrec = @plateau[x][y].modifierLigneClic( dirLigne, typeEvent)
-            puts "#{typeEvent} en #{dirLigne} sur [#{x},#{y}]"
+            #puts "#{typeEvent} en #{dirLigne} sur [#{x},#{y}]"
             ligne = @plateau[x][y].getLigne(dirLigne);
             @historiqueActions.ajouterAction(Action.new(ligne,etatPrec,ligne.etat))
         rescue DirectionError => e

@@ -5,7 +5,7 @@ require path + "/Grille"
 # Classe possédant des méthodes permettant de charger et de sauvegarder des grilles.
 # Contient la liste des grilles chargées à partir d'un fichier.
 class ChargeurGrille
-
+	attr_reader :pwd_fichier
 	#@listeGrilles : la liste des grilles chargées à partir du fichier
 	
 	# Méthode de création d'un chargeur de grille
@@ -17,7 +17,7 @@ class ChargeurGrille
 	
 	# Méthode d'initialisation qui transforme chacune des lignes du fichier de grilles en une grille et l'ajoute à la liste des grilles
 	def initialize(nomFichier)
-	
+		@pwd_fichier = nomFichier
 		# Ouverture du fichier
 		fichier = File.open(nomFichier, "r")
 		

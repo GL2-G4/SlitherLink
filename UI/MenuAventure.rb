@@ -23,6 +23,7 @@ class MenuAventure < Gtk::Box
 
         @scrolled = Gtk::ScrolledWindow.new
         @scrolled.set_policy(:never, :automatic)
+        @scrolled.set_hexpand(true)
 
         path = File.expand_path(File.dirname(__FILE__))
        
@@ -81,15 +82,23 @@ class MenuAventure < Gtk::Box
             # Bouton Jouer
             bouton = Gtk::Button.new(:label => "Jouer")
             bouton.signal_connect "clicked" do |_widget|
-                puts "Jouer au puzzle n°" + (index+1).to_s
+                #puts "Jouer au puzzle n°" + (index+1).to_s
                 jeu = Jeu.charger(grille)
                 uiP = PartieUI.creer(@gMenu,self,jeu,grille)
                 @gMenu.changerMenu(uiP)
             end
             if(@gMenu.joueur.grilleDebloquee?(chargeurGrille.getGrilleIndex(index)) == false)
-                bouton.set_label("Bloquée")
+                #bouton.set_label("Bloquée")
                 bouton.set_sensitive(false)
+                if(grille.prixEtoiles != 0)
+                    bouton.set_label(grille.prixEtoiles.to_s)
+                    bouton.set_image(ImageManager.getImageFromFile(path + "/image/etoile.png",15,15))
+                else
+                    bouton.set_label(grille.prixPieces.to_s)
+                    bouton.set_image(ImageManager.getImageFromFile(path + "/image/argent.png",15,15))
+                end
             end
+            bouton.set_always_show_image(true)
             #@listeBoutons[index] = bouton
             boxBouton.add(textBox)
             boxBouton.add(temps)

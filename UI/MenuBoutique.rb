@@ -20,6 +20,7 @@ class MenuBoutique < Gtk::Box
 
         @scrolled = Gtk::ScrolledWindow.new
         @scrolled.set_policy(:never, :automatic)
+        @scrolled.set_hexpand(true)
 
         path = File.expand_path(File.dirname(__FILE__))
        
@@ -47,6 +48,7 @@ class MenuBoutique < Gtk::Box
         @boxArgent.pack_end(@argent, :expand => true)
         @boxJoueur = Gtk::Box.new(:vertical)
         @borderJoueur = Gtk::Frame.new()
+        @sautdeligne = Gtk::Label.new("\n\n")
 
         @listeGrilles.each_index { |index|
             boxBouton = Gtk::ButtonBox.new(:horizontal)
@@ -65,7 +67,7 @@ class MenuBoutique < Gtk::Box
             border.add(boxBouton)
             @vBox2.add(border)
         }
-
+        @vBox2.add(@sautdeligne)
         @listeThemes.each_index { |index|
             boxBouton = Gtk::ButtonBox.new(:horizontal)
             boxBouton.set_width_request($longListe)

@@ -37,10 +37,14 @@ label {
   background-color: black;
 }
 
+.grille {
+  color: black;
+}
+
 /***********COMBOS***********/
 
 .combo {
-  color: gray;
+  color: black;
 }
 
 window {

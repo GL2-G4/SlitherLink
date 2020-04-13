@@ -13,7 +13,7 @@ button:hover {
 }
 
 button:hover label {
-  color: black;
+  color: white;
 }
 
 button:active {
@@ -28,20 +28,25 @@ button:active label {
 /***********LABELS***********/
 
 label {
-  color: #0d0909;
+  color: white;
   font-weight: bolder;
 }
 
 .titre {
-  color: black;
+  color: white;
+  font-size: larger;
   font-weight: bolder;
   background-color: darkred;
+}
+
+.grille {
+  color: black;
 }
 
 /***********COMBOS***********/
 
 .combo {
-  color: darkred;
+  color: white;
 }
 
 window {

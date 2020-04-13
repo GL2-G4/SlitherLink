@@ -97,6 +97,7 @@ class MenuAventure < Gtk::Box
                     bouton.set_image(ImageManager.getImageFromFile(path + "/image/argent.png",15,15))
                 end
             end
+            bouton.set_always_show_image(true)
             #@listeBoutons[index] = bouton
             boxBouton.add(textBox)
             boxBouton.add(temps)

@@ -737,21 +737,23 @@ class PartieUI < Gtk::Box
 			end
 			pauseChrono()
 			etoile = @grilleS.nombreEtoiles
-			@gMenu.joueur.ajouterArgent(10)
 			@grilleS.temps = @chrono.getSec()
 			if(@grilleS.temps < @grilleS.meilleurTemps || @grilleS.meilleurTemps == 0)
 				@grilleS.meilleurTemps = @grilleS.temps
 			end
 			if(@grilleS.nombreEtoiles == 0)
 				@gMenu.joueur.ajouterEtoiles(1)
+				@gMenu.joueur.ajouterArgent(@h*@l/3)
 				@grilleS.nombreEtoiles += 1
 			end
 			if(@grilleS.nombreEtoiles == 1 && @grilleS.pointsAide >= @grilleS.pointsAideDepart*0.9)
 				@gMenu.joueur.ajouterEtoiles(1)
+				@gMenu.joueur.ajouterArgent(@h*@l/3)
 				@grilleS.nombreEtoiles += 1
 			end
 			if(@grilleS.nombreEtoiles == 2 && @chrono.getSec() <= 30)
 				@gMenu.joueur.ajouterEtoiles(1)
+				@gMenu.joueur.ajouterArgent(@h*@l/3)
 				@grilleS.nombreEtoiles += 1
 			end
 			@pere.chargeurGrille.debloquerGrilles(@gMenu.joueur.etoiles)

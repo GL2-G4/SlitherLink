@@ -145,13 +145,13 @@ class PartieUI < Gtk::Box
 		ar.signal_connect('button_release_event'){
 			#puts "UNDO"
 			@jeu.undo()
-			@jeu.afficherPlateau
+			#@jeu.afficherPlateau
 			majGrille()
 		}
 		av.signal_connect('button_release_event'){
 			#puts "REDO"
 			@jeu.redo()
-			@jeu.afficherPlateau
+			#@jeu.afficherPlateau
 			majGrille()
 		}
 		popupErreur.addBouton(titre:"Voir erreur(s)"){
@@ -211,8 +211,8 @@ class PartieUI < Gtk::Box
 					d = @jeu.getDescription(t)
 					z = @jeu.getZone(t)
 					l = @jeu.getLignes(t)
-					puts "Technique : " + d.to_s()
-					puts "Zone : " + z.to_s()
+					#puts "Technique : " + d.to_s()
+					#puts "Zone : " + z.to_s()
 					#puts "Lignes : " + l.to_s()
 					if(l.length > 0)
 						@grilleS.pointsAide -= 5
@@ -673,34 +673,34 @@ class PartieUI < Gtk::Box
 	def traiterLigneHorizontale(index, clique)
 		if(index%(@h+1)==0)
 			@jeu.jouer( (index/(@h+1)).to_i, 0, :HAUT , clique)
-			puts "jouer(#{(index/(@h+1)).to_i}, 0, :HAUT, #{clique})"
+			#puts "jouer(#{(index/(@h+1)).to_i}, 0, :HAUT, #{clique})"
 			#puts"case bas,"+(index/(@h+1)).to_i.to_s+", 0"
 		else
 			@jeu.jouer( (index/(@h+1)).to_i, index%(@h+1)-1, :BAS , clique)
-			puts "jouer(#{(index/(@h+1)).to_i}, #{index%(@h+1)-1}, :BAS, #{clique})"
+			#puts "jouer(#{(index/(@h+1)).to_i}, #{index%(@h+1)-1}, :BAS, #{clique})"
 			#puts"case haut, "+ (index/(@h+1)).to_i.to_s + ", " + (index%(@h+1)-1).to_s 
 		end
 		autocompletion()
-		@jeu.afficherPlateau
+		#@jeu.afficherPlateau
 	end
 
 	def traiterLigneVerticale(index, clique)
 		if(index < @h)
 			#puts"case droite, 0 ,"+index.to_s
-			puts "jouer(0, #{index}, :GAUCHE, #{clique})"
+			#puts "jouer(0, #{index}, :GAUCHE, #{clique})"
 			@jeu.jouer(0, index, :GAUCHE, clique)
 		else
 			#puts"case gauche,"+((index-@h)/@h.to_i).to_s + ", " + (index% @h).to_s
-			puts "jouer(#{(index-@h)/@h.to_i}, #{index% @h}, :DROITE, #{clique})"
+			#puts "jouer(#{(index-@h)/@h.to_i}, #{index% @h}, :DROITE, #{clique})"
 			@jeu.jouer((index-@h)/@h.to_i, index% @h, :DROITE, clique)
 		end
 		autocompletion()
-		@jeu.afficherPlateau
+		#@jeu.afficherPlateau
 	end
 
 	def run
 		#@window.show_all
-		@jeu.afficherPlateau
+		#@jeu.afficherPlateau
 	end
 
 	def signaux
@@ -724,6 +724,7 @@ class PartieUI < Gtk::Box
 				#@timer.set_label(@chrono.getTime.strftime("%M:%S"))
 				@pA.set_markup("<span font_desc=\"15.0\"><b>#{@grilleS.pointsAide}</b></span>")
 			end
+			@pA.set_markup("<span font_desc=\"15.0\"><b>0</b></span>")
 		}
 	end
 
@@ -754,7 +755,7 @@ class PartieUI < Gtk::Box
 				@grilleS.nombreEtoiles += 1
 			end
 			@pere.chargeurGrille.debloquerGrilles(@gMenu.joueur.etoiles)
-			@pere.chargeurGrille.sauvegarder(File.dirname(__FILE__) + "/../Grilles/grilleAventure")
+			@pere.chargeurGrille.sauvegarder(@pere.chargeurGrille.pwd_fichier)
 			@gMenu.changerMenu(ScreenGagne.new(@gMenu,self,@chrono.getTime.strftime("%M:%S"),@grilleS.nombreEtoiles - etoile))
 		}
 	end

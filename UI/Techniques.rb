@@ -23,10 +23,27 @@ class Techniques < Gtk::Box
     p11 = ImageManager.getImageFromFile(@path+"/image/1257.gif",200,200)
     p20 = ImageManager.getImageFromFile(@path+"/image/1258.gif",200,200)
     p21 = ImageManager.getImageFromFile(@path+"/image/1259.gif",200,200)
-    
+    p30 = ImageManager.getImageFromFile(@path+"/image/1254.gif",200,200)
+    p31 = ImageManager.getImageFromFile(@path+"/image/1255.gif",200,200)
+    p40 = ImageManager.getImageFromFile(@path+"/image/1256.gif",200,200)
+    p11 = ImageManager.getImageFromFile(@path+"/image/1257.gif",200,200)
+    p40 = ImageManager.getImageFromFile(@path+"/image/1258.gif",200,200)
+    p41 = ImageManager.getImageFromFile(@path+"/image/1259.gif",200,200)
+    p50 = ImageManager.getImageFromFile(@path+"/image/1254.gif",200,200)
+    p51 = ImageManager.getImageFromFile(@path+"/image/1255.gif",200,200)
+    p60 = ImageManager.getImageFromFile(@path+"/image/1256.gif",200,200)
+    p61 = ImageManager.getImageFromFile(@path+"/image/1257.gif",200,200)
+    p70 = ImageManager.getImageFromFile(@path+"/image/1258.gif",200,200)
+    p71 = ImageManager.getImageFromFile(@path+"/image/1259.gif",200,200)
+
     boxTechniques(p00, p01)
     boxTechniques(p10, p11)
     boxTechniques(p20, p21)
+    boxTechniques(p30, p31)
+    boxTechniques(p40, p41)
+    boxTechniques(p50, p51)
+    boxTechniques(p60, p61)
+    boxTechniques(p70, p71)
 
     @button = Gtk::Button.new(:label => "- Retour -")
     @button.signal_connect "clicked" do |_widget|

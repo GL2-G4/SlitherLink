@@ -2,6 +2,7 @@ require "gtk3"
 require_relative './PartieUI.rb'
 require_relative '../Noyau/LoadSaveGrilles/ChargeurGrille.rb'
 require_relative './ImageManager.rb'
+require_relative './ScreenGagne2.rb'
 
 class MenuApprentissage < Gtk::Box
 
@@ -89,17 +90,12 @@ class MenuApprentissage < Gtk::Box
             else
                 temps = Gtk::Label.new("--:--")
             end
-            # NB Etoiles
-            etoiles = Gtk::Box.new(:horizontal)
-            grille.nombreEtoiles.times(){
-                etoiles.add(ImageManager.getImageFromFile(path + "/image/etoile.png",20,20))
-            }
             # Bouton Jouer
             bouton = Gtk::Button.new(:label => "Jouer")
             bouton.signal_connect "clicked" do |_widget|
                 #puts "Jouer au puzzle n°" + (index+1).to_s
                 jeu = Jeu.charger(grille)
-                uiP = PartieUI.creer(@gMenu,self,jeu,grille)
+                uiP = PartieUI.creer(@gMenu,self,jeu,grille,screenG:ScreenGagne2)
                 @gMenu.changerMenu(uiP)
             end
             if(@gMenu.joueur.grilleDebloquee?(@chargeurGrille.getGrilleIndex(index)) == false)
@@ -117,7 +113,6 @@ class MenuApprentissage < Gtk::Box
             #@listeBoutons[index] = bouton
             boxBouton.add(textBox)
             boxBouton.add(temps)
-            boxBouton.add(etoiles)
             boxBouton.add(bouton)
             border.add(boxBouton)
             @vBox2.add(border)

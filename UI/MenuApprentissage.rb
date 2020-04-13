@@ -34,7 +34,7 @@ class MenuApprentissage < Gtk::Box
             @gMenu.changerMenu(@pere)
         end
 
-        @titre = Gtk::Label.new("Aventure")
+        @titre = Gtk::Label.new("Apprentissage")
         @titre.style_context.add_class("titre")
         @vBox2.add(@titre)
 

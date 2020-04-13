@@ -3,6 +3,7 @@ require_relative "../Noyau/Jeu.rb"
 require_relative "./PartieUI.rb"
 require_relative "../Noyau/LoadSaveGrilles/ChargeurGrille.rb"
 require_relative "./ScreenPause.rb"
+require_relative "./ScreenGagne3.rb"
 
 class Tutoriel < Gtk::Box
 
@@ -96,7 +97,7 @@ class Tutoriel < Gtk::Box
         grille = @chargeurGrille.getGrilleIndex(0)
         
         jeu = Jeu.charger(grille)
-        uiP = PartieUI.creer(@gMenu, self, jeu, grille)
+        uiP = PartieUI.creer(@gMenu, self, jeu, grille, screenG:ScreenGagne3)
         gMenu.changerMenu(uiP)
       end
     end

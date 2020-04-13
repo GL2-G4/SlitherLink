@@ -53,6 +53,7 @@ class Tutoriel < Gtk::Box
     p5 = GdkPixbuf::Pixbuf.new(:file => path + "/image/regles2.png")
     @iTech5 = Gtk::Image.new(:pixbuf => p2.scale_simple($imageTuto, $imageTuto, GdkPixbuf::InterpType::BILINEAR))
     @iTech4.set_margin_right(150)
+    @iTech4.set_margin_left(250)
 
 
     @vBoxBis0.add(@paragraphe4)

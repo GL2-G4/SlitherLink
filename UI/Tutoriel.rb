@@ -1,7 +1,8 @@
 require "gtk3"
 require_relative "../Noyau/Jeu.rb"
-require_relative "../UI/PartieUI.rb"
+require_relative "./PartieUI.rb"
 require_relative "../Noyau/LoadSaveGrilles/ChargeurGrille.rb"
+require_relative "./ScreenPause.rb"
 
 class Tutoriel < Gtk::Box
 
@@ -96,7 +97,7 @@ class Tutoriel < Gtk::Box
         
         jeu = Jeu.charger(grille)
         uiP = PartieUI.creer(@gMenu, self, jeu, grille)
-        changerBox(uiP)
+        gMenu.changerMenu(uiP)
       end
     end
     @hBox2.add(@button2)

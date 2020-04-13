@@ -81,7 +81,7 @@ class MenuAventure < Gtk::Box
             # Bouton Jouer
             bouton = Gtk::Button.new(:label => "Jouer")
             bouton.signal_connect "clicked" do |_widget|
-                puts "Jouer au puzzle n°" + (index+1).to_s
+                #puts "Jouer au puzzle n°" + (index+1).to_s
                 jeu = Jeu.charger(grille)
                 uiP = PartieUI.creer(@gMenu,self,jeu,grille)
                 @gMenu.changerMenu(uiP)

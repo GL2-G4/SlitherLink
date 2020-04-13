@@ -18,6 +18,7 @@ class MenuApprentissage < Gtk::Box
 
         @scrolled = Gtk::ScrolledWindow.new
         @scrolled.set_policy(:never, :automatic)
+        @scrolled.set_hexpand(true)
        
 
         @button1 = Gtk::Button.new(:label => "- Retour -")

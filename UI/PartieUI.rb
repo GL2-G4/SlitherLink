@@ -344,11 +344,13 @@ class PartieUI < Gtk::Box
 							l = Gtk::Label.new("", {:use_underline => true})
 							l.set_markup("<span font_desc=\"#{lignesDim[1]*0.9}\"><b>#{c.nbLigneDevantEtrePleine}</b></span>")
 							l.override_background_color(:normal,GRIS_BASE)
+							l.style_context.add_class("grille")
 							@grille.attach(l,i,j,1,1)
 						else
 							l = Gtk::Label.new("", {:use_underline => true})
 							l.set_markup("<span font_desc=\"#{lignesDim[1]*0.9}\"> </span>")
 							l.override_background_color(:normal,GRIS_BASE)
+							l.style_context.add_class("grille")
 							@grille.attach(l,i,j,1,1)
 						end
 					end

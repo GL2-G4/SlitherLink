@@ -110,6 +110,6 @@ end
 end
 
   def to_s()
-    return "Regles"
+    return "Tuto"
   end
 end

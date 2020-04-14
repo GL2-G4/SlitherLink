@@ -49,6 +49,10 @@ label {
   color: black;
 }
 
+.popup{
+  background-color: gray;
+}
+
 window {
   background-image: none;
   background-color: #fefefe;

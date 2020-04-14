@@ -103,6 +103,10 @@ class MenuAventure < Gtk::Box
                     jouer(grille)
                 else
                     acheter(index)
+                    if(grille.debloque)
+                        bouton.set_image(nil)
+                        bouton.set_label("Jouer")
+                    end
                 end
             end
             if(@gMenu.joueur.grilleDebloquee?(chargeurGrille.getGrilleIndex(index)) == false)

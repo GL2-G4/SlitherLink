@@ -2,14 +2,14 @@
 
 button {
   color: black;
-  background-image: url("./image/unicornBouton.png");
+  
   background-color: transparent;
-  border: none;
 }
 
 button:hover {
   background-image: none;
-  background-color: rgb(223, 223, 223);
+
+  background-image: url("./image/unicornBouton.png");
 }
 
 button:hover label {

@@ -5,6 +5,8 @@ require "fileutils"
 require_relative "../Parametres/Parametre.rb"
 require_relative "../Joueur/Joueur.rb"
 require_relative "./ScreenPause.rb"
+require_relative "../Noyau/Sauv.rb"
+require_relative "./Popup.rb"
 
 
 require "gtk3"
@@ -17,7 +19,7 @@ $paddingBox = 30
 $longListe = 550
 $icone = 15
 $imageTuto = 250
-
+$apprOrAdventure = 0
 
 class GestionnaireMenus
 
@@ -33,6 +35,10 @@ class GestionnaireMenus
     end
  
     def initialize(window, application)
+
+        at_exit do
+            Sauv.enregistrer()
+        end
 
         @window = window
         @app = application
@@ -52,6 +58,8 @@ class GestionnaireMenus
         @menu.boutique = MenuBoutique.creer(self, @menu, @boutique)
         @menu.tuto = Tutoriel.creer(self, @menu)
         changerMenu(@menu)
+
+        Sauv.recup( self)
     end
 
     def changerMenu(menuAff)

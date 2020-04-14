@@ -6,6 +6,7 @@ require path + "/Action"
 require path + "/GestionTechniques/GestionTechniques"
 require path + "/Constante"
 require path + "/GestionnaireQuicksave"
+require_relative "./Sauv.rb"
 
 require "yaml"
 
@@ -102,6 +103,7 @@ class Jeu
             end
         end
 
+        Sauv.recupPlateau( @plateau )
         @quickSave = GestionnaireQuicksave.nouveau( @plateau, @historiqueActions)
     end
 
@@ -322,6 +324,25 @@ class Jeu
         end
 
         return self
+    end
+
+    #modification d'une ligne
+    def modifierLigne( x, y, dir, modif)
+
+        if ( x < 0)
+            raise ArgumentError, "Coordonnées Incorrectes : [#{x},#{y}]"
+        end
+        if ( y < 0 )
+            raise ArgumentError, "Coordonnées Incorrectes : [#{x},#{y}]"
+        end
+        if ( x >= @plateau.size())
+            raise ArgumentError, "Coordonnées Incorrectes : [#{x},#{y}]"
+        end
+        if ( y >= @plateau[0].size() )
+            raise ArgumentError, "Coordonnées Incorrectes : [#{x},#{y}]"
+        end
+
+        @plateau[x][y].modifierLigneEtat( dir, modif)
     end
 
     # Affiche la grille dans la stdout.

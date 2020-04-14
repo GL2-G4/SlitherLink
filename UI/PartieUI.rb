@@ -26,6 +26,9 @@ class PartieUI < Gtk::Box
 
 	def initialize(gMenu,pere,jeu,grilleS,screenG,screenP)
 		super(:horizontal)
+
+		Sauv.recupPartieUI( self)
+
 		@jeu = jeu
 		@gMenu = gMenu
 		@pere = pere

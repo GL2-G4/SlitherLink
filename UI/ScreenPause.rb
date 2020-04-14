@@ -47,12 +47,14 @@ class ScreenPause < Gtk::Box
         # Btn Règles
         creerBtn(:image => :ICON_DOC){
             #puts 'Règles'
+            $apprOrAdventure = 0
             @gMenu.changerMenu(@gMenu.menu.menuRegles)
         }
         # Btn Quitter
         creerBtn(:image => :ICON_HOME){
             #puts 'Menu'
             @gMenu.changerMenu(@partie.pere)
+            $apprOrAdventure = 0
         }
 
         add(titre)

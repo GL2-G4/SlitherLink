@@ -2,7 +2,9 @@
 
 button {
   color: black;
-  background-image: url("./image/SpaceButton.png");
+  border-width: 5px;
+  border-style: solid;
+  background-image: url("./image/SpaceButton.jpg");
   background-color: transparent;
   border: none;
 }
@@ -60,7 +62,7 @@ label {
 }
 
 window {
-  background-image: url("./image/SpaceBackground.jpg");
+  background-image: url("./image/SpaceButton.png");
   background-color: transparent;
 }
 

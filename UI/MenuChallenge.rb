@@ -37,8 +37,26 @@ class MenuChallenge < Gtk::Box
 
         @challenges = ChallengeManager.charger(path + "/../Grilles/challenges.json")
         #puts @challenges.to_s
-        
+        i = 0
+
+
         @challenges.challenges["challenges"].each { |c|
+            if(i == 0)
+                @facile = Gtk::Label.new("FACILE")
+                @facile.style_context.add_class("titre")
+                @vBox2.add(@facile)
+            end
+            if(i == 3)
+                @moyen = Gtk::Label.new("MOYEN")
+                @moyen.style_context.add_class("titre")
+                @vBox2.add(@moyen)
+            end
+            if(i == 7)
+                @difficile = Gtk::Label.new("DIFFICILE")
+                @difficile.style_context.add_class("titre")
+                @vBox2.add(@difficile)
+            end
+            i += 1
             boxBouton = Gtk::ButtonBox.new(:horizontal)
             boxBouton.set_width_request($longListe)
             border = Gtk::Frame.new()

@@ -24,6 +24,7 @@ class Tutoriel < Gtk::Box
     @vBoxBis1 = Gtk::Box.new(:vertical)
     @vBoxBis2 = Gtk::Box.new(:vertical)
     @vBoxBis3 = Gtk::Box.new(:vertical)
+    @vBoxBis4 = Gtk::Box.new(:vertical)
     @hBox2 = Gtk::Box.new(:horizontal)
     @hBox = Gtk::Box.new(:horizontal)
     @titre = Gtk::Label.new("Bienvenue dans le Tutoriel !")
@@ -41,6 +42,8 @@ class Tutoriel < Gtk::Box
     * Une fois terminée, la solution forme une seule boucle continue sans croisements ni branches.\n
     
     Exemple : \n\n")
+    @paragraphe5 = Gtk::Label.new("\n\n\nCette liste de techniques était non exhaustive, tu peux t'amuser à en chercher d'avantage !
+    Sur la page suivante, une partie va démarrer. Découvre l'interface du jeu avec ses différents boutons et essaye les techniques que tu as apprise.")
     
 
     p1 = GdkPixbuf::Pixbuf.new(:file => path + "/image/technique1.png")
@@ -71,6 +74,8 @@ class Tutoriel < Gtk::Box
     @vBoxBis3.add(@paragraphe3)
     @vBoxBis3.add(@iTech3)
 
+    @vBoxBis4.add(@paragraphe5)
+
     @i = 0;
 
     @button = Gtk::Button.new(:label => "- Retour -")
@@ -92,6 +97,9 @@ class Tutoriel < Gtk::Box
         changerBox(@vBoxBis3)
         @i += 1
       elsif(@i == 3)
+        changerBox(@vBoxBis4)
+        @i +=1
+      elsif(@i == 4)
         @i +=1
         @chargeurGrille = ChargeurGrille.charger(File.dirname(__FILE__) + "/../Grilles/grilleTuto")
         grille = @chargeurGrille.getGrilleIndex(0)
@@ -121,13 +129,13 @@ end
       @vBox2.each { |child|
          @vBox2.remove(child)
       }
-      if(@i != 4)
+      if(@i != 5)
         @vBox2.add(@titre)
       else
         @vBox2.add(@titre2)
       end
       @vBox2.add(maBox)
-      if(@i != 4)
+      if(@i != 5)
         @vBox2.add(@hBox2)
       else
         @i = 0

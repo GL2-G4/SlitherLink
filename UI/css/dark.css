@@ -28,6 +28,7 @@ button:active label {
 /***********LABELS***********/
 
 label {
+  font-size: 125%;
   color: gray;
   font-weight: normal;
 }

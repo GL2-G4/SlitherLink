@@ -10,7 +10,7 @@ button {
 }
 
 button:hover label {
-  color: darkgreen;
+  color: brown;
 }
 
 button:active {
@@ -25,6 +25,7 @@ button:active label {
 /***********LABELS***********/
 
 label {
+  font-size: 125%;
   color: brown;
   font-weight: normal;
 }

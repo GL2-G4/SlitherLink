@@ -8,14 +8,13 @@ class Boutique
 	attr_reader :listeGrilles, :listeThemes
 
 	# Méthode de création
-	def Boutique.charger(listeThemes)
-		new(listeThemes)
+	def Boutique.charger(listeGrilles, listeThemes)
+		new(listeGrilles, listeThemes)
 	end
 	
 	# Méthode d'initialisation de la boutique
-	def initialize(listeThemes)
-		@chargeurGrille = ChargeurGrille.charger(File.dirname(__FILE__) + "/../Grilles/grille")
-		@listeGrilles = @chargeurGrille.listeGrilles
+	def initialize(listeGrilles, listeThemes)
+		@listeGrilles = listeGrilles
 		@listeThemes = listeThemes
 	end
 	

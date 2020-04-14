@@ -46,7 +46,9 @@ label {
   color: brown;
   background-image: none;
 }
-
+.popup{
+  background-color: darkgreen;
+}
 window {
   background-image: none;
   background-color: lawngreen;

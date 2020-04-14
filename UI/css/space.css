@@ -60,7 +60,9 @@ label {
   color: #00609b;
   background-color: indigo;
 }
-
+.popup{
+  background-color: black;
+}
 window {
   background-image: url("./image/SpaceButton.png");
   background-color: transparent;

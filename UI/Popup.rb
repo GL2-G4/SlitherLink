@@ -75,6 +75,7 @@ class Popup
     end
 
     def run()
+        @win.style_context.add_class("popup")
         @win.show_all
     end
 

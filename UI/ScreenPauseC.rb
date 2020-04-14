@@ -4,7 +4,7 @@
 # File Created: Wednesday, 8th April 2020 3:56:39 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 14th April 2020 5:42:52 pm
+# Last Modified: Tuesday, 14th April 2020 7:43:24 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 require 'gtk3'
@@ -31,7 +31,10 @@ class ScreenPauseC < Gtk::Box
 
         # Titre
         titre = Gtk::Label.new.set_markup("<span font_desc=\"30.0\"><b>Pause</b></span>")
-        titre.set_margin_bottom(30)
+        titre.set_margin_bottom(10)
+        # Sous Titre
+        stitre = Gtk::Label.new.set_markup("<span font_desc=\"20.0\"><b>Grille #{@partie.pere.index+1}/5</b></span>")
+        stitre.set_margin_bottom(30)
         # Btn Continuer
         creerBtn(:image => :ICON_PLAY){
             #puts 'Continuer'
@@ -55,6 +58,7 @@ class ScreenPauseC < Gtk::Box
         }
 
         add(titre)
+        add(stitre)
         add(@fenetre)
     end
 

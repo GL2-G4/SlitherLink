@@ -1,6 +1,5 @@
-4pvvp:4vpvp:4vvpp 4pvpv:4pvpp:2pvpv 3pppv:2pvpv:3pppv;0;0;0;9;9;0;0;F
-4pvpp:1pvvv:2vppv:4pvpp 2pvpv:2pvpv:4pvvp:2vppv 2pvpv:3pppv:4pvpv:4ppvp 4ppvv:2vpvp:1vpvv:4vppp;0;0;0;16;16;0;0;F
-3pvpp:4pppv:4pvvp:2vpvp:4vppp 4pvvv:2vpvp:4vvpv:3ppvp:4vpvp 4pvpv:4pvpp:4ppvv:4vvvp:3vppp 4pvpv:4pvvv:3vppp:4pvpv:4ppvp 3pppv:4pvpv:3ppvp:1vpvv:4vppp;0;0;0;25;25;0;0;F
-4ppvp:2vpvp:2vvpp:4pppv:4pvpp:4ppvv 4vpvp:3vppp:1pvvv:4vpvp:1vpvv:3vppp 3ppvp:4vpvp:1vvpv:4ppvp:2vpvp:2vpvp 4vpvp:3vppp:1pvvv:4vpvp:2vpvp:4vppp 4pvvp:4vpvp:1vvpv:4ppvp:4vpvp:4vpvp 3pppv:3pvpp:4ppvv:2vpvp:2vpvp:4vppp;0;0;0;36;36;0;0;F
-2pvvp:4vpvp:2vpvp:1vvvp:4vpvp:4vpvp:3vppp 4pppv:4pvvp:2vvpp:4pvpv:4pvvp:4vpvp:4vvvp 4vpvp:4vpvv:4vppv:2pvpv:2pvpv:3pvpp:4ppvv 4ppvp:2vpvp:2vpvp:4vvpv:3pppv:4pvvv:3vppp 1vvvp:4vpvp:2vvpp:2ppvv:4vvvp:2vppv:4pvvp 2vppv:4pvpp:2ppvv:3vppp:4pvpv:4ppvp:4vpvv 4ppvp:1vpvv:4vpvp:4vpvp:4vpvv:2vpvp:4vppp;0;0;0;49;49;0;0;F
-
+4pvvp:4vpvp:4vvpp 4pvpv:4pvpp:2pvpv 3pppv:2pvpv:3pppv;13;13;0;9;9;0;0;F
+4pvpp:1pvvv:2vppv:4pvpp 2pvpv:2pvpv:4pvvp:2vppv 2pvpv:3pppv:4pvpv:4ppvp 4ppvv:2vpvp:1vpvv:4vppp;242;242;0;16;16;0;0;F
+3pvpp:4pppv:4pvvp:2vpvp:4vppp 4pvvv:2vpvp:4vvpv:3ppvp:4vpvp 4pvpv:4pvpp:4ppvv:4vvvp:3vppp 4pvpv:4pvvv:3vppp:4pvpv:4ppvp 3pppv:4pvpv:3ppvp:1vpvv:4vppp;73;73;0;25;25;0;0;F
+4ppvp:2vpvp:2vvpp:4pppv:4pvpp:4ppvv 4vpvp:3vppp:1pvvv:4vpvp:1vpvv:3vppp 3ppvp:4vpvp:1vvpv:4ppvp:2vpvp:2vpvp 4vpvp:3vppp:1pvvv:4vpvp:2vpvp:4vppp 4pvvp:4vpvp:1vvpv:4ppvp:4vpvp:4vpvp 3pppv:3pvpp:4ppvv:2vpvp:2vpvp:4vppp;90;90;0;36;36;0;0;F
+2pvvp:4vpvp:2vpvp:1vvvp:4vpvp:4vpvp:3vppp 4pppv:4pvvp:2vvpp:4pvpv:4pvvp:4vpvp:4vvvp 4vpvp:4vpvv:4vppv:2pvpv:2pvpv:3pvpp:4ppvv 4ppvp:2vpvp:2vpvp:4vvpv:3pppv:4pvvv:3vppp 1vvvp:4vpvp:2vvpp:2ppvv:4vvvp:2vppv:4pvvp 2vppv:4pvpp:2ppvv:3vppp:4pvpv:4ppvp:4vpvv 4ppvp:1vpvv:4vpvp:4vpvp:4vpvv:2vpvp:4vppp;177;177;0;49;49;0;0;F

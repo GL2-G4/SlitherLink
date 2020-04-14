@@ -15,7 +15,7 @@ class Joueur
 	# Constructeur d'un joueur
 	def initialize()
 	
-		@argent = 0
+		@argent = 100000
 		@etoiles = 0
 	end
 	

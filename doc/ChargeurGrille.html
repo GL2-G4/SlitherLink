@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class ChargeurGrille - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-charger">::charger</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-afficherGrilles">#afficherGrilles</a>
+    
+    <li ><a href="#method-i-debloquerGrilles">#debloquerGrilles</a>
+    
+    <li ><a href="#method-i-getGrilleIndex">#getGrilleIndex</a>
+    
+    <li ><a href="#method-i-sauvegarder">#sauvegarder</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-ChargeurGrille">
+  <h1 id="class-ChargeurGrille" class="class">
+    class ChargeurGrille
+  </h1>
+
+  <section class="description">
+    
+<p>Classe possédant des méthodes permettant de charger et de sauvegarder des
+grilles. Contient la liste des grilles chargées à partir d&#39;un fichier.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-listeGrilles" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">listeGrilles</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-pwd_fichier" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">pwd_fichier</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-charger" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">charger</span><span
+            class="method-args">(nomFichier)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode de création d&#39;un chargeur de grille</p>
+          
+          
+
+          
+          <div class="method-source-code" id="charger-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/ChargeurGrille.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">ChargeurGrille</span>.<span class="ruby-identifier ruby-title">charger</span>(<span class="ruby-identifier">nomFichier</span>)
+        <span class="ruby-identifier">new</span>(<span class="ruby-identifier">nomFichier</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(nomFichier)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p> Méthode d&#39;initialisation qui transforme chacune des lignes du fichier
+de grilles en une grille et l&#39;ajoute à la liste des grilles</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/ChargeurGrille.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">nomFichier</span>)
+        <span class="ruby-ivar">@pwd_fichier</span> = <span class="ruby-identifier">nomFichier</span>
+        <span class="ruby-comment"># Ouverture du fichier</span>
+        <span class="ruby-identifier">fichier</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">nomFichier</span>, <span class="ruby-string">&quot;r&quot;</span>)
+        
+        <span class="ruby-comment"># Lecture de chacune des lignes du fichier</span>
+        <span class="ruby-identifier">lignes</span> = <span class="ruby-identifier">fichier</span>.<span class="ruby-identifier">readlines</span>()
+        
+        <span class="ruby-comment"># Création des grilles en fonction des lignes lues</span>
+        <span class="ruby-ivar">@listeGrilles</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+        <span class="ruby-identifier">lignes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> (<span class="ruby-identifier">l</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">33</span>)
+                        <span class="ruby-ivar">@listeGrilles</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">Grille</span>.<span class="ruby-identifier">charger</span>(<span class="ruby-identifier">l</span>))
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        
+        <span class="ruby-comment"># Fermeture du fichier</span>
+        <span class="ruby-identifier">fichier</span>.<span class="ruby-identifier">close</span>()
+        
+        <span class="ruby-comment">#self.afficherGrilles</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-afficherGrilles" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">afficherGrilles</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;affichage de la liste de grilles (pour le débugage)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="afficherGrilles-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/ChargeurGrille.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficherGrilles</span>
+        <span class="ruby-ivar">@listeGrilles</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">grille</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">afficher</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-debloquerGrilles" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">debloquerGrilles</span><span
+            class="method-args">(nombreEtoiles)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui débloque les grilles dont le nombre d&#39;étoiles passé en
+paramètres est supérieur ou égal au nombre d&#39;étoiles pour débloquer ces
+grilles</p>
+          
+          
+
+          
+          <div class="method-source-code" id="debloquerGrilles-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/ChargeurGrille.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">debloquerGrilles</span>(<span class="ruby-identifier">nombreEtoiles</span>)
+
+        <span class="ruby-ivar">@listeGrilles</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">grille</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">grille</span>.<span class="ruby-identifier">debloque</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">prixEtoiles</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">nombreEtoiles</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">prixPieces</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                        <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">debloquer</span>()
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getGrilleIndex" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getGrilleIndex</span><span
+            class="method-args">(index)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Getter sur la liste des grilles (avec contrôles supplémentaires)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getGrilleIndex-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/ChargeurGrille.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getGrilleIndex</span>(<span class="ruby-identifier">index</span>)
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">index</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Index négatif : #{index}&quot;</span>
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">index</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@listeGrilles</span>.<span class="ruby-identifier">size</span>
+                <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Index trop grand : #{index} (index maximum #{@listeGrilles.size - 1})&quot;</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-ivar">@listeGrilles</span>[<span class="ruby-identifier">index</span>]
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sauvegarder" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sauvegarder</span><span
+            class="method-args">(nomFichier)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sauvegarde chacune des grilles de la liste de grilles dans le fichier</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sauvegarder-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/ChargeurGrille.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sauvegarder</span>(<span class="ruby-identifier">nomFichier</span>)
+
+        <span class="ruby-comment"># Ouverture du fichier</span>
+        <span class="ruby-identifier">fichier</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">nomFichier</span>, <span class="ruby-string">&quot;w&quot;</span>)
+        
+        <span class="ruby-comment"># Traduction de chacune des grilles de la liste des grilles en ligne de fichier</span>
+        <span class="ruby-identifier">ligne</span> = <span class="ruby-string">&quot;&quot;</span>
+        <span class="ruby-ivar">@listeGrilles</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">grille</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">ligne</span> = <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">toLigneFichier</span>()
+                <span class="ruby-identifier">fichier</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">ligne</span>)
+        <span class="ruby-keyword">end</span>
+        
+        <span class="ruby-comment"># Fermeture du fichier</span>
+        <span class="ruby-identifier">fichier</span>.<span class="ruby-identifier">close</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

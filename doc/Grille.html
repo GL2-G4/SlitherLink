@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Grille - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-charger">::charger</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-afficher">#afficher</a>
+    
+    <li ><a href="#method-i-charger">#charger</a>
+    
+    <li ><a href="#method-i-construirePlateau">#construirePlateau</a>
+    
+    <li ><a href="#method-i-debloquer">#debloquer</a>
+    
+    <li ><a href="#method-i-toBooleen">#toBooleen</a>
+    
+    <li ><a href="#method-i-toCaractere">#toCaractere</a>
+    
+    <li ><a href="#method-i-toCaractereBooleen">#toCaractereBooleen</a>
+    
+    <li ><a href="#method-i-toLigne">#toLigne</a>
+    
+    <li ><a href="#method-i-toLigneFichier">#toLigneFichier</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Grille">
+  <h1 id="class-Grille" class="class">
+    class Grille
+  </h1>
+
+  <section class="description">
+    
+<p>Classe représentant une grille de SlitherLink, avec le plateau
+correspondant et toutes les informations qui lui sont associées (voir
+variables d&#39;instance).</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-debloque" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">debloque</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-meilleurTemps" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">meilleurTemps</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-nombreColonnes" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">nombreColonnes</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <h1 id="attribute-i-nombreColonnes-label-begin">begin<span><a href="#attribute-i-nombreColonnes-label-begin">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>@plateau : le plateau de jeu représentant la grille
+@temps : le temps écoulé à résoudre la grille
+@meilleurTemps : le meilleur temps de résolution de la grille
+@nombreEtoiles : le nombre d&#39;étoiles déjà gagnées
+@pointsAide : nombre de points d&#39;aide restants
+@pointsAideDepart : le nombre de points d&#39;aide avec lequel commence le joueur au début de la partie
+@nombreLignes : le nombre de lignes du plateau
+@nombreColonnes : le nombre de colonnes du plateau
+@debloque : vrai si la grille est débloquée, faux sinon
+@prixPieces : le prix en pièces d&#39;or pour débloquer la grille
+@prixEtoiles : le nombre d&#39;étoiles pour débloquer la grille</pre>
+
+<h1 id="attribute-i-nombreColonnes-label-end">end<span><a href="#attribute-i-nombreColonnes-label-end">&para;</a> <a href="#top">&uarr;</a></span></h1>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-nombreEtoiles" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">nombreEtoiles</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-nombreLignes" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">nombreLignes</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <h1 id="attribute-i-nombreLignes-label-begin">begin<span><a href="#attribute-i-nombreLignes-label-begin">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>@plateau : le plateau de jeu représentant la grille
+@temps : le temps écoulé à résoudre la grille
+@meilleurTemps : le meilleur temps de résolution de la grille
+@nombreEtoiles : le nombre d&#39;étoiles déjà gagnées
+@pointsAide : nombre de points d&#39;aide restants
+@pointsAideDepart : le nombre de points d&#39;aide avec lequel commence le joueur au début de la partie
+@nombreLignes : le nombre de lignes du plateau
+@nombreColonnes : le nombre de colonnes du plateau
+@debloque : vrai si la grille est débloquée, faux sinon
+@prixPieces : le prix en pièces d&#39;or pour débloquer la grille
+@prixEtoiles : le nombre d&#39;étoiles pour débloquer la grille</pre>
+
+<h1 id="attribute-i-nombreLignes-label-end">end<span><a href="#attribute-i-nombreLignes-label-end">&para;</a> <a href="#top">&uarr;</a></span></h1>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-plateau" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">plateau</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <h1 id="attribute-i-plateau-label-begin">begin<span><a href="#attribute-i-plateau-label-begin">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>@plateau : le plateau de jeu représentant la grille
+@temps : le temps écoulé à résoudre la grille
+@meilleurTemps : le meilleur temps de résolution de la grille
+@nombreEtoiles : le nombre d&#39;étoiles déjà gagnées
+@pointsAide : nombre de points d&#39;aide restants
+@pointsAideDepart : le nombre de points d&#39;aide avec lequel commence le joueur au début de la partie
+@nombreLignes : le nombre de lignes du plateau
+@nombreColonnes : le nombre de colonnes du plateau
+@debloque : vrai si la grille est débloquée, faux sinon
+@prixPieces : le prix en pièces d&#39;or pour débloquer la grille
+@prixEtoiles : le nombre d&#39;étoiles pour débloquer la grille</pre>
+
+<h1 id="attribute-i-plateau-label-end">end<span><a href="#attribute-i-plateau-label-end">&para;</a> <a href="#top">&uarr;</a></span></h1>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-pointsAide" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">pointsAide</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-pointsAideDepart" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">pointsAideDepart</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <h1 id="attribute-i-pointsAideDepart-label-begin">begin<span><a href="#attribute-i-pointsAideDepart-label-begin">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>@plateau : le plateau de jeu représentant la grille
+@temps : le temps écoulé à résoudre la grille
+@meilleurTemps : le meilleur temps de résolution de la grille
+@nombreEtoiles : le nombre d&#39;étoiles déjà gagnées
+@pointsAide : nombre de points d&#39;aide restants
+@pointsAideDepart : le nombre de points d&#39;aide avec lequel commence le joueur au début de la partie
+@nombreLignes : le nombre de lignes du plateau
+@nombreColonnes : le nombre de colonnes du plateau
+@debloque : vrai si la grille est débloquée, faux sinon
+@prixPieces : le prix en pièces d&#39;or pour débloquer la grille
+@prixEtoiles : le nombre d&#39;étoiles pour débloquer la grille</pre>
+
+<h1 id="attribute-i-pointsAideDepart-label-end">end<span><a href="#attribute-i-pointsAideDepart-label-end">&para;</a> <a href="#top">&uarr;</a></span></h1>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-prixEtoiles" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">prixEtoiles</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <h1 id="attribute-i-prixEtoiles-label-begin">begin<span><a href="#attribute-i-prixEtoiles-label-begin">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>@plateau : le plateau de jeu représentant la grille
+@temps : le temps écoulé à résoudre la grille
+@meilleurTemps : le meilleur temps de résolution de la grille
+@nombreEtoiles : le nombre d&#39;étoiles déjà gagnées
+@pointsAide : nombre de points d&#39;aide restants
+@pointsAideDepart : le nombre de points d&#39;aide avec lequel commence le joueur au début de la partie
+@nombreLignes : le nombre de lignes du plateau
+@nombreColonnes : le nombre de colonnes du plateau
+@debloque : vrai si la grille est débloquée, faux sinon
+@prixPieces : le prix en pièces d&#39;or pour débloquer la grille
+@prixEtoiles : le nombre d&#39;étoiles pour débloquer la grille</pre>
+
+<h1 id="attribute-i-prixEtoiles-label-end">end<span><a href="#attribute-i-prixEtoiles-label-end">&para;</a> <a href="#top">&uarr;</a></span></h1>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-prixPieces" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">prixPieces</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <h1 id="attribute-i-prixPieces-label-begin">begin<span><a href="#attribute-i-prixPieces-label-begin">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>@plateau : le plateau de jeu représentant la grille
+@temps : le temps écoulé à résoudre la grille
+@meilleurTemps : le meilleur temps de résolution de la grille
+@nombreEtoiles : le nombre d&#39;étoiles déjà gagnées
+@pointsAide : nombre de points d&#39;aide restants
+@pointsAideDepart : le nombre de points d&#39;aide avec lequel commence le joueur au début de la partie
+@nombreLignes : le nombre de lignes du plateau
+@nombreColonnes : le nombre de colonnes du plateau
+@debloque : vrai si la grille est débloquée, faux sinon
+@prixPieces : le prix en pièces d&#39;or pour débloquer la grille
+@prixEtoiles : le nombre d&#39;étoiles pour débloquer la grille</pre>
+
+<h1 id="attribute-i-prixPieces-label-end">end<span><a href="#attribute-i-prixPieces-label-end">&para;</a> <a href="#top">&uarr;</a></span></h1>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-temps" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">temps</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-charger" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">charger</span><span
+            class="method-args">(contenuFichier)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode faisant appel au constructeur.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="charger-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/Grille.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier ruby-title">charger</span>(<span class="ruby-identifier">contenuFichier</span>)
+        <span class="ruby-identifier">new</span>(<span class="ruby-identifier">contenuFichier</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(contenuFichier)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Constructeur d&#39;une grille chargée à partir d&#39;un fichier.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/Grille.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">contenuFichier</span>)
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">charger</span>(<span class="ruby-identifier">contenuFichier</span>)
+        <span class="ruby-comment">#self.afficher</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-afficher" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">afficher</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode d&#39;affichage du plateau (si besoin pour débuger)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="afficher-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/Grille.rb, line 178</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficher</span>()
+    
+    <span class="ruby-identifier">tailleX</span> = <span class="ruby-ivar">@nombreColonnes</span>
+    <span class="ruby-identifier">tailleY</span> = <span class="ruby-ivar">@nombreLignes</span>
+
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>( <span class="ruby-identifier">tailleX</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span> ) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;  #{i} &quot;</span>
+    }
+
+    <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;\n&quot;</span>
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>( <span class="ruby-identifier">tailleY</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span> ) { <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>( <span class="ruby-identifier">tailleX</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span> ) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;. &quot;</span>, <span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:HAUT</span>), <span class="ruby-string">&quot; &quot;</span>
+        }
+
+        <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;.\n&quot;</span>
+
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>( <span class="ruby-identifier">tailleX</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span> ) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                            <span class="ruby-identifier">valC</span> = <span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">nbLigneDevantEtrePleine</span>
+            <span class="ruby-identifier">print</span> <span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:GAUCHE</span>), <span class="ruby-string">&quot; &quot;</span>, ((<span class="ruby-identifier">valC</span> <span class="ruby-operator">==</span> <span class="ruby-value">4</span>) <span class="ruby-operator">?</span> <span class="ruby-string">&quot; &quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">valC</span> ), <span class="ruby-string">&quot; &quot;</span>
+        }
+                    <span class="ruby-identifier">print</span> <span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">tailleX</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:DROITE</span>)
+        <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;  &quot;</span>, <span class="ruby-identifier">j</span>, <span class="ruby-string">&quot;\n&quot;</span>
+    }
+
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>( <span class="ruby-identifier">tailleX</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span> ) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;. &quot;</span>, <span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">tailleY</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>].<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:BAS</span>), <span class="ruby-string">&quot; &quot;</span>
+    }
+
+    <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;.\n&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Temps actuel = #{@temps}&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Meilleur temps = #{@meilleurTemps}&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Nombre d&#39;étoiles déjà gagnées = #{@nombreEtoiles}&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Points d&#39;aide restants = #{@pointsAide} / #{@pointsAideDepart}&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Nombre d&#39;étoiles requises = #{@prixEtoiles}*&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Prix de déblocage = #{@prixPieces}$&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Grille débloquée = &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@debloque</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-charger" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">charger</span><span
+            class="method-args">(contenuFichier)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode gérant le chargement des différentes informations concernant la
+grille (plateau, temps …)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="charger-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/Grille.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">charger</span>(<span class="ruby-identifier">contenuFichier</span>)
+        
+        <span class="ruby-comment"># Séparation des différentes informations du fichier (séparateur &quot;;&quot;)</span>
+        <span class="ruby-identifier">contenu</span> = <span class="ruby-identifier">contenuFichier</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;;&quot;</span>)
+        
+        <span class="ruby-comment"># Chargement des colonnes du plateau (séparateur &quot; &quot;)</span>
+        <span class="ruby-identifier">colonnesPlateau</span> = <span class="ruby-identifier">contenu</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot; &quot;</span>)
+        
+        <span class="ruby-comment"># Constitution de la matrice de cases à partir du tableau des colonnes (séparateur &quot;:&quot;)</span>
+        <span class="ruby-ivar">@nombreColonnes</span> = <span class="ruby-identifier">colonnesPlateau</span>.<span class="ruby-identifier">size</span>
+        <span class="ruby-identifier">casesPlateau</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@nombreColonnes</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-comment"># Insertion de chacune des colonnes dans le tableau de lignes</span>
+                <span class="ruby-identifier">casesPlateau</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">colonnesPlateau</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;:&quot;</span>))
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-ivar">@nombreLignes</span> = <span class="ruby-identifier">casesPlateau</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">size</span>
+        
+        <span class="ruby-comment"># Construction du plateau à partir de la matrice ainsi constituée</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">construirePlateau</span>(<span class="ruby-identifier">casesPlateau</span>) 
+        
+        <span class="ruby-comment"># Chargement du temps actuel, du meilleur temps, du nombre d&#39;étoiles déjà obtenues, du nombre de points d&#39;aides restants, du prix en pièces et en étoiles, du booléen déterminant si la grille est débloquée ou non</span>
+        <span class="ruby-ivar">@temps</span> = <span class="ruby-identifier">contenu</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>
+        <span class="ruby-ivar">@meilleurTemps</span> = <span class="ruby-identifier">contenu</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>
+        <span class="ruby-ivar">@nombreEtoiles</span> = <span class="ruby-identifier">contenu</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">to_i</span>
+        <span class="ruby-ivar">@pointsAide</span> = <span class="ruby-identifier">contenu</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">to_i</span>
+        <span class="ruby-ivar">@pointsAideDepart</span> = <span class="ruby-identifier">contenu</span>[<span class="ruby-value">5</span>].<span class="ruby-identifier">to_i</span>
+        <span class="ruby-ivar">@prixEtoiles</span> = <span class="ruby-identifier">contenu</span>[<span class="ruby-value">6</span>].<span class="ruby-identifier">to_i</span>
+        <span class="ruby-ivar">@prixPieces</span> = <span class="ruby-identifier">contenu</span>[<span class="ruby-value">7</span>].<span class="ruby-identifier">to_i</span>
+        <span class="ruby-ivar">@debloque</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">toBooleen</span>(<span class="ruby-identifier">contenu</span>[<span class="ruby-value">8</span>].<span class="ruby-identifier">chomp</span>)
+        
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-construirePlateau" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">construirePlateau</span><span
+            class="method-args">(casesPlateau)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode construisant le plateau à partir de la matrice contenant les cases
+chargées du fichier</p>
+          
+          
+
+          
+          <div class="method-source-code" id="construirePlateau-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/Grille.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">construirePlateau</span>(<span class="ruby-identifier">casesPlateau</span>) 
+        
+        <span class="ruby-comment"># Préparation du tableau de lignes du plateau</span>
+        <span class="ruby-ivar">@plateau</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@nombreColonnes</span>, <span class="ruby-keyword">nil</span>)
+
+        <span class="ruby-comment"># Préparation de chacune des lignes du tableau de lignes du plateau</span>
+<span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@nombreColonnes</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@nombreLignes</span>, <span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">end</span>
+
+        <span class="ruby-comment"># Remplissage de chaque case du plateau avec la matrice de cases (casesPlateau)</span>
+        <span class="ruby-comment"># Pour chaque case du plateau, faire ...</span>
+
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@nombreColonnes</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@nombreLignes</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+    
+        <span class="ruby-comment"># Création de la table de hachage contenant les lignes de la case</span>
+        <span class="ruby-identifier">h</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">nil</span>)
+        
+        <span class="ruby-comment"># Création des lignes BAS et DROITE</span>
+                        <span class="ruby-identifier">h</span>[<span class="ruby-value">:DROITE</span>] = <span class="ruby-constant">Ligne</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">toLigne</span>(<span class="ruby-identifier">casesPlateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>][<span class="ruby-value">2</span>]))
+                        <span class="ruby-identifier">h</span>[<span class="ruby-value">:BAS</span>] = <span class="ruby-constant">Ligne</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">toLigne</span>(<span class="ruby-identifier">casesPlateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>][<span class="ruby-value">3</span>]))
+                        
+                        <span class="ruby-comment"># S&#39;il existe une case en haut de cette case, les lignes HAUT de la case courante et BAS de la case du haut sont communes</span>
+                        <span class="ruby-keyword">if</span> ( <span class="ruby-identifier">j</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span> ) <span class="ruby-keyword">then</span>
+            <span class="ruby-identifier">h</span>[<span class="ruby-value">:HAUT</span>] = <span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:BAS</span>)
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">h</span>[<span class="ruby-value">:HAUT</span>] = <span class="ruby-constant">Ligne</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">toLigne</span>(<span class="ruby-identifier">casesPlateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>][<span class="ruby-value">1</span>]))
+        <span class="ruby-keyword">end</span>
+
+                        <span class="ruby-comment"># S&#39;il existe une case à gauche de cette case, les lignes GAUCHE de la case courante et DROITE de la case de gauche sont communes</span>
+        <span class="ruby-keyword">if</span> ( <span class="ruby-identifier">i</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span> ) <span class="ruby-keyword">then</span>
+            <span class="ruby-identifier">h</span>[<span class="ruby-value">:GAUCHE</span>] = <span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:DROITE</span>)
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">h</span>[<span class="ruby-value">:GAUCHE</span>] = <span class="ruby-constant">Ligne</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">toLigne</span>(<span class="ruby-identifier">casesPlateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>][<span class="ruby-value">4</span>]))
+        <span class="ruby-keyword">end</span>
+                        
+                        <span class="ruby-comment"># Récupération du nombre de lignes pleines autorisées de la case</span>
+                        <span class="ruby-identifier">numero</span> = <span class="ruby-identifier">casesPlateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>][<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span>
+
+                        <span class="ruby-comment"># Création de la case et ajout dans le plateau</span>
+        <span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] = <span class="ruby-constant">Case</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">numero</span>, <span class="ruby-identifier">h</span>)
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-debloquer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">debloquer</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode qui débloque une grille</p>
+          
+          
+
+          
+          <div class="method-source-code" id="debloquer-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/Grille.rb, line 173</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">debloquer</span>()
+                <span class="ruby-ivar">@debloque</span> = <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-toBooleen" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">toBooleen</span><span
+            class="method-args">(caractere)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode transformant le caractère reçu du fichier en booléen</p>
+          
+          
+
+          
+          <div class="method-source-code" id="toBooleen-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/Grille.rb, line 252</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">toBooleen</span>(<span class="ruby-identifier">caractere</span>)
+
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">caractere</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;V&quot;</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;F&quot;</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-identifier">caractere</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; n&#39;est pas un caractère valide (V ou F)&quot;</span>
+                <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-toCaractere" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">toCaractere</span><span
+            class="method-args">(etatLigne)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode transformant l&#39;état de ligne d&#39;une ligne en caractère pour
+être inséré dans le fichier</p>
+          
+          
+
+          
+          <div class="method-source-code" id="toCaractere-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/Grille.rb, line 233</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">toCaractere</span>(<span class="ruby-identifier">etatLigne</span>) 
+        
+        <span class="ruby-keyword">if</span> (<span class="ruby-constant">TypeLigne</span>.<span class="ruby-identifier">estValide?</span>(<span class="ruby-identifier">etatLigne</span>))
+                <span class="ruby-keyword">case</span> <span class="ruby-identifier">etatLigne</span>
+                        <span class="ruby-keyword">when</span> <span class="ruby-value">:VIDE</span>
+                                <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;v&quot;</span>
+                        <span class="ruby-keyword">when</span> <span class="ruby-value">:PLEINE</span>
+                                <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;p&quot;</span>
+                        <span class="ruby-keyword">when</span> <span class="ruby-value">:BLOQUE</span>
+                                <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;b&quot;</span>
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-identifier">caractere</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; n&#39;est pas un caractère valide (v ou p ou b)&quot;</span>
+                        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-identifier">etatLigne</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; n&#39;est pas une ligne&quot;</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-toCaractereBooleen" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">toCaractereBooleen</span><span
+            class="method-args">(booleen)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode transformant le booléen en caractère pour être inséré dans le
+fichier</p>
+          
+          
+
+          
+          <div class="method-source-code" id="toCaractereBooleen-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/Grille.rb, line 265</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">toCaractereBooleen</span>(<span class="ruby-identifier">booleen</span>)
+
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">booleen</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-keyword">true</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;V&quot;</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-keyword">false</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;F&quot;</span>
+                <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-toLigne" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">toLigne</span><span
+            class="method-args">(caractere)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode transformant le caractère reçu du fichier en état de ligne</p>
+          
+          
+
+          
+          <div class="method-source-code" id="toLigne-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/Grille.rb, line 218</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">toLigne</span>(<span class="ruby-identifier">caractere</span>) 
+        
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">caractere</span> 
+                <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;v&quot;</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-value">:VIDE</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;p&quot;</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-value">:PLEINE</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;b&quot;</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-value">:BLOQUE</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-value">:VIDE</span>
+                <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-toLigneFichier" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">toLigneFichier</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode transformant une grille en une ligne de fichier. Retourne la ligne
+de fichier ainsi créée.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="toLigneFichier-source">
+            <pre><span class="ruby-comment"># File Noyau/LoadSaveGrilles/Grille.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">toLigneFichier</span>()
+
+        <span class="ruby-comment"># La ligne de fichier correspondant à la grille</span>
+        <span class="ruby-identifier">contenuFichier</span> = <span class="ruby-string">&quot;&quot;</span>
+        
+        <span class="ruby-comment"># La traduction d&#39;une case en code pour être sauvé dans le fichier</span>
+        <span class="ruby-identifier">motCase</span> = <span class="ruby-string">&quot;&quot;</span>
+        
+        <span class="ruby-comment"># Pour chaque case du plateau, faire...</span>
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@nombreColonnes</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@nombreLignes</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+                
+                        <span class="ruby-comment"># Traduction de la case (lignes + numéro) en mot de fichier</span>
+                        <span class="ruby-identifier">motCase</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">nbLigneDevantEtrePleine</span>.<span class="ruby-identifier">to_s</span>
+                        <span class="ruby-identifier">motCase</span> <span class="ruby-operator">+=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">toCaractere</span>(<span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:HAUT</span>).<span class="ruby-identifier">etat</span>)
+                        <span class="ruby-identifier">motCase</span> <span class="ruby-operator">+=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">toCaractere</span>(<span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:DROITE</span>).<span class="ruby-identifier">etat</span>)
+                        <span class="ruby-identifier">motCase</span> <span class="ruby-operator">+=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">toCaractere</span>(<span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:BAS</span>).<span class="ruby-identifier">etat</span>)
+                        <span class="ruby-identifier">motCase</span> <span class="ruby-operator">+=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">toCaractere</span>(<span class="ruby-ivar">@plateau</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:GAUCHE</span>).<span class="ruby-identifier">etat</span>)
+                        
+                        <span class="ruby-comment"># Ajout du séparateur &quot;:&quot; entre 2 cases (sauf pour la dernière d&#39;une ligne)</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@nombreLignes</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                                <span class="ruby-identifier">motCase</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;:&quot;</span>
+                        <span class="ruby-keyword">end</span> 
+                <span class="ruby-keyword">end</span>
+                
+                <span class="ruby-comment"># Ajout du mot à la ligne de fichier</span>
+                <span class="ruby-identifier">contenuFichier</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">motCase</span>
+                <span class="ruby-identifier">motCase</span> = <span class="ruby-string">&quot;&quot;</span>
+                
+                <span class="ruby-comment"># Ajout du séparateur &quot; &quot; entre 2 lignes (sauf pour la dernière)</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@nombreColonnes</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+                        <span class="ruby-identifier">contenuFichier</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; &quot;</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-ivar">@pointsAide</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@pointsAide</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>)
+        
+        <span class="ruby-comment"># Ajout des autres champs de la grille</span>
+        <span class="ruby-identifier">contenuFichier</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@temps</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">contenuFichier</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@meilleurTemps</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">contenuFichier</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@nombreEtoiles</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">contenuFichier</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@pointsAide</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">contenuFichier</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@pointsAideDepart</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">contenuFichier</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@prixEtoiles</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">contenuFichier</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@prixPieces</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">contenuFichier</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">toCaractereBooleen</span>(<span class="ruby-ivar">@debloque</span>)
+        <span class="ruby-identifier">contenuFichier</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;\n&quot;</span>
+        
+        <span class="ruby-comment"># Retour de la ligne de fichier</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">contenuFichier</span>                 
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

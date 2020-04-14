@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Techniques - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Gtk::Box
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-creer">::creer</a>
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-ajouter">#ajouter</a>
+    
+    <li ><a href="#method-i-boxTechniques">#boxTechniques</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Techniques">
+  <h1 id="class-Techniques" class="class">
+    class Techniques
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-creer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creer</span><span
+            class="method-args">(gMenu, menupere)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="creer-source">
+            <pre><span class="ruby-comment"># File UI/Techniques.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Techniques</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">gMenu</span>, <span class="ruby-identifier">menupere</span>)
+  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">gMenu</span>, <span class="ruby-identifier">menupere</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(gMenu, menupere)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File UI/Techniques.rb, line 10</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">gMenu</span>, <span class="ruby-identifier">menupere</span>)
+    <span class="ruby-keyword">super</span>(<span class="ruby-value">:horizontal</span>)
+    <span class="ruby-ivar">@gMenu</span> = <span class="ruby-identifier">gMenu</span>
+    <span class="ruby-ivar">@pere</span> = <span class="ruby-identifier">menupere</span>
+    <span class="ruby-ivar">@vBox1</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+    <span class="ruby-ivar">@vBox2</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+    <span class="ruby-ivar">@vBox3</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+    <span class="ruby-ivar">@scrolled</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ScrolledWindow</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@scrolled</span>.<span class="ruby-identifier">set_policy</span>(<span class="ruby-value">:never</span>, <span class="ruby-value">:automatic</span>)
+    <span class="ruby-ivar">@scrolled</span>.<span class="ruby-identifier">set_hexpand</span>(<span class="ruby-keyword">true</span>)
+    <span class="ruby-ivar">@scrolled</span>.<span class="ruby-identifier">set_vexpand</span>(<span class="ruby-keyword">true</span>)
+    <span class="ruby-ivar">@scrolled</span>.<span class="ruby-identifier">set_margin_bottom</span>(<span class="ruby-value">20</span>)
+    <span class="ruby-ivar">@scrolled</span>.<span class="ruby-identifier">set_margin_top</span>(<span class="ruby-value">20</span>)
+
+    <span class="ruby-ivar">@titre</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Techniques&quot;</span>)
+    <span class="ruby-ivar">@titre</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;titre&quot;</span>)
+
+    <span class="ruby-ivar">@paragraphe</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Voci une liste de quelques techniques.
+Cette liste est non exhaustive, cherchez par vous-même pour en trouver d&#39;avantage !&quot;</span>)
+
+    <span class="ruby-ivar">@path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>))
+      
+    <span class="ruby-identifier">p00</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1254.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p01</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1255.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p10</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1256.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p11</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1257.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p20</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1258.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p21</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1259.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p30</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1260.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p31</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1261.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p40</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1262.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p11</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1263.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p40</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1264.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p41</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1265.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p50</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1266.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p51</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1267.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p60</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1268.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p61</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1269.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p70</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1270.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+    <span class="ruby-identifier">p71</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/1271.gif&quot;</span>,<span class="ruby-value">200</span>,<span class="ruby-value">200</span>)
+
+    <span class="ruby-identifier">boxTechniques</span>(<span class="ruby-identifier">p00</span>, <span class="ruby-identifier">p01</span>)
+    <span class="ruby-identifier">boxTechniques</span>(<span class="ruby-identifier">p10</span>, <span class="ruby-identifier">p11</span>)
+    <span class="ruby-identifier">boxTechniques</span>(<span class="ruby-identifier">p20</span>, <span class="ruby-identifier">p21</span>)
+    <span class="ruby-identifier">boxTechniques</span>(<span class="ruby-identifier">p30</span>, <span class="ruby-identifier">p31</span>)
+    <span class="ruby-identifier">boxTechniques</span>(<span class="ruby-identifier">p40</span>, <span class="ruby-identifier">p41</span>)
+    <span class="ruby-identifier">boxTechniques</span>(<span class="ruby-identifier">p50</span>, <span class="ruby-identifier">p51</span>)
+    <span class="ruby-identifier">boxTechniques</span>(<span class="ruby-identifier">p60</span>, <span class="ruby-identifier">p61</span>)
+    <span class="ruby-identifier">boxTechniques</span>(<span class="ruby-identifier">p70</span>, <span class="ruby-identifier">p71</span>)
+
+    <span class="ruby-ivar">@button</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;- Retour -&quot;</span>)
+    <span class="ruby-ivar">@button</span>.<span class="ruby-identifier">signal_connect</span> <span class="ruby-string">&quot;clicked&quot;</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">_widget</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">gMenu</span>.<span class="ruby-identifier">changerMenu</span>(<span class="ruby-ivar">@pere</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">ajouter</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-ajouter" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ajouter</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ajouter-source">
+            <pre><span class="ruby-comment"># File UI/Techniques.rb, line 67</span>
+ <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouter</span>()
+   <span class="ruby-ivar">@vBox1</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Alignment</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>), <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+   <span class="ruby-ivar">@vBox1</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@button</span>)
+   <span class="ruby-identifier">add</span>(<span class="ruby-ivar">@vBox1</span>)
+   <span class="ruby-ivar">@vBox3</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@titre</span>)
+   <span class="ruby-ivar">@vBox3</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@paragraphe</span>)
+   <span class="ruby-ivar">@vBox3</span>.<span class="ruby-identifier">set_halign</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>)
+   <span class="ruby-ivar">@scrolled</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@vBox2</span>)
+   <span class="ruby-ivar">@scrolled</span>.<span class="ruby-identifier">set_halign</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>)
+   <span class="ruby-ivar">@vBox3</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@scrolled</span>)
+   <span class="ruby-identifier">pack_end</span>(<span class="ruby-ivar">@vBox3</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:padding</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">100</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-boxTechniques" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">boxTechniques</span><span
+            class="method-args">(i1, i2)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="boxTechniques-source">
+            <pre><span class="ruby-comment"># File UI/Techniques.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">boxTechniques</span>(<span class="ruby-identifier">i1</span>, <span class="ruby-identifier">i2</span>)
+  <span class="ruby-identifier">box</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
+  <span class="ruby-identifier">i1</span>.<span class="ruby-identifier">set_halign</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">START</span>)
+  <span class="ruby-identifier">i2</span>.<span class="ruby-identifier">set_halign</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">END</span>)
+  <span class="ruby-identifier">i1</span>.<span class="ruby-identifier">set_margin_right</span>(<span class="ruby-value">50</span>)
+  <span class="ruby-identifier">i2</span>.<span class="ruby-identifier">set_margin_left</span>(<span class="ruby-value">50</span>)
+  <span class="ruby-identifier">img</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromFile</span>(<span class="ruby-ivar">@path</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;/image/fleche.png&quot;</span>,<span class="ruby-value">32</span>,<span class="ruby-value">20</span>)
+  <span class="ruby-identifier">img</span>.<span class="ruby-identifier">set_halign</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>)
+  <span class="ruby-identifier">box</span>.<span class="ruby-identifier">set_margin</span>(<span class="ruby-value">20</span>)
+  <span class="ruby-identifier">box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">i1</span>)
+  <span class="ruby-identifier">box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">img</span>)
+  <span class="ruby-identifier">box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">i2</span>)
+  <span class="ruby-ivar">@vBox2</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">box</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File UI/Techniques.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;Techniques&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

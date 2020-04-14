@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class PartieUI - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Gtk::Box
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-creer">::creer</a>
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-addMessage">#addMessage</a>
+    
+    <li ><a href="#method-i-addMessageErreur">#addMessageErreur</a>
+    
+    <li ><a href="#method-i-affichageChrono">#affichageChrono</a>
+    
+    <li ><a href="#method-i-affichageErreurs">#affichageErreurs</a>
+    
+    <li ><a href="#method-i-affichagePtAide">#affichagePtAide</a>
+    
+    <li ><a href="#method-i-ajouterQS">#ajouterQS</a>
+    
+    <li ><a href="#method-i-autocompletion">#autocompletion</a>
+    
+    <li ><a href="#method-i-clignoterElement">#clignoterElement</a>
+    
+    <li ><a href="#method-i-getLigne">#getLigne</a>
+    
+    <li ><a href="#method-i-getXY">#getXY</a>
+    
+    <li ><a href="#method-i-getXYIntersection">#getXYIntersection</a>
+    
+    <li ><a href="#method-i-grilleWH">#grilleWH</a>
+    
+    <li ><a href="#method-i-majGrille">#majGrille</a>
+    
+    <li ><a href="#method-i-majQS">#majQS</a>
+    
+    <li ><a href="#method-i-pauseChrono">#pauseChrono</a>
+    
+    <li ><a href="#method-i-playChrono">#playChrono</a>
+    
+    <li ><a href="#method-i-razChrono">#razChrono</a>
+    
+    <li ><a href="#method-i-remove_all_child">#remove_all_child</a>
+    
+    <li ><a href="#method-i-run">#run</a>
+    
+    <li ><a href="#method-i-signaux">#signaux</a>
+    
+    <li ><a href="#method-i-traiterCouleur">#traiterCouleur</a>
+    
+    <li ><a href="#method-i-traiterCouleurIntersection">#traiterCouleurIntersection</a>
+    
+    <li ><a href="#method-i-traiterCouleurLigne">#traiterCouleurLigne</a>
+    
+    <li ><a href="#method-i-traiterCouleurLigneHorizontale">#traiterCouleurLigneHorizontale</a>
+    
+    <li ><a href="#method-i-traiterCouleurLigneVerticale">#traiterCouleurLigneVerticale</a>
+    
+    <li ><a href="#method-i-traiterLigneHorizontale">#traiterLigneHorizontale</a>
+    
+    <li ><a href="#method-i-traiterLigneVerticale">#traiterLigneVerticale</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-PartieUI">
+  <h1 id="class-PartieUI" class="class">
+    class PartieUI
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="BLANC">BLANC
+        
+        <dd>
+        
+      
+        <dt id="GRIS_BASE">GRIS_BASE
+        
+        <dd>
+        
+      
+        <dt id="NOIR">NOIR
+        
+        <dd>
+        
+      
+        <dt id="ROUGE">ROUGE
+        
+        <dd>
+        
+      
+        <dt id="VERT">VERT
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-argent" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">argent</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-chrono" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">chrono</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-etoile" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">etoile</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-grilleS" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">grilleS</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-pere" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">pere</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-creer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creer</span><span
+            class="method-args">(gMenu,pere,jeu,grille,screenG:ScreenGagne,screenP:ScreenPause)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="creer-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">PartieUI</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">gMenu</span>,<span class="ruby-identifier">pere</span>,<span class="ruby-identifier">jeu</span>,<span class="ruby-identifier">grille</span>,<span class="ruby-value">screenG:</span><span class="ruby-constant">ScreenGagne</span>,<span class="ruby-value">screenP:</span><span class="ruby-constant">ScreenPause</span>)
+        <span class="ruby-identifier">new</span>(<span class="ruby-identifier">gMenu</span>,<span class="ruby-identifier">pere</span>,<span class="ruby-identifier">jeu</span>,<span class="ruby-identifier">grille</span>,<span class="ruby-identifier">screenG</span>,<span class="ruby-identifier">screenP</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(gMenu,pere,jeu,grilleS,screenG,screenP)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 27</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">gMenu</span>,<span class="ruby-identifier">pere</span>,<span class="ruby-identifier">jeu</span>,<span class="ruby-identifier">grilleS</span>,<span class="ruby-identifier">screenG</span>,<span class="ruby-identifier">screenP</span>)
+                <span class="ruby-keyword">super</span>(<span class="ruby-value">:horizontal</span>)
+                <span class="ruby-ivar">@jeu</span> = <span class="ruby-identifier">jeu</span>
+                <span class="ruby-ivar">@gMenu</span> = <span class="ruby-identifier">gMenu</span>
+                <span class="ruby-ivar">@pere</span> = <span class="ruby-identifier">pere</span>
+                <span class="ruby-ivar">@grilleS</span> = <span class="ruby-identifier">grilleS</span>
+                <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">pointsAide</span> = <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">pointsAideDepart</span>
+                <span class="ruby-keyword">if</span>(<span class="ruby-identifier">screenP</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Class</span>)
+                        <span class="ruby-ivar">@pause</span> = <span class="ruby-identifier">screenP</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@gMenu</span>,<span class="ruby-keyword">self</span>)
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-ivar">@pause</span> = <span class="ruby-constant">ScreenPause</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@gMenu</span>,<span class="ruby-keyword">self</span>)
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-ivar">@screenV</span> = <span class="ruby-identifier">screenG</span>
+                <span class="ruby-ivar">@h</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getTailleLigne</span>()
+                <span class="ruby-ivar">@l</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getTailleColonne</span>()
+                <span class="ruby-comment">#@window = Gtk::Window.new</span>
+                <span class="ruby-ivar">@chrono</span> = <span class="ruby-constant">Chrono</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-comment">=begin
+                if(fs)
+                        @window.fullscreen().set_resizable(false)
+                        #@window.maximize().set_resizable(false)
+                        @width, @height = @window.screen.width, @window.screen.height
+                else
+                        @width, @height = w,h
+                        @window.set_default_size(@width,@height).set_resizable(false)
+                        @window.set_position(&#39;center_always&#39;)
+                end
+=end</span>
+                <span class="ruby-ivar">@width</span>, <span class="ruby-ivar">@height</span> = <span class="ruby-ivar">@gMenu</span>.<span class="ruby-identifier">window</span>.<span class="ruby-identifier">size</span>
+                <span class="ruby-ivar">@grille</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Grid</span>.<span class="ruby-identifier">new</span>
+                <span class="ruby-identifier">grilleW</span>, <span class="ruby-identifier">grilleH</span> = <span class="ruby-ivar">@width</span><span class="ruby-operator">*</span><span class="ruby-value">0.5</span>,<span class="ruby-ivar">@height</span><span class="ruby-operator">*</span><span class="ruby-value">0.6</span>
+                <span class="ruby-identifier">lignesDim</span> = <span class="ruby-identifier">grilleWH</span>(<span class="ruby-identifier">grilleW</span>,<span class="ruby-identifier">grilleH</span>)
+
+                <span class="ruby-comment">#fenetre = Gtk::Box.new(:horizontal)</span>
+                <span class="ruby-identifier">menu</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)<span class="ruby-comment">#.set_width_request(@width*0.4)</span>
+                <span class="ruby-identifier">menuh</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">set_homogeneous</span>(<span class="ruby-keyword">true</span>)
+                <span class="ruby-identifier">menub</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">set_homogeneous</span>(<span class="ruby-keyword">true</span>)
+                <span class="ruby-identifier">home</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromStock</span>(<span class="ruby-value">:ICON_HOME</span>,<span class="ruby-value">35</span>,<span class="ruby-value">35</span>))<span class="ruby-comment">#.set_border_width(10)</span>
+                <span class="ruby-identifier">ar</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromStock</span>(<span class="ruby-value">:ICON_UNDO</span>,<span class="ruby-value">35</span>,<span class="ruby-value">35</span>))<span class="ruby-comment">#.set_border_width(10)</span>
+                <span class="ruby-identifier">av</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromStock</span>(<span class="ruby-value">:ICON_REDO</span>,<span class="ruby-value">35</span>,<span class="ruby-value">35</span>))<span class="ruby-comment">#.set_border_width(10)</span>
+                <span class="ruby-identifier">check</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromStock</span>(<span class="ruby-value">:ICON_CHECK</span>,<span class="ruby-value">35</span>,<span class="ruby-value">35</span>))<span class="ruby-comment">#.set_border_width(10)</span>
+                <span class="ruby-identifier">hint</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromStock</span>(<span class="ruby-value">:ICON_AIDE</span>,<span class="ruby-value">35</span>,<span class="ruby-value">35</span>))<span class="ruby-comment">#.set_border_width(10)</span>
+                <span class="ruby-identifier">effacer</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromStock</span>(<span class="ruby-value">:ICON_DEL</span>,<span class="ruby-value">35</span>,<span class="ruby-value">35</span>))<span class="ruby-comment">#.set_border_width(10)</span>
+                <span class="ruby-ivar">@info</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+                <span class="ruby-comment">#@info = Gtk::Label.new(&quot;&quot;)#.set_height_request(@height*0.3)#.override_background_color(:normal,VERT)</span>
+                <span class="ruby-identifier">save</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+                <span class="ruby-identifier">saveBtn</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Grid</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">set_row_homogeneous</span>(<span class="ruby-keyword">true</span>)
+                <span class="ruby-identifier">saveh</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">set_homogeneous</span>(<span class="ruby-keyword">true</span>)
+                <span class="ruby-ivar">@saveb</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+                <span class="ruby-identifier">savet</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span font_desc=\&quot;#{lignesDim[1]*0.9}\&quot;&gt;&lt;b&gt;QuickSave &lt;/b&gt;&lt;/span&gt;&quot;</span>)
+                <span class="ruby-identifier">savep</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromStock</span>(<span class="ruby-value">:ICON_ADD</span>,<span class="ruby-value">25</span>,<span class="ruby-value">25</span>)).<span class="ruby-identifier">set_border_width</span>(<span class="ruby-value">10</span>)
+                <span class="ruby-identifier">qsChargerSafe</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromStock</span>(<span class="ruby-value">:ICON_PLAY</span>,<span class="ruby-value">25</span>,<span class="ruby-value">25</span>)).<span class="ruby-identifier">set_border_width</span>(<span class="ruby-value">10</span>)
+                <span class="ruby-identifier">boutons</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+                <span class="ruby-ivar">@timer</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>)
+                <span class="ruby-identifier">ptA</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>).<span class="ruby-identifier">add</span>(<span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromStock</span>(<span class="ruby-value">:ICON_AIDE</span>,<span class="ruby-value">20</span>,<span class="ruby-value">20</span>))
+                <span class="ruby-ivar">@pA</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>().<span class="ruby-identifier">set_margin_left</span>(<span class="ruby-value">5</span>)
+                <span class="ruby-identifier">ptA</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@pA</span>).<span class="ruby-identifier">set_halign</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>)
+                <span class="ruby-identifier">gritim</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+
+                <span class="ruby-identifier">popupErreur</span> = <span class="ruby-constant">Popup</span>.<span class="ruby-identifier">new</span>()
+                <span class="ruby-identifier">popupNoErreur</span> = <span class="ruby-constant">Popup</span>.<span class="ruby-identifier">new</span>()
+
+                <span class="ruby-identifier">scrolled</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ScrolledWindow</span>.<span class="ruby-identifier">new</span>
+                <span class="ruby-identifier">scrolled</span>.<span class="ruby-identifier">set_policy</span>(<span class="ruby-value">:never</span>, <span class="ruby-value">:automatic</span>)
+                <span class="ruby-identifier">scrolledInfo</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ScrolledWindow</span>.<span class="ruby-identifier">new</span>
+                <span class="ruby-identifier">scrolledInfo</span>.<span class="ruby-identifier">set_policy</span>(<span class="ruby-value">:automatic</span>, <span class="ruby-value">:automatic</span>)
+
+                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">set_border_width</span>(<span class="ruby-value">10</span>)
+                <span class="ruby-comment">#@grille.set_size_request(grilleW,grilleH)</span>
+                <span class="ruby-comment">#@grille.set_height_request()</span>
+                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">override_background_color</span>(<span class="ruby-value">:normal</span>,<span class="ruby-constant">GRIS_BASE</span>)
+                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">set_halign</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>)
+                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">set_margin_top</span>(<span class="ruby-value">10</span>).<span class="ruby-identifier">set_hexpand</span>(<span class="ruby-keyword">true</span>).<span class="ruby-identifier">set_margin_left</span>(<span class="ruby-value">10</span>)
+                <span class="ruby-identifier">scrolledInfo</span>.<span class="ruby-identifier">set_height_request</span>(<span class="ruby-ivar">@height</span><span class="ruby-operator">*</span><span class="ruby-value">0.35</span>)
+                <span class="ruby-comment">#scrolled.set_height_request(@height*0.3)</span>
+                <span class="ruby-identifier">scrolled</span>.<span class="ruby-identifier">set_vexpand</span>(<span class="ruby-keyword">true</span>)
+                <span class="ruby-ivar">@info</span>.<span class="ruby-identifier">set_margin_bottom</span>(<span class="ruby-value">15</span>)
+                <span class="ruby-ivar">@info</span>.<span class="ruby-identifier">set_margin_right</span>(<span class="ruby-value">20</span>)
+                <span class="ruby-ivar">@info</span>.<span class="ruby-identifier">set_margin_top</span>(<span class="ruby-value">5</span>)
+                <span class="ruby-identifier">menuh</span>.<span class="ruby-identifier">set_spacing</span>(<span class="ruby-value">10</span>)
+                <span class="ruby-identifier">menub</span>.<span class="ruby-identifier">set_spacing</span>(<span class="ruby-value">10</span>)
+                <span class="ruby-identifier">boutons</span>.<span class="ruby-identifier">set_spacing</span>(<span class="ruby-value">10</span>)
+                <span class="ruby-identifier">boutons</span>.<span class="ruby-identifier">set_margin_bottom</span>(<span class="ruby-value">10</span>)
+                <span class="ruby-comment">#boutons.set_halign(Gtk::Align::CENTER)</span>
+                <span class="ruby-identifier">boutons</span>.<span class="ruby-identifier">set_valign</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>)
+                
+                <span class="ruby-comment"># Ajout Zone QuickSave</span>
+                <span class="ruby-identifier">saveh</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">savep</span>)
+                <span class="ruby-identifier">saveh</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">qsChargerSafe</span>)
+                <span class="ruby-identifier">saveBtn</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">savet</span>,<span class="ruby-value">0</span>,<span class="ruby-value">0</span>,<span class="ruby-value">2</span>,<span class="ruby-value">1</span>)
+                <span class="ruby-identifier">saveBtn</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">saveh</span>,<span class="ruby-value">2</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+                <span class="ruby-identifier">save</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">saveBtn</span>)
+                <span class="ruby-identifier">scrolled</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@saveb</span>)
+                <span class="ruby-identifier">save</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">scrolled</span>)<span class="ruby-comment">#.override_background_color(:normal,ROUGE)</span>
+                <span class="ruby-comment"># Ajout Btn UNDO, REDO, MENU</span>
+                <span class="ruby-identifier">menuh</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">ar</span>)
+                <span class="ruby-identifier">menuh</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">av</span>)
+                <span class="ruby-identifier">menuh</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">home</span>)
+                <span class="ruby-comment"># Ajout Btn CHECK, AIDE, EFFACER</span>
+                <span class="ruby-identifier">menub</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">check</span>)
+                <span class="ruby-identifier">menub</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">hint</span>)
+                <span class="ruby-identifier">menub</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">effacer</span>)
+                <span class="ruby-comment"># Ajout Listes Btn</span>
+                <span class="ruby-identifier">boutons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">menuh</span>)
+                <span class="ruby-identifier">boutons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">menub</span>)<span class="ruby-comment">#.override_background_color(:normal,ROUGE)</span>
+                <span class="ruby-identifier">scrolledInfo</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@info</span>)
+                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">boutons</span>)
+                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">scrolledInfo</span>)
+                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">save</span>)
+                <span class="ruby-identifier">gritim</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille</span>)
+                <span class="ruby-identifier">gritim</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@timer</span>)
+                <span class="ruby-identifier">gritim</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">ptA</span>)
+                <span class="ruby-comment">#fenetre.add(gritim)</span>
+                <span class="ruby-comment">#fenetre.add(menu)</span>
+                <span class="ruby-identifier">add</span>(<span class="ruby-identifier">gritim</span>)
+                <span class="ruby-identifier">add</span>(<span class="ruby-identifier">menu</span>)
+                <span class="ruby-comment">#@window.add(fenetre)</span>
+
+                <span class="ruby-ivar">@traith</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@l</span><span class="ruby-operator">*</span>(<span class="ruby-ivar">@h</span><span class="ruby-value">+1</span>))
+                <span class="ruby-ivar">@traitv</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@h</span><span class="ruby-operator">*</span>(<span class="ruby-ivar">@l</span><span class="ruby-value">+1</span>))
+                <span class="ruby-identifier">signaux</span>()
+
+                <span class="ruby-comment"># Signaux boutons</span>
+                <span class="ruby-identifier">ar</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;button_release_event&#39;</span>){
+                        <span class="ruby-comment">#puts &quot;UNDO&quot;</span>
+                        <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">undo</span>()
+                        <span class="ruby-comment">#@jeu.afficherPlateau</span>
+                        <span class="ruby-identifier">majGrille</span>()
+                }
+                <span class="ruby-identifier">av</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;button_release_event&#39;</span>){
+                        <span class="ruby-comment">#puts &quot;REDO&quot;</span>
+                        <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">redo</span>()
+                        <span class="ruby-comment">#@jeu.afficherPlateau</span>
+                        <span class="ruby-identifier">majGrille</span>()
+                }
+                <span class="ruby-identifier">popupErreur</span>.<span class="ruby-identifier">addBouton</span>(<span class="ruby-value">titre:</span><span class="ruby-string">&quot;Voir erreur(s)&quot;</span>){
+                        <span class="ruby-comment">#puts &quot;Voir Erreur&quot;</span>
+                        <span class="ruby-identifier">popupErreur</span>.<span class="ruby-identifier">stop</span>()
+                        <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">pointsAide</span> <span class="ruby-operator">-=</span> <span class="ruby-value">4</span>
+                        <span class="ruby-identifier">affichageErreurs</span>()
+                }
+                <span class="ruby-identifier">popupErreur</span>.<span class="ruby-identifier">addBouton</span>(<span class="ruby-value">titre:</span><span class="ruby-string">&quot;Fermer&quot;</span>){
+                        <span class="ruby-identifier">popupErreur</span>.<span class="ruby-identifier">stop</span>()
+                }
+                <span class="ruby-identifier">popupNoErreur</span>.<span class="ruby-identifier">addBouton</span>(<span class="ruby-value">titre:</span><span class="ruby-string">&quot;Fermer&quot;</span>){
+                        <span class="ruby-identifier">popupNoErreur</span>.<span class="ruby-identifier">stop</span>()
+                }
+                <span class="ruby-identifier">check</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;button_release_event&#39;</span>){
+                        <span class="ruby-comment">#puts &quot;CHECK&quot;</span>
+                        <span class="ruby-identifier">remove_all_child</span>(<span class="ruby-ivar">@info</span>)
+                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">pointsAide</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+                                <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">gagne?</span>()
+                                <span class="ruby-ivar">@erreurs</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getErreursJoueur</span>()
+                                <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">pointsAide</span> <span class="ruby-operator">-=</span> <span class="ruby-value">2</span>
+                                <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@erreurs</span>.<span class="ruby-identifier">size</span>() <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                                        <span class="ruby-identifier">popupNoErreur</span>.<span class="ruby-identifier">set_titre</span>(<span class="ruby-value">titre:</span><span class="ruby-node">&quot;Vous avez #{@erreurs.size()} erreur&quot;</span>)
+                                        <span class="ruby-identifier">popupNoErreur</span>.<span class="ruby-identifier">run</span>()
+                                <span class="ruby-keyword">else</span>
+                                        <span class="ruby-identifier">popupErreur</span>.<span class="ruby-identifier">set_titre</span>(<span class="ruby-value">titre:</span><span class="ruby-node">&quot;Vous avez #{@erreurs.size()} erreur(s)&quot;</span>)
+                                        <span class="ruby-identifier">popupErreur</span>.<span class="ruby-identifier">run</span>()
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">check</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+                                <span class="ruby-identifier">check</span>.<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">0.5</span>)
+                                <span class="ruby-identifier">addMessage</span>(<span class="ruby-string">&quot;Vous n&#39;avez plus de points d&#39;aide&quot;</span>)
+                                <span class="ruby-ivar">@info</span>.<span class="ruby-identifier">show_all</span>
+                        <span class="ruby-keyword">end</span>
+                }
+                <span class="ruby-identifier">savep</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;button_release_event&#39;</span>){
+                        <span class="ruby-comment">#puts &quot;NEW QUICKSAVE&quot;</span>
+                        <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">quicksaveEnregistrer</span>()
+                        <span class="ruby-identifier">majQS</span>()
+                }
+                <span class="ruby-identifier">majQS</span>()
+                <span class="ruby-identifier">qsChargerSafe</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;button_release_event&#39;</span>){
+                        <span class="ruby-comment">#puts &quot;RETOUR A LA GRILLE COURANTE&quot;</span>
+                        <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">quicksaveChargerSafe</span>()
+                        <span class="ruby-identifier">majGrille</span>()
+                }
+                <span class="ruby-identifier">effacer</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;button_release_event&#39;</span>){
+                        <span class="ruby-comment">#puts &quot;EFFACER&quot;</span>
+                        <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">effacerGrille</span>()
+                        <span class="ruby-identifier">majGrille</span>()
+                        <span class="ruby-identifier">majQS</span>()
+                }
+                <span class="ruby-identifier">hint</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;button_release_event&#39;</span>){
+                        <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">pointsAide</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+                                <span class="ruby-identifier">t</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">chercherAll</span>()
+                                <span class="ruby-keyword">if</span>(<span class="ruby-identifier">t</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+                                        <span class="ruby-identifier">d</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getDescription</span>(<span class="ruby-identifier">t</span>)
+                                        <span class="ruby-identifier">z</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getZone</span>(<span class="ruby-identifier">t</span>)
+                                        <span class="ruby-identifier">l</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getLignes</span>(<span class="ruby-identifier">t</span>)
+                                        <span class="ruby-comment">#puts &quot;Technique : &quot; + d.to_s()</span>
+                                        <span class="ruby-comment">#puts &quot;Zone : &quot; + z.to_s()</span>
+                                        <span class="ruby-comment">#puts &quot;Lignes : &quot; + l.to_s()</span>
+                                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">l</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+                                                <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">pointsAide</span> <span class="ruby-operator">-=</span> <span class="ruby-value">5</span>
+                                                <span class="ruby-keyword">for</span> <span class="ruby-identifier">ll</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">l</span>
+                                                        <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">historiqueActions</span>.<span class="ruby-identifier">ajouterAction</span>(<span class="ruby-constant">Action</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">ll</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">ll</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">etat</span>,<span class="ruby-identifier">ll</span>[<span class="ruby-value">1</span>]))
+                                                        <span class="ruby-identifier">ll</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">setEtat</span>(<span class="ruby-identifier">ll</span>[<span class="ruby-value">1</span>])
+                                                <span class="ruby-keyword">end</span>
+                                                <span class="ruby-comment">#majGrille()</span>
+                                                <span class="ruby-identifier">autocompletion</span>()
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-identifier">hint</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
+                                <span class="ruby-identifier">hint</span>.<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">0.5</span>)
+                                <span class="ruby-identifier">addMessage</span>(<span class="ruby-string">&quot;Vous n&#39;avez plus de points d&#39;aide&quot;</span>)
+                                <span class="ruby-ivar">@info</span>.<span class="ruby-identifier">show_all</span>
+                        <span class="ruby-keyword">end</span>
+                }
+                <span class="ruby-identifier">home</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;button_release_event&#39;</span>){
+                        <span class="ruby-identifier">pauseChrono</span>()
+                        <span class="ruby-comment">#puts @gMenu.window.size.join(&quot;, &quot;)</span>
+                        <span class="ruby-ivar">@gMenu</span>.<span class="ruby-identifier">changerMenu</span>(<span class="ruby-ivar">@pause</span>)
+                }
+
+                <span class="ruby-ivar">@traith</span>.<span class="ruby-identifier">each_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">box</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">EventBox</span>.<span class="ruby-identifier">new</span>()
+                        <span class="ruby-identifier">box</span>.<span class="ruby-identifier">override_background_color</span>(<span class="ruby-value">:normal</span>,<span class="ruby-constant">BLANC</span>);
+                        <span class="ruby-identifier">box</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">lignesDim</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">lignesDim</span>[<span class="ruby-value">1</span>])
+
+                        <span class="ruby-comment"># Quand on click sur la ligne</span>
+                        <span class="ruby-identifier">box</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;button_release_event&#39;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">widget</span>,<span class="ruby-identifier">event</span><span class="ruby-operator">|</span>
+                                <span class="ruby-keyword">if</span>(<span class="ruby-identifier">event</span>.<span class="ruby-identifier">state</span>.<span class="ruby-identifier">button1_mask?</span>)
+                                        <span class="ruby-comment">#puts &quot;CLICK GAUCHE !&quot;</span>
+                                        <span class="ruby-identifier">traiterLigneHorizontale</span>(<span class="ruby-identifier">index</span>,<span class="ruby-value">:CLIC_GAUCHE</span>)
+                                        <span class="ruby-identifier">traiterCouleurLigneHorizontale</span>(<span class="ruby-identifier">index</span>)
+                                <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">event</span>.<span class="ruby-identifier">state</span>.<span class="ruby-identifier">button2_mask?</span>)
+                                        <span class="ruby-comment">#puts &quot;CLICK MOLETTE !&quot;</span>
+                                <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">event</span>.<span class="ruby-identifier">state</span>.<span class="ruby-identifier">button3_mask?</span>)
+                                        <span class="ruby-comment">#puts &quot;CLICK DROIT !&quot;</span>
+                                        <span class="ruby-identifier">traiterLigneHorizontale</span>(<span class="ruby-identifier">index</span>,<span class="ruby-value">:CLIC_DROIT</span>)
+                                        <span class="ruby-identifier">traiterCouleurLigneHorizontale</span>(<span class="ruby-identifier">index</span>)
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-comment">#puts&quot;clicked h &quot;+index.to_s</span>
+                        }
+                        <span class="ruby-identifier">c</span> = <span class="ruby-identifier">getXYIntersection</span>(<span class="ruby-identifier">index</span>,<span class="ruby-keyword">false</span>)
+                        <span class="ruby-identifier">i1</span>,<span class="ruby-identifier">i2</span> = <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">c</span>[<span class="ruby-value">1</span>]
+                        <span class="ruby-comment"># Quand on est sur la ligne</span>
+                        <span class="ruby-identifier">box</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;enter_notify_event&#39;</span>){
+                                <span class="ruby-comment">#puts &quot;On rentre sur la ligne&quot;</span>
+                                <span class="ruby-identifier">box</span>.<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">0.3</span>)
+                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">get_child_at</span>(<span class="ruby-identifier">i1</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">i1</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">0.3</span>)
+                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">get_child_at</span>(<span class="ruby-identifier">i2</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">i2</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">0.3</span>)
+                        }
+
+                        <span class="ruby-comment"># Quand on sort de la ligne</span>
+                        <span class="ruby-identifier">box</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;leave_notify_event&#39;</span>){
+                                <span class="ruby-comment">#puts &quot;On sort de la ligne&quot;</span>
+                                <span class="ruby-identifier">box</span>.<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">1</span>)
+                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">get_child_at</span>(<span class="ruby-identifier">i1</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">i1</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">1</span>)
+                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">get_child_at</span>(<span class="ruby-identifier">i2</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">i2</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">1</span>)
+                        }
+
+                        <span class="ruby-ivar">@traith</span>[<span class="ruby-identifier">index</span>] = <span class="ruby-identifier">box</span>
+                }
+
+                <span class="ruby-ivar">@traitv</span>.<span class="ruby-identifier">each_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">box</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">EventBox</span>.<span class="ruby-identifier">new</span>()
+                        <span class="ruby-identifier">box</span>.<span class="ruby-identifier">override_background_color</span>(<span class="ruby-value">:normal</span>,<span class="ruby-constant">Gdk</span><span class="ruby-operator">::</span><span class="ruby-constant">RGBA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>,<span class="ruby-value">1</span>,<span class="ruby-value">1</span>));
+                        <span class="ruby-identifier">box</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">lignesDim</span>[<span class="ruby-value">1</span>],<span class="ruby-identifier">lignesDim</span>[<span class="ruby-value">0</span>])
+
+                        <span class="ruby-comment"># Quand on click sur la ligne</span>
+                        <span class="ruby-identifier">box</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;button_release_event&#39;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">widget</span>,<span class="ruby-identifier">event</span><span class="ruby-operator">|</span>
+                                <span class="ruby-keyword">if</span>(<span class="ruby-identifier">event</span>.<span class="ruby-identifier">state</span>.<span class="ruby-identifier">button1_mask?</span>)
+                                        <span class="ruby-comment">#puts &quot;CLICK GAUCHE !&quot;</span>
+                                        <span class="ruby-identifier">traiterLigneVerticale</span>(<span class="ruby-identifier">index</span>,<span class="ruby-value">:CLIC_GAUCHE</span>)
+                                        <span class="ruby-identifier">traiterCouleurLigneVerticale</span>(<span class="ruby-identifier">index</span>)
+                                <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">event</span>.<span class="ruby-identifier">state</span>.<span class="ruby-identifier">button2_mask?</span>)
+                                        <span class="ruby-comment">#puts &quot;CLICK MOLETTE !&quot;</span>
+                                <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">event</span>.<span class="ruby-identifier">state</span>.<span class="ruby-identifier">button3_mask?</span>)
+                                        <span class="ruby-comment">#puts &quot;CLICK DROIT !&quot;</span>
+                                        <span class="ruby-identifier">traiterLigneVerticale</span>(<span class="ruby-identifier">index</span>,<span class="ruby-value">:CLIC_DROIT</span>)
+                                        <span class="ruby-identifier">traiterCouleurLigneVerticale</span>(<span class="ruby-identifier">index</span>)
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-comment">#puts&quot;clicked v &quot;+index.to_s</span>
+                        }
+                        <span class="ruby-identifier">c</span> = <span class="ruby-identifier">getXYIntersection</span>(<span class="ruby-identifier">index</span>,<span class="ruby-keyword">true</span>)
+                        <span class="ruby-identifier">i1</span>,<span class="ruby-identifier">i2</span> = <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">c</span>[<span class="ruby-value">1</span>]
+                        <span class="ruby-comment"># Quand on est sur la ligne</span>
+                        <span class="ruby-identifier">box</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;enter_notify_event&#39;</span>){
+                                <span class="ruby-comment">#puts &quot;On rentre sur la ligne&quot;</span>
+                                <span class="ruby-identifier">box</span>.<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">0.3</span>)
+                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">get_child_at</span>(<span class="ruby-identifier">i1</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">i1</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">0.3</span>)
+                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">get_child_at</span>(<span class="ruby-identifier">i2</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">i2</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">0.3</span>)
+                        }
+
+                        <span class="ruby-comment"># Quand on sort de la ligne</span>
+                        <span class="ruby-identifier">box</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;leave_notify_event&#39;</span>){
+                                <span class="ruby-comment">#puts &quot;On sort de la ligne&quot;</span>
+                                <span class="ruby-identifier">box</span>.<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">1</span>)
+                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">get_child_at</span>(<span class="ruby-identifier">i1</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">i1</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">1</span>)
+                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">get_child_at</span>(<span class="ruby-identifier">i2</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">i2</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">1</span>)
+                        }
+                        <span class="ruby-ivar">@traitv</span>[<span class="ruby-identifier">index</span>] = <span class="ruby-identifier">box</span>
+                }
+
+                <span class="ruby-identifier">indiceh</span>=<span class="ruby-value">0</span>
+                <span class="ruby-identifier">indicev</span>=<span class="ruby-value">0</span>
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@l</span><span class="ruby-operator">*</span><span class="ruby-value">2</span>
+                        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@h</span><span class="ruby-operator">*</span><span class="ruby-value">2</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">%</span> <span class="ruby-value">2</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">%</span> <span class="ruby-value">2</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                                                <span class="ruby-identifier">l</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>, {<span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>}).<span class="ruby-identifier">override_background_color</span>(<span class="ruby-value">:normal</span>,<span class="ruby-constant">GRIS_BASE</span>);
+                                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">l</span>,<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>,<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+                                                <span class="ruby-comment">#@grille.get_child_at(i,j).override_background_color(:normal,GRIS_BASE);</span>
+                                        <span class="ruby-keyword">else</span>
+                                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@traitv</span>[<span class="ruby-identifier">indicev</span>],<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>,<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+                                                <span class="ruby-comment">#traiterCouleurLigneVerticale(indicev)</span>
+                                                <span class="ruby-identifier">indicev</span> <span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">else</span>
+                                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">%</span> <span class="ruby-value">2</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@traith</span>[<span class="ruby-identifier">indiceh</span>],<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>,<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+                                                <span class="ruby-comment">#traiterCouleurLigneHorizontale(indiceh)</span>
+                                                <span class="ruby-identifier">indiceh</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                                        <span class="ruby-keyword">else</span>
+                                                <span class="ruby-comment"># &quot;case [#{j/2};#{i/2}]&quot; #{c.nbLigneDevantEtrePleine}</span>
+                                                <span class="ruby-identifier">c</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">i</span><span class="ruby-operator">/</span><span class="ruby-value">2</span>,<span class="ruby-identifier">j</span><span class="ruby-operator">/</span><span class="ruby-value">2</span>);
+                                                <span class="ruby-keyword">if</span>(<span class="ruby-identifier">c</span>.<span class="ruby-identifier">nbLigneDevantEtrePleine</span> <span class="ruby-operator">!=</span> <span class="ruby-value">4</span>)
+                                                        <span class="ruby-identifier">l</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>, {<span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>})
+                                                        <span class="ruby-identifier">l</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span font_desc=\&quot;#{lignesDim[1]*0.9}\&quot;&gt;&lt;b&gt;#{c.nbLigneDevantEtrePleine}&lt;/b&gt;&lt;/span&gt;&quot;</span>)
+                                                        <span class="ruby-identifier">l</span>.<span class="ruby-identifier">override_background_color</span>(<span class="ruby-value">:normal</span>,<span class="ruby-constant">GRIS_BASE</span>)
+                                                        <span class="ruby-identifier">l</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;grille&quot;</span>)
+                                                        <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">l</span>,<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>,<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+                                                <span class="ruby-keyword">else</span>
+                                                        <span class="ruby-identifier">l</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>, {<span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>})
+                                                        <span class="ruby-identifier">l</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span font_desc=\&quot;#{lignesDim[1]*0.9}\&quot;&gt; &lt;/span&gt;&quot;</span>)
+                                                        <span class="ruby-identifier">l</span>.<span class="ruby-identifier">override_background_color</span>(<span class="ruby-value">:normal</span>,<span class="ruby-constant">GRIS_BASE</span>)
+                                                        <span class="ruby-identifier">l</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">add_class</span>(<span class="ruby-string">&quot;grille&quot;</span>)
+                                                        <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">l</span>,<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>,<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
+                                                <span class="ruby-keyword">end</span>
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">majGrille</span>()
+                <span class="ruby-identifier">playChrono</span>()
+                <span class="ruby-identifier">affichageChrono</span>()
+                <span class="ruby-identifier">affichagePtAide</span>()
+                <span class="ruby-identifier">autocompletion</span>()
+        <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-addMessage" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">addMessage</span><span
+            class="method-args">(msg)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="addMessage-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 372</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">addMessage</span>(<span class="ruby-identifier">msg</span>)
+        <span class="ruby-identifier">boxM</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
+        <span class="ruby-identifier">boxM</span>.<span class="ruby-identifier">set_margin_top</span>(<span class="ruby-value">5</span>)
+        <span class="ruby-identifier">boxM</span>.<span class="ruby-identifier">set_margin_bottom</span>(<span class="ruby-value">5</span>)
+        <span class="ruby-identifier">labelM</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>().<span class="ruby-identifier">set_xalign</span>(<span class="ruby-value">0</span>).<span class="ruby-identifier">set_yalign</span>(<span class="ruby-value">0.5</span>)
+        <span class="ruby-identifier">labelM</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span font_desc=\&quot;10.0\&quot;&gt;&lt;b&gt;#{msg}&lt;/b&gt;&lt;/span&gt;&quot;</span>)
+        <span class="ruby-identifier">boxM</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">labelM</span>)
+        <span class="ruby-ivar">@info</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">boxM</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-addMessageErreur" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">addMessageErreur</span><span
+            class="method-args">(e)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="addMessageErreur-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 382</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">addMessageErreur</span>(<span class="ruby-identifier">e</span>)
+        <span class="ruby-identifier">boxE</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
+        <span class="ruby-identifier">boxE</span>.<span class="ruby-identifier">set_margin_top</span>(<span class="ruby-value">5</span>)
+        <span class="ruby-identifier">boxE</span>.<span class="ruby-identifier">set_margin_bottom</span>(<span class="ruby-value">5</span>)
+        <span class="ruby-identifier">boxI</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+        <span class="ruby-identifier">boxI</span>.<span class="ruby-identifier">set_homogeneous</span>(<span class="ruby-keyword">false</span>)
+        <span class="ruby-identifier">boxI</span>.<span class="ruby-identifier">set_margin_right</span>(<span class="ruby-value">20</span>)
+        <span class="ruby-identifier">labelC</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>().<span class="ruby-identifier">set_xalign</span>(<span class="ruby-value">0</span>)
+        <span class="ruby-identifier">labelD</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>().<span class="ruby-identifier">set_xalign</span>(<span class="ruby-value">0</span>)
+        <span class="ruby-identifier">btn</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;Voir&quot;</span>)
+        <span class="ruby-identifier">iconDel</span> = <span class="ruby-constant">ImageManager</span>.<span class="ruby-identifier">getImageFromStock</span>(<span class="ruby-value">:ICON_DEL</span>,<span class="ruby-value">20</span>,<span class="ruby-value">20</span>)
+        <span class="ruby-identifier">boxBtnE</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
+        <span class="ruby-identifier">boxBtnE</span>.<span class="ruby-identifier">set_margin_left</span>(<span class="ruby-value">10</span>)
+        <span class="ruby-comment">#boxBtnE.set_margin_right(20)</span>
+        <span class="ruby-identifier">btnE</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-identifier">iconDel</span>)
+        <span class="ruby-identifier">btnE</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;button_release_event&#39;</span>) {
+                <span class="ruby-ivar">@info</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-identifier">boxE</span>)
+        }
+
+        <span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span> = <span class="ruby-identifier">e</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">e</span>[<span class="ruby-value">2</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span><span class="ruby-value">+1</span>
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">e</span>[<span class="ruby-value">0</span>]
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:NB_LIGNES_INCORRECT</span>
+                <span class="ruby-identifier">labelC</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span font_desc=\&quot;10.0\&quot;&gt;&lt;b&gt;Case [#{e[1]},#{e[2]}]&lt;/b&gt;&lt;/span&gt;&quot;</span>)
+                <span class="ruby-identifier">labelD</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span font_desc=\&quot;10.0\&quot;&gt;#{e[3]}&lt;/span&gt;&quot;</span>)
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:LIGNE_PLEINE_NON_VALIDE</span> <span class="ruby-operator">||</span> <span class="ruby-value">:LIGNE_PLEINE_NON_PRESENTE</span>
+                <span class="ruby-identifier">labelC</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span font_desc=\&quot;10.0\&quot;&gt;&lt;b&gt;Case [#{e[1]},#{e[2]}] Ligne #{e[3]}&lt;/b&gt;&lt;/span&gt;&quot;</span>)
+                <span class="ruby-identifier">labelD</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span font_desc=\&quot;10.0\&quot;&gt;#{e[4]}&lt;/span&gt;&quot;</span>)
+                <span class="ruby-keyword">case</span> <span class="ruby-identifier">e</span>[<span class="ruby-value">3</span>]
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:DROITE</span>
+                        <span class="ruby-identifier">x</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:GAUCHE</span>
+                        <span class="ruby-identifier">x</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:HAUT</span>
+                        <span class="ruby-identifier">y</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">when</span> <span class="ruby-value">:BAS</span>
+                        <span class="ruby-identifier">y</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment">#puts &quot;[#{x},#{y}]&quot;</span>
+        <span class="ruby-identifier">c</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">get_child_at</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)
+        <span class="ruby-identifier">btn</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;button_release_event&#39;</span>) {
+                <span class="ruby-identifier">clignoterElement</span>(<span class="ruby-identifier">c</span>)
+        }
+        <span class="ruby-identifier">boxI</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">labelC</span>)
+        <span class="ruby-identifier">boxI</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">labelD</span>)
+        <span class="ruby-identifier">boxBtnE</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">btnE</span>)
+        <span class="ruby-identifier">boxE</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">boxI</span>)
+        <span class="ruby-identifier">boxE</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">btn</span>)
+        <span class="ruby-identifier">boxE</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">boxBtnE</span>)
+        <span class="ruby-ivar">@info</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">boxE</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-affichageChrono" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">affichageChrono</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="affichageChrono-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 738</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageChrono</span>
+        <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span>{
+                <span class="ruby-keyword">while</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">gagne?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+                        <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+                        <span class="ruby-comment">#@timer.set_label(@chrono.getTime.strftime(&quot;%M:%S&quot;))</span>
+                        <span class="ruby-ivar">@timer</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span font_desc=\&quot;15.0\&quot;&gt;&lt;b&gt; #{@chrono.getTime.strftime(&quot;%M:%S&quot;)} &lt;/b&gt;&lt;/span&gt;&quot;</span>)
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">pauseChrono</span>()
+                <span class="ruby-ivar">@etoile</span> = <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">nombreEtoiles</span>
+                <span class="ruby-ivar">@argent</span> = <span class="ruby-ivar">@gMenu</span>.<span class="ruby-identifier">joueur</span>.<span class="ruby-identifier">argent</span>
+                <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">temps</span> = <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">getSec</span>()
+                <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">temps</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">meilleurTemps</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">meilleurTemps</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                        <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">meilleurTemps</span> = <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">temps</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@pere</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">MenuAventure</span>)
+                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">nombreEtoiles</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                                <span class="ruby-ivar">@gMenu</span>.<span class="ruby-identifier">joueur</span>.<span class="ruby-identifier">ajouterEtoiles</span>(<span class="ruby-value">1</span>)
+                                <span class="ruby-ivar">@gMenu</span>.<span class="ruby-identifier">joueur</span>.<span class="ruby-identifier">ajouterArgent</span>(<span class="ruby-ivar">@h</span><span class="ruby-operator">*</span><span class="ruby-ivar">@l</span><span class="ruby-operator">/</span><span class="ruby-value">3</span>)
+                                <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">nombreEtoiles</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">nombreEtoiles</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">pointsAide</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">pointsAideDepart</span><span class="ruby-operator">*</span><span class="ruby-value">0.9</span>)
+                                <span class="ruby-ivar">@gMenu</span>.<span class="ruby-identifier">joueur</span>.<span class="ruby-identifier">ajouterEtoiles</span>(<span class="ruby-value">1</span>)
+                                <span class="ruby-ivar">@gMenu</span>.<span class="ruby-identifier">joueur</span>.<span class="ruby-identifier">ajouterArgent</span>(<span class="ruby-ivar">@h</span><span class="ruby-operator">*</span><span class="ruby-ivar">@l</span><span class="ruby-operator">/</span><span class="ruby-value">3</span>)
+                                <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">nombreEtoiles</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">nombreEtoiles</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">getSec</span>() <span class="ruby-operator">&lt;=</span> <span class="ruby-value">30</span>)
+                                <span class="ruby-ivar">@gMenu</span>.<span class="ruby-identifier">joueur</span>.<span class="ruby-identifier">ajouterEtoiles</span>(<span class="ruby-value">1</span>)
+                                <span class="ruby-ivar">@gMenu</span>.<span class="ruby-identifier">joueur</span>.<span class="ruby-identifier">ajouterArgent</span>(<span class="ruby-ivar">@h</span><span class="ruby-operator">*</span><span class="ruby-ivar">@l</span><span class="ruby-operator">/</span><span class="ruby-value">3</span>)
+                                <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">nombreEtoiles</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-ivar">@pere</span>.<span class="ruby-identifier">chargeurGrille</span>.<span class="ruby-identifier">debloquerGrilles</span>(<span class="ruby-ivar">@gMenu</span>.<span class="ruby-identifier">joueur</span>.<span class="ruby-identifier">etoiles</span>)
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-ivar">@pere</span>.<span class="ruby-identifier">chargeurGrille</span>.<span class="ruby-identifier">sauvegarder</span>(<span class="ruby-ivar">@pere</span>.<span class="ruby-identifier">chargeurGrille</span>.<span class="ruby-identifier">pwd_fichier</span>)
+                <span class="ruby-ivar">@gMenu</span>.<span class="ruby-identifier">changerMenu</span>(<span class="ruby-ivar">@screenV</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@gMenu</span>,<span class="ruby-keyword">self</span>))
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-affichageErreurs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">affichageErreurs</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="affichageErreurs-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 447</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichageErreurs</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Affichage Erreurs&quot;</span>
+        <span class="ruby-identifier">remove_all_child</span>(<span class="ruby-ivar">@info</span>)
+        <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">afficherErreur</span>(<span class="ruby-value">tabErr:</span> <span class="ruby-ivar">@erreurs</span>)
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">e</span> <span class="ruby-keyword">in</span> <span class="ruby-ivar">@erreurs</span>
+                <span class="ruby-identifier">addMessageErreur</span>(<span class="ruby-identifier">e</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-ivar">@info</span>.<span class="ruby-identifier">show_all</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-affichagePtAide" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">affichagePtAide</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="affichagePtAide-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 727</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">affichagePtAide</span>
+        <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span>{
+                <span class="ruby-keyword">while</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">gagne?</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grilleS</span>.<span class="ruby-identifier">pointsAide</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                        <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+                        <span class="ruby-comment">#@timer.set_label(@chrono.getTime.strftime(&quot;%M:%S&quot;))</span>
+                        <span class="ruby-ivar">@pA</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span font_desc=\&quot;15.0\&quot;&gt;&lt;b&gt;#{@grilleS.pointsAide}&lt;/b&gt;&lt;/span&gt;&quot;</span>)
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-ivar">@pA</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span font_desc=\&quot;15.0\&quot;&gt;&lt;b&gt;0&lt;/b&gt;&lt;/span&gt;&quot;</span>)
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ajouterQS" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ajouterQS</span><span
+            class="method-args">(i = @jeu.quickSave.nbQS()-1)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ajouterQS-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 487</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouterQS</span>(<span class="ruby-identifier">i</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">quickSave</span>.<span class="ruby-identifier">nbQS</span>()<span class="ruby-value">-1</span>)
+        <span class="ruby-identifier">q</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
+        <span class="ruby-comment">#q.set_width_request(30)</span>
+        <span class="ruby-identifier">border</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Frame</span>.<span class="ruby-identifier">new</span>()
+        <span class="ruby-comment">#q.set_border_width(10)</span>
+        <span class="ruby-identifier">textBox</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>()
+        <span class="ruby-identifier">textBox</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span font_desc=\&quot;12.0\&quot;&gt;&lt;b&gt;QuickSave n°#{i+1}&lt;/b&gt;&lt;/span&gt;&quot;</span>);
+        <span class="ruby-identifier">bouton</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
+        <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-string">&quot;Charger&quot;</span>)
+        <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span> <span class="ruby-string">&#39;button_release_event&#39;</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">_widget</span><span class="ruby-operator">|</span>
+                <span class="ruby-comment">#puts &quot;Chargement quickSave n°#{i+1}&quot;</span>
+                <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">quicksaveCharger</span>(<span class="ruby-identifier">i</span>)
+                <span class="ruby-identifier">majGrille</span>()
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-ivar">@tQS</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">bouton</span>
+        <span class="ruby-identifier">q</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">textBox</span>)
+        <span class="ruby-identifier">q</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">bouton</span>)
+        <span class="ruby-identifier">border</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">q</span>)
+        <span class="ruby-ivar">@saveb</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">border</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-autocompletion" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">autocompletion</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="autocompletion-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 775</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">autocompletion</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@gMenu</span>.<span class="ruby-identifier">menu</span>.<span class="ruby-identifier">parametres</span>.<span class="ruby-identifier">param</span>.<span class="ruby-identifier">autocompletion</span>)
+                <span class="ruby-comment">#Thread.new{</span>
+                        <span class="ruby-comment">#while @jeu.gagne? == false</span>
+                                <span class="ruby-comment">#puts &quot;Autocomplétion&quot;</span>
+                                <span class="ruby-comment">#sleep(0.5)</span>
+                                <span class="ruby-keyword">while</span>((<span class="ruby-identifier">t</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">autocompletion</span>()) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+                                        <span class="ruby-identifier">l</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getLignes</span>(<span class="ruby-identifier">t</span>)
+                                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">l</span>.<span class="ruby-identifier">empty?</span>())
+                                                <span class="ruby-keyword">return</span>
+                                        <span class="ruby-keyword">end</span>
+                                        <span class="ruby-comment">#puts t.to_s</span>
+                                        <span class="ruby-keyword">for</span> <span class="ruby-identifier">ll</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">l</span>
+                                                <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">historiqueActions</span>.<span class="ruby-identifier">ajouterAction</span>(<span class="ruby-constant">Action</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">ll</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">ll</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">etat</span>,<span class="ruby-identifier">ll</span>[<span class="ruby-value">1</span>]))
+                                                <span class="ruby-identifier">ll</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">setEtat</span>(<span class="ruby-identifier">ll</span>[<span class="ruby-value">1</span>])
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-comment">#end</span>
+                <span class="ruby-comment">#}</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">majGrille</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-clignoterElement" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clignoterElement</span><span
+            class="method-args">(element)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="clignoterElement-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 434</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clignoterElement</span>(<span class="ruby-identifier">element</span>)
+        <span class="ruby-identifier">color</span> = <span class="ruby-identifier">element</span>.<span class="ruby-identifier">style_context</span>.<span class="ruby-identifier">get_background_color</span>(<span class="ruby-value">:normal</span>)
+        <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span>(){
+                <span class="ruby-identifier">t</span> = <span class="ruby-value">0.5</span>
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>
+                        <span class="ruby-identifier">element</span>.<span class="ruby-identifier">override_background_color</span>(<span class="ruby-value">:normal</span>,<span class="ruby-constant">VERT</span>)
+                        <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">t</span>)
+                        <span class="ruby-identifier">element</span>.<span class="ruby-identifier">override_background_color</span>(<span class="ruby-value">:normal</span>,<span class="ruby-identifier">color</span>)
+                        <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">t</span>)
+                <span class="ruby-keyword">end</span>
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getLigne" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getLigne</span><span
+            class="method-args">(x,y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Renvoie la ligne du <a href="Jeu.html">Jeu</a> de coordonnées x,y dans la
+grilleUI</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getLigne-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 649</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getLigne</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)
+        <span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span> = <span class="ruby-identifier">x</span><span class="ruby-operator">/</span><span class="ruby-value">2</span>,<span class="ruby-identifier">y</span><span class="ruby-operator">/</span><span class="ruby-value">2</span>
+        <span class="ruby-comment">#puts &quot;[#{i};#{j}]&quot;</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">x</span><span class="ruby-operator">%</span><span class="ruby-value">2</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                <span class="ruby-keyword">if</span>(<span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getTailleColonne</span>)
+                        <span class="ruby-comment">#puts &quot;LV Droite&quot;</span>
+                        <span class="ruby-keyword">if</span>((<span class="ruby-identifier">c</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>,<span class="ruby-identifier">j</span>)) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+                                <span class="ruby-keyword">return</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:DROITE</span>)
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-comment">#puts &quot;LV Gauche&quot;</span>
+                        <span class="ruby-keyword">if</span>((<span class="ruby-identifier">c</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+                                <span class="ruby-keyword">return</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:GAUCHE</span>)
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">if</span>(<span class="ruby-identifier">j</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getTailleLigne</span>)
+                        <span class="ruby-comment">#puts &quot;LH Bas&quot;</span>
+                        <span class="ruby-keyword">if</span>((<span class="ruby-identifier">c</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>)) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+                                <span class="ruby-keyword">return</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:BAS</span>)
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-comment">#puts &quot;LH Haut&quot;</span>
+                        <span class="ruby-keyword">if</span>((<span class="ruby-identifier">c</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+                                <span class="ruby-keyword">return</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:HAUT</span>)
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getXY" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getXY</span><span
+            class="method-args">(index,vertical)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="getXY-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 525</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getXY</span>(<span class="ruby-identifier">index</span>,<span class="ruby-identifier">vertical</span>)
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">vertical</span>) <span class="ruby-comment"># Vertical</span>
+                <span class="ruby-keyword">if</span> (<span class="ruby-identifier">index</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@h</span>) <span class="ruby-comment"># Gauche</span>
+                        <span class="ruby-keyword">return</span> [<span class="ruby-value">0</span>,<span class="ruby-identifier">index</span>]
+                <span class="ruby-keyword">else</span> <span class="ruby-comment"># Droite</span>
+                        <span class="ruby-keyword">return</span> [(<span class="ruby-identifier">index</span><span class="ruby-operator">-</span><span class="ruby-ivar">@h</span>)<span class="ruby-operator">/</span><span class="ruby-ivar">@h</span>,<span class="ruby-identifier">index</span><span class="ruby-operator">%</span> <span class="ruby-ivar">@h</span>]
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">else</span> <span class="ruby-comment"># Horizontal</span>
+                <span class="ruby-keyword">if</span> (<span class="ruby-identifier">index</span><span class="ruby-operator">%</span>(<span class="ruby-ivar">@h</span><span class="ruby-value">+1</span>)<span class="ruby-operator">==</span><span class="ruby-value">0</span>) <span class="ruby-comment"># Haut</span>
+                        <span class="ruby-keyword">return</span> [<span class="ruby-identifier">index</span><span class="ruby-operator">/</span>(<span class="ruby-ivar">@h</span><span class="ruby-value">+1</span>),<span class="ruby-value">0</span>]
+                <span class="ruby-keyword">else</span> <span class="ruby-comment"># Bas</span>
+                        <span class="ruby-keyword">return</span> [<span class="ruby-identifier">index</span><span class="ruby-operator">/</span>(<span class="ruby-ivar">@h</span><span class="ruby-value">+1</span>),<span class="ruby-identifier">index</span><span class="ruby-operator">%</span>(<span class="ruby-ivar">@h</span><span class="ruby-value">+1</span>)<span class="ruby-value">-1</span>]
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getXYIntersection" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getXYIntersection</span><span
+            class="method-args">(index,vertical)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="getXYIntersection-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 508</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getXYIntersection</span>(<span class="ruby-identifier">index</span>,<span class="ruby-identifier">vertical</span>)
+        <span class="ruby-identifier">c</span> = <span class="ruby-identifier">getXY</span>(<span class="ruby-identifier">index</span>,<span class="ruby-identifier">vertical</span>)
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">vertical</span>)
+                <span class="ruby-keyword">if</span> (<span class="ruby-identifier">index</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@h</span>)
+                        <span class="ruby-keyword">return</span> [[<span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">c</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span>],[<span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">c</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span><span class="ruby-value">+2</span>]]
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-keyword">return</span> [[<span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span><span class="ruby-value">+2</span>,<span class="ruby-identifier">c</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span>],[<span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span><span class="ruby-value">+2</span>,<span class="ruby-identifier">c</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span><span class="ruby-value">+2</span>]]
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">if</span> (<span class="ruby-identifier">index</span><span class="ruby-operator">%</span>(<span class="ruby-ivar">@h</span><span class="ruby-value">+1</span>)<span class="ruby-operator">==</span><span class="ruby-value">0</span>)
+                        <span class="ruby-keyword">return</span> [[<span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span>,<span class="ruby-identifier">c</span>[<span class="ruby-value">1</span>]],[<span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span><span class="ruby-value">+2</span>,<span class="ruby-identifier">c</span>[<span class="ruby-value">1</span>]]]
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-keyword">return</span> [[<span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span>,<span class="ruby-identifier">c</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span><span class="ruby-value">+2</span>],[<span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span><span class="ruby-value">+2</span>,<span class="ruby-identifier">c</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">*</span><span class="ruby-value">2</span><span class="ruby-value">+2</span>]]
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-grilleWH" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">grilleWH</span><span
+            class="method-args">(w,h)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="grilleWH-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 457</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">grilleWH</span>(<span class="ruby-identifier">w</span>,<span class="ruby-identifier">h</span>)
+        <span class="ruby-identifier">hL</span> = <span class="ruby-identifier">h</span><span class="ruby-operator">/</span>(<span class="ruby-ivar">@h</span><span class="ruby-operator">*</span><span class="ruby-value">2</span><span class="ruby-value">+1</span>)
+        <span class="ruby-identifier">wL</span> = <span class="ruby-identifier">w</span><span class="ruby-operator">/</span>(<span class="ruby-ivar">@l</span><span class="ruby-operator">*</span><span class="ruby-value">2</span><span class="ruby-value">+1</span>)
+        <span class="ruby-identifier">coef</span> = <span class="ruby-value">0.8</span>
+        <span class="ruby-comment">#puts &quot;wL/hL : [#{wL},#{hL}]&quot;</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">hL</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">wL</span>)
+                <span class="ruby-comment">#puts &quot;hL : [#{w},#{h}] -&gt; [#{hL+hL*coef},#{hL-hL*coef}] -&gt; #{(hL+hL*coef)*@h + (hL-hL*coef)*(@h+1)}&quot;</span>
+                <span class="ruby-keyword">return</span> [<span class="ruby-identifier">hL</span><span class="ruby-operator">+</span><span class="ruby-identifier">hL</span><span class="ruby-operator">*</span><span class="ruby-identifier">coef</span>,<span class="ruby-identifier">hL</span><span class="ruby-operator">*</span><span class="ruby-identifier">coef</span>]
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-comment">#puts &quot;wL : [#{w},#{h}] -&gt; [#{wL+wL*coef},#{wL-wL*coef}] -&gt; #{(wL+wL*coef)*@l + (wL-wL*coef)*(@l+1)}&quot;</span>
+                <span class="ruby-keyword">return</span> [<span class="ruby-identifier">wL</span><span class="ruby-operator">+</span><span class="ruby-identifier">wL</span><span class="ruby-operator">*</span><span class="ruby-identifier">coef</span>,<span class="ruby-identifier">wL</span><span class="ruby-operator">*</span><span class="ruby-identifier">coef</span>]
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-majGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">majGrille</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="majGrille-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 718</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">majGrille</span>()
+        <span class="ruby-ivar">@traith</span>.<span class="ruby-identifier">each_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">traiterCouleurLigneHorizontale</span>(<span class="ruby-identifier">index</span>)
+        }
+        <span class="ruby-ivar">@traitv</span>.<span class="ruby-identifier">each_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">traiterCouleurLigneVerticale</span>(<span class="ruby-identifier">index</span>)
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-majQS" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">majQS</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="majQS-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 477</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">majQS</span>()
+        <span class="ruby-identifier">remove_all_child</span>(<span class="ruby-ivar">@saveb</span>)
+        <span class="ruby-comment">#puts &quot;\t---- #{@jeu.quickSave.nbQS()}&quot;</span>
+        <span class="ruby-ivar">@tQS</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">quickSave</span>.<span class="ruby-identifier">nbQS</span>())
+        <span class="ruby-ivar">@tQS</span>.<span class="ruby-identifier">each_index</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">ajouterQS</span>(<span class="ruby-identifier">i</span>)
+        }
+        <span class="ruby-ivar">@saveb</span>.<span class="ruby-identifier">show_all</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pauseChrono" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pauseChrono</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pauseChrono-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 798</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pauseChrono</span>
+        <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">stop</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-playChrono" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">playChrono</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="playChrono-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 802</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">playChrono</span>
+        <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">start</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-razChrono" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">razChrono</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="razChrono-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 806</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">razChrono</span>
+        <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">reset</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-remove_all_child" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_all_child</span><span
+            class="method-args">(widget)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="remove_all_child-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 471</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">remove_all_child</span>(<span class="ruby-identifier">widget</span>)
+        <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">child</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">widget</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-identifier">child</span>)
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-run" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">run</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="run-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 708</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">run</span>
+        <span class="ruby-comment">#@window.show_all</span>
+        <span class="ruby-comment">#@jeu.afficherPlateau</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-signaux" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">signaux</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="signaux-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 713</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">signaux</span>
+        <span class="ruby-comment"># Fermeture fenêtre</span>
+        <span class="ruby-comment">#@window.signal_connect(&quot;delete-event&quot;) { |_widget| Gtk.main_quit }</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-traiterCouleur" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">traiterCouleur</span><span
+            class="method-args">(objet, etat)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="traiterCouleur-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 577</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">traiterCouleur</span>(<span class="ruby-identifier">objet</span>, <span class="ruby-identifier">etat</span>)
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">etat</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:PLEINE</span>
+                <span class="ruby-identifier">objet</span>.<span class="ruby-identifier">override_background_color</span>(<span class="ruby-value">:normal</span>,<span class="ruby-constant">NOIR</span>);
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:VIDE</span>
+                <span class="ruby-identifier">objet</span>.<span class="ruby-identifier">override_background_color</span>(<span class="ruby-value">:normal</span>,<span class="ruby-constant">BLANC</span>);
+        <span class="ruby-keyword">when</span> <span class="ruby-value">:BLOQUE</span>
+                <span class="ruby-identifier">objet</span>.<span class="ruby-identifier">override_background_color</span>(<span class="ruby-value">:normal</span>,<span class="ruby-constant">ROUGE</span>);
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">objet</span>.<span class="ruby-identifier">override_background_color</span>(<span class="ruby-value">:normal</span>,<span class="ruby-constant">BLANC</span>);
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-traiterCouleurIntersection" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">traiterCouleurIntersection</span><span
+            class="method-args">(x,y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="traiterCouleurIntersection-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 590</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">traiterCouleurIntersection</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)
+        <span class="ruby-comment">#puts &quot;[#{x};#{y}]&quot;</span>
+        <span class="ruby-comment"># On compte le nombre de ligne pleine, vide, bloque</span>
+        <span class="ruby-identifier">nb</span> = {<span class="ruby-value">:BLOQUE</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-value">:PLEINE</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-value">:VIDE</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>}
+        <span class="ruby-comment"># Ligne du haut</span>
+        <span class="ruby-keyword">if</span>((<span class="ruby-identifier">l</span> = <span class="ruby-identifier">getLigne</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span><span class="ruby-value">-1</span>)) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+                <span class="ruby-identifier">nb</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">etat</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment"># Ligne de gauche</span>
+        <span class="ruby-keyword">if</span>((<span class="ruby-identifier">l</span> = <span class="ruby-identifier">getLigne</span>(<span class="ruby-identifier">x</span><span class="ruby-value">-1</span>,<span class="ruby-identifier">y</span>)) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+                <span class="ruby-identifier">nb</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">etat</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment"># Ligne de droite</span>
+        <span class="ruby-keyword">if</span>((<span class="ruby-identifier">l</span> = <span class="ruby-identifier">getLigne</span>(<span class="ruby-identifier">x</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">y</span>)) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+                <span class="ruby-identifier">nb</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">etat</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment"># Ligne du bas</span>
+        <span class="ruby-keyword">if</span>((<span class="ruby-identifier">l</span> = <span class="ruby-identifier">getLigne</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span><span class="ruby-value">+1</span>)) <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+                <span class="ruby-identifier">nb</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">etat</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment">#puts nb</span>
+
+        <span class="ruby-comment"># On regarde qui à la majorité</span>
+        <span class="ruby-identifier">trier</span> = <span class="ruby-identifier">nb</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">sort</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">a</span>[<span class="ruby-value">1</span>]}
+        <span class="ruby-comment">#puts trier.join(&quot;][&quot;)</span>
+        <span class="ruby-keyword">if</span>((<span class="ruby-identifier">l</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">get_child_at</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)) <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>)
+                <span class="ruby-keyword">return</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-comment"># if(trier[0][1] == trier[1][1])</span>
+        <span class="ruby-comment">#     if(trier[0][0] == :PLEINE || trier[1][0] == :PLEINE)</span>
+        <span class="ruby-comment">#             traiterCouleur(l,:PLEINE)</span>
+        <span class="ruby-comment">#     elsif(trier[0][0] == :BLOQUE || trier[1][0] == :BLOQUE)</span>
+        <span class="ruby-comment">#             traiterCouleur(l,:BLOQUE)</span>
+        <span class="ruby-comment">#     end</span>
+        <span class="ruby-comment"># elsif(trier[0][0] == :VIDE)</span>
+        <span class="ruby-comment">#     if(nb[:PLEINE] != 0)</span>
+        <span class="ruby-comment">#             traiterCouleur(l,:PLEINE)</span>
+        <span class="ruby-comment">#     elsif(nb[:BLOQUE] != 0)</span>
+        <span class="ruby-comment">#             traiterCouleur(l,:BLOQUE)</span>
+        <span class="ruby-comment">#     else</span>
+        <span class="ruby-comment">#             traiterCouleur(l,:VIDE)</span>
+        <span class="ruby-comment">#     end</span>
+        <span class="ruby-comment"># else</span>
+        <span class="ruby-comment">#     if((l = @grille.get_child_at(x,y)) != nil)</span>
+        <span class="ruby-comment">#             traiterCouleur(l,trier[0][0])</span>
+        <span class="ruby-comment">#     end</span>
+        <span class="ruby-comment"># end</span>
+
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">nb</span>[<span class="ruby-value">:PLEINE</span>] <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>)
+                <span class="ruby-identifier">traiterCouleur</span>(<span class="ruby-identifier">l</span>,<span class="ruby-value">:PLEINE</span>)
+        <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">trier</span>[<span class="ruby-value">0</span>][<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:BLOQUE</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">trier</span>[<span class="ruby-value">1</span>][<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                <span class="ruby-identifier">traiterCouleur</span>(<span class="ruby-identifier">l</span>,<span class="ruby-value">:BLOQUE</span>)
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">traiterCouleur</span>(<span class="ruby-identifier">l</span>,<span class="ruby-value">:VIDE</span>)
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-traiterCouleurLigne" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">traiterCouleurLigne</span><span
+            class="method-args">(ligne,etat)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="traiterCouleurLigne-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 573</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">traiterCouleurLigne</span>(<span class="ruby-identifier">ligne</span>,<span class="ruby-identifier">etat</span>)
+        <span class="ruby-identifier">traiterCouleur</span>(<span class="ruby-identifier">ligne</span>,<span class="ruby-identifier">etat</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-traiterCouleurLigneHorizontale" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">traiterCouleurLigneHorizontale</span><span
+            class="method-args">(index)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="traiterCouleurLigneHorizontale-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 557</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">traiterCouleurLigneHorizontale</span>(<span class="ruby-identifier">index</span>)
+        <span class="ruby-identifier">c1</span> = <span class="ruby-identifier">getXY</span>(<span class="ruby-identifier">index</span>,<span class="ruby-keyword">false</span>)
+        <span class="ruby-identifier">c2</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">c1</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">c1</span>[<span class="ruby-value">1</span>])
+        <span class="ruby-identifier">c</span> = <span class="ruby-identifier">getXYIntersection</span>(<span class="ruby-identifier">index</span>,<span class="ruby-keyword">false</span>)
+        <span class="ruby-identifier">i1</span>,<span class="ruby-identifier">i2</span> = <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">c</span>[<span class="ruby-value">1</span>]
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">index</span><span class="ruby-operator">%</span>(<span class="ruby-ivar">@h</span><span class="ruby-value">+1</span>)<span class="ruby-operator">==</span><span class="ruby-value">0</span>)
+                <span class="ruby-identifier">l</span> = <span class="ruby-identifier">c2</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:HAUT</span>)
+                <span class="ruby-identifier">traiterCouleurLigne</span>(<span class="ruby-ivar">@traith</span>[<span class="ruby-identifier">index</span>],<span class="ruby-identifier">l</span>.<span class="ruby-identifier">etat</span>)
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">l</span> = <span class="ruby-identifier">c2</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:BAS</span>)
+                <span class="ruby-identifier">traiterCouleurLigne</span>(<span class="ruby-ivar">@traith</span>[<span class="ruby-identifier">index</span>],<span class="ruby-identifier">l</span>.<span class="ruby-identifier">etat</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">traiterCouleurIntersection</span>(<span class="ruby-identifier">i1</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">i1</span>[<span class="ruby-value">1</span>])
+        <span class="ruby-identifier">traiterCouleurIntersection</span>(<span class="ruby-identifier">i2</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">i2</span>[<span class="ruby-value">1</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-traiterCouleurLigneVerticale" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">traiterCouleurLigneVerticale</span><span
+            class="method-args">(index)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="traiterCouleurLigneVerticale-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 541</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">traiterCouleurLigneVerticale</span>(<span class="ruby-identifier">index</span>)
+        <span class="ruby-identifier">c1</span> = <span class="ruby-identifier">getXY</span>(<span class="ruby-identifier">index</span>,<span class="ruby-keyword">true</span>)
+        <span class="ruby-identifier">c2</span> = <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">c1</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">c1</span>[<span class="ruby-value">1</span>])
+        <span class="ruby-identifier">c</span> = <span class="ruby-identifier">getXYIntersection</span>(<span class="ruby-identifier">index</span>,<span class="ruby-keyword">true</span>)
+        <span class="ruby-identifier">i1</span>,<span class="ruby-identifier">i2</span> = <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">c</span>[<span class="ruby-value">1</span>]
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">index</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@h</span>)
+                <span class="ruby-identifier">l</span> = <span class="ruby-identifier">c2</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:GAUCHE</span>)
+                <span class="ruby-identifier">traiterCouleurLigne</span>(<span class="ruby-ivar">@traitv</span>[<span class="ruby-identifier">index</span>],<span class="ruby-identifier">l</span>.<span class="ruby-identifier">etat</span>)
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">l</span> = <span class="ruby-identifier">c2</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-value">:DROITE</span>)
+                <span class="ruby-identifier">traiterCouleurLigne</span>(<span class="ruby-ivar">@traitv</span>[<span class="ruby-identifier">index</span>],<span class="ruby-identifier">l</span>.<span class="ruby-identifier">etat</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">traiterCouleurIntersection</span>(<span class="ruby-identifier">i1</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">i1</span>[<span class="ruby-value">1</span>])
+        <span class="ruby-identifier">traiterCouleurIntersection</span>(<span class="ruby-identifier">i2</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">i2</span>[<span class="ruby-value">1</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-traiterLigneHorizontale" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">traiterLigneHorizontale</span><span
+            class="method-args">(index, clique)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="traiterLigneHorizontale-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 680</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">traiterLigneHorizontale</span>(<span class="ruby-identifier">index</span>, <span class="ruby-identifier">clique</span>)
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">index</span><span class="ruby-operator">%</span>(<span class="ruby-ivar">@h</span><span class="ruby-value">+1</span>)<span class="ruby-operator">==</span><span class="ruby-value">0</span>)
+                <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">jouer</span>( (<span class="ruby-identifier">index</span><span class="ruby-operator">/</span>(<span class="ruby-ivar">@h</span><span class="ruby-value">+1</span>)).<span class="ruby-identifier">to_i</span>, <span class="ruby-value">0</span>, <span class="ruby-value">:HAUT</span> , <span class="ruby-identifier">clique</span>)
+                <span class="ruby-comment">#puts &quot;jouer(#{(index/(@h+1)).to_i}, 0, :HAUT, #{clique})&quot;</span>
+                <span class="ruby-comment">#puts&quot;case bas,&quot;+(index/(@h+1)).to_i.to_s+&quot;, 0&quot;</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">jouer</span>( (<span class="ruby-identifier">index</span><span class="ruby-operator">/</span>(<span class="ruby-ivar">@h</span><span class="ruby-value">+1</span>)).<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">%</span>(<span class="ruby-ivar">@h</span><span class="ruby-value">+1</span>)<span class="ruby-value">-1</span>, <span class="ruby-value">:BAS</span> , <span class="ruby-identifier">clique</span>)
+                <span class="ruby-comment">#puts &quot;jouer(#{(index/(@h+1)).to_i}, #{index%(@h+1)-1}, :BAS, #{clique})&quot;</span>
+                <span class="ruby-comment">#puts&quot;case haut, &quot;+ (index/(@h+1)).to_i.to_s + &quot;, &quot; + (index%(@h+1)-1).to_s</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">autocompletion</span>()
+        <span class="ruby-comment">#@jeu.afficherPlateau</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-traiterLigneVerticale" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">traiterLigneVerticale</span><span
+            class="method-args">(index, clique)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="traiterLigneVerticale-source">
+            <pre><span class="ruby-comment"># File UI/PartieUI.rb, line 694</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">traiterLigneVerticale</span>(<span class="ruby-identifier">index</span>, <span class="ruby-identifier">clique</span>)
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">index</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@h</span>)
+                <span class="ruby-comment">#puts&quot;case droite, 0 ,&quot;+index.to_s</span>
+                <span class="ruby-comment">#puts &quot;jouer(0, #{index}, :GAUCHE, #{clique})&quot;</span>
+                <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">jouer</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">index</span>, <span class="ruby-value">:GAUCHE</span>, <span class="ruby-identifier">clique</span>)
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-comment">#puts&quot;case gauche,&quot;+((index-@h)/@h.to_i).to_s + &quot;, &quot; + (index% @h).to_s</span>
+                <span class="ruby-comment">#puts &quot;jouer(#{(index-@h)/@h.to_i}, #{index% @h}, :DROITE, #{clique})&quot;</span>
+                <span class="ruby-ivar">@jeu</span>.<span class="ruby-identifier">jouer</span>((<span class="ruby-identifier">index</span><span class="ruby-operator">-</span><span class="ruby-ivar">@h</span>)<span class="ruby-operator">/</span><span class="ruby-ivar">@h</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">%</span> <span class="ruby-ivar">@h</span>, <span class="ruby-value">:DROITE</span>, <span class="ruby-identifier">clique</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">autocompletion</span>()
+        <span class="ruby-comment">#@jeu.afficherPlateau</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

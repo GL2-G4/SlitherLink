@@ -1,0 +1,69 @@
+/***********BOUTONS***********/
+
+button {
+  color: black;
+  
+  background-color: transparent;
+}
+
+button:hover {
+  background-image: none;
+
+  background-image: url("./image/unicornBouton.png");
+}
+
+button:hover label {
+  color: #00609b;
+}
+
+button:active {
+  background-image: none;
+  background-color: silver;
+}
+
+button:active label {
+  color: white;
+}
+
+/***********LABELS***********/
+
+label {
+  font-size: 125%;
+  color: #00609b;
+  font-weight: normal;
+}
+
+.titre {
+  color: #009bdb;
+  font-weight: bolder;
+  background-color: indigo;
+}
+
+
+.grille {
+  color: black;
+}
+/***********COMBOS***********/
+
+.combo {
+  color: gray;
+}
+
+/* je sais pas ce que tu voulais faire là
+ * si tu veux le faire marcher tu dois mettre sur l'objet désiré
+ * (objet désiré).style_context.add_class("boxbouton")
+ * ça rajoute l'objet à la class boxbouton que tu utilises en dessous
+ */
+.boxbouton label {
+  color: #00609b;
+  background-color: indigo;
+}
+
+window {
+  background-image: url("./image/licorne.png");
+  background-color: transparent;
+}
+
+grid {
+  padding: 3px;
+}

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class LinkFinder - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-addOrUpdateLink">#addOrUpdateLink</a>
+    
+    <li ><a href="#method-i-checkLinks">#checkLinks</a>
+    
+    <li ><a href="#method-i-createRelativeLink">#createRelativeLink</a>
+    
+    <li ><a href="#method-i-deleteRootLink">#deleteRootLink</a>
+    
+    <li ><a href="#method-i-endOfSearch">#endOfSearch</a>
+    
+    <li ><a href="#method-i-getKeyForLink">#getKeyForLink</a>
+    
+    <li ><a href="#method-i-loadDatasFromBackup">#loadDatasFromBackup</a>
+    
+    <li ><a href="#method-i-obtainParentDirectory">#obtainParentDirectory</a>
+    
+    <li ><a href="#method-i-saveDatas">#saveDatas</a>
+    
+    <li ><a href="#method-i-searchFile">#searchFile</a>
+    
+    <li ><a href="#method-i-searchFileInRepertory">#searchFileInRepertory</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-LinkFinder">
+  <h1 id="class-LinkFinder" class="class">
+    class LinkFinder
+  </h1>
+
+  <section class="description">
+    
+<p>@author KAJAK Rémi @version 1.0 Ruby 2.3.3</p>
+
+<p>La classe “LinkFinder” définit des objets dont le rôle est de rechercher un
+fichier dans l&#39;arborescence de l&#39;application. Les objets lancent
+cette recherche depuis leur position courante, puis lorsqu&#39;ils
+localisent le fichier cible, ils renvoient son lien relatif ; ou null, le
+cas échéant.</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="BACKUP_REPERTORY">BACKUP_REPERTORY
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-rootLink" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">rootLink</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(limitOfSearch=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <h1 id="method-c-new-label-Variables+d-27instance">Variables d&#39;instance<span><a href="#method-c-new-label-Variables+d-27instance">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>@appRepertory Nom du répertoire racine de l&#39;application (limite maximale du champ de recherche)
+@lostFiles  Tableau contenant le nom des fichiers introuvables
+@rootLink Chaîne de caractères indiquant le répertoire d&#39;origine de la recherche (nécessaire pour la création des liens relatifs)
+@backupLocation Chaîne de caractères indiquant le chemin du fichier de sauvegarde des liens relatifs
+@relativeLinks  Tableau d&#39;instances &quot;RelativeLinks&quot; qui référencie les liens relatifs de tous les fichiers recherchés (tous répertoires confondus)</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Noyau/LinkFinder.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">limitOfSearch</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@appRepertory</span>, <span class="ruby-ivar">@lostFiles</span>, <span class="ruby-ivar">@rootLink</span> = (<span class="ruby-identifier">limitOfSearch</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">limitOfSearch</span> <span class="ruby-operator">:</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">getwd</span>), <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>, <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">getwd</span>
+  <span class="ruby-ivar">@backupLocation</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">searchFile</span>(<span class="ruby-constant">BACKUP_FILE</span>)
+  <span class="ruby-ivar">@relativeLinks</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">loadDatasFromBackup</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-addOrUpdateLink" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">addOrUpdateLink</span><span
+            class="method-args">(fileName,relativeLink)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Documentation à ajouter</p>
+          
+          
+
+          
+          <div class="method-source-code" id="addOrUpdateLink-source">
+            <pre><span class="ruby-comment"># File Noyau/LinkFinder.rb, line 275</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">addOrUpdateLink</span>(<span class="ruby-identifier">fileName</span>,<span class="ruby-identifier">relativeLink</span>) <span class="ruby-comment"># Fonctionnelle</span>
+  <span class="ruby-identifier">key</span>, <span class="ruby-identifier">rLinks</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getKeyForLink</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">checkLinks</span>(<span class="ruby-identifier">fileName</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">rLinks</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment"># Si une instance pour le fichier recherché existe déjà</span>
+    <span class="ruby-identifier">rLinks</span>.<span class="ruby-identifier">addOrUpdateLinks</span>(<span class="ruby-constant">Hash</span>[<span class="ruby-identifier">key</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">relativeLink</span>])
+  <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@relativeLinks</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@relativeLinks</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">RelativeLinks</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">fileName</span>,<span class="ruby-constant">Hash</span>[<span class="ruby-identifier">key</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">relativeLink</span>]))
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-checkLinks" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">checkLinks</span><span
+            class="method-args">(fileName)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Documentation à ajouter</p>
+          
+          
+
+          
+          <div class="method-source-code" id="checkLinks-source">
+            <pre><span class="ruby-comment"># File Noyau/LinkFinder.rb, line 261</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">checkLinks</span>(<span class="ruby-identifier">fileName</span>) <span class="ruby-comment"># Fonctionnelle</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@relativeLinks</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@relativeLinks</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-ivar">@relativeLinks</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">rLinks</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">rLinks</span>.<span class="ruby-identifier">fileName</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">fileName</span> <span class="ruby-comment"># Si une instance pour le fichier recherché existe déjà</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">rLinks</span>
+      <span class="ruby-keyword">end</span>
+    }
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-createRelativeLink" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">createRelativeLink</span><span
+            class="method-args">(fileAbsoluteLink)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Documentation à ajouter</p>
+          
+          
+
+          
+          <div class="method-source-code" id="createRelativeLink-source">
+            <pre><span class="ruby-comment"># File Noyau/LinkFinder.rb, line 213</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">createRelativeLink</span>(<span class="ruby-identifier">fileAbsoluteLink</span>) <span class="ruby-comment"># Fonctionnelle</span>
+  <span class="ruby-identifier">fileLinkParts</span> = <span class="ruby-identifier">fileAbsoluteLink</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">drop_while</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">part</span><span class="ruby-operator">|</span> <span class="ruby-identifier">part</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>}
+  <span class="ruby-identifier">rootParts</span> = <span class="ruby-ivar">@rootLink</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">drop_while</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">part</span><span class="ruby-operator">|</span> <span class="ruby-identifier">part</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>}
+  <span class="ruby-identifier">fileName</span>, <span class="ruby-identifier">relativeLink</span> = <span class="ruby-identifier">fileLinkParts</span>.<span class="ruby-identifier">pop</span>, <span class="ruby-string">&quot;&quot;</span>
+
+  <span class="ruby-comment"># Dans le cas où le lien relatif à générer concerne l&#39;emplacement du répertoire instanciateur</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">fileName</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">rootParts</span>.<span class="ruby-identifier">last</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;./&quot;</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># On retire tous les éléments identiques aux deux liens qui se trouvent aux mêmes positions</span>
+    <span class="ruby-keyword">while</span>(<span class="ruby-identifier">rootParts</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">fileLinkParts</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">rootParts</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">fileLinkParts</span>.<span class="ruby-identifier">empty?</span>)
+      <span class="ruby-identifier">fileLinkParts</span>.<span class="ruby-identifier">shift</span>
+      <span class="ruby-identifier">rootParts</span>.<span class="ruby-identifier">shift</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># Ajout d&#39;un nombre de retours arrières équivalent au nombre de dossiers restants du lien racine</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">rootParts</span>.<span class="ruby-identifier">length</span>
+      <span class="ruby-identifier">relativeLink</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;../&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-comment"># Ajout des dossiers restants du lien fichier pour finaliser le lien relatif</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">fileLinkParts</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">relativeLink</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">fileLinkParts</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;/&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">relativeLink</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">fileName</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-deleteRootLink" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">deleteRootLink</span><span
+            class="method-args">(fileName)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Documentation à ajouter</p>
+          
+          
+
+          
+          <div class="method-source-code" id="deleteRootLink-source">
+            <pre><span class="ruby-comment"># File Noyau/LinkFinder.rb, line 288</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deleteRootLink</span>(<span class="ruby-identifier">fileName</span>) <span class="ruby-comment"># Fonctionnelle</span>
+  <span class="ruby-identifier">rLinks</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">checkLinks</span>(<span class="ruby-identifier">fileName</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">rLinks</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment"># Si une instance pour le fichier recherché existe</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">rLinks</span>.<span class="ruby-identifier">hasLinkFor?</span>(<span class="ruby-ivar">@rootLink</span>)
+      <span class="ruby-identifier">rLinks</span>.<span class="ruby-identifier">removeLink</span>(<span class="ruby-ivar">@rootLink</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">rLinks</span>.<span class="ruby-identifier">hasLinks?</span> <span class="ruby-comment"># Si le fichier recherché ne possède plus aucun lien valide, on supprime son espace de stockage du tableau</span>
+      <span class="ruby-ivar">@relativeLinks</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">rLinks</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-endOfSearch" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">endOfSearch</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Documentation à ajouter</p>
+          
+          
+
+          
+          <div class="method-source-code" id="endOfSearch-source">
+            <pre><span class="ruby-comment"># File Noyau/LinkFinder.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">endOfSearch</span> <span class="ruby-comment"># Fonctionnelle</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@lostFiles</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-comment"># Génération d&#39;un log pour les fichiers non trouvés</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Les fichiers ci-dessous n&#39;ont pas pu être trouvés dans l&#39;arborescence de l&#39;application :&quot;</span>
+    <span class="ruby-ivar">@lostFiles</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fileName</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;- &quot;</span><span class="ruby-operator">+</span> <span class="ruby-identifier">fileName</span>
+    }
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@relativeLinks</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-comment"># Sauvegarde de tous les liens relatifs trouvés dans le fichier spécifique</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">saveDatas</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getKeyForLink" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getKeyForLink</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Documentation à ajouter</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getKeyForLink-source">
+            <pre><span class="ruby-comment"># File Noyau/LinkFinder.rb, line 243</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getKeyForLink</span> <span class="ruby-comment"># Fonctionnelle</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@rootLink</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">slice</span>(<span class="ruby-ivar">@rootLink</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">rindex</span>(<span class="ruby-ivar">@appRepertory</span>)<span class="ruby-operator">..</span><span class="ruby-ivar">@rootLink</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">size</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;/&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-loadDatasFromBackup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">loadDatasFromBackup</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Documentation à ajouter</p>
+          
+          
+
+          
+          <div class="method-source-code" id="loadDatasFromBackup-source">
+            <pre><span class="ruby-comment"># File Noyau/LinkFinder.rb, line 309</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">loadDatasFromBackup</span> <span class="ruby-comment"># Fonctionnelle</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-ivar">@backupLocation</span>) <span class="ruby-comment"># Si le fichier de sauvegarde de l&#39;utilitaire n&#39;existe pas</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">fd</span>, <span class="ruby-identifier">relativeLinks</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@backupLocation</span>,<span class="ruby-string">&quot;r&quot;</span>), <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">fd</span>.<span class="ruby-identifier">each_line</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">fileLinks</span>, <span class="ruby-identifier">repAndLinks</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot; : &quot;</span>).<span class="ruby-identifier">last</span>, <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-comment"># Remplissage du nouveau tableau associatif</span>
+      <span class="ruby-identifier">fileLinks</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;|&quot;</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">hashParts</span> = <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot; =&gt; &quot;</span>)
+        <span class="ruby-identifier">repAndLinks</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-constant">Hash</span>[<span class="ruby-identifier">hashParts</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">hashParts</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&quot;\n&quot;</span>)])
+      }
+      <span class="ruby-identifier">relativeLinks</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">RelativeLinks</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">line</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot; : &quot;</span>).<span class="ruby-identifier">first</span>,<span class="ruby-identifier">repAndLinks</span>))
+    }
+    <span class="ruby-identifier">fd</span>.<span class="ruby-identifier">close</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">relativeLinks</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-obtainParentDirectory" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">obtainParentDirectory</span><span
+            class="method-args">(repertoryPath)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Documentation à ajouter</p>
+          
+          
+
+          
+          <div class="method-source-code" id="obtainParentDirectory-source">
+            <pre><span class="ruby-comment"># File Noyau/LinkFinder.rb, line 250</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">obtainParentDirectory</span>(<span class="ruby-identifier">repertoryPath</span>) <span class="ruby-comment"># Fonctionnelle</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">repertoryPath</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">shift</span>(<span class="ruby-identifier">repertoryPath</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">length</span><span class="ruby-value">-1</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;/&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-saveDatas" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">saveDatas</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Documentation à ajouter</p>
+          
+          
+
+          
+          <div class="method-source-code" id="saveDatas-source">
+            <pre><span class="ruby-comment"># File Noyau/LinkFinder.rb, line 331</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">saveDatas</span> <span class="ruby-comment"># Fonctionnelle</span>
+  <span class="ruby-identifier">fd</span> = (<span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-ivar">@backupLocation</span>)) <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@backupLocation</span>,<span class="ruby-string">&quot;w&quot;</span>) <span class="ruby-operator">:</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@backupLocation</span>,<span class="ruby-string">&quot;w&quot;</span>,<span class="ruby-value">0644</span>)
+  <span class="ruby-ivar">@relativeLinks</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">rLinks</span><span class="ruby-operator">|</span> <span class="ruby-identifier">fd</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-identifier">rLinks</span>.<span class="ruby-identifier">to_s</span>) } <span class="ruby-comment"># Écriture dans le fichier de sauvegarde de l&#39;utilitaire</span>
+  <span class="ruby-identifier">fd</span>.<span class="ruby-identifier">close</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-searchFile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">searchFile</span><span
+            class="method-args">(fileName)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Documentation à ajouter</p>
+          
+          
+
+          
+          <div class="method-source-code" id="searchFile-source">
+            <pre><span class="ruby-comment"># File Noyau/LinkFinder.rb, line 128</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">searchFile</span>(<span class="ruby-identifier">fileName</span>) <span class="ruby-comment"># Fonctionnelle</span>
+  <span class="ruby-identifier">backupSearch</span>, <span class="ruby-identifier">relativeLink</span> = (<span class="ruby-identifier">fileName</span> <span class="ruby-operator">==</span> <span class="ruby-constant">BACKUP_FILE</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">fileName</span> <span class="ruby-operator">==</span> <span class="ruby-constant">BACKUP_REPERTORY</span>), <span class="ruby-keyword">nil</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">fileName</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">BACKUP_FILE</span> <span class="ruby-comment"># Dans le cas du fichier de sauvegarde des liens relatifs, on passe directement à la recherche dans l&#39;arborescence</span>
+    <span class="ruby-comment"># Recherche initiale dans le tableau des instances &quot;RelativeLinks&quot;</span>
+    <span class="ruby-identifier">rLinks</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">checkLinks</span>(<span class="ruby-identifier">fileName</span>)
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">rLinks</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment"># Si une instance existe, on vérifie ses données</span>
+      <span class="ruby-identifier">relativeLink</span> = <span class="ruby-identifier">rLinks</span>.<span class="ruby-identifier">getLinkFor</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">getKeyForLink</span>)
+
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">relativeLink</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment"># Si un lien relatif existe pour le répertoire instanciateur, on le teste</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">relativeLink</span>) <span class="ruby-comment"># S&#39;il est incorrect, on le supprime de l&#39;instance et on lance une nouvelle recherche (au cas où)</span>
+          <span class="ruby-identifier">rLinks</span>.<span class="ruby-identifier">removeLink</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">getKeyForLink</span>)
+          <span class="ruby-identifier">relativeLink</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">relativeLink</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment"># Sinon, on lance une recherche dans l&#39;arborescence</span>
+    <span class="ruby-identifier">previousSearchField</span>, <span class="ruby-identifier">repertoryToSeek</span>, <span class="ruby-identifier">resultOfSearch</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-ivar">@rootLink</span>, <span class="ruby-keyword">nil</span>
+
+    <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">resultOfSearch</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">searchFileInRepertory</span>(<span class="ruby-identifier">fileName</span>,<span class="ruby-identifier">repertoryToSeek</span>,<span class="ruby-identifier">previousSearchField</span>)
+
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">resultOfSearch</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">previousSearchField</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">repertoryToSeek</span>)
+        <span class="ruby-identifier">repertoryToSeek</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">obtainParentDirectory</span>(<span class="ruby-identifier">repertoryToSeek</span>)
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">resultOfSearch</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">previousSearchField</span>) <span class="ruby-operator">==</span> <span class="ruby-ivar">@appRepertory</span> <span class="ruby-comment"># Tant que le répertoire limite n&#39;a pas été atteint</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">resultOfSearch</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment"># Fichier trouvé</span>
+      <span class="ruby-identifier">relativeLink</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">createRelativeLink</span>(<span class="ruby-identifier">resultOfSearch</span>) <span class="ruby-comment"># Génération du lien relatif</span>
+
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">fileName</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">BACKUP_FILE</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">addOrUpdateLink</span>(<span class="ruby-identifier">fileName</span>,<span class="ruby-identifier">relativeLink</span>) <span class="ruby-comment"># Sauvegarde dans @relativeLinks</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">backupSearch</span> <span class="ruby-comment"># Fichier introuvable</span>
+      <span class="ruby-ivar">@lostFiles</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">fileName</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">fileName</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">BACKUP_FILE</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">relativeLink</span>
+  <span class="ruby-keyword">else</span> <span class="ruby-comment"># Résultat final de la recherche du fichier de sauvegarde de l&#39;utilitaire</span>
+    <span class="ruby-keyword">return</span> (<span class="ruby-identifier">relativeLink</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">relativeLink</span> <span class="ruby-operator">:</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-constant">BACKUP_FILE</span>,<span class="ruby-keyword">self</span>.<span class="ruby-identifier">searchFile</span>(<span class="ruby-constant">BACKUP_REPERTORY</span>))
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-searchFileInRepertory" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">searchFileInRepertory</span><span
+            class="method-args">(fileName,repertory,repertoryToIgnore=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Documentation à ajouter</p>
+          
+          
+
+          
+          <div class="method-source-code" id="searchFileInRepertory-source">
+            <pre><span class="ruby-comment"># File Noyau/LinkFinder.rb, line 181</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">searchFileInRepertory</span>(<span class="ruby-identifier">fileName</span>,<span class="ruby-identifier">repertory</span>,<span class="ruby-identifier">repertoryToIgnore</span>=<span class="ruby-keyword">nil</span>) <span class="ruby-comment"># Fonctionnelle</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">repertory</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">repertory</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">fileLooked</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">fileLooked</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;.&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">fileLooked</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;..&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">fileLooked</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;.git&quot;</span>
+        <span class="ruby-identifier">currentFileLink</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">fileLooked</span>,<span class="ruby-identifier">repertory</span>) <span class="ruby-comment"># Création du lien absolu du fichier analysé</span>
+        <span class="ruby-comment"># Comparaison entre le fichier analysé et le fichier à trouver</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">fileLooked</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">fileName</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-identifier">currentFileLink</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment"># Si le fichier analysé s&#39;avère être un dossier et qu&#39;il ne doit pas être ignoré</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">currentFileLink</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">fileLooked</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">repertoryToIgnore</span>
+          <span class="ruby-identifier">linkFound</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">searchFileInRepertory</span>(<span class="ruby-identifier">fileName</span>,<span class="ruby-identifier">currentFileLink</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">linkFound</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment"># Ne pas retirer : l&#39;instruction permet d&#39;interrompre la recherche en cas de résultat positif</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-identifier">linkFound</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">fileLooked</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">repertoryToIgnore</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">fileLooked</span>,<span class="ruby-identifier">repertory</span>)
+      <span class="ruby-keyword">end</span>
+    }
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment"># Fichier introuvable dans le répertoire fouillé</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

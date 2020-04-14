@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Action - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Action">
+  <h1 id="class-Action" class="class">
+    class Action
+  </h1>
+
+  <section class="description">
+    
+<h1 id="class-Action-label-begin">begin<span><a href="#class-Action-label-begin">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>Auteurs :: Galbrun T. Vaudeleau M.
+Version :: 0.1</pre>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-apres" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">apres</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-avant" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">avant</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-ligne" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">ligne</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(ligne,avant,apres)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <h1 id="method-c-new-label-begin">begin<span><a href="#method-c-new-label-begin">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>* ===Variables d&#39;instance
+[x] cooronnées en x ( colonne ) de la case appartenant a la ligne ayant été modifié
+[y] cooronnées en y ( ligne ) de la case appartenant a la ligne ayant été modifié
+[direction] direction ( haut, droit ... ) de la ligne ayant été modifié par rapport a la case
+[avant] état de la ligne avant sa modification
+[apres] état de la ligne aprés sa modification</pre>
+
+<h1 id="method-c-new-label-end">end<span><a href="#method-c-new-label-end">&para;</a> <a href="#top">&uarr;</a></span></h1>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Noyau/Action.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> (<span class="ruby-identifier">ligne</span>,<span class="ruby-identifier">avant</span>,<span class="ruby-identifier">apres</span>)
+    <span class="ruby-keyword">if</span> ( <span class="ruby-identifier">ligne</span>.<span class="ruby-identifier">class</span>() <span class="ruby-operator">!=</span> <span class="ruby-constant">Ligne</span>)
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">LigneError</span>, <span class="ruby-node">&quot;Ligne Attendue : #{ligne}&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> ( <span class="ruby-operator">!</span> <span class="ruby-constant">TypeLigne</span>.<span class="ruby-identifier">estValide?</span>(<span class="ruby-identifier">avant</span>) <span class="ruby-operator">||</span> <span class="ruby-operator">!</span> <span class="ruby-constant">TypeLigne</span>.<span class="ruby-identifier">estValide?</span>(<span class="ruby-identifier">apres</span>))
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeLigneError</span>, <span class="ruby-node">&quot;Etat Ligne Incorrect : #{avant}, #{apres}&quot;</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-ivar">@ligne</span>, <span class="ruby-ivar">@avant</span>, <span class="ruby-ivar">@apres</span> = <span class="ruby-identifier">ligne</span>,<span class="ruby-identifier">avant</span>,<span class="ruby-identifier">apres</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File Noyau/Action.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;   [ Ligne : [#{@ligne.etat} : #{@ligne}], etat avant/apres : #{@avant} / #{@apres} ]\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

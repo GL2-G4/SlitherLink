@@ -47,7 +47,9 @@ label {
 .combo {
   color: black;
 }
-
+.popup{
+  background-color: black;
+}
 window {
   background-image: none;
   background-color: #333344;

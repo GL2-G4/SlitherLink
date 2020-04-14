@@ -15,7 +15,7 @@ class Joueur
 	# Constructeur d'un joueur
 	def initialize()
 	
-		@argent = 0
+		@argent = 100000
 		@etoiles = 0
 	end
 	
@@ -75,6 +75,10 @@ class Joueur
 			puts "Grille achetée avec succès !"
 			grille.debloquer()
 		else
+			p = Popup.new()
+			p.set_titre(titre:"Vous ne pouvez pas débloquer ce puzzle. Vérifiez que vous avez assez d'argent.") 
+			p.addBouton(titre:"Quitter"){ p.stop }
+			p.run()
 			puts "La grille n'a pas pu être débloquée."
 		end
 	end
@@ -86,6 +90,10 @@ class Joueur
 			puts "Thème acheté avec succès !"
 			theme.debloquer()
 		else
+			p = Popup.new()
+			p.set_titre(titre:"Vous ne pouvez pas débloquer ce theme. Vérifiez que vous avez assez d'argent.") 
+			p.addBouton(titre:"Quitter"){ p.stop }
+			p.run()
 			puts "Le thème n'a pas pu être débloqué."
 		end
 	end

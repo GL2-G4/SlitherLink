@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class GestionnaireQuicksave - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-c-nouveau">::nouveau</a>
+    
+    <li ><a href="#method-i-charger">#charger</a>
+    
+    <li ><a href="#method-i-chargerSafe">#chargerSafe</a>
+    
+    <li ><a href="#method-i-nbQS">#nbQS</a>
+    
+    <li ><a href="#method-i-nouvelleQuicksave">#nouvelleQuicksave</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-GestionnaireQuicksave">
+  <h1 id="class-GestionnaireQuicksave" class="class">
+    class GestionnaireQuicksave
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">( p, ha)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Noyau/GestionnaireQuicksave.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>( <span class="ruby-identifier">p</span>, <span class="ruby-identifier">ha</span>)
+
+    <span class="ruby-ivar">@plateau</span> = <span class="ruby-identifier">p</span>
+    <span class="ruby-ivar">@ha</span> = <span class="ruby-identifier">ha</span>
+    <span class="ruby-ivar">@listeQs</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+    <span class="ruby-ivar">@dernierChargement</span> = <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@chargementSafe</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-nouveau" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nouveau</span><span
+            class="method-args">( plateau, historiqueActions)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creation d&#39;un nouveau Gestionnaire de <a
+href="Quicksave.html">Quicksave</a>. Il ne devrait y avoir qu&#39;un seul
+<a href="GestionnaireQuicksave.html">GestionnaireQuicksave</a> par grille
+Ce Gestionnaire de <a href="Quicksave.html">Quicksave</a> doit connaitre le
+plateau de jeu et l&#39;historique des actions de jeu</p>
+          
+          
+
+          
+          <div class="method-source-code" id="nouveau-source">
+            <pre><span class="ruby-comment"># File Noyau/GestionnaireQuicksave.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">GestionnaireQuicksave</span>.<span class="ruby-identifier ruby-title">nouveau</span>( <span class="ruby-identifier">plateau</span>, <span class="ruby-identifier">historiqueActions</span>)
+
+    <span class="ruby-identifier">new</span>( <span class="ruby-identifier">plateau</span>, <span class="ruby-identifier">historiqueActions</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-charger" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">charger</span><span
+            class="method-args">( numQS )</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>charge une <a href="Quicksave.html">Quicksave</a> en jeu en lui passant le
+numero de la <a href="Quicksave.html">Quicksave</a> qui doit etre chargé</p>
+
+<p>Avant le chargement de la <a href="Quicksave.html">Quicksave</a>, le
+plateau de jeu et l&#39;historique est sauvegardé. On peut charger cette
+sauvegarde a l&#39;aide de la méthode chargerSafe(). Cette sauvegarde ne
+peut plus etre chargé a partir du moment ou une nouvelle <a
+href="Quicksave.html">Quicksave</a> est créer a l&#39;aide de la méthode
+nouvelleQuicksave</p>
+          
+          
+
+          
+          <div class="method-source-code" id="charger-source">
+            <pre><span class="ruby-comment"># File Noyau/GestionnaireQuicksave.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">charger</span>( <span class="ruby-identifier">numQS</span> )
+
+    <span class="ruby-keyword">if</span> ( <span class="ruby-ivar">@listeQs</span>.<span class="ruby-identifier">empty?</span>() ) <span class="ruby-keyword">then</span>
+
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">NoQuicksaveSave</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;Aucune quicksave enregistré, impossible d&#39;en charger une&quot;</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> ( <span class="ruby-identifier">numQS</span>.<span class="ruby-identifier">to_i</span>() <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@listeQs</span>.<span class="ruby-identifier">size</span>() ) <span class="ruby-keyword">then</span>
+
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">QuicksaveSaveOutOfBounds</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;Aucune quicksave enregistré a l&#39;emplacement &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">numQS</span> )
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-ivar">@safeSave</span> = <span class="ruby-constant">Quicksave</span>.<span class="ruby-identifier">nouveau</span>( <span class="ruby-ivar">@plateau</span>, <span class="ruby-ivar">@ha</span> )
+    <span class="ruby-ivar">@listeQs</span>.<span class="ruby-identifier">at</span>( <span class="ruby-identifier">numQS</span> ).<span class="ruby-identifier">charger</span>( <span class="ruby-ivar">@plateau</span>, <span class="ruby-ivar">@ha</span> )
+    <span class="ruby-ivar">@dernierChargement</span> = <span class="ruby-identifier">numQS</span>
+
+    <span class="ruby-ivar">@chargementSafe</span> = <span class="ruby-keyword">true</span>
+
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-chargerSafe" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chargerSafe</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Permet le chargement de la grille juste avant le dernier chargement
+d&#39;un <a href="Quicksave.html">Quicksave</a>.</p>
+
+<p>Si une quicksave a été enregistré aprés le dernier chargement d&#39;une
+quicksave, ne fait rien</p>
+          
+          
+
+          
+          <div class="method-source-code" id="chargerSafe-source">
+            <pre><span class="ruby-comment"># File Noyau/GestionnaireQuicksave.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chargerSafe</span>()
+
+    <span class="ruby-keyword">if</span> ( <span class="ruby-ivar">@chargementSafe</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> ) <span class="ruby-keyword">then</span>
+        <span class="ruby-ivar">@safeSave</span>.<span class="ruby-identifier">charger</span>( <span class="ruby-ivar">@plateau</span>, <span class="ruby-ivar">@ha</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nbQS" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nbQS</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="nbQS-source">
+            <pre><span class="ruby-comment"># File Noyau/GestionnaireQuicksave.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nbQS</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@listeQs</span>.<span class="ruby-identifier">size</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nouvelleQuicksave" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nouvelleQuicksave</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>permet d&#39;enregistrer une nouvelle <a
+href="Quicksave.html">Quicksave</a> dans le gestionnaire</p>
+
+<p>Si la sauvegarde est effectué aprés le chargement d&#39;une quicksave,
+toutes les quicksave réalisé aprés la quicksave qui a été chargé sont
+supprimé. Il n&#39;y a aucun moyen de les récupérer</p>
+          
+          
+
+          
+          <div class="method-source-code" id="nouvelleQuicksave-source">
+            <pre><span class="ruby-comment"># File Noyau/GestionnaireQuicksave.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nouvelleQuicksave</span>()
+
+    <span class="ruby-keyword">if</span> ( <span class="ruby-ivar">@dernierChargement</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@listeQs</span>.<span class="ruby-identifier">size</span>() ) <span class="ruby-keyword">then</span>
+
+        <span class="ruby-ivar">@listeQs</span>.<span class="ruby-identifier">slice!</span>( <span class="ruby-ivar">@dernierChargement</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-ivar">@listeQs</span>.<span class="ruby-identifier">size</span>()<span class="ruby-operator">-</span><span class="ruby-ivar">@dernierChargement</span><span class="ruby-value">-1</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-ivar">@listeQs</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Quicksave</span>.<span class="ruby-identifier">nouveau</span>( <span class="ruby-ivar">@plateau</span>, <span class="ruby-ivar">@ha</span>)
+    <span class="ruby-ivar">@dernierChargement</span> = <span class="ruby-ivar">@listeQs</span>.<span class="ruby-identifier">size</span>()
+    <span class="ruby-ivar">@chargementSafe</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -52,7 +52,8 @@ class MenuAventure < Gtk::Box
         @boxJoueur = Gtk::Box.new(:vertical)
         @borderJoueur = Gtk::Frame.new()
 
-        @chargeurGrille = ChargeurGrille.charger(File.dirname(__FILE__) + "/../Grilles/grilleAventure")
+        @boutique = @gMenu.boutique
+        @chargeurGrille =  @gMenu.chargeurGrille
         @chargeurGrille.debloquerGrilles(@gMenu.joueur.etoiles)
         @chargeurGrille.sauvegarder(File.dirname(__FILE__) + "/../Grilles/grilleAventure")
         #@listeBoutons.each_index { |index|
@@ -103,11 +104,20 @@ class MenuAventure < Gtk::Box
                 jeu = Jeu.charger(grille)
                 uiP = PartieUI.creer(@gMenu,self,jeu,grille)
                 @gMenu.changerMenu(uiP)
+                if(grille.debloque)
+                    jouer(grille)
+                else
+                    acheter(index)
+                    if(grille.debloque)
+                        bouton.set_image(nil)
+                        bouton.set_label("Jouer")
+                    end
+                end
             end
             if(@gMenu.joueur.grilleDebloquee?(chargeurGrille.getGrilleIndex(index)) == false)
                 #bouton.set_label("Bloquée")
-                bouton.set_sensitive(false)
                 if(grille.prixEtoiles != 0)
+                    bouton.set_sensitive(false)
                     bouton.set_label(grille.prixEtoiles.to_s)
                     bouton.set_image(ImageManager.getImageFromFile(path + "/image/etoile.png",15,15))
                 else
@@ -136,5 +146,15 @@ class MenuAventure < Gtk::Box
         add(@vBox)
         @scrolled.add(@vBox2)
         add(@scrolled)
+    end
+
+    def jouer(grille)
+        jeu = Jeu.charger(grille)
+        uiP = PartieUI.creer(@gMenu,self,jeu,grille)
+        @gMenu.changerMenu(uiP)
+    end
+
+    def acheter(index)
+        @boutique.acheterGrille(@gMenu.joueur, index)
     end
 end

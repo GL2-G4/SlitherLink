@@ -106,6 +106,9 @@ class GestionnaireMenus
         elsif (t == "Shrek Theme")
             provider = Gtk::CssProvider.new
             provider.load(path: @path + "/css/shrek.css")
+        elsif (t == "Licorne Theme")
+            provider = Gtk::CssProvider.new
+            provider.load(path: @path + "/css/licorne.css")
         end
         Gtk::StyleContext.add_provider_for_screen(Gdk::Screen.default, provider, Gtk::StyleProvider::PRIORITY_USER)
     end

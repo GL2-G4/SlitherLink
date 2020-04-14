@@ -26,6 +26,7 @@ class GestionnaireMenus
     attr :app, true
     attr :joueur, true
     attr :menu, true
+    attr_reader :boutique, :chargeurGrille
 
     def GestionnaireMenus.creer(window, application)
         new(window, application)
@@ -39,6 +40,7 @@ class GestionnaireMenus
         @box.set_spacing($paddingBox)
         @window.add(@box)
         @joueur = Joueur.creer()
+        @chargeurGrille = ChargeurGrille.charger(File.dirname(__FILE__) + "/../Grilles/grilleAventure")
 
         @menu = Menu.creer(self)
         @menu.sousMenu = SousMenu.creer(self, @menu)
@@ -46,7 +48,7 @@ class GestionnaireMenus
         @menu.menuModeDeJeu = MenuModeDeJeu.creer(self, @menu)
         @path = File.expand_path(File.dirname(__FILE__))
         @menu.parametres = ParametresUI.creer(self, @menu, Parametre.charger(@path + "/../Parametres/themes", @path + "/../Parametres/tailles"))
-        @boutique = Boutique.charger(@menu.parametres.param.listeThemes)
+        @boutique = Boutique.charger(@chargeurGrille.listeGrilles, @menu.parametres.param.listeThemes)
         @menu.boutique = MenuBoutique.creer(self, @menu, @boutique)
         @menu.tuto = Tutoriel.creer(self, @menu)
         changerMenu(@menu)

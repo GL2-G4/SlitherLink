@@ -11,7 +11,7 @@ class Parametre
 	#@tailleCourante : la taille choisie par le joueur
 	#@autocompletion : booléen qui vaut vrai si l’autocomplétion est activée
 	
-	attr_reader :listeThemes, :listeTailles, :tailleCourante
+	attr_reader :listeThemes, :listeTailles, :tailleCourante, :themeCourant
 	attr_accessor :autocompletion
 	
 	# Méthode de création des paramètres
@@ -29,6 +29,16 @@ class Parametre
 		# Ouverture des fichiers
 		fichierTheme = File.open(nomFichier1, "r")
 		fichierTaille = File.open(nomFichier2, "r")
+
+
+		@path = File.expand_path(File.dirname(__FILE__))
+		fichierSave = File.open(@path + "/../Parametres/saveParam", "r")
+		lignes = fichierSave.readlines()
+		@themeCourant = lignes[0]
+		@themeCourant = @themeCourant[0..-2]
+		@tailleCourante = lignes[1]
+		@tailleCourante = @tailleCourante[0..-2]
+		fichierSave.close()
 		
 		# Lecture de chacune des lignes du fichier de thèmes
 		lignes = fichierTheme.readlines()
@@ -104,6 +114,11 @@ class Parametre
 	
 		if @listeThemes[numeroTheme].debloque
 			@themeCourant = @listeThemes[numeroTheme]
+			File.truncate(@path + "/../Parametres/saveParam", 0)
+			fichierSave = File.open(@path + "/../Parametres/saveParam", "w")
+			fichierSave.puts @themeCourant
+			fichierSave.puts @tailleCourante
+			fichierSave.close()
 		else
 			puts "Le thème est bloqué."
 		end
@@ -112,6 +127,11 @@ class Parametre
 	# Méthode qui change la taille choisie par le joueur
 	def changerTaille(numeroTaille)
 		@tailleCourante = @listeTailles[numeroTaille]
+		File.truncate(@path + "/../Parametres/saveParam", 0)
+		fichierSave = File.open(@path + "/../Parametres/saveParam", "w")
+		fichierSave.puts @themeCourant
+		fichierSave.puts @tailleCourante
+		fichierSave.close()
 	end
 	
 	# Méthode pour débloquer un thème

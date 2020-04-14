@@ -52,6 +52,6 @@ class Taille
 	
 	# Méthode d'affichage
 	def to_s()
-		return "Longueur = #{@longueur}\nLargeur = #{@largeur}"
+		return "#{@longueur} x #{@largeur}"
 	end
 end

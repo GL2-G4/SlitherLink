@@ -252,7 +252,7 @@ class LigneBloqueContinuer < Technique
                             ligneAvecEtat( plateau[i + 1][j].getLigne(:HAUT), :BLOQUE)
                         else
                             
-                            ligneAvecEtat( plateau[i][j + 1].getLigne(:GAUCHE), :BLOQUE)
+                            ligneAvecEtat( plateau[i][j - 1].getLigne(:DROITE), :BLOQUE)
                         end
 
                         return true

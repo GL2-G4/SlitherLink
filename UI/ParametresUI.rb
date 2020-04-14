@@ -34,6 +34,7 @@ class ParametresUI < Gtk::Box
                 @param.listeThemes.each do |t|
                     combo.append("t1", t.nom)
                 end
+                combo.set_active(0)
                 #combo.append("t2", "Dark Theme")
                 #combo.append("t3", "Red Theme")
                 #combo.append("t4", "Space Theme")
@@ -61,6 +62,7 @@ class ParametresUI < Gtk::Box
                 @param.listeTailles.each do |t|
                     combo2.append("t1", t.nom)
                 end
+                combo2.set_active(2)
 
             boxBouton2 = Gtk::ButtonBox.new(:horizontal)
             @border2 = Gtk::Frame.new()
@@ -100,13 +102,13 @@ class ParametresUI < Gtk::Box
                 # TODO
                 if(combo2.active_text() != nil)
                     gMenu.changerTaille(combo2.active_text())
-                    puts "\nJe choisis la Taille " + combo2.active_text()
+                    #puts "\nJe choisis la Taille " + combo2.active_text()
                     @param.changerTaille(combo2.active)
                 end
                 if(combo.active_text() != nil)
                     if(@param.listeThemes[combo.active].debloque)
                         gMenu.changerTheme(combo.active_text())
-                        puts "\nJe choisis le thème " + combo.active_text()
+                        #puts "\nJe choisis le thème " + combo.active_text()
                         @param.changerTheme(combo.active)
             
                     else
@@ -117,7 +119,7 @@ class ParametresUI < Gtk::Box
                     end
                 end
                 @param.autocompletion=(bouton3.active?)
-                @param.afficheToi(false)
+                #@param.afficheToi(false)
             end
 
             ajouter()

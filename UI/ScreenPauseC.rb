@@ -1,28 +1,27 @@
 ##
-# File: ScreenGagneC1.rb
+# File: ScreenPauseC.rb
 # Project: UI
-# File Created: Monday, 13th April 2020 7:45:52 pm
+# File Created: Wednesday, 8th April 2020 3:56:39 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 14th April 2020 5:32:24 pm
+# Last Modified: Tuesday, 14th April 2020 5:42:52 pm
 # Modified By: <CPietJa>Galbrun T.
 #
-
 require 'gtk3'
 require_relative './ImageManager.rb'
+require_relative './Challenge.rb'
 
 =begin
     *=== Descriptif
-    Ecran de win d'une partie.
+    Ecran de pause d'une partie.
 =end
-class ScreenGagneC1 < Gtk::Box
+class ScreenPauseC < Gtk::Box
+    ROUGE = Gdk::RGBA.new(1,0,0,0.5)
 
     def initialize(gMenu,partie)
         super(:vertical)
         @gMenu = gMenu
-        @pere = partie
-        @partieS = @pere.pere.partieSuivante()
-        @pere.pere.temps += partie.chrono.getSec()
+        @partie = partie
         @fenetre = Gtk::Box.new(:horizontal)
         @fenetre.set_homogeneous(true)
         #set_homogeneous(true)
@@ -30,25 +29,43 @@ class ScreenGagneC1 < Gtk::Box
         set_valign(Gtk::Align::CENTER)
         #override_background_color(:normal,ROUGE)
 
-        path = File.expand_path(File.dirname(__FILE__))
-
         # Titre
-        titre = Gtk::Label.new.set_markup("<span font_desc=\"30.0\"><b>Bravo !</b></span>")
-        #titre.set_margin_bottom(10)
-        # Sous Titre
-        stitre = Gtk::Label.new.set_markup("<span font_desc=\"30.0\"><b>Vous avez fini #{@pere.pere.index}/5 grilles !</b></span>")
-        stitre.set_margin_bottom(30)
-        # Btn Grille Suivante
+        titre = Gtk::Label.new.set_markup("<span font_desc=\"30.0\"><b>Pause</b></span>")
+        titre.set_margin_bottom(30)
+        # Btn Continuer
         creerBtn(:image => :ICON_PLAY){
-            #puts 'Grille Suivante'
-            @gMenu.changerMenu(@partieS)
+            #puts 'Continuer'
+            @gMenu.changerMenu(@partie)
+            @partie.playChrono()
+        }
+        # Btn Recommencer
+        creerBtn(:image => :ICON_RESTART){
+            #puts 'Restart'
+            Challenge.new(@gMenu,@partie.pere.pere,@partie.pere.challenge)
+        }
+        # Btn Règles
+        creerBtn(:image => :ICON_DOC){
+            #puts 'Règles'
+            @gMenu.changerMenu(@gMenu.menu.menuRegles)
+        }
+        # Btn Quitter
+        creerBtn(:image => :ICON_HOME){
+            #puts 'Menu'
+            @gMenu.changerMenu(@partie.pere.pere)
         }
 
         add(titre)
-        add(stitre)
         add(@fenetre)
     end
 
+    def afficheToi()
+        @fenetre.show_all
+    end
+
+    def effaceToi()
+        @fenetre.hide
+    end
+    
     private
     def creerBtn(label:"",image:nil)
         box = Gtk::Box.new(:vertical)

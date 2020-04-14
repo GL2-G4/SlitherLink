@@ -4,7 +4,7 @@
 # File Created: Tuesday, 14th April 2020 3:52:18 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Tuesday, 14th April 2020 5:07:09 pm
+# Last Modified: Tuesday, 14th April 2020 5:43:50 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 require 'gtk3'
@@ -12,13 +12,14 @@ require_relative './PartieUI.rb'
 require_relative './ScreenGagneC1.rb'
 require_relative './ScreenGagneC2.rb'
 require_relative './ChallengeManager.rb'
+require_relative './ScreenPauseC.rb'
 
 =begin
     *=== Descriptif
     Gère un challenge en enchainant les grilles à jouer.
 =end
 class Challenge
-    attr_reader :index, :chargeurGrille
+    attr_reader :index, :chargeurGrille, :pere, :challenge
     attr_accessor :temps
 
     def initialize(gMenu,pere,challenge)
@@ -31,7 +32,7 @@ class Challenge
         @chargeurGrille = ChargeurGrille.charger(File.dirname(__FILE__) + "/../Grilles/Challenges/"+challenge["grilles"])
         grille = @chargeurGrille.getGrilleIndex(index)
         jeu = Jeu.charger(grille)
-        uiP = PartieUI.creer(@gMenu,self,jeu,grille,screenG:ScreenGagneC1)
+        uiP = PartieUI.creer(@gMenu,self,jeu,grille,screenG:ScreenGagneC1,screenP:ScreenPauseC)
         @gMenu.changerMenu(uiP)
     end
 
@@ -41,10 +42,10 @@ class Challenge
         jeu = Jeu.charger(grille)
         if(index < @chargeurGrille.listeGrilles.length - 1)
             # ScreenG C1
-            uiP = PartieUI.creer(@gMenu,self,jeu,grille,screenG:ScreenGagneC1)
+            uiP = PartieUI.creer(@gMenu,self,jeu,grille,screenG:ScreenGagneC1,screenP:ScreenPauseC)
         else
             # ScreenG C2
-            uiP = PartieUI.creer(@gMenu,self,jeu,grille,screenG:ScreenGagneC2)
+            uiP = PartieUI.creer(@gMenu,self,jeu,grille,screenG:ScreenGagneC2,screenP:ScreenPauseC)
         end
         return uiP
     end

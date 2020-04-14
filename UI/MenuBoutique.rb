@@ -60,7 +60,7 @@ class MenuBoutique < Gtk::Box
                 bouton.set_label("Puzzle n°" + index.to_s)
                 bouton.signal_connect "clicked" do |_widget|
                     #Test pour avoir toujours assez d'argent
-                    gMenu.joueur.ajouterArgent(@boutique.listeGrilles[index].prixPieces)
+                    #gMenu.joueur.ajouterArgent(@boutique.listeGrilles[index].prixPieces)
                     #gMenu.joueur.ajouterEtoiles(@boutique.listeGrilles[index].prixEtoiles)
                     @boutique.acheterGrille(gMenu.joueur, index)
                     majMonnaie
@@ -87,7 +87,7 @@ class MenuBoutique < Gtk::Box
                 bouton.set_label(@boutique.listeThemes[index].nom)
                 bouton.signal_connect "clicked" do |_widget|
                     #Test pour toujours avoir assez d'argent
-                    gMenu.joueur.ajouterArgent(@boutique.listeThemes[index].prix)
+                    #gMenu.joueur.ajouterArgent(@boutique.listeThemes[index].prix)
                     @boutique.acheterTheme(gMenu.joueur, index)
                     majMonnaie
                     if(@boutique.listeThemes[index].debloque)

@@ -67,7 +67,7 @@ class MenuAventure < Gtk::Box
                 @moyen.style_context.add_class("titre")
                 @vBox2.add(@moyen)
             end
-            if(index == 100)
+            if(index == 101)
                 @difficile = Gtk::Label.new("DIFFICILE")
                 @difficile.style_context.add_class("titre")
                 @vBox2.add(@difficile)

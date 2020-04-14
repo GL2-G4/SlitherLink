@@ -142,11 +142,12 @@ application.signal_connect(:activate) do
 
         application.quit
     }
-    window.set_position('center_always')
+
     puts gMenu.menu.parametres.param.tailleCourante.to_s
     puts gMenu.menu.parametres.param.themeCourant.to_s
     gMenu.changerTaille(gMenu.menu.parametres.param.tailleCourante.to_s)
     gMenu.changerTheme(gMenu.menu.parametres.param.themeCourant.to_s)
+    window.set_position('center_always')
     window.show_all
 end
 application.run

@@ -5,16 +5,18 @@ class Boutique
 	# @listeGrilles : la liste des grilles déverrouillables à la boutique
 	# @joueur : le joueur qui a accès à la boutique
 	
+	attr_reader :listeGrilles, :listeThemes
+
 	# Méthode de création
-	def Boutique.charger(joueur)
-		new(joueur)
+	def Boutique.charger(listeThemes)
+		new(listeThemes)
 	end
 	
 	# Méthode d'initialisation de la boutique
-	def initialize(joueur)
-		@joueur = joueur
-		@listeGrilles = Array.new()
-		@listeThemes = Array.new()
+	def initialize(listeThemes)
+		@chargeurGrille = ChargeurGrille.charger(File.dirname(__FILE__) + "/../Grilles/grille")
+		@listeGrilles = @chargeurGrille.listeGrilles
+		@listeThemes = listeThemes
 	end
 	
 	# Méthode pour ajouter une grille à la liste de grilles
@@ -28,26 +30,26 @@ class Boutique
 	end
 	
 	# Méthode pour faire acheter une grille au joueur
-	def acheterGrille(numeroGrille)
+	def acheterGrille(joueur, numeroGrille)
 	
 		if numeroGrille < 0 
 			raise ArgumentError, "Numéro de grille négatif."
 		elsif numeroGrille >= @listeGrilles.size
 			raise ArgumentError, "Numéro de grille trop grand."	
 		else
-			@joueur.acheterGrille(@listeGrilles[numeroGrille])
+			joueur.acheterGrille(@listeGrilles[numeroGrille])
 		end
 	end
 	
 	# Méthode pour faire acheter une grille au joueur
-	def acheterTheme(numeroTheme)
+	def acheterTheme(joueur, numeroTheme)
 	
 		if numeroTheme < 0 
 			raise ArgumentError, "Numéro de thème négatif."
 		elsif numeroTheme >= @listeThemes.size
 			raise ArgumentError, "Numéro de thème trop grand."	
 		else
-			@joueur.acheterTheme(@listeThemes[numeroTheme])
+			joueur.acheterTheme(@listeThemes[numeroTheme])
 		end
 	end
 	

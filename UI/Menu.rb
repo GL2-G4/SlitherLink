@@ -39,7 +39,8 @@ class Menu < Gtk::Box
         }
         @button3 = Gtk::Button.new(:label => 'Boutique')
         @button3.signal_connect('clicked') {
-            gMenu.changerMenu(MenuBoutique.creer(@gMenu, self))
+            @boutique.majMonnaie
+            gMenu.changerMenu(@boutique)
         }
         @button4 = Gtk::Button.new(:label => 'Paramètres')
         @button4.signal_connect('clicked') {

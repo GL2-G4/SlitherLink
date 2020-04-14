@@ -5,18 +5,17 @@ class MenuBoutique < Gtk::Box
 
     private_class_method :new
 
-    def MenuBoutique.creer(gMenu, menuPere)
-        new(gMenu, menuPere)
+    def MenuBoutique.creer(gMenu, menuPere, boutique)
+        new(gMenu, menuPere, boutique)
     end
 
-    def initialize(gMenu, menuPere)
+    def initialize(gMenu, menuPere, boutique)
         super(:horizontal)
         @gMenu = gMenu
         @pere = menuPere
         @vBox = Gtk::Box.new(:vertical)
         @vBox2 = Gtk::Box.new(:vertical)
-        @listeGrilles = Array.new($nbPuzzlesPayants)
-        @listeThemes = Array.new(3)
+        @boutique = boutique
 
         @scrolled = Gtk::ScrolledWindow.new
         @scrolled.set_policy(:never, :automatic)
@@ -50,40 +49,48 @@ class MenuBoutique < Gtk::Box
         @borderJoueur = Gtk::Frame.new()
         @sautdeligne = Gtk::Label.new("\n\n")
 
-        @listeGrilles.each_index { |index|
+        @boutique.listeGrilles.each_index { |index|
             boxBouton = Gtk::ButtonBox.new(:horizontal)
             boxBouton.set_width_request($longListe)
             border = Gtk::Frame.new()
             boxBouton.set_border_width(10)
-            textBox = Gtk::Label.new("Acheter le puzzle n°" + index.to_s)
+            textBox = Gtk::Label.new("Acheter le puzzle pour " + @boutique.listeGrilles[index].prixPieces.to_s + " et " + @boutique.listeGrilles[index].prixEtoiles.to_s + " étoiles nécesaires")
             bouton = Gtk::Button.new()
             bouton.set_label("Puzzle n°" + index.to_s)
             bouton.signal_connect "clicked" do |_widget|
-                puts "Acheter le puzzle n°" + index.to_s
+                #Test pour avoir toujours assez d'argent
+                #gMenu.joueur.ajouterArgent(@boutique.listeGrilles[index].prixPieces)
+                #gMenu.joueur.ajouterEtoiles(@boutique.listeGrilles[index].prixEtoiles)
+                @boutique.acheterGrille(gMenu.joueur, index)
+                @etoile.set_label(@gMenu.joueur.etoiles.to_s())
+                @argent.set_label(@gMenu.joueur.argent.to_s())
             end
-            @listeGrilles[index] = bouton
             boxBouton.add(textBox)
             boxBouton.add(bouton)
             border.add(boxBouton)
             @vBox2.add(border)
         }
         @vBox2.add(@sautdeligne)
-        @listeThemes.each_index { |index|
-            boxBouton = Gtk::ButtonBox.new(:horizontal)
-            boxBouton.set_width_request($longListe)
-            border = Gtk::Frame.new()
-            boxBouton.set_border_width(10)
-            textBox = Gtk::Label.new("Acheter le theme n°" + index.to_s)
-            bouton = Gtk::Button.new()
-            bouton.set_label("Theme n°" + index.to_s)
-            bouton.signal_connect "clicked" do |_widget|
-                puts "Acheter le theme n°" + index.to_s
+        @boutique.listeThemes.each_index { |index|
+            if(!@boutique.listeThemes[index].debloque)
+                boxBouton = Gtk::ButtonBox.new(:horizontal)
+                boxBouton.set_width_request($longListe)
+                border = Gtk::Frame.new()
+                boxBouton.set_border_width(10)
+                textBox = Gtk::Label.new("Acheter le theme pour " + @boutique.listeThemes[index].prix.to_s)
+                bouton = Gtk::Button.new()
+                bouton.set_label(@boutique.listeThemes[index].nom)
+                bouton.signal_connect "clicked" do |_widget|
+                    #Test pour toujours avoir assez d'argent
+                    #gMenu.joueur.ajouterArgent(@boutique.listeThemes[index].prix)
+                    @boutique.acheterTheme(gMenu.joueur, index)
+                    @argent.set_label(@gMenu.joueur.argent.to_s())
+                end
+                boxBouton.add(textBox)
+                boxBouton.add(bouton)
+                border.add(boxBouton)
+                @vBox2.add(border)
             end
-            @listeThemes[index] = bouton
-            boxBouton.add(textBox)
-            boxBouton.add(bouton)
-            border.add(boxBouton)
-            @vBox2.add(border)
         }
 
         ajouter()
@@ -99,5 +106,10 @@ class MenuBoutique < Gtk::Box
         add(@vBox)
         @scrolled.add(@vBox2)
         add(@scrolled)
+    end
+
+    def majMonnaie()
+        @etoile.set_label(@gMenu.joueur.etoiles.to_s())
+        @argent.set_label(@gMenu.joueur.argent.to_s())
     end
 end

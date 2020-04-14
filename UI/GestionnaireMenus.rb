@@ -44,9 +44,10 @@ class GestionnaireMenus
         @menu.sousMenu = SousMenu.creer(self, @menu)
         @menu.menuRegles = MenuRegles.creer(self,@menu)
         @menu.menuModeDeJeu = MenuModeDeJeu.creer(self, @menu)
-        @menu.boutique = MenuBoutique.creer(self, @menu)
         @path = File.expand_path(File.dirname(__FILE__))
         @menu.parametres = ParametresUI.creer(self, @menu, Parametre.charger(@path + "/../Parametres/themes", @path + "/../Parametres/tailles"))
+        @boutique = Boutique.charger(@menu.parametres.param.listeThemes)
+        @menu.boutique = MenuBoutique.creer(self, @menu, @boutique)
         @menu.tuto = Tutoriel.creer(self, @menu)
         changerMenu(@menu)
     end

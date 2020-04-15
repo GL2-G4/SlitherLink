@@ -4,7 +4,7 @@
 # File Created: Friday, 14th February 2020 5:40:31 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Monday, 13th April 2020 4:52:20 pm
+# Last Modified: Wednesday, 15th April 2020 2:29:45 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 path = File.expand_path(File.dirname(__FILE__))
@@ -48,6 +48,9 @@ class GestionTechniques
         :T2A2LB => DeuxAvecDeuxLB.new("T2A2LB"),
         :T3A1LB => TroisAvecUneLB.new("T3A1LB"),
         :T0 => Zero.new("T0"),
+        :T1A1LP => UnAvecUneLP.new(),
+        :T2A2LP => DeuxAvecDeuxLP.new(),
+        :T3A3LP => TroisAvecTroisLP.new(),
         :TNBCOIN => NbCoin.new("TNBCOIN"),
         :TCOINLB => CoinLB.new(),
         :TCOINLP => CoinLP.new(),
@@ -122,6 +125,15 @@ class GestionTechniques
     def self.autocompletion(plateau)
         if(@@listeTechniques[:T0].chercher(plateau))
             return :T0
+        end
+        if(@@listeTechniques[:T2A2LP].chercher(plateau))
+            return :T2A2LP
+        end
+        if(@@listeTechniques[:T1A1LP].chercher(plateau))
+            return :T1A1LP
+        end
+        if(@@listeTechniques[:T3A3LP].chercher(plateau))
+            return :T3A3LP
         end
         #if(@@listeTechniques[:TCOINLB].chercher(plateau))
         #    return :TCOINLB

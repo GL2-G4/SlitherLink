@@ -1,6 +1,6 @@
 3pvpp:4pvpv:3pvpp 2pvpv:4pppv:2pvpv 4ppvv:2vpvp:4vppv;0;0;0;9;9;0;0;V
 4pvpp:3pppv:3pvpp 4pvvv:4vpvp:4vvpv 4pppv:3pvpp:3pppv;0;0;0;9;9;0;0;V
-4vppv:2pvvp:4vppp 3ppvp:4vvpv:3ppvp 2vvpp:4ppvv:4vppp;76;76;1;0;9;0;0;V
+4vppv:2pvvp:4vppp 3ppvp:4vvpv:3ppvp 2vvpp:4ppvv:4vppp;0;0;0;9;9;0;0;V
 3pvpp:4pppv:4pvpp:4ppvv 4pvvv:4vpvp:0vvvv:3vppp 4pppv:3pvpp:4pppv:4pvvp;0;0;0;12;12;3;0;F
 4pvvp:2vpvp:4vvpp:4ppvv 2pvpv:3pvpp:4ppvv:2vvpp 4pppv:1pvvv:2vvpp:4pppv;0;0;0;12;12;4;0;F
 4pvpp:3pppv:2pvvp:3vppp 2ppvv:1vvvp:2vppv:4pvvp 4vvpp:4pppv:4pvvp:4vvvv;0;0;0;12;12;5;0;F

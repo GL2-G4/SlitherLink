@@ -184,6 +184,9 @@ class Jeu
                 end
             }
         }
+        if(@erreurs.size() == 0)
+            $apprOrAdventure =0
+        end
         return @erreurs.size() == 0
     end
 

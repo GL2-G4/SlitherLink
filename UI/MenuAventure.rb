@@ -109,6 +109,8 @@ class MenuAventure < Gtk::Box
                 else
                     acheter(index)
                     if(grille.debloque)
+                        @gMenu.joueur.retirerArgent(grille.prixPieces)
+                        puts "je retire l'argent"
                         bouton.set_image(nil)
                         bouton.set_label("Jouer")
                     end

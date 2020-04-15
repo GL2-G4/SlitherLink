@@ -1,10 +1,10 @@
 ##
-# File: UnAvecTroisLB.rb
+# File: UnAvecUneLP.rb
 # Project: 1Case
 # File Created: Friday, 14th February 2020 6:02:07 pm
 # Author: <CPietJa>Galbrun T.
 # -----
-# Last Modified: Wednesday, 15th April 2020 2:18:31 pm
+# Last Modified: Wednesday, 15th April 2020 2:25:24 pm
 # Modified By: <CPietJa>Galbrun T.
 #
 
@@ -15,17 +15,17 @@ require path + "/../../../Case"
 require path + "/../../Zone"
 
 =begin
-    Technique qui lorsqu'un 1 à 3 lignes bloquées récupère
-    la ligne qui peut être rempli.
+    Technique qui lorsqu'un 1 à 1 ligne pleine récupère
+    les lignes qui peuvent être bloquées.
     Ex:
-    . x .       . x .
-    x 1      => x 1 =
-    . x .       . x .
+    . = .       . = .
+      1      => x 1 x
+    .   .       . x .
 =end
-class UnAvecTroisLB < Technique
+class UnAvecUneLP < Technique
     
-    def initialize (description)
-        super(description)
+    def initialize ()
+        super("T1A1LP")
     end
 
     def chercher(plateau)
@@ -38,9 +38,9 @@ class UnAvecTroisLB < Technique
                 # On cherche la case contenant un 1 et répondant aux conditions
                 # de la technique, puis on récupère la ligne.
                 if (c.nbLigneDevantEtrePleine == 1)
-                    if(c.nbLigneEtat(:PLEINE) == 0 && c.nbLigneEtat(:BLOQUE) == 3)
+                    if(c.nbLigneEtat(:BLOQUE) <= 2 && c.nbLigneEtat(:PLEINE) == 1)
                         @zone = Zone.new(i,j,i,j)
-                        lignesAvecEtat(c.getLigneEtat(:VIDE), :PLEINE)
+                        lignesAvecEtat(c.getLigneEtat(:VIDE), :BLOQUE)
                         return true
                     end
                 end

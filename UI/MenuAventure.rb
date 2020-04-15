@@ -1,3 +1,17 @@
+##
+# File: MenuAventure.rb
+# Project: UI
+# File Created: Wednesday, 15th April 2020 3:07:53 pm
+# Author: <CPietJa>Galbrun T.
+# -----
+# Last Modified: Wednesday, 15th April 2020 3:31:46 pm
+# Modified By: <CPietJa>Galbrun T.
+#
+
+
+class Name
+    # TODO
+end
 require "gtk3"
 require_relative './PartieUI.rb'
 require_relative '../Noyau/LoadSaveGrilles/ChargeurGrille.rb'
@@ -99,18 +113,18 @@ class MenuAventure < Gtk::Box
             bouton = Gtk::Button.new(:label => "Jouer")
             bouton.signal_connect "clicked" do |_widget|
                 #puts "Jouer au puzzle n°" + (index+1).to_s
-                $apprOrAdventure = 1
-                Sauv.recupÎnfo( 0, index)
-                jeu = Jeu.charger(grille)
-                uiP = PartieUI.creer(@gMenu,self,jeu,grille)
-                @gMenu.changerMenu(uiP)
                 if(grille.debloque)
-                    jouer(grille)
+                    $apprOrAdventure = 1
+                    Sauv.recupInfo( 0, index)
+                    jeu = Jeu.charger(grille)
+                    uiP = PartieUI.creer(@gMenu,self,jeu,grille)
+                    @gMenu.changerMenu(uiP)
                 else
                     acheter(index)
                     if(grille.debloque)
-                        @gMenu.joueur.retirerArgent(grille.prixPieces)
-                        puts "je retire l'argent"
+                        @argent.set_label(@gMenu.joueur.argent.to_s())
+                        @boxArgent.show_all
+                        #puts "je retire l'argent"
                         bouton.set_image(nil)
                         bouton.set_label("Jouer")
                     end
@@ -148,12 +162,6 @@ class MenuAventure < Gtk::Box
         add(@vBox)
         @scrolled.add(@vBox2)
         add(@scrolled)
-    end
-
-    def jouer(grille)
-        jeu = Jeu.charger(grille)
-        uiP = PartieUI.creer(@gMenu,self,jeu,grille)
-        @gMenu.changerMenu(uiP)
     end
 
     def acheter(index)

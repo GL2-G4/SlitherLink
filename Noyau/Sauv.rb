@@ -12,7 +12,7 @@ class Sauv
         @@partieUI = partieUI
     end
 
-    def Sauv.recupÎnfo( mode, indexGrille)
+    def Sauv.recupInfo( mode, indexGrille)
 
         @@mode = mode
         @@indexGrille = indexGrille

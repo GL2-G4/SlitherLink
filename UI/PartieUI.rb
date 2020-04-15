@@ -681,30 +681,52 @@ class PartieUI < Gtk::Box
 	end
 
 	def traiterLigneHorizontale(index, clique)
+		c1 = getXY(index,false)
+		c2 = @jeu.getCase(c1[0],c1[1])
+		auto = true
 		if(index%(@h+1)==0)
+			if(clique == :CLIC_DROIT && c2.getLigne(:HAUT).etat() == :BLOQUE)
+				auto = false
+			end
 			@jeu.jouer( (index/(@h+1)).to_i, 0, :HAUT , clique)
 			#puts "jouer(#{(index/(@h+1)).to_i}, 0, :HAUT, #{clique})"
 			#puts"case bas,"+(index/(@h+1)).to_i.to_s+", 0"
 		else
+			if(clique == :CLIC_DROIT && c2.getLigne(:BAS).etat() == :BLOQUE)
+				auto = false
+			end
 			@jeu.jouer( (index/(@h+1)).to_i, index%(@h+1)-1, :BAS , clique)
 			#puts "jouer(#{(index/(@h+1)).to_i}, #{index%(@h+1)-1}, :BAS, #{clique})"
 			#puts"case haut, "+ (index/(@h+1)).to_i.to_s + ", " + (index%(@h+1)-1).to_s 
 		end
-		autocompletion()
+		if(auto)
+			autocompletion()
+		end
 		#@jeu.afficherPlateau
 	end
 
 	def traiterLigneVerticale(index, clique)
+		c1 = getXY(index,true)
+		c2 = @jeu.getCase(c1[0],c1[1])
+		auto = true
 		if(index < @h)
+			if(clique == :CLIC_DROIT && c2.getLigne(:GAUCHE).etat() == :BLOQUE)
+				auto = false
+			end
 			#puts"case droite, 0 ,"+index.to_s
 			#puts "jouer(0, #{index}, :GAUCHE, #{clique})"
 			@jeu.jouer(0, index, :GAUCHE, clique)
 		else
+			if(clique == :CLIC_DROIT && c2.getLigne(:DROITE).etat() == :BLOQUE)
+				auto = false
+			end
 			#puts"case gauche,"+((index-@h)/@h.to_i).to_s + ", " + (index% @h).to_s
 			#puts "jouer(#{(index-@h)/@h.to_i}, #{index% @h}, :DROITE, #{clique})"
 			@jeu.jouer((index-@h)/@h.to_i, index% @h, :DROITE, clique)
 		end
-		autocompletion()
+		if(auto)
+			autocompletion()
+		end
 		#@jeu.afficherPlateau
 	end
 

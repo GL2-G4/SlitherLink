@@ -16,6 +16,6 @@ It has been made with the ruby language and the GTK graphics library.
 
 made by Mathis Despres, Tibane Galbrun, Benjamin Rondeau, Eric Tan, Mathieu Vaudeleau
 
-![image menu](Assets/menu.png)
-![image parametres](Assets/parametre.png)
-![image game](Assets/game.png)
+![image menu](Assets/Icons/menu.png)  
+![image parametres](Assets/Icons/parametre.png)  
+![image game](Assets/Icons/game.png)  
